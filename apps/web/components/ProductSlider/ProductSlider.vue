@@ -1,7 +1,7 @@
 <template>
   <SfScrollable
     buttons-placement="floating"
-    class="pb-4 scrollbar-hidden"
+    class="scrollbar-hidden"
     :wrapper-class="wrapperClass"
     data-testid="product-slider"
   >
@@ -27,7 +27,7 @@
       :rating-count="productGetters.getTotalReviews(product)"
       :rating="productGetters.getAverageRating(product, 'half')"
       is-from-slider
-      class="max-w-48"
+      class="min-w-72"
     />
   </SfScrollable>
   <div class="mt-4 typography-text-xs flex gap-1">
