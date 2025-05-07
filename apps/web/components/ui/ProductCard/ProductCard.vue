@@ -53,11 +53,11 @@
           <span v-if="!productGetters.canBeAddedToCartFromCategoryPage(product)" class="mr-1">
             {{ t('account.ordersAndReturns.orderDetails.priceFrom') }}
           </span>
-          <span>{{ n(price, 'currency') }}</span>
+          <span>{{ format(price) }}</span>
           <span>{{ t('asterisk') }} </span>
         </span>
-        <span v-if="crossedPrice" class="typography-text-sm text-neutral-500 line-through md:ml-3">
-          {{ n(crossedPrice, 'currency') }}
+        <span v-if="crossedPrice" class="typography-text-sm text-neutral-500 line-through md:ml-3 md:pb-2">
+          {{ format(crossedPrice) }}
         </span>
         <slot name="wishlistButton">
           <WishlistButton
@@ -97,7 +97,8 @@ import type { ProductCardProps } from '~/components/ui/ProductCard/types';
 import { defaults } from '~/composables';
 
 const localePath = useLocalePath();
-const { t, n } = useI18n();
+const { format } = usePriceFormatter();
+const { t } = useI18n();
 const {
   product,
   name,
