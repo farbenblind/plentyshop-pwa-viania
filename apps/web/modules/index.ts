@@ -8,24 +8,42 @@ export default defineNuxtModule({
         name: 'ModuleTest',
         filePath: resolve('./runtime/components/ModuleTest.vue'),
       });
+
       nuxt.hook('components:extend', (components) => {
-        const comp1 = components.find((c) => c.pascalName === 'UiPurchaseCard');
-        if (comp1) {
-          comp1.filePath = resolve('./runtime/components/ui/PurchaseCard/PurchaseCardCyt.vue');
+        const Header = components.find((c) => c.pascalName === 'UiHeader');
+        if (Header) {
+          Header.filePath = resolve('./runtime/components/ui/Header/HeaderCyt.vue');
         }
-        const comp2 = components.find((c) => c.pascalName === 'MegaMenu');
-        if (comp2) {
-          comp2.filePath = resolve('./runtime/components/MegaMenu/MegaMenuCyt.vue');
+        const PurchaseCard = components.find((c) => c.pascalName === 'UiPurchaseCard');
+        if (PurchaseCard) {
+          PurchaseCard.filePath = resolve('./runtime/components/ui/PurchaseCard/PurchaseCardCyt.vue');
         }
-        const comp3 = components.find((c) => c.pascalName === 'ProductSlider');
-        if (comp3) {
-          comp3.filePath = resolve('./runtime/components/ProductSlider/ProductSliderCyt.vue');
+        const ProductCard = components.find((c) => c.pascalName === 'UiProductCard');
+        if (ProductCard) {
+          ProductCard.filePath = resolve('./runtime/components/ui/ProductCard/ProductCardCyt.vue');
         }
-        const comp4 = components.find((c) => c.pascalName === 'UiProductCard');
-        if (comp4) {
-          comp4.filePath = resolve('./runtime/components/ui/ProductCard/ProductCardCyt.vue');
+
+        const MegaMenu = components.find((c) => c.pascalName === 'MegaMenu');
+        if (MegaMenu) {
+          MegaMenu.filePath = resolve('./runtime/components/MegaMenu/MegaMenuCyt.vue');
+        }
+        const ProductSlider = components.find((c) => c.pascalName === 'ProductSlider');
+        if (ProductSlider) {
+          ProductSlider.filePath = resolve('./runtime/components/ProductSlider/ProductSliderCyt.vue');
         }
       });
+
+      nuxt.hook('tailwindcss:config', (config) => {
+        if (config?.theme?.extend?.colors) {
+          (config.theme.extend.colors as any)['primary']['500'] = '#639';
+          (config.theme.extend.colors as any)['secondary']['500'] = '#000';
+        }
+        
+        if (config?.theme?.extend?.fontFamily) {
+          (config.theme.extend.fontFamily as any).body = ['Inter', 'sans'];
+        }
+      });
+
       extendPages((pages: NuxtPage[]) => {
         const overridePage = pages.find((p) => p.name === 'product-slug');
         if (overridePage) {
