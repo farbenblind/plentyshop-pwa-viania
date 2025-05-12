@@ -4,20 +4,20 @@
     class="flex flex-col my-6 md:mx-4 p-4 rounded-md shadow-[inset_0_0_0_0.1rem_rgb(255,204,0)]"
     data-testid="preferred-delivery"
   >
-    <header class="w-full">
+    <header class="w-full flex items-center justify-between gap-4">
+      <h3 class="font-bold">{{ $t('PreferredDelivery.general.wunschpaketTitle') }}</h3>
       <NuxtImg
         ref="img"
         src="/_nuxt-plenty/images/preferredDelivery/plugin-icon.svg"
-        alt="dhl logo"
-        width="256"
+        alt="DHL logo"
+        width="130"
         height="auto"
         loading="lazy"
         class="block rounded-lg bg-[rgb(255,204,0)] p-3"
       />
-      <h3 class="font-bold mt-4">{{ $t('PreferredDelivery.general.wunschpaketTitle') }}</h3>
     </header>
 
-    <div class="mt-2">{{ $t('PreferredDelivery.general.wunschpaketIntroduction') }}</div>
+    <div class="mt-3">{{ $t('PreferredDelivery.general.wunschpaketIntroduction') }}</div>
     <div>{{ $t('PreferredDelivery.general.wunschpaketOptions') }}</div>
 
     <form novalidate @submit.prevent="validateAndSubmitForm">
@@ -31,7 +31,7 @@
               <SfCheckbox id="wunschtag-title" v-model="data.day.checked" @change="dayCheckboxChange" />
               {{ $t('PreferredDelivery.general.wunschtagTitle') }}
             </label>
-            <SfTooltip :label="$t('PreferredDelivery.general.wunschtagTooltip')" :show-arrow="true" class="ml-1 z-10">
+            <SfTooltip :label="$t('PreferredDelivery.general.wunschtagTooltip')" :show-arrow="true" class="ml-1">
               <SfIconInfo :size="'sm'" />
             </SfTooltip>
           </div>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="grid gap-1 grid-cols-3 md:grid-cols-6 mt-1">
-          <label v-for="(day, index) in data.preferredDays" :key="`preferred-day-${index}`" class="relative">
+          <label v-for="(day, index) in data.preferredDays" :key="`preferred-day-${index}`">
             <input
               type="radio"
               class="peer sr-only"
@@ -74,7 +74,7 @@
               <SfCheckbox id="wunschort-title" v-model="data.location.checked" @change="toggleOption('location')" />
               {{ $t('PreferredDelivery.general.wunschortTitle') }}
             </label>
-            <SfTooltip :label="$t('PreferredDelivery.general.wunschortTooltip')" :show-arrow="true" class="ml-1 z-10">
+            <SfTooltip :label="$t('PreferredDelivery.general.wunschortTooltip')" :show-arrow="true" class="ml-1">
               <SfIconInfo :size="'sm'" />
             </SfTooltip>
           </div>
@@ -106,11 +106,7 @@
               />
               {{ $t('PreferredDelivery.general.wunschnachbarTitle') }}
             </label>
-            <SfTooltip
-              :label="$t('PreferredDelivery.general.wunschnachbarTooltip')"
-              :show-arrow="true"
-              class="ml-1 z-10"
-            >
+            <SfTooltip :label="$t('PreferredDelivery.general.wunschnachbarTooltip')" :show-arrow="true" class="ml-1">
               <SfIconInfo :size="'sm'" />
             </SfTooltip>
           </div>
@@ -144,8 +140,6 @@
       </UiButton>
     </form>
   </div>
-
-  <UiDivider v-if="preferredDeliveryAvailable" class="w-screen md:w-auto -mx-4 md:mx-0" />
 </template>
 
 <script setup lang="ts">
