@@ -37,6 +37,7 @@ For changelogs of newer versions, refer to the [Releases](https://github.com/ple
 - The contact form requires a turnstile validation otherwise the form will not show up.
 - `vsf-locale` cookie got removed, we now send a header `locale` with every sdk request.
 - Translations are now lazy loaded. This decreases JavaScript chunk size, which in turn improves page load performance.
+- Editor components are now loaded asynchronously, which improves page load performance.
 
 ### 🩹 Fixed
 
@@ -53,6 +54,10 @@ For changelogs of newer versions, refer to the [Releases](https://github.com/ple
 - (dev) Fix notification and modal closing of delete category
 - (dev) Fix Page Seo title tooltip
 - (dev) Fix editor page navigation
+
+### Performance
+
+- Removed i18n from `app.vue`
 
 # v1.15.0 (2025-05-06) <a href="https://github.com/plentymarkets/plentyshop-pwa/compare/v1.14.0...v1.15.0" target="_blank" rel="noopener"><b>Overview of all changes</b></a>
 
