@@ -1,5 +1,23 @@
 <template>
   <footer class="pt-10 bg-secondary-100 md:mb-0" data-testid="footer" :class="simplifiedFooter ? 'mb-0' : 'mb-[58px]'">
+    <Newsletter 
+      name="newsletter" 
+      type="subscribe" 
+      :content='{
+        "text": {
+          "bgColor": "#f5f5f5",
+          "title": "Abonnieren Sie unseren Newsletter",
+          "htmlDescription": "Informieren Sie sich über bevorstehende Aktionen und Veranstaltungen. Erhalten Sie Geschenke und Sonderangebote!"
+        },
+        "input": {
+          "displayNameInput": false,
+          "nameIsRequired": false
+        },
+        "button": {
+          "label": "Newsletter abonnieren"
+        }
+      }'
+    />
     <div
       class="grid justify-center grid-cols-[1fr_1fr] md:grid-cols-[repeat(4,1fr)] px-4 md:px-6 pb-10 max-w-screen-3xl mx-auto"
       data-testid="section-top"

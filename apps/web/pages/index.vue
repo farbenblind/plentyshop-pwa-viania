@@ -1,7 +1,7 @@
 <template>
   <div>
     <EditablePage :identifier="'index'" :type="'immutable'" />
-  <ModuleTest/>
+    <BhFinder />
   </div>
 </template>
 

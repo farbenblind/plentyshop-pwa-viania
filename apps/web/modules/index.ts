@@ -5,8 +5,12 @@ export default defineNuxtModule({
     async setup(options, nuxt) {
       const {resolve} = createResolver(import.meta.url);
       await addComponent({
-        name: 'ModuleTest',
-        filePath: resolve('./runtime/components/ModuleTest.vue'),
+        name: 'BhFinder',
+        filePath: resolve('./runtime/components/BhFinder.vue'),
+      });
+      await addComponent({
+        name: 'Newsletter',
+        filePath: resolve('./runtime/components/Newsletter.vue'),
       });
       nuxt.hook('components:extend', (components) => {
         const comp = components.find((c) => c.pascalName === 'UiPurchaseCard');
@@ -14,6 +18,13 @@ export default defineNuxtModule({
           comp.filePath = resolve('./runtime/components/ui/PurchaseCard/PurchaseCard.vue');
         }
       });
+      extendPages((pages: NuxtPage[]) => {
+            pages.push({
+                name: 'ihab',
+                file: resolve('./runtime/pages/ihab.vue'),
+                path: '/ihab',
+            });
+        });
       extendPages((pages: NuxtPage[]) => {
         const overridePage = pages.find((p) => p.name === 'product-slug');
         if (overridePage) {
