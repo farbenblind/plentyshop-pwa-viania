@@ -20,6 +20,12 @@ export default defineNuxtModule({
       filePath: resolve('./runtime/components/Newsletter/NewsletterCyt.vue'),
     });
 
+    // NavChildren
+    await addComponent({
+      name: 'NavChildren',
+      filePath: resolve('./runtime/components/NavChildren/NavChildren.vue'),
+    });
+
     /**
      * override components
      */
@@ -28,6 +34,11 @@ export default defineNuxtModule({
       const Header = components.find((c) => c.pascalName === 'UiHeader');
       if (Header) {
         Header.filePath = resolve('./runtime/components/ui/Header/HeaderCyt.vue');
+      }
+      // CategoryPageContent
+      const CategoryPageContent = components.find((c) => c.pascalName === 'CategoryPageContent');
+      if (CategoryPageContent) {
+        CategoryPageContent.filePath = resolve('./runtime/components/CategoryPageContent/CategoryPageContentCyt.vue');
       }
       // PurchaseCard
       const PurchaseCard = components.find((c) => c.pascalName === 'UiPurchaseCard');
@@ -107,12 +118,6 @@ export default defineNuxtModule({
         overrideHomePage.file = resolve('./runtime/pages/homepage/indexCyt.vue');
       }
 
-      // CategoryPageContent
-      const overrideCategoryPageContent = pages.find((p) => p.name === 'category');
-      if (overrideCategoryPageContent) {
-        overrideCategoryPageContent.file = resolve('./runtime/components/CategoryPageContent/CategoryPageContentCyt.vue');
-      }
-
       // ProductPage
       const overrideProductPage = pages.find((p) => p.name === 'product-slug');
       if (overrideProductPage) {
@@ -125,8 +130,6 @@ export default defineNuxtModule({
         file: resolve('./runtime/pages/contentpages/StoreFinder.vue'),
         path: '/store-finder',
       });
-
-      console.log(pages);
     });
 
     /**

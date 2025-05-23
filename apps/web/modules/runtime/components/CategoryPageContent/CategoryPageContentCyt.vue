@@ -1,7 +1,11 @@
 <template>
-  <h1>test</h1>
+  <div class="bg-[#F5EFEF]">
+    <div class="max-w-screen-2xl mx-auto p-[20px]">
+      <h1 class="text-[18px] font-bold">{{ title }}</h1>
+      <NavChildren />
+    </div>
+  </div>
   <NarrowContainer class="mb-20 px-4 md:px-0" data-testid="category-layout">
-    <h1 class="my-10 font-bold typography-headline-3 md:typography-headline-2">{{ title }}</h1>
     <div class="md:flex gap-6" data-testid="category-page-content">
       <CategorySidebar :is-open="isOpen" @close="close">
         <NuxtLazyHydrate when-visible>
