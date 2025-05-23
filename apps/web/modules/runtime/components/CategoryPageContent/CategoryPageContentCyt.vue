@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#F5EFEF]">
+  <div class="bg-[#F5EFEF] mb-10">
     <div class="max-w-screen-2xl mx-auto p-[20px]">
       <h1 class="text-[18px] font-bold">{{ title }}</h1>
       <NavChildren />

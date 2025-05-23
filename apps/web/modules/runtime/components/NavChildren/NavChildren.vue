@@ -1,20 +1,29 @@
 <template>
-    <ul>
-        <li v-for="(category, index) in categoryTree" :key="category.id">
-            <NuxtLink :to="localePath(generateCategoryLink(category))">{{ category.details[0].name }}</NuxtLink>
-        </li>
+    <ul class="flex">
+        <template v-for="(category) in categoryTree" :key="category.id">
+            <template v-if="category.id === currentCategoryId && category.childCount > 0">
+                <li v-for="childCategory in category.children" :key="childCategory.id" class="bg-white p-3 mr-2 mt-3 border">
+                    <NuxtLink :to="localePath(generateCategoryLink(childCategory))">{{ childCategory.details[0].name }}</NuxtLink>
+                </li>
+            </template>
+        </template>
+        
     </ul>
 </template>
 
 <script setup lang="ts">
 const localePath = useLocalePath();
 const { data: categoryTree } = useCategoryTree();
-const { getCategoryName, getCategoryId } = useCategoryIdHelper();
+const { data: productsCatalog } = useProducts();
 const { buildCategoryMenuLink } = useLocalization();
 
 const generateCategoryLink = (category: CategoryTreeItem) => {
     return buildCategoryMenuLink(category, categoryTree.value);
 };
-console.log(getCategoryId.value)
-console.log(getCategoryName.value)
+
+const currentCategoryId = computed(() => {
+    return productsCatalog.value.category?.id;
+});
+
+
 </script>
