@@ -1,21 +1,21 @@
 <template>
-  <header ref="referenceRef" class="flex flex-col align-center relative w-full bg-white p-[20px] lg:py-[40px] max-w-screen-3xl mx-auto" :class="headerClass">
+  <header ref="referenceRef" class="flex flex-col align-center relative w-full bg-white p-[20px] lg:py-[40px] max-w-screen-2xl mx-auto" :class="headerClass">
     <div class="flex items-center text-[12px] lg:text-[14px] lg:items-start font-light">
       <div class="flex items-center gap-[30px] min-w-[320px]" v-if="viewport.isGreaterOrEquals('lg')">
         <NuxtLink
           to="/store-finder"
-          aria-label="zum Storefinder"
+          :aria-label="t('Header.Store Finder')"
           class="flex items-center gap-[10px]"
         >
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="21" viewBox="0 0 17 21"><defs><clipPath id="a"><rect width="17" height="21" fill="none"/></clipPath></defs><g clip-path="url(#a)"><path d="M12.054,8.681A3.6,3.6,0,0,1,8.5,12.321a3.637,3.637,0,0,1-.008-7.272A3.6,3.6,0,0,1,12.054,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,8.681A8.1,8.1,0,0,1,8.5.5a8.1,8.1,0,0,1,8,8.181c0,5.228-4.445,8.4-8,11.819C4.949,17.081.5,13.909.5,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g></svg>
-          Store Finder
+          {{ t('Header.Store Finder') }}
         </NuxtLink>
 
         <SfDropdown v-if="isAuthorized" v-model="isAccountDropdownOpen" placement="bottom-end" class="z-50">
           <template #trigger>
             <UiButton
               variant="tertiary"
-              class="!font-light !text-black p-0 !text-[14px] !p-0 hover:bg-white active:bg-white gap-[10px]"
+              class="!flex !font-light !text-black p-0 !text-[14px] !p-0 hover:bg-white active:bg-white gap-[10px]"
               data-testid="account-dropdown-button"
               @click="accountDropdownToggle()"
             >
@@ -52,7 +52,7 @@
           @click="navigateToLogin"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><path d="M15.167,5.162A4.667,4.667,0,1,1,10.5.5h.009A4.666,4.666,0,0,1,15.167,5.162Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,20.5c0-5.025,2.655-7.758,8.182-7.758h3.636c5.527,0,8.182,2.733,8.182,7.758Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></svg>
-          Mein Viania
+          {{ t('Header.Mein Viania') }}
         </NuxtLink>
       </div>
       <NuxtLink
@@ -64,27 +64,34 @@
       </NuxtLink>
 
       <div class="links flex align-center text-[12px] flex gap-[20px] lg:gap-[30px] lg:text-[14px] lg:min-w-[320px] justify-end">
+        <NuxtLink v-if="viewport.isLessThan('lg')"
+          class="flex items-center gap-[10px] cursor-pointer"
+          :aria-label="t('auth.login.openLoginForm')"
+          :to="isAuthorized ? localePath(paths.account) : localePath(paths.authLogin)"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-[18px] w-auto" width="21" height="21" viewBox="0 0 21 21"><path d="M15.167,5.162A4.667,4.667,0,1,1,10.5.5h.009A4.666,4.666,0,0,1,15.167,5.162Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,20.5c0-5.025,2.655-7.758,8.182-7.758h3.636c5.527,0,8.182,2.733,8.182,7.758Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></svg>
+        </NuxtLink>
         <NuxtLink
-          class="wl flex items-center gap-[5px]"
+          class="wl flex items-center gap-[5px] lg:gap-[10px]"
           :class="{ 'active': wishlistItemIds.length > 0 }"
           :to="localePath(paths.wishlist)"
           :aria-label="t('numberInWishlist', { count: wishlistItemIds.length })"
           data-testid="wishlist-page-navigation"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16.099" viewBox="0 0 18 16.099"><g transform="translate(0.5 0.5)"><path d="M18,5.459A4.358,4.358,0,0,0,13.75,1,4.652,4.652,0,0,0,9.5,3.838,4.652,4.652,0,0,0,5.25,1,4.358,4.358,0,0,0,1,5.459C1,9.412,5.588,13.415,9.5,16,13.412,13.415,18,9.412,18,5.459Z" transform="translate(-1 -1)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="1"/></g></svg>
+          <svg class="lg:w-[22px] lg:h-auto" xmlns="http://www.w3.org/2000/svg" width="18" height="16.099" viewBox="0 0 18 16.099"><g transform="translate(0.5 0.5)"><path d="M18,5.459A4.358,4.358,0,0,0,13.75,1,4.652,4.652,0,0,0,9.5,3.838,4.652,4.652,0,0,0,5.25,1,4.358,4.358,0,0,0,1,5.459C1,9.412,5.588,13.415,9.5,16,13.412,13.415,18,9.412,18,5.459Z" transform="translate(-1 -1)" fill="none" stroke="#000" stroke-linecap="square" stroke-width="1"/></g></svg>
           <span class="badge font-semibold" data-testid="wishlist-badge" v-if="viewport.isLessThan('lg')">{{ wishlistItemIds.length }}</span>
-          <span class="badge" data-testid="wishlist-badge" v-else>Merkliste<template v-if="wishlistItemIds.length"> ({{ wishlistItemIds.length }})</template></span>
+          <span class="badge" data-testid="wishlist-badge" v-else>{{t('Header.Merkliste')}}<template v-if="wishlistItemIds.length"> ({{ wishlistItemIds.length }})</template></span>
         </NuxtLink>
         <NuxtLink
-          class="wl b flex items-center gap-[5px]"
+          class="wl b flex items-center gap-[5px] lg:gap-[10px]"
           :class="{ 'active': cartItemsCount > 0 }"
           :to="localePath(paths.cart)"
           :aria-label="t('numberInCart', { count: cartItemsCount })"
           data-testid="wishlist-page-navigation"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"><g transform="translate(0.5 0.5)"><path d="M13.5,3.75a3,3,0,0,1-6,0" transform="translate(-2 -1.313)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1"/><path d="M15.182,15.5H2.818A2.285,2.285,0,0,1,.5,13.25V.5h17V13.25A2.285,2.285,0,0,1,15.182,15.5Z" transform="translate(-0.5 -0.5)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1"/></g></svg>
+          <svg class="lg:w-[22px] lg:h-auto" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"><g transform="translate(0.5 0.5)"><path d="M13.5,3.75a3,3,0,0,1-6,0" transform="translate(-2 -1.313)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1"/><path d="M15.182,15.5H2.818A2.285,2.285,0,0,1,.5,13.25V.5h17V13.25A2.285,2.285,0,0,1,15.182,15.5Z" transform="translate(-0.5 -0.5)" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="round" stroke-width="1"/></g></svg>
           <span class="badge font-semibold" data-testid="cart-badge" v-if="viewport.isLessThan('lg')">{{ cartItemsCount }}</span>
-          <span class="badge" data-testid="cart-badge" v-else>Warenkorb<template v-if="cartItemsCount"> ({{ cartItemsCount }})</template></span>
+          <span class="badge" data-testid="cart-badge" v-else>{{ t('cart') }}<template v-if="cartItemsCount"> ({{ cartItemsCount }})</template></span>
         </NuxtLink>
         <button
           v-if="viewport.isLessThan('lg')"

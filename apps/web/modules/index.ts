@@ -1,4 +1,4 @@
-import { defineNuxtModule, addComponent, createResolver, extendPages } from '@nuxt/kit';
+import { defineNuxtModule, addComponent, createResolver, extendPages, addImportsDir } from '@nuxt/kit';
 import type { NuxtPage } from '@nuxt/schema';
 
 export default defineNuxtModule({
@@ -7,9 +7,17 @@ export default defineNuxtModule({
        * register components
        */
       const {resolve} = createResolver(import.meta.url);
+
+      // BhFinder
       await addComponent({
-        name: 'ModuleTest',
-        filePath: resolve('./runtime/components/ModuleTest.vue'),
+        name: 'BhFinder',
+        filePath: resolve('./runtime/components/BhFinder/BhFinder.vue'),
+      });
+
+      // Newsletter
+      await addComponent({
+        name: 'NewsletterCyt',
+        filePath: resolve('./runtime/components/Newsletter/NewsletterCyt.vue'),
       });
 
       /**
@@ -30,6 +38,11 @@ export default defineNuxtModule({
         const ProductCard = components.find((c) => c.pascalName === 'UiProductCard');
         if (ProductCard) {
           ProductCard.filePath = resolve('./runtime/components/ui/ProductCard/ProductCardCyt.vue');
+        }
+        // Footer
+        const Footer = components.find((c) => c.pascalName === 'UiFooter');
+        if (Footer) {
+          Footer.filePath = resolve('./runtime/components/ui/Footer/FooterCyt.vue');
         }
 
         // MegaMenu
@@ -67,11 +80,22 @@ export default defineNuxtModule({
           (config.theme.extend.screens as any).md = '768px';
           (config.theme.extend.screens as any).lg = '1024px';
           (config.theme.extend.screens as any).xl = '1280px';
-          (config.theme.extend.screens as any)['2xl'] = '1536px';
+          (config.theme.extend.screens as any)['2xl'] = '1640px';
           (config.theme.extend.screens as any)['3xl'] = '1792px';
           (config.theme.extend.screens as any)['4xl'] = '1920px';
         }
-      });   
+      });
+
+      /**
+       * override layouts
+       */
+      nuxt.hook('app:resolve', (app) => {
+        // default
+        app.layouts['default'] = {
+          name: 'default',
+          file: resolve('./runtime/layouts/defaultCyt.vue'),
+        };
+      });
 
       /**
        * override pages
@@ -90,5 +114,29 @@ export default defineNuxtModule({
           path: '/store-finder',
         });
       });
+
+      /**
+       * extend i18n
+       */
+      nuxt.hook('i18n:registerModule', (register) => {
+        register({
+          langDir: resolve('./runtime/lang'),
+          locales: [
+            {
+              code: 'en',
+              file: 'en.json',
+            },
+            {
+              code: 'de',
+              file: 'de.json',
+            },
+          ],
+        });
+      });
+
+      /**
+       * add composable imports
+       */
+      addImportsDir(resolve('./runtime/composables'));
     },
   });
