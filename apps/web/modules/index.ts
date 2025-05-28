@@ -114,6 +114,11 @@ export default defineNuxtModule({
       if (Filter) {
         Filter.filePath = resolve('./runtime/components/CategoryFilters/FilterCyt.vue');
       }
+      // WishlistPageContent
+      const WishlistPageContent = components.find((c) => c.pascalName === 'WishlistPageContent');
+      if (WishlistPageContent) {
+        WishlistPageContent.filePath = resolve('./runtime/components/WishlistPageContent/WishlistPageContentCyt.vue');
+      }
       // WishlistButton
       const WishlistButton = components.find((c) => c.pascalName === 'WishlistButton');
       if (WishlistButton) {

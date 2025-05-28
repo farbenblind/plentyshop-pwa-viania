@@ -29,5 +29,6 @@
     "sortType.PriceDown": "Preis absteigend",
     "sortType.PriceUp": "Preis aufsteigend",
     "sortType.NameA-Z": "Name aufsteigend",
-    "sortType.NameZ-A": "Name absteigend"
+    "sortType.NameZ-A": "Name absteigend",
+    "Merkliste": "Meine Merkliste"
 }
