@@ -1,5 +1,5 @@
 <template>
-  <header ref="referenceRef" class="flex flex-col align-center relative w-full bg-white p-[20px] lg:py-[40px] max-w-screen-2xl mx-auto" :class="headerClass">
+  <header ref="referenceRef" class="flex flex-col align-center relative w-full bg-white p-[20px] lg:py-[40px] max-w-screen-3xl mx-auto" :class="headerClass">
     <div class="flex items-center text-[12px] lg:text-[14px] lg:items-start font-light">
       <div class="flex items-center gap-[30px] min-w-[320px]" v-if="viewport.isGreaterOrEquals('lg')">
         <NuxtLink

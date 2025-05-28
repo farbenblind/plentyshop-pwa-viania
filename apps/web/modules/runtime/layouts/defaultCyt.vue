@@ -4,7 +4,7 @@
     <main>
       <slot />
     </main>
-    <!-- <Cookiebar /> -->
+    <Cookiebar />
     <PreviewMode />
     <NuxtLazyHydrate when-visible>
       <UiFooter />

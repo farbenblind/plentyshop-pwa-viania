@@ -11,5 +11,5 @@
 </template>
 
 <script setup lang="ts">
-
+  const details = useCategoryDetails();
 </script>

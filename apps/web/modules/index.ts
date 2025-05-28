@@ -1,5 +1,5 @@
-import { defineNuxtModule, addComponent, createResolver, extendPages, addImportsDir } from '@nuxt/kit';
-import type { NuxtPage } from '@nuxt/schema';
+import { defineNuxtModule, addComponent, createResolver, extendPages, addImportsDir, addPlugin } from '@nuxt/kit';
+import type { NuxtPage, AppConfig } from '@nuxt/schema';
 
 export default defineNuxtModule({
   async setup(options, nuxt) {
@@ -25,6 +25,9 @@ export default defineNuxtModule({
       name: 'NavChildren',
       filePath: resolve('./runtime/components/NavChildren/NavChildren.vue'),
     });
+
+    // customJS
+    addPlugin(resolve('./runtime/plugins/customJS'));
 
     /**
      * override components
@@ -55,7 +58,11 @@ export default defineNuxtModule({
       if (Footer) {
         Footer.filePath = resolve('./runtime/components/ui/Footer/FooterCyt.vue');
       }
-
+      // Pagination
+      const Pagination = components.find((c) => c.pascalName === 'UiPagination');
+      if (Pagination) {
+        Pagination.filePath = resolve('./runtime/components/ui/Pagination/PaginationCyt.vue');
+      }
       // MegaMenu
       const MegaMenu = components.find((c) => c.pascalName === 'MegaMenu');
       if (MegaMenu) {
@@ -65,6 +72,31 @@ export default defineNuxtModule({
       const ProductSlider = components.find((c) => c.pascalName === 'ProductSlider');
       if (ProductSlider) {
         ProductSlider.filePath = resolve('./runtime/components/ProductSlider/ProductSliderCyt.vue');
+      }
+      // CategorySidebar
+      const CategorySidebar = components.find((c) => c.pascalName === 'CategorySidebar');
+      if (CategorySidebar) {
+        CategorySidebar.filePath = resolve('./runtime/components/CategorySidebar/CategorySidebarCyt.vue');
+      }
+      // CategorySorting
+      const CategorySorting = components.find((c) => c.pascalName === 'CategorySorting');
+      if (CategorySorting) {
+        CategorySorting.filePath = resolve('./runtime/components/CategorySortings/CategorySortingCyt.vue');
+      }
+      // CategoryFilters
+      const CategoryFilters = components.find((c) => c.pascalName === 'CategoryFilters');
+      if (CategoryFilters) {
+        CategoryFilters.filePath = resolve('./runtime/components/CategoryFilters/CategoryFiltersCyt.vue');
+      }
+      // Filter
+      const Filter = components.find((c) => c.pascalName === 'CategoryFiltersFilter');
+      if (Filter) {
+        Filter.filePath = resolve('./runtime/components/CategoryFilters/FilterCyt.vue');
+      }
+      // WishlistButton
+      const WishlistButton = components.find((c) => c.pascalName === 'WishlistButton');
+      if (WishlistButton) {
+        WishlistButton.filePath = resolve('./runtime/components/WishlistButton/WishlistButtonCyt.vue');
       }
     });
 
@@ -91,9 +123,9 @@ export default defineNuxtModule({
         (config.theme.extend.screens as any).md = '768px';
         (config.theme.extend.screens as any).lg = '1024px';
         (config.theme.extend.screens as any).xl = '1280px';
-        (config.theme.extend.screens as any)['2xl'] = '1640px';
-        (config.theme.extend.screens as any)['3xl'] = '1792px';
-        (config.theme.extend.screens as any)['4xl'] = '1920px';
+        (config.theme.extend.screens as any)['2xl'] = '1440px';
+        (config.theme.extend.screens as any)['3xl'] = '1640px';
+        (config.theme.extend.screens as any)['4xl'] = '1840px';
       }
     });
 
@@ -112,6 +144,8 @@ export default defineNuxtModule({
      * override pages
      */
     extendPages((pages: NuxtPage[]) => {
+      console.log(pages);
+
       // Homepage
       const overrideHomePage = pages.find((p) => p.name === 'index');
       if (overrideHomePage) {
@@ -122,6 +156,18 @@ export default defineNuxtModule({
       const overrideProductPage = pages.find((p) => p.name === 'product-slug');
       if (overrideProductPage) {
         overrideProductPage.file = resolve('./runtime/pages/product/[slug]Cyt.vue');
+      }
+
+      // CategoryPage
+      const overrideCategoryPage = pages.find((p) => p.name === 'slug');
+      if (overrideCategoryPage) {
+        overrideCategoryPage.file = resolve('./runtime/pages/category/[...slug]Cyt.vue');
+      }
+
+      // SearchPage
+      const overrideSearchPage = pages.find((p) => p.name === 'search');
+      if (overrideSearchPage) {
+        overrideSearchPage.file = resolve('./runtime/pages/search/searchCyt.vue');
       }
 
       // Contentpages -> StoreFinder
@@ -155,5 +201,13 @@ export default defineNuxtModule({
      * add composable imports
      */
     addImportsDir(resolve('./runtime/composables'));
+
+    /**
+     * Override composables
+     */
+    nuxt.options.alias['~/composables/defaults'] = resolve(
+      __dirname,
+      './runtime/composables/defaultsCyt.ts'
+    )
   },
 });

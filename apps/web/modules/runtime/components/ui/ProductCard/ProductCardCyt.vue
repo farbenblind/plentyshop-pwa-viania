@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col" data-testid="product-card">
+    <div class="flex flex-col border border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5]" data-testid="product-card">
       <div class="relative overflow-hidden">
         <UiBadges
           :use-tags="useTagsOnCategoryPage"
@@ -28,64 +28,32 @@
             data-testid="image-slot"
           />
         </SfLink>
-  
-        <slot name="wishlistButton">
-          <WishlistButton
-            square
-            class="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
-            :product="product"
-          />
-        </slot>
       </div>
-      <div class="p-2 border-t border-neutral-200 typography-text-sm flex flex-col flex-auto">
-        <SfLink :tag="NuxtLink" :to="productPath" class="no-underline" variant="secondary" data-testid="productcard-name">
+      <div class="flex flex-col flex-auto text-[14px] md:text-[16px] lg:text-[18px] p-[10px] sm:p-[20px]">
+        <SfLink :tag="NuxtLink" :to="productPath" class="no-underline font-light" variant="secondary" data-testid="productcard-name">
           {{ name }}
         </SfLink>
-        <div class="flex items-center pt-1 gap-1" :class="{ 'mb-2': !productGetters.getShortDescription(product) }">
-          <SfRating size="xs" :half-increment="true" :value="rating ?? 0" :max="5" />
-          <SfCounter size="xs">{{ ratingCount }}</SfCounter>
-        </div>
-        <div
-          v-if="productGetters.getShortDescription(product)"
-          class="block py-2 font-normal typography-text-xs text-neutral-700 text-justify whitespace-pre-line break-words"
-        >
-          <div class="line-clamp-3" v-html="productGetters.getShortDescription(product)" />
-        </div>
         <LowestPrice :product="product" />
         <div v-if="showBasePrice" class="mb-2">
           <BasePriceInLine :base-price="basePrice" :unit-content="unitContent" :unit-name="unitName" />
         </div>
-        <div class="flex flex-col-reverse items-start md:flex-row md:items-center mt-auto">
-          <span class="block pb-2 font-bold typography-text-sm" data-testid="product-card-vertical-price">
+        <div class="flex items-start mt-auto gap-[10px] pb-[10px]">
+          <span class="block font-bold" data-testid="product-card-vertical-price">
             <span v-if="!productGetters.canBeAddedToCartFromCategoryPage(product)" class="mr-1">
               {{ t('account.ordersAndReturns.orderDetails.priceFrom') }}
             </span>
-            <span>{{ format(price) }}</span>
-            <span>{{ t('asterisk') }} </span>
+            <span class="font-semibold">{{ format(price) }}</span>
           </span>
-          <span v-if="crossedPrice" class="typography-text-sm text-neutral-500 line-through md:ml-3 md:pb-2">
+          <span v-if="crossedPrice" class="line-through">
             {{ format(crossedPrice) }}
           </span>
         </div>
-        <UiButton
-          v-if="productGetters.canBeAddedToCartFromCategoryPage(product)"
-          size="sm"
-          class="min-w-[80px] w-fit"
-          data-testid="add-to-basket-short"
-          :disabled="loading"
-          @click="addWithLoader(Number(productGetters.getId(product)))"
-        >
-          <template v-if="!loading" #prefix>
-            <SfIconShoppingCart size="sm" />
-          </template>
-          <SfLoaderCircular v-if="loading" class="flex justify-center items-center" size="sm" />
-          <span v-else>
-            {{ t('addToCartShort') }}
-          </span>
-        </UiButton>
-        <UiButton v-else type="button" :tag="NuxtLink" :to="productPath" size="sm" class="w-fit">
-          <span>{{ t('showOptions') }}</span>
-        </UiButton>
+        <slot name="wishlistButton">
+          <WishlistButton
+            class="text-right"
+            :product="product"
+          />
+        </slot>
       </div>
     </div>
   </template>

@@ -1,6 +1,6 @@
 <template>
   <footer data-testid="footer" class="bg-[#F5EFEF]">
-    <div class="max-w-screen-2xl mx-auto py-[40px] px-[20px] text-[14px] xl:py-[60px]">
+    <div class="max-w-screen-3xl mx-auto py-[40px] px-[20px] text-[14px] xl:py-[60px]">
       <div class="xl:grid xl:grid-cols-[auto_1fr_auto] xl:gap-[100px]">
         <div class="text-center xl:text-left">
           <p class="hl font-semibold xl:text-[18px]">{{ t('Footer.Fragen1') }}<template v-if="viewport.isLessThan('lg')">&nbsp;{{ t('Footer.Fragen2') }}</template></p>

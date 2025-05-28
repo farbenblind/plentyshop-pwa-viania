@@ -22,5 +22,12 @@
             "1": "Alle Preise sind inkl. der gesetzlichen Mehrwertsteuer und zzgl. Versandkosten",
             "2": "Kostenloser Versand ab 50 Euro Bestellwert nur innerhalb Deutschlands"
         }
-    }
+    },
+    "SizeTable": "zur Größentabelle",
+    "Filter": "Filtern & Sortieren",
+    "Filter2": "Filtern nach",
+    "sortType.PriceDown": "Preis absteigend",
+    "sortType.PriceUp": "Preis aufsteigend",
+    "sortType.NameA-Z": "Name aufsteigend",
+    "sortType.NameZ-A": "Name absteigend"
 }
