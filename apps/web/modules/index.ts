@@ -4,6 +4,27 @@ import type { NuxtPage, AppConfig } from '@nuxt/schema';
 export default defineNuxtModule({
   async setup(options, nuxt) {
     /**
+     * Some inline JS before Nuxt app loads (for 1- or 2-column layout)
+     */
+    nuxt.options.app.head ||= {}
+    nuxt.options.app.head.script ||= []
+
+    nuxt.options.app.head.script.push({
+      type: 'text/javascript',
+      innerHTML: `
+        (function() {
+          try {
+            if (localStorage.getItem('singleColumn')) {
+              document.documentElement.classList.add('single-column');
+            }
+          } catch (e) {
+            // localStorage might be disabled, ignore error
+          }
+        })();
+      `,
+    });
+
+    /**
      * register components
      */
     const {resolve} = createResolver(import.meta.url);
@@ -26,8 +47,8 @@ export default defineNuxtModule({
       filePath: resolve('./runtime/components/NavChildren/NavChildren.vue'),
     });
 
-    // customJS
-    addPlugin(resolve('./runtime/plugins/customJS'));
+    // customJS (not needed at the moment)
+    // addPlugin(resolve('./runtime/plugins/customJS'));
 
     /**
      * override components

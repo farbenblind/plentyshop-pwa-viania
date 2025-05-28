@@ -141,12 +141,12 @@ onMounted(() => {
 
     if (target.id === 'col1') {
       localStorage.setItem('singleColumn', 'true');
-      document.body.classList.add('single-column');
+      document.documentElement.classList.add('single-column');
     }
 
     if (target.id === 'col2') {
       localStorage.removeItem('singleColumn');
-      document.body.classList.remove('single-column');
+      document.documentElement.classList.remove('single-column');
     }
   });
 });
