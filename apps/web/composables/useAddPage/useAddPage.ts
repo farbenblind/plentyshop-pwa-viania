@@ -2,7 +2,7 @@ import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/yup';
 import { object, string } from 'yup';
 import type { CategoryEntry, CategoryTreeItem } from '@plentymarkets/shop-api';
-import { categoryTreeGetters } from '@plentymarkets/shop-api';
+import { categoryEntryGetters } from '@plentymarkets/shop-api';
 
 export const useAddPageModal = () => {
   const { pageModalOpen, togglePageModal, setSettingsCategory } = useSiteConfiguration();
@@ -33,7 +33,7 @@ export const useAddPageModal = () => {
 
   const pageType = ref(getDefaultPageType());
 
-  const noneCategoryItem: CategoryTreeItem = {
+  const noneCategoryItem: CategoryEntry = {
     id: 0,
     type: 'none',
     itemCount: [],
@@ -47,17 +47,46 @@ export const useAddPageModal = () => {
         metaTitle: '',
         imagePath: '',
         image2Path: '',
+        canonicalLink: '',
+        categoryId: '0',
+        description: '',
+        description2: '',
+        fulltext: 'N',
+        image: 0,
+        image2: '',
+        itemListView: '',
+        metaDescription: '',
+        metaKeywords: '',
+        metaRobots: '',
+        pageView: '',
+        position: '0',
+        previewUrl: '',
+        plenty_category_details_image_path: '',
+        plenty_category_details_image2_path: '',
+        plentyId: 0,
+        shortDescription: '',
+        singleItemView: '',
+        updatedAt: '',
+        updatedBy: '',
       },
     ],
+    clients: [],
+    level: 0,
+    linklist: '',
+    parentCategoryId: 0,
+    sitemap: 'N',
+    isLinkedToWebstore: false,
+    hasChildren: false,
   };
 
-  const parentPage = ref<CategoryTreeItem>(noneCategoryItem);
+  const parentPage = ref<CategoryEntry>(noneCategoryItem);
 
-  const buildInitialParentPage = (): CategoryTreeItem => {
+  const buildInitialParentPage = (): CategoryEntry => {
     if (getCurrentCategoryLevel.value === 6 && getParentCategoryId.value && getParentName.value) {
       return {
         ...noneCategoryItem,
         id: getParentCategoryId.value,
+        level: getCurrentCategoryLevel.value ?? 0,
         details: [{ ...noneCategoryItem.details[0], name: getParentName.value }],
       };
     }
@@ -66,6 +95,7 @@ export const useAddPageModal = () => {
       return {
         ...noneCategoryItem,
         id: getCategoryId.value,
+        level: getCurrentCategoryLevel.value ?? 0,
         details: [{ ...noneCategoryItem.details[0], name: getCategoryName.value }],
       };
     }
@@ -117,8 +147,21 @@ export const useAddPageModal = () => {
 
   const [pageName, pageNameAttributes] = defineField('pageName');
 
-  const getLabel = (option: CategoryTreeItem) => {
-    return option.details && option.details.length ? option.details[0].name : '';
+  const getLabel = (option: CategoryEntry) => {
+    if (!categoryEntryGetters.getDetails(option)[0]) {
+      const categoryId = categoryEntryGetters.getId(option);
+      return `ID: ${categoryId}`;
+    }
+
+    return categoryEntryGetters.getDetails(option)[0].name;
+  };
+
+  const getLevel = (option: CategoryEntry) => {
+    return categoryEntryGetters.getLevel(option);
+  };
+
+  const isValidParentPage = (): boolean => {
+    return getLevel(parentPage.value) !== 6;
   };
 
   const createNewPage = async () => {
@@ -127,21 +170,26 @@ export const useAddPageModal = () => {
     await addCategory({
       name: pageName?.value || '',
       type: pageType.value.value,
-      parentCategoryId: categoryTreeGetters.getId(parentPage.value) || null,
+      parentCategoryId: categoryEntryGetters.getId(parentPage.value) || null,
+      sitemap: 'Y',
+      metaRobots: 'ALL',
     });
 
     addNewPageToTree(newCategory.value);
     await redirectToNewPage(newCategory.value);
   };
+
   const redirectToNewPage = async (newCategory: CategoryEntry) => {
-    await router.push({
-      path: newCategory.details[0].nameUrl,
-    });
+    const previewUrl = newCategory.details[0]?.previewUrl;
+    const firstSlashIndex = previewUrl?.indexOf('/', 8) ?? -1;
+    const path = firstSlashIndex !== -1 ? previewUrl?.slice(firstSlashIndex) : '/';
+    await router.push({ path });
     setCategoryId({
       id: newCategory.id,
-      parentId: newCategory.parentCategoryId,
+      parentId: newCategory.parentCategoryId ?? 0,
       name: newCategory.details[0].name,
       path: newCategory.details[0].nameUrl,
+      details: newCategory.details,
     });
     setSettingsCategory({} as CategoryTreeItem, 'general-menu');
   };
@@ -176,9 +224,13 @@ export const useAddPageModal = () => {
     categoriesWithFallback,
     _isReady,
     errors,
+    noneCategoryItem,
     onSubmit,
     closeModal,
     getLabel,
+    getLevel,
+    isValidParentPage,
     handleSearch,
+    initializeModalState,
   };
 };

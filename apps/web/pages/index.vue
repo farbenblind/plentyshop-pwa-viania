@@ -5,6 +5,10 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  pageType: 'static',
+  isBlockified: true,
+});
 const { t } = useI18n();
 const { setPageMeta } = usePageMeta();
 const icon = 'home';
