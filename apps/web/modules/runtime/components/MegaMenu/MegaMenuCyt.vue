@@ -22,7 +22,7 @@
               <template #prefix>
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><path d="M15.167,5.162A4.667,4.667,0,1,1,10.5.5h.009A4.666,4.666,0,0,1,15.167,5.162Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,20.5c0-5.025,2.655-7.758,8.182-7.758h3.636c5.527,0,8.182,2.733,8.182,7.758Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></svg>
               </template>
-              {{ user.user?.firstName }}
+              {{ user?.firstName }}
             </UiButton>
           </template>
           <ul class="rounded bg-white shadow-md border border-neutral-100 text-neutral-900 min-w-[152px] py-2">
@@ -136,12 +136,12 @@
       </ul>
     </nav>
 
-    <div v-if="viewport.width >= 5000" class="hidden">
+    <div v-if="viewport.isGreaterThan('xl')" class="hidden">
       <nav ref="floatingRef">
         <ul
           class="flex flex-wrap px-6 py-2 bg-white border-b border-b-neutral-200 border-b-solid"
           @blur="
-            (event) => {
+            (event: FocusEvent) => {
               if (!(event.currentTarget as Element).contains(event.relatedTarget as Element)) {
                 close();
               }
@@ -395,7 +395,7 @@ const { wishlistItemIds } = useWishlist();
 const { data: cart } = useCart();
 const cartItemsCount = ref(0);
 const isLogin = ref(true);
-const { data: user, isAuthorized, logout } = useCustomer();
+const { user, isAuthorized, logout } = useCustomer();
 const { isOpen: isAccountDropdownOpen, toggle: accountDropdownToggle } = useDisclosure();
 const { isOpen: isAuthenticationOpen, open: openAuthentication, close: closeAuthentication } = useDisclosure();
 

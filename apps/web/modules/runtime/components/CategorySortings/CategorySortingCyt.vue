@@ -4,9 +4,10 @@
       {{ t('sortBy') }}
     </div>
     <div class="pl-[20px]">
-      <select id="sortBy" v-model="selected" :aria-label="t('sortBy')" @change="sortingChanged" class="text-[14px]">
-        <option v-for="{ value, label } in options" :key="value" :value="value">
-          {{ t(`sortType.${label}`) }}
+      <select id="sortBy" v-model="selected" :aria-label="t('sortBy')" class="text-[14px]">
+        <option v-if="selectionModeCompact" value="" disabled hidden>{{ t('sortBy') }}</option>
+        <option v-for="option in options" :key="option" :value="option">
+          {{ t(`sortType.${option}`) }}
         </option>
       </select>
     </div>
@@ -30,103 +31,43 @@ select::-ms-expand {
 </style>
 
 <script setup lang="ts">
-const { getFacetsFromURL, updateSorting } = useCategoryFilter();
+import { SfSelect } from '@storefront-ui/vue';
+import { useRoute } from 'vue-router';
+import { isPageOfType } from '~/utils/pathHelper';
+
+const props = defineProps<{ selectionModeCompact?: boolean }>();
+const { updateSorting } = useCategoryFilter();
 const { t } = useI18n();
-const options = ref([
-  {
-    label: 'recommended',
-    value: 'default.recommended_sorting',
-  },
-  {
-    label: 'nameA-Z',
-    value: 'texts.name1_asc',
-  },
-  {
-    label: 'nameZ-A',
-    value: 'texts.name1_desc',
-  },
-  {
-    label: 'priceUp',
-    value: 'sorting.price.avg_asc',
-  },
-  {
-    label: 'priceDown',
-    value: 'sorting.price.avg_desc',
-  },
-  {
-    label: 'newest',
-    value: 'variation.createdAt_desc',
-  },
-  {
-    label: 'oldest',
-    value: 'variation.createdAt_asc',
-  },
-  {
-    label: 'availabilityUp',
-    value: 'variation.availability.averageDays_asc',
-  },
-  {
-    label: 'availabilityDown',
-    value: 'variation.availability.averageDays_desc',
-  },
-  {
-    label: 'variationNumberUp',
-    value: 'variation.number_asc',
-  },
-  {
-    label: 'variationNumberDown',
-    value: 'variation.number_desc',
-  },
-  {
-    label: 'lastUpdate',
-    value: 'variation.updatedAt_asc',
-  },
-  {
-    label: 'firstUpdate',
-    value: 'variation.updatedAt_desc',
-  },
-  {
-    label: 'manufacturerAsc',
-    value: 'item.manufacturer.externalName_asc',
-  },
-  {
-    label: 'manufacturerDesc',
-    value: 'item.manufacturer.externalName_desc',
-  },
-  {
-    label: 'topSellerUp',
-    value: 'variation.position_asc',
-  },
-  {
-    label: 'topSellerDown',
-    value: 'variation.position_desc',
-  },
-  {
-    label: 'reviewsUp',
-    value: 'item.feedbackDecimal_asc',
-  },
-  {
-    label: 'reviewsDown',
-    value: 'item.feedbackDecimal_desc',
-  },
-]);
-const selected = ref(options.value[0].value);
+const { getJsonSetting: availableSortingOptions } = useSiteSettings('availableSortingOptions');
+const { getSetting: defaultSortingSearch } = useSiteSettings('defaultSortingSearch');
+const { getSetting: defaultSortingOption } = useSiteSettings('defaultSortingOption');
 
-function sortingChanged() {
-  updateSorting(selected.value);
-}
-
-function sortQueryChanged() {
-  const facets = getFacetsFromURL();
-  selected.value = facets.sort ?? options.value[0].value;
-}
-
-sortQueryChanged();
-
-watch(
-  () => useNuxtApp().$router.currentRoute.value.query.sort,
-  () => {
-    sortQueryChanged();
-  },
+const route = useRoute();
+const useSelectionModeCompact = computed(() => props.selectionModeCompact);
+watch(useSelectionModeCompact, (on) => {
+  if (on) updateSorting('');
+});
+const options = computed<string[]>(() => availableSortingOptions());
+const defaultOption = computed<string | undefined>(() =>
+  isPageOfType('search') ? defaultSortingSearch() : defaultSortingOption(),
 );
+
+const selected = computed<string>({
+  get: () => {
+    if (useSelectionModeCompact.value) return '';
+
+    const sortQueryParam = route.query.sort;
+    const currentSort = typeof sortQueryParam === 'string' ? sortQueryParam : '';
+    if (currentSort && options.value.includes(currentSort)) return currentSort;
+
+    return (
+      (defaultOption.value && options.value.includes(defaultOption.value) ? defaultOption.value : options.value[0]) ??
+      ''
+    );
+  },
+  set: (val) => {
+    if (!val) return;
+    updateSorting(val);
+  },
+});
 </script>

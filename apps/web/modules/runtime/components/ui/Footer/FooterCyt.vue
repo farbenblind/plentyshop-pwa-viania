@@ -96,9 +96,12 @@
             },
             "button": {
               "label": t("Footer.newsletter3")
+            },
+            "settings": {
+              "emailFolderId": 1
             }
           }'
-      />
+        />
     </div>
 
     <div class="mini-links text-center gap-[10px] flex flex-wrap pt-[40px] justify-center" v-if="viewport.isLessThan('xl')">
@@ -210,5 +213,5 @@ const localePath = useLocalePath();
 const storename: string = useRuntimeConfig().public.storename;
 const companyName: string = `© ${storename} ${new Date().getFullYear()}`;
 
-const isDev: boolean = useRuntimeConfig().public.isDev;
+const isDev: boolean = useRuntimeConfig().public.isPreview;
 </script>

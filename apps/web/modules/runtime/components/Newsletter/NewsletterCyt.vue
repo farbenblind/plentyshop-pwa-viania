@@ -168,7 +168,7 @@
   import { toTypedSchema } from '@vee-validate/yup';
   import { object, string, boolean } from 'yup';
   import { paths } from '~/utils/paths';
-  import type { NewsletterSubscribeProps } from '../../../../components/blocks/NewsletterSubscribe/types';
+  import type { NewsletterSubscribeProps } from '~/components/blocks/NewsletterSubscribe/types';
   
   const runtimeConfig = useRuntimeConfig();
   const { subscribe, loading } = useNewsletter();

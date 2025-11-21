@@ -55,7 +55,7 @@
   import { paths } from '~/utils/paths';
   
   const { addModernImageExtension } = useModernImage();
-  const { showNetPrices } = useCustomer();
+  const { showNetPrices } = useCart();
   const localePath = useLocalePath();
   
   defineProps<ProductSliderProps>();
