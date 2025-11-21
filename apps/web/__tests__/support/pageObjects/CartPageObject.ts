@@ -1,6 +1,15 @@
 import { PageObject } from './PageObject';
 
 export class CartPageObject extends PageObject {
+  get surchargeOfOrderProperty() {
+    return cy.getByTestId('order-property-surcharge');
+  }
+  get cartItemFullPrice() {
+    return cy.getByTestId('product-full-price');
+  }
+  get cartItemPrice() {
+    return cy.getByTestId('cart-item-price');
+  }
   get cartPreview() {
     return cy.getByTestId('checkout-layout');
   }
@@ -37,12 +46,44 @@ export class CartPageObject extends PageObject {
     return cy.getByTestId('cart-action').getByTestId('cart-badge').getByTestId('badge-indicator');
   }
 
+  get cartItemRemoveButton() {
+    return cy.getByTestId('remove-item-from-basket');
+  }
+
   get cartItem() {
     return cy.getByTestId('link');
   }
 
   get cartIcon() {
     return cy.getByTestId('navbar-top').find('[data-testid="shopping-cart"]');
+  }
+
+  get cartButton() {
+    return cy.getByTestId('quick-checkout-cart-button');
+  }
+
+  get payPalButton() {
+    return cy.get('.paypal-buttons-context-iframe').first();
+  }
+
+  compareItemAndFullPriceNyQuantity(quantity: number) {
+    this.cartItemPrice.invoke('text').then((itemPriceText: string) => {
+      const itemPrice = parseFloat(itemPriceText.replace(/[^\d.-]/g, ''));
+
+      this.cartItemFullPrice.invoke('text').then((fullPriceText: string) => {
+        const fullPrice = parseFloat(fullPriceText.replace(/[^\d.-]/g, ''));
+
+        const expectedFullPrice = itemPrice * quantity;
+
+        expect(fullPrice).to.be.closeTo(expectedFullPrice, 0.01);
+      });
+    });
+    return this;
+  }
+
+  checkSurcharge(expectedSurcharge: string) {
+    this.surchargeOfOrderProperty.should('contain.text', expectedSurcharge);
+    return this;
   }
 
   checkCart() {
@@ -59,6 +100,11 @@ export class CartPageObject extends PageObject {
 
   openCart() {
     this.cartIcon.click();
+    return this;
+  }
+
+  openCartViaQuickCheckout() {
+    this.cartButton.click();
     return this;
   }
 
@@ -83,10 +129,30 @@ export class CartPageObject extends PageObject {
     cy.getByTestId('subtotal').should('be.visible');
     cy.getByTestId('shipping-label').should('be.visible');
     cy.getByTestId('shipping').should('be.visible');
-    cy.getByTestId('vat-label').should('be.visible');
-    cy.getByTestId('vat').should('be.visible');
     cy.getByTestId('total-label').should('be.visible');
     cy.getByTestId('total').invoke('text').should('have.length.gt', 0);
+    return this;
+  }
+
+  increaseCartItemQuantity() {
+    cy.getByTestId('quantity-selector-increase-button').click();
+    return this;
+  }
+
+  decreaseCartItemQuantity() {
+    cy.getByTestId('quantity-selector-decrease-button').click();
+    return this;
+  }
+
+  removeFirstItem() {
+    cy.intercept('/plentysystems/deleteCartItem').as('removeItem');
+    this.cartItemRemoveButton.first().click();
+    cy.wait('@removeItem');
+    return this;
+  }
+
+  summaryItems(expectedItems = 'Items: 2') {
+    cy.getByTestId('total-in-cart').invoke('text').should('include', expectedItems);
     return this;
   }
 

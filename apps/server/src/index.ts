@@ -7,14 +7,18 @@ const useIPV6 = process.env.USE_IPV6 === 'true';
 const checkEnvironments = (integrations: any) => {
   if (!integrations.plentysystems.configuration.api.securityToken) {
     consola.warn(
-      'API_SECURITY_TOKEN is not set. Please set it in your .env file https://pwa-docs.plentymarkets.com/guide/how-to/middleware#api-security-token',
+      'API_SECURITY_TOKEN is not set. Please set it in your .env file https://pwa-docs.plentyone.com/guide/how-to/middleware#api-security-token',
     );
   }
   if (!integrations.plentysystems.configuration.api.url) {
     consola.warn(
-      'API_ENDPOINT is not set. Please set it in your .env file https://pwa-docs.plentymarkets.com/guide/how-to/middleware#api-endpoint',
+      'API_ENDPOINT is not set. Please set it in your .env file https://pwa-docs.plentyone.com/guide/how-to/middleware#api-endpoint',
     );
   }
+};
+
+const validateApiUrl = (url: string | undefined): string | undefined => {
+  return url?.replace(/[/\\]+$/, '');
 };
 
 (async () => {
@@ -22,8 +26,8 @@ const checkEnvironments = (integrations: any) => {
     { integrations: config.integrations },
     {
       cors: {
-        origin: 'http://localhost:3000',
         credentials: true,
+        origin: validateApiUrl(process.env.API_URL) ?? 'http://localhost:3000',
       },
       bodyParser: {
         limit: '50mb',

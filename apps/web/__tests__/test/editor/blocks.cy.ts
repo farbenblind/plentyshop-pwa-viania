@@ -1,5 +1,5 @@
 import { CookieBarObject } from '../../support/pageObjects/CookieBarObject';
-import { paths } from '../../../utils/paths';
+import { paths } from '../../../app/utils/paths';
 import { EditorObject } from '../../support/pageObjects/EditorObject';
 
 describe('Blocks', () => {
@@ -23,8 +23,12 @@ describe('Blocks', () => {
     editor.checkFirstBlock();
   });
 
-  it('should not be possible to move the last block down', () => {
-    editor.checkLastBlock();
+  it('should not be possible to move the last non-footer block down', () => {
+    editor.checkLastNonFooterBlock();
+  });
+
+  it('should not be possible to move or delete the footer block', () => {
+    editor.checkFooterBlock();
   });
 
   it('should move a block on the page', () => {

@@ -25,6 +25,10 @@ export class ProductDetailPageObject extends PageObject {
     return cy.getByTestId('price');
   }
 
+  get productImage() {
+    return cy.getByTestId('product-image-0');
+  }
+
   displayCheck() {
     this.assertProductDetailPageElements();
     return this;
@@ -37,5 +41,19 @@ export class ProductDetailPageObject extends PageObject {
     this.quantitySelector.should('be.visible');
     this.addToCartButton.should('be.visible');
     return this;
+  }
+
+  assertModernImageFormat() {
+    this.productImage.should('have.attr', 'srcset').and('include', '.avif');
+    return this;
+  }
+
+  addToCart(quantity: number) {
+    cy.intercept('plentysystems/doAddCartItem').as('addToCart');
+
+    this.quantitySelector.clear().type(quantity.toString());
+    this.addToCartButton.click();
+
+    cy.wait('@addToCart').its('response.statusCode').should('eq', 200);
   }
 }

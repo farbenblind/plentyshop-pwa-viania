@@ -1,4 +1,4 @@
-import { paths } from '../../../utils/paths';
+import { paths } from '../../../app/utils/paths';
 import { CookieBarObject } from '../../support/pageObjects/CookieBarObject';
 
 describe('Recommended Block Form', () => {
@@ -85,7 +85,7 @@ describe('Recommended Block Form', () => {
   });
 
   it('should change the categoryId on recommended form', () => {
-    const firstProductTitle = 'Dining room chair JuicyOrange';
+    const firstProductTitle = 'Lounge chair Herkules';
     const categoryId = '16';
     cy.intercept('/plentysystems/getFacet').as('getFacet');
     typeInRecommendedForm('categoryid', categoryId);

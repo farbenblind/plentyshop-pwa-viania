@@ -44,6 +44,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+apps/web/cypress.env.json
 
 # turbo
 .turbo
@@ -52,8 +53,8 @@ yarn-error.log*
 lib/
 
 # docs build
-apps/web/docs/reference/composables/typedoc-sidebar.json
-apps/web/docs/reference/**/*.md
+apps/web/docs/reference/
+apps/web/reference/
 
 .vscode
 *.code-workspace

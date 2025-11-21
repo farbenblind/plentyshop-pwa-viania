@@ -1,5 +1,5 @@
 import { CookieBarObject } from '../../support/pageObjects/CookieBarObject';
-import { paths } from '../../../utils/paths';
+import { paths } from '../../../app/utils/paths';
 import { EditorObject } from '../../support/pageObjects/EditorObject';
 import { SiteSettingsObject } from '../../support/pageObjects/SiteSettingsObject';
 
@@ -27,10 +27,13 @@ describe('SiteSettings', () => {
     siteSettings
       .checkDrawerVisible()
       .checkSaveButtonDisabled()
+      .delay(500)
+      .openDesignSubcategory()
       .toggleFonts()
       .changeFont(font)
       .checkFontPreview(font)
       .checkSaveButtonEnabled()
+      .back()
       .closeDrawer();
 
     siteSettings.checkDrawerNotVisible();
@@ -43,10 +46,13 @@ describe('SiteSettings', () => {
     siteSettings
       .checkDrawerVisible()
       .checkSaveButtonDisabled()
+      .delay(500)
+      .openDesignSubcategory()
       .toggleColor()
       .changeColor(primaryColor, secondaryColor)
       .checkColorPreview(primaryColor)
       .checkSaveButtonEnabled()
+      .back()
       .closeDrawer();
 
     siteSettings.checkDrawerNotVisible();
@@ -59,10 +65,13 @@ describe('SiteSettings', () => {
     siteSettings
       .checkDrawerVisible()
       .checkSaveButtonDisabled()
+      .delay(500)
+      .openDesignSubcategory()
       .toggleBlockSpacing()
       .changeBlockSpacing(blockSpacing)
       .checkBlockSpacingPreview(blockSpacingMargin)
       .checkSaveButtonEnabled()
+      .back()
       .closeDrawer();
 
     siteSettings.checkDrawerNotVisible();

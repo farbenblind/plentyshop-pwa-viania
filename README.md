@@ -41,7 +41,7 @@ We recommend working with a fork of this repository. A fork allows you to easily
 
 ### Set up environment
 
-Create an environment file under `apps/web/.env`. The minimum required configuration includes your PAT, the [API endpoint](https://pwa-docs.plentymarkets.com/guide/how-to/middleware#api-endpoint) of your PlentyONE system and the corresponding [API security token](https://pwa-docs.plentymarkets.com/guide/how-to/middleware#api-security-token):
+Create an environment file under `apps/web/.env`. The minimum required configuration includes your PAT, the [API endpoint](https://pwa-docs.plentyone.com/guide/how-to/middleware#api-endpoint) of your PlentyONE system and the corresponding [API security token](https://pwa-docs.plentyone.com/guide/how-to/middleware#api-security-token):
 
 ```properties
 # apps/web/.env
@@ -67,11 +67,57 @@ npm install
 
 Run `npm run dev` to start the development server. The app will be served with hot reload at [localhost:3000](http://localhost:3000/).
 
+## Code Generation
+
+This project includes the **PlentyONE Shop CLI** for automated code generation. Use it to create consistent components, composables, and other files following project standards.
+
+### Available Generators
+
+```bash
+# Generate Vue components
+npx plentyshop generate component
+
+# Generate Vue composables
+npx plentyshop generate composable
+
+# See all available generators
+npx plentyshop generate
+```
+
+### Generated File Structures
+
+**Components** (`components/ComponentName/`):
+
+- `ComponentName.vue` - Main component file
+- `types.ts` - TypeScript interfaces
+- `__tests__/ComponentName.spec.ts` - Test file
+
+**Composables** (`composables/useFeatureName/`):
+
+- `useFeatureName.ts` - Main composable
+- `types.ts` - TypeScript interfaces
+- `index.ts` - Clean exports
+- `__tests__/useFeatureName.spec.ts` - Test file
+
+### Quick Examples
+
+```bash
+# Create a new product card component
+npx plentyshop generate component
+# Enter: ProductCard
+
+# Create a shopping cart composable
+npx plentyshop generate composable
+# Enter: useShoppingCart
+```
+
+The generators will create all necessary files with proper TypeScript types, test stubs, and follow the project's established patterns.
+
 ## Resources
 
 ### Documentation
 
-- [Developers Documentation](https://pwa-docs.plentymarkets.com/)
+- [Developers Documentation](https://pwa-docs.plentyone.com/)
 - [Technical Overview](GUIDE.md)
 
 ### Changelog

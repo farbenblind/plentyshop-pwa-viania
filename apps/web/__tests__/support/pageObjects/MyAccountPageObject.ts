@@ -1,4 +1,4 @@
-import { paths } from '../../../utils/paths';
+import { paths } from '../../../app/utils/paths';
 import { PageObject } from './PageObject';
 
 export class MyAccountPageObject extends PageObject {
@@ -51,15 +51,6 @@ export class MyAccountPageObject extends PageObject {
     this.accountReturnsListItem.should('exist').contains('Returns').click();
 
     cy.url().should('contain', paths.accountReturns);
-  }
-
-  clickTopBarLogoutButton() {
-    cy.intercept('/plentysystems/doLogoutUser').as('doLogoutUser');
-    cy.getByTestId('account-dropdown-button').should('exist').click();
-    cy.getByTestId('account-dropdown-logout-item').should('exist').click();
-
-    cy.wait('@doLogoutUser').url().should('contain', paths.home);
-    cy.getByTestId('account-dropdown-button').should('not.exist');
   }
 
   checkAllSectionsMenu() {

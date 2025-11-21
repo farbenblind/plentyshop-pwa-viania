@@ -1,4 +1,4 @@
-import { PageObject } from '../../support/pageObjects/PageObject';
+import { PageObject } from './PageObject';
 
 export const firstBannerBlockUuid = 'a7b3c1d9-2e6f-4a5b-8c7d-1e2f3b4c5a6d';
 export const secondBannerBlockUuid = 'd4e1f2a3-b7c8-4d9e-8f1a-2b3c4d5e6f7a';
@@ -82,15 +82,17 @@ export class BannerSliderObject extends PageObject {
     cy.get(`[data-testid="banner-image-${firstBannerBlockUuid}"]`).should('be.visible');
   }
 
-  changeBannerImage() {
-    cy.get('[data-testid="slide-4xl-image-input"]')
-      .should('be.visible')
-      .clear()
-      .type('https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png', { delay: 0 });
-    cy.get('[data-testid="slide-desktop-image-input"]')
-      .should('be.visible')
-      .clear()
-      .type('https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png', { delay: 0 });
+  openImageSelector(imageType: string) {
+    cy.get(`[data-testid="image-picker-select-button-${imageType}"]`).should('be.visible').click();
+    cy.get('[data-testid="image-selector-modal"]').should('be.visible');
+    cy.get('[data-testid="image-selector-loader"]').should('not.exist');
+  }
+
+  selectImage() {
+    cy.get('[data-testid="image-selector-modal"]').should('be.visible');
+    cy.get('[data-testid="image-table-file-name"]').should('be.visible').click();
+    cy.get('[data-testid="image-uploader-add-button"]').should('be.visible').click();
+    cy.get('[data-testid="image-selector-modal"]').should('not.exist');
   }
 
   checkNewBannerImage() {
@@ -98,7 +100,7 @@ export class BannerSliderObject extends PageObject {
     cy.get(`[data-testid="banner-image-${firstBannerBlockUuid}"]`).should(
       'have.attr',
       'src',
-      'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
+      'https://cdn02.plentymarkets.com/mevofvd5omld/frontend/123-demo-picture.jpeg',
     );
   }
 

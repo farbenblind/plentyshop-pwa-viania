@@ -1,6 +1,6 @@
-import type { AddressFixtureOverride } from '~/__tests__/types';
+import type { AddressFixtureOverride } from '../../types';
 import { PageObject } from './PageObject';
-import { paths } from '../../../utils/paths';
+import { paths } from '../../../app/utils/paths';
 
 export class CheckoutPageObject extends PageObject {
   get goToCheckoutButton() {
@@ -29,6 +29,10 @@ export class CheckoutPageObject extends PageObject {
 
   get billingAddressForm() {
     return cy.getByTestId('billing-address-form');
+  }
+
+  get billingAddressSection() {
+    return cy.get('#billing-address');
   }
 
   get contactInformationForm() {
@@ -68,6 +72,10 @@ export class CheckoutPageObject extends PageObject {
   editBillingAddress() {
     cy.getByTestId('edit-address-1').click();
     return this;
+  }
+
+  get backButton() {
+    return cy.getByTestId('checkout-back-button');
   }
 
   get thankYouBanner() {
@@ -141,6 +149,11 @@ export class CheckoutPageObject extends PageObject {
     return this;
   }
 
+  goBack() {
+    this.backButton.click();
+    return this;
+  }
+
   addContactInformation() {
     this.addContactInformationButton.eq(0).should('have.text', 'Add contact information');
     cy.waitUntilElementInDOM(() => {
@@ -171,7 +184,7 @@ export class CheckoutPageObject extends PageObject {
 
     this.placeOrderButtons.click();
 
-    cy.wait('@doAdditionalInformation').wait('@doPreparePayment');
+    cy.wait(['@doAdditionalInformation', '@doPreparePayment'], { timeout: 20000 });
 
     return this;
   }
@@ -211,17 +224,37 @@ export class CheckoutPageObject extends PageObject {
     return this;
   }
 
+  checkSameAsBilling() {
+    this.useShippingAsBilling.check();
+    return this;
+  }
+
+  uncheckSameAsBilling() {
+    this.useShippingAsBilling.uncheck();
+    return this;
+  }
+
+  waitForUiToRender(milliseconds = 1000) {
+    cy.wait(milliseconds);
+    return this;
+  }
+
   fillShippingAddressForm(fixtureOverride?: AddressFixtureOverride) {
     cy.intercept('/plentysystems/doSaveAddress')
       .as('doSaveAddress')
       .intercept('/plentysystems/getShippingProvider')
       .as('getShippingProvider')
       .intercept('/plentysystems/getPaymentProviders')
-      .as('getPaymentProviders');
+      .as('getPaymentProviders')
+      .intercept('/plentysystems/getSession')
+      .as('getSession');
 
     this.fillAddressForm('shipping', fixtureOverride);
 
-    cy.wait(['@doSaveAddress', '@getShippingProvider', '@getPaymentProviders'], { timeout: 10000 });
+    cy.wait('@doSaveAddress', { timeout: 20000 });
+    cy.wait(['@getShippingProvider', '@getPaymentProviders', '@getSession'], { timeout: 20000 });
+
+    this.waitForUiToRender();
 
     return this;
   }
@@ -264,15 +297,23 @@ export class CheckoutPageObject extends PageObject {
   }
 
   payCreditCard() {
-    cy.intercept('/plentysystems/doPreparePayment')
+    cy.intercept('/plentysystems/doPlaceOrder')
+      .as('doPlaceOrder')
+      .intercept('/plentysystems/doCapturePayPalOrderV2')
+      .as('doCapturePayPalOrderV2')
+      .intercept('/plentysystems/doCreatePlentyPaymentFromPayPalOrder')
+      .as('doCreatePlentyPaymentFromPayPalOrder')
+      .intercept('/plentysystems/doPreparePayment')
       .as('doPreparePayment')
-      .intercept('/plentysystems/doCapturePayPalOrder')
-      .as('doCapturePayPalOrder')
-      .intercept('/plentysystems/getExecutePayPalOrder')
-      .as('getExecutePayPalOrder');
+      .intercept('/plentysystems/doCreatePayPalOrder')
+      .as('doCreatePayPalOrder');
 
     cy.getByTestId('pay-creditcard-button').click();
-    cy.wait('@doPreparePayment').wait('@doCapturePayPalOrder').wait('@getExecutePayPalOrder');
+    cy.wait('@doPreparePayment')
+      .wait('@doCreatePayPalOrder')
+      .wait('@doPlaceOrder')
+      .wait('@doCapturePayPalOrderV2')
+      .wait('@doCreatePlentyPaymentFromPayPalOrder');
     return this;
   }
 
@@ -316,6 +357,23 @@ export class CheckoutPageObject extends PageObject {
       }
 
       addressType === 'shipping' ? this.fillShippingForm(fixture) : this.fillBillingForm(fixture);
+    });
+
+    return this;
+  }
+
+  fillPostCodeBillingForm(fixture: AddressFixtureOverride) {
+    this.billingAddressForm.within(() => {
+      this.countrySelect.select(fixture.country ?? '');
+      this.postalCodeInput.type(fixture.zipCode ?? '');
+    });
+
+    return this;
+  }
+
+  clearPostCodeBillingForm() {
+    this.billingAddressForm.within(() => {
+      this.postalCodeInput.clear();
     });
 
     return this;
@@ -378,6 +436,11 @@ export class CheckoutPageObject extends PageObject {
 
   shouldShowShippingMethods() {
     cy.getByTestId('shipping-method-list').should('be.visible');
+    cy.getByTestId('no-payment-method-available').should('not.exist');
+    return this;
+  }
+
+  shouldShowPaymentMethods() {
     cy.getByTestId('no-payment-method-available').should('not.exist');
     return this;
   }

@@ -1,51 +1,28 @@
 import { CookieBarObject } from '../../support/pageObjects/CookieBarObject';
-import { paths } from '../../../utils/paths';
+import { ImageTextObject } from '../../support/pageObjects/ImageTextObject';
+import { paths } from '../../../app/utils/paths';
 
 describe('Image Text Block Form', () => {
-  const openSettingsForImageTextBlock = () => {
-    cy.get('[data-testid="open-editor-button"]').should('have.length.at.least', 4);
+  const imageText = new ImageTextObject();
 
-    cy.get('[data-testid="open-editor-button"]').eq(3).should('exist').click({ force: true });
-    cy.wait(1000);
-
-    cy.get('[data-testid="image-text-form"]').should('exist');
-  };
-
-  const openImageGroup = () => {
+  const openImageInGrid = () => {
+    cy.get('[data-testid="multi-grid-structure"]').children().should('have.length', 2);
+    cy.get('[data-testid="multi-grid-structure"]').within(() => {
+      cy.get('[data-testid="open-editor-button"]').first().should('exist').click({ force: true });
+    });
     cy.get('[data-testid="image-group"]').should('exist').click();
-  };
-
-  const changeImage = () => {
-    cy.get('[data-testid="wide-screen-input"]')
-      .should('exist')
-      .clear()
-      .type('https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png', { delay: 0 });
-    cy.get('[data-testid="large-screen-input"]')
-      .should('exist')
-      .clear()
-      .type('https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png', { delay: 0 });
-    cy.get('[data-testid="medium-screen-input"]')
-      .should('exist')
-      .clear()
-      .type('https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png', { delay: 0 });
-    cy.get('[data-testid="image-block"]').should(
-      'have.attr',
-      'src',
-      'https://cdn02.plentymarkets.com/v5vzmmmcb10k/frontend/PWA/placeholder-image.png',
-    );
   };
 
   const changeAltText = () => {
     cy.get('[data-testid="alt-input"]').should('exist').clear().type('New Alt Text', { delay: 0 });
-    cy.get('[data-testid="image-block"]').should('have.attr', 'alt', 'New Alt Text');
+    cy.get('[data-testid="image-block-image"]').should('have.attr', 'alt', 'New Alt Text');
   };
 
-  const changeImageGridLayout = () => {
-    cy.get('[data-testid="image-align-right"]').should('exist').click();
-    cy.get('[data-testid="image-align-left"]').should('exist').click();
-  };
-
-  const openTextGroup = () => {
+  const openTextInGrid = () => {
+    cy.get('[data-testid="multi-grid-structure"]').children().should('have.length', 2);
+    cy.get('[data-testid="multi-grid-structure"]').within(() => {
+      cy.get('[data-testid="open-editor-button"]').last().should('exist').click({ force: true });
+    });
     cy.get('[data-testid="open-text-settings"]').should('exist').click();
   };
 
@@ -81,7 +58,9 @@ describe('Image Text Block Form', () => {
   const changeTextColor = () => {
     cy.get('[data-testid="input-text-color"]').should('exist').clear().type('rgb(121, 12, 12)', { delay: 0 });
     cy.wait(1000);
-    cy.get('[data-testid="multi-grid-structure"]').should('have.css', 'color', 'rgb(121, 12, 12)');
+    cy.getByTestId('multi-grid-structure').within(() =>
+      cy.getByTestId('text-content').should('have.css', 'color', 'rgb(121, 12, 12)'),
+    );
   };
 
   const changeTextAlignment = () => {
@@ -122,28 +101,42 @@ describe('Image Text Block Form', () => {
   const cookieBar = new CookieBarObject();
 
   beforeEach(() => {
+    cy.intercept('plentysystems/getStorageItems', {
+      statusCode: 200,
+      body: {
+        data: [
+          {
+            key: '123-demo-picture.jpeg',
+            lastModified: '2025-08-06T11:06:05+00:00',
+            eTag: '4db976b8578d71ee74710e48ad01dc35',
+            size: '1009370',
+            storageClass: 'STANDARD',
+            publicUrl: 'https://cdn02.plentymarkets.com/mevofvd5omld/frontend/123-demo-picture.jpeg',
+            previewUrl: 'https://cdn02.plentymarkets.com/mevofvd5omld/frontend/.thumbs/123-demo-picture.jpeg',
+          },
+        ],
+      },
+    }).as('getStorageItems');
+    cy.intercept('plentysystems/getStorageMetadata', { statusCode: 200, body: {} }).as('getStorageMetadata');
+
     cy.clearCookies();
     cy.visitAndHydrate(paths.home);
     cookieBar.acceptAll();
-    openSettingsForImageTextBlock();
   });
 
   it('should change image settings', () => {
-    openImageGroup();
-    changeImage();
+    openImageInGrid();
+    imageText.openImageSelector('wideScreen');
+    imageText.selectImage();
+    imageText.checkNewImage();
     changeAltText();
-    changeImageGridLayout();
-    openImageGroup();
   });
 
   it('should test the text settings', () => {
-    openTextGroup();
+    openTextInGrid();
     changeText();
     changeTextColor();
     changeTextAlignment();
-  });
-
-  it('should change button settings', () => {
     openButtonGroup();
     changeButtonLabel();
     changeButtonLink();
