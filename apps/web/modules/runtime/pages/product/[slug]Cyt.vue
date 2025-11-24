@@ -1,9 +1,23 @@
 <template>
     <NuxtLayout name="default" :breadcrumbs="breadcrumbs">
       <NarrowContainer>
+        <div class="bg-[#F5EFEF]">
+          <div class="max-w-screen-3xl mx-auto p-[20px]">
+            <div class="xl:grid xl:grid-cols-2 xl:gap-[20px]">
+              <div class="left">              
+                <Gallery :images="addModernImageExtensionForGallery(productGetters.getGallery(product))" />
+              </div>              
+              <div class="right">
+                <div class="drift-zoom-image relative"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- old stuff -->
         <div class="md:grid gap-x-6 grid-areas-product-page grid-cols-product-page">
           <section class="grid-in-left-top md:h-full xl:max-h-[700px]">
-            <Gallery :images="addModernImageExtensionForGallery(productGetters.getGallery(product))" />
+            <!-- <Gallery :images="addModernImageExtensionForGallery(productGetters.getGallery(product))" /> -->
           </section>
           <section class="mb-10 grid-in-right md:mb-0">
             <NuxtLazyHydrate when-idle>

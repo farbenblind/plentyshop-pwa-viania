@@ -232,7 +232,7 @@
         ref="drawerReference"
         v-model="isOpen"
         placement="right"
-        class="min-w-96 bg-white overflow-y-auto z-[1000]"
+        class="min-w-[95%] sm:min-w-96 bg-white overflow-y-auto z-[1000]"
       >
         <nav>
           <div class="flex items-center justify-between p-4 border-b border-b-neutral-200 border-b-solid">

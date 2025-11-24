@@ -64,6 +64,21 @@ export default defineNuxtModule({
       if (CategoryPageContent) {
         CategoryPageContent.filePath = resolve('./runtime/components/CategoryPageContent/CategoryPageContentCyt.vue');
       }
+      // NarrowContainer
+      const NarrowContainer = components.find((c) => c.pascalName === 'NarrowContainer');
+      if (NarrowContainer) {
+        NarrowContainer.filePath = resolve('./runtime/components/NarrowContainer/NarrowContainerCyt.vue');
+      }
+      // Gallery
+      const Gallery = components.find((c) => c.pascalName === 'Gallery');
+      if (Gallery) {
+        Gallery.filePath = resolve('./runtime/components/Gallery/GalleryCyt.vue');
+      }
+      // ZoomableImage
+      const ZoomableImage = components.find((c) => c.pascalName === 'ZoomableImage');
+      if (ZoomableImage) {
+        ZoomableImage.filePath = resolve('./runtime/components/ZoomableImage/ZoomableImageCyt.vue');
+      }
       // PurchaseCard
       const PurchaseCard = components.find((c) => c.pascalName === 'UiPurchaseCard');
       if (PurchaseCard) {
