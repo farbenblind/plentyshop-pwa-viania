@@ -132,7 +132,7 @@ const { images } = toRefs(props);
 const activeIndex = ref(0);
 
 const viewport = useViewport();
-const showNav = computed(() => !viewport.isLessThan('xl'));
+const showNav = computed(() => !viewport.isLessThan('lg'));
 
 const type = computed(() => configuration.value.thumbnails.thumbnailType);
 const isSide = computed(() => type.value === 'left-vertical' || type.value === 'right-vertical');

@@ -79,6 +79,11 @@ export default defineNuxtModule({
       if (ZoomableImage) {
         ZoomableImage.filePath = resolve('./runtime/components/ZoomableImage/ZoomableImageCyt.vue');
       }
+      // Drift
+      const Drift = components.find((c) => c.pascalName === 'Drift');
+      if (Drift) {
+        Drift.filePath = resolve('./runtime/components/Drift/DriftCyt.vue');
+      }
       // PurchaseCard
       const PurchaseCard = components.find((c) => c.pascalName === 'UiPurchaseCard');
       if (PurchaseCard) {

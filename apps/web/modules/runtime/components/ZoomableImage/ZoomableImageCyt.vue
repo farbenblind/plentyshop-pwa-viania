@@ -5,7 +5,7 @@
   >
     <div
       v-if="showZoomHint && isMobile"
-      class="zoom-hint absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-75 text-white px-4 py-2 rounded z-20"
+      class="zoom-hint absolute bottom-4 left-[15%] right-[15%] sm:left-[25%] sm:right-[25%] bg-black bg-opacity-75 text-white px-4 py-2 rounded z-20 text-xs text-center"
     >
       {{ t('double-tap-zoom') }}
     </div>
@@ -138,7 +138,7 @@ onMounted(() => {
     showZoomHint.value = true;
     setTimeout(() => {
       showZoomHint.value = false;
-    }, 3000);
+    }, 300000);
   }
 });
 </script>
