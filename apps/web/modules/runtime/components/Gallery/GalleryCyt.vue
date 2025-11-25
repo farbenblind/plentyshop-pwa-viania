@@ -1,5 +1,6 @@
 <template>
   <div :class="['max-w-[600px] mx-auto h-full flex scroll-smooth relative xl:gap-[20px]', galleryDirClass, galleryGapClass]" data-testid="gallery">
+    <div>{{ viewport.breakpoint }}</div>
     <div
       ref="mainBox"
       class="after:block after:pt-[100%] flex-1 relative overflow-hidden w-full"
@@ -79,7 +80,7 @@
             <NuxtImg
               :alt="productImageGetters.getImageAlternate(image) || productImageGetters.getCleanImageName(image) || ''"
               :title="productImageGetters.getImageName(image) ? productImageGetters.getImageName(image) : null"
-              class="h-full w-full object-contain xl:absolute xl:top-0 xl:left-0 xl:w-full xl:h-full xl:object-cover xl:rounded-[10px]"
+              class="h-full w-full object-contain xl:absolute xl:top-0 xl:left-0 xl:w-full xl:h-full xl:object-contain xl:rounded-[10px] bg-white"
               :class="activeIndex === index ? 'border-primary-500' : ''"
               :width="productImageGetters.getImageWidth(image) ?? 80"
               :height="productImageGetters.getImageHeight(image) ?? 80"
@@ -114,6 +115,8 @@ import { SfIconChevronLeft, SfIconChevronRight } from '@storefront-ui/vue';
 import { productImageGetters } from '@plentymarkets/shop-api';
 import type { GalleryProps } from '~/components/Gallery/types';
 
+import useCustomViewport from '../../composables/useViewport';
+
 const props = withDefaults(defineProps<GalleryProps>(), {
   configuration: () => ({
     thumbnails: {
@@ -131,8 +134,8 @@ const configuration = computed(() => props.configuration);
 const { images } = toRefs(props);
 const activeIndex = ref(0);
 
-const viewport = useViewport();
-const showNav = computed(() => !viewport.isLessThan('lg'));
+const viewport = useCustomViewport();
+const showNav = computed(() => !viewport.isLessThan('xl'));
 
 const type = computed(() => configuration.value.thumbnails.thumbnailType);
 const isSide = computed(() => type.value === 'left-vertical' || type.value === 'right-vertical');

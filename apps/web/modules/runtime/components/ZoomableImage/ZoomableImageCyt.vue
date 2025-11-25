@@ -5,7 +5,7 @@
   >
     <div
       v-if="showZoomHint && isMobile"
-      class="zoom-hint absolute bottom-4 left-[15%] right-[15%] sm:left-[25%] sm:right-[25%] bg-black bg-opacity-75 text-white px-4 py-2 rounded z-20 text-xs text-center"
+      class="sm:hidden zoom-hint absolute bottom-4 left-[15%] right-[15%] sm:left-[25%] sm:right-[25%] bg-black bg-opacity-75 text-white px-4 py-2 rounded z-20 text-xs text-center"
     >
       {{ t('double-tap-zoom') }}
     </div>
@@ -53,6 +53,8 @@ import { SfLoaderCircular } from '@storefront-ui/vue';
 import type { ImagesData } from '@plentymarkets/shop-api';
 import type { ZoomableImageProps } from '~/components/ZoomableImage/types';
 
+import useCustomViewport from '../../composables/useViewport';
+
 const props = defineProps<ZoomableImageProps>();
 const { t } = useI18n();
 
@@ -60,14 +62,14 @@ const containerReference = useTemplateRef<null>('containerReference');
 const imagesLoaded = ref([] as unknown as { [key: string]: boolean });
 
 const { isZoomed, imageStyle, onTouchStart, onTouchMove, onTouchEnd } = useImageZoom(containerReference);
-const viewport = useViewport();
+const viewport = useCustomViewport();
 const route = useRoute();
 
 const image = props.image;
 const index = props.index;
 const activeIndex = props.activeIndex;
 const isFirstImage = props.isFirstImage;
-const isMobile = computed(() => viewport.isLessThan('lg'));
+const isMobile = computed(() => viewport.isLessThan('xl'));
 
 const showZoomHint = ref(false);
 
@@ -138,7 +140,7 @@ onMounted(() => {
     showZoomHint.value = true;
     setTimeout(() => {
       showZoomHint.value = false;
-    }, 300000);
+    }, 3000);
   }
 });
 </script>

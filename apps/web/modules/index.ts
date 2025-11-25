@@ -1,5 +1,6 @@
 import { defineNuxtModule, addComponent, createResolver, extendPages, addImportsDir, addPlugin } from '@nuxt/kit';
 import type { NuxtPage, AppConfig } from '@nuxt/schema';
+import tailwindPlugin from 'tailwindcss/plugin';
 
 export default defineNuxtModule({
   async setup(options, nuxt) {
@@ -18,7 +19,7 @@ export default defineNuxtModule({
               document.documentElement.classList.add('single-column');
             }
           } catch (e) {
-            // localStorage might be disabled, ignore error
+            // localStorage might be disabled, ignore error 
           }
         })();
       `,
