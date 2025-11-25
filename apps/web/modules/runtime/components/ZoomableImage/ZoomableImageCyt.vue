@@ -53,7 +53,7 @@ import { SfLoaderCircular } from '@storefront-ui/vue';
 import type { ImagesData } from '@plentymarkets/shop-api';
 import type { ZoomableImageProps } from '~/components/ZoomableImage/types';
 
-import useCustomViewport from '../../composables/useViewport';
+import useCustomViewport from '../../composables/useViewportCyt';
 
 const props = defineProps<ZoomableImageProps>();
 const { t } = useI18n();

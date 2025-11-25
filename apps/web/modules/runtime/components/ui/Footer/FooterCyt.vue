@@ -213,5 +213,7 @@ const localePath = useLocalePath();
 const storename: string = useRuntimeConfig().public.storename;
 const companyName: string = `© ${storename} ${new Date().getFullYear()}`;
 
-const isDev: boolean = useRuntimeConfig().public.isPreview;
+const isDev: boolean = useRuntimeConfig().public.isPreview || useRuntimeConfig().public.shopCore.apiUrl.includes('localhost');
+
+console.log(useRuntimeConfig().public)
 </script>

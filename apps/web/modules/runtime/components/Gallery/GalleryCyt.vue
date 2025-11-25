@@ -1,6 +1,6 @@
 <template>
   <div :class="['max-w-[600px] mx-auto h-full flex scroll-smooth relative xl:gap-[20px]', galleryDirClass, galleryGapClass]" data-testid="gallery">
-    <div>{{ viewport.breakpoint }}</div>
+    <div v-if="viewport.isReady">{{ viewport.breakpoint }}</div>
     <div
       ref="mainBox"
       class="after:block after:pt-[100%] flex-1 relative overflow-hidden w-full"
@@ -115,7 +115,7 @@ import { SfIconChevronLeft, SfIconChevronRight } from '@storefront-ui/vue';
 import { productImageGetters } from '@plentymarkets/shop-api';
 import type { GalleryProps } from '~/components/Gallery/types';
 
-import useCustomViewport from '../../composables/useViewport';
+import useViewportCyt from '../../composables/useViewportCyt';
 
 const props = withDefaults(defineProps<GalleryProps>(), {
   configuration: () => ({
@@ -134,7 +134,7 @@ const configuration = computed(() => props.configuration);
 const { images } = toRefs(props);
 const activeIndex = ref(0);
 
-const viewport = useCustomViewport();
+const viewport = useViewportCyt();
 const showNav = computed(() => !viewport.isLessThan('xl'));
 
 const type = computed(() => configuration.value.thumbnails.thumbnailType);
