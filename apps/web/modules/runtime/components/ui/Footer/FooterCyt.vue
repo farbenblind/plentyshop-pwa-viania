@@ -104,7 +104,7 @@
         />
     </div>
 
-    <div class="mini-links text-center gap-[10px] flex flex-wrap pt-[40px] justify-center" v-if="viewport.isLessThan('xl')">
+    <div class="mini-links xl:hidden text-center gap-[10px] flex flex-wrap pt-[40px] justify-center">
       <NuxtLink :to="localePath(paths.legalDisclosure)">Impressum</NuxtLink>
       <NuxtLink :to="localePath(paths.termsAndConditions)">AGB</NuxtLink>
       <NuxtLink :to="localePath(paths.cancellationForm)">Widerrufsrecht</NuxtLink>
@@ -206,6 +206,9 @@
 </style>
 
 <script setup lang="ts">
+import { useCustomViewport } from '../../../composables/viewportSingleton'
+const customViewport = useCustomViewport()
+
 const viewport = useViewport();
 const { t } = useI18n();
 const localePath = useLocalePath();
@@ -214,6 +217,4 @@ const storename: string = useRuntimeConfig().public.storename;
 const companyName: string = `© ${storename} ${new Date().getFullYear()}`;
 
 const isDev: boolean = useRuntimeConfig().public.isPreview || useRuntimeConfig().public.shopCore.apiUrl.includes('localhost');
-
-console.log(useRuntimeConfig().public)
 </script>

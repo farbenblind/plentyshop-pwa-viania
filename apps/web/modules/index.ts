@@ -22,6 +22,23 @@ export default defineNuxtModule({
             // localStorage might be disabled, ignore error 
           }
         })();
+        (function(){
+          const breakpoints = {
+            xxs:320, xs:380, sm:640, md:768, lg:1024, xl:1280, '2xl':1440, '3xl':1640, '4xl':1840
+          };
+          const width = window.innerWidth;
+          let bp = 'xxs';
+          for (const key of Object.keys(breakpoints).reverse()) {
+            if (width >= breakpoints[key]) { bp = key; break; }
+          }
+          // store in global window and data-attribute
+          window.__INITIAL_WIDTH__ = width;
+          window.__INITIAL_BREAKPOINT__ = bp;
+          document.documentElement.dataset.viewport = bp;
+        })();
+
+        const initialBreakpoint = document.documentElement.dataset.viewport;
+        console.log('Initial breakpoint:', initialBreakpoint);
       `,
     });
 
@@ -90,10 +107,25 @@ export default defineNuxtModule({
       if (PurchaseCard) {
         PurchaseCard.filePath = resolve('./runtime/components/ui/PurchaseCard/PurchaseCardCyt.vue');
       }
+      // Price
+      const Price = components.find((c) => c.pascalName === 'Price');
+      if (Price) {
+        Price.filePath = resolve('./runtime/components/Price/PriceCyt.vue');
+      }
       // ProductCard
       const ProductCard = components.find((c) => c.pascalName === 'UiProductCard');
       if (ProductCard) {
         ProductCard.filePath = resolve('./runtime/components/ui/ProductCard/ProductCardCyt.vue');
+      }
+      // ProductAttributes
+      const ProductAttributes = components.find((c) => c.pascalName === 'ProductAttributes');
+      if (ProductAttributes) {
+        ProductAttributes.filePath = resolve('./runtime/components/ProductAttributes/ProductAttributesCyt.vue');
+      }
+      // AttributeBox
+      const AttributeBox = components.find((c) => c.pascalName === 'AttributeBox');
+      if (AttributeBox) {
+        AttributeBox.filePath = resolve('./runtime/components/ProductAttributes/AttributeBox/AttributeBoxCyt.vue');
       }
       // Footer
       const Footer = components.find((c) => c.pascalName === 'UiFooter');

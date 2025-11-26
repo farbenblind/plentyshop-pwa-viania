@@ -1,7 +1,5 @@
 <template>
-  <div :class="['max-w-[600px] mx-auto h-full flex scroll-smooth relative xl:gap-[20px]', galleryDirClass, galleryGapClass]" data-testid="gallery">
-    <div v-if="isReady">{{ breakpoint }}</div>
-    <pre>{{ viewport }}</pre>
+  <div :class="['max-w-[600px] mx-auto h-full flex scroll-smooth relative xl:gap-[20px] xl:max-w-[100%]', galleryDirClass, galleryGapClass]" data-testid="gallery">
     <div
       ref="mainBox"
       class="after:block after:pt-[100%] flex-1 relative overflow-hidden w-full"
@@ -54,7 +52,7 @@
       </Swiper>
     </div>
 
-    <div
+    <div v-if="hasMoreImages"
       v-show="configuration.thumbnails.showThumbnails"
       :class="['xl:relative', thumbContainerClass, isSide ? 'xl:self-stretch' : 'xl:w-full']"
     >
@@ -81,7 +79,7 @@
             <NuxtImg
               :alt="productImageGetters.getImageAlternate(image) || productImageGetters.getCleanImageName(image) || ''"
               :title="productImageGetters.getImageName(image) ? productImageGetters.getImageName(image) : null"
-              class="h-full w-full object-contain xl:absolute xl:top-0 xl:left-0 xl:w-full xl:h-full xl:object-contain xl:rounded-[10px] bg-white"
+              class="h-full w-full object-contain xl:absolute xl:top-0 xl:left-0 xl:w-full xl:h-full xl:object-contain xl:rounded-[10px] bg-white text-white"
               :class="activeIndex === index ? 'border-primary-500' : ''"
               :width="productImageGetters.getImageWidth(image) ?? 80"
               :height="productImageGetters.getImageHeight(image) ?? 80"
@@ -116,9 +114,8 @@ import { SfIconChevronLeft, SfIconChevronRight } from '@storefront-ui/vue';
 import { productImageGetters } from '@plentymarkets/shop-api';
 import type { GalleryProps } from '~/components/Gallery/types';
 
-import useViewportCyt from '../../composables/useViewportCyt';
-const customViewport = useViewportCyt();
-const { isReady, breakpoint } = useViewportCyt();
+import { useCustomViewport } from '../../composables/viewportSingleton'
+const customViewport = useCustomViewport()
 
 const props = withDefaults(defineProps<GalleryProps>(), {
   configuration: () => ({
@@ -138,7 +135,7 @@ const { images } = toRefs(props);
 const activeIndex = ref(0);
 
 const viewport = useViewport();
-const showNav = computed(() => !customViewport.isLessThan('xl'));
+const showNav = computed(() => !viewport.isLessThan('lg'));
 
 const type = computed(() => configuration.value.thumbnails.thumbnailType);
 const isSide = computed(() => type.value === 'left-vertical' || type.value === 'right-vertical');

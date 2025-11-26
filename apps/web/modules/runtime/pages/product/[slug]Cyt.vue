@@ -2,13 +2,17 @@
     <NuxtLayout name="default" :breadcrumbs="breadcrumbs">
       <NarrowContainer>
         <div class="bg-[#F5EFEF]">
-          <div class="max-w-screen-3xl mx-auto p-[20px]">
-            <div class="xl:grid xl:grid-cols-2 xl:gap-[20px]">
+          <div class="max-w-screen-3xl mx-auto p-[20px] xl:py-[80px]">
+            <div class="flex flex-col gap-[30px] xl:grid xl:grid-cols-[auto_520px] xl:gap-[80px]">
               <div class="left">              
                 <Gallery :images="addModernImageExtensionForGallery(productGetters.getGallery(product))" />
               </div>              
               <div class="right">
-                <div class="drift-zoom-image relative"></div>
+                <div class="drift-zoom-image relative">
+                  <NuxtLazyHydrate when-idle>
+                    <UiPurchaseCard v-if="product" :product="product" :review-average="countsProductReviews" />
+                  </NuxtLazyHydrate>
+                </div>
               </div>
             </div>
           </div>

@@ -53,8 +53,6 @@ import { SfLoaderCircular } from '@storefront-ui/vue';
 import type { ImagesData } from '@plentymarkets/shop-api';
 import type { ZoomableImageProps } from '~/components/ZoomableImage/types';
 
-import useCustomViewport from '../../composables/useViewportCyt';
-
 const props = defineProps<ZoomableImageProps>();
 const { t } = useI18n();
 
@@ -62,14 +60,14 @@ const containerReference = useTemplateRef<null>('containerReference');
 const imagesLoaded = ref([] as unknown as { [key: string]: boolean });
 
 const { isZoomed, imageStyle, onTouchStart, onTouchMove, onTouchEnd } = useImageZoom(containerReference);
-const viewport = useCustomViewport();
+const viewport = useViewport();
 const route = useRoute();
 
 const image = props.image;
 const index = props.index;
 const activeIndex = props.activeIndex;
 const isFirstImage = props.isFirstImage;
-const isMobile = computed(() => viewport.isLessThan('xl'));
+const isMobile = computed(() => viewport.isLessThan('lg'));
 
 const showZoomHint = ref(false);
 
@@ -109,8 +107,8 @@ const nuxtImgProps = computed<Record<string, unknown>>(() => ({
   'aria-hidden': activeIndex !== index,
   fit: 'fill',
   class: isMobile.value
-    ? { 'object-contain h-full w-full absolute top-0 left-0': true, zoomed: isZoomed.value }
-    : { 'object-contain h-full w-full absolute top-0 left-0': true, [`demo-trigger-${index}`]: true },
+    ? { 'object-contain h-full w-full absolute top-0 left-0 text-white': true, zoomed: isZoomed.value }
+    : { 'object-contain h-full w-full absolute top-0 left-0 text-white': true, [`demo-trigger-${index}`]: true },
   'data-zoom': imageUrl,
   quality: 80,
   srcset: getSourceSet(image),

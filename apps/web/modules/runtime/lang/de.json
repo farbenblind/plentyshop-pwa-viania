@@ -30,5 +30,12 @@
     "sortType.PriceUp": "Preis aufsteigend",
     "sortType.NameA-Z": "Name aufsteigend",
     "sortType.NameZ-A": "Name absteigend",
-    "Merkliste": "Meine Merkliste"
+    "Merkliste": "Meine Merkliste",
+    "Product": {
+        "review": "Bewertung",
+        "reviews": "Bewertungen",
+        "sizetable": "Bitte messen Sie vor dem Kauf noch einmal nach",
+        "sizetable2": "Zur Größentabelle",
+        "sizetableLink": "https://cdn02.plentymarkets.com/w73p32remdlq/frontend/pdf/koerpermasstabelle-viania.pdf"
+    }
 }

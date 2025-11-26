@@ -1,10 +1,65 @@
 <template>
     <form
-      class="md:border md:border-neutral-100 md:shadow-lg md:rounded-md md:stickyx md:topx-40"
       data-testid="purchase-card"
       @submit.prevent="handleAddToCart()"
     >
-      <div class="relative">
+      <!-- reviews stars -->
+      <div class="flex items-center gap-[10px] cursor-pointer" @click="scrollToReviews" v-if="reviewGetters.getTotalReviews(reviewAverage) > 0">        
+        <div class="flex flex-col w-[calc(12*5px+4px)]">
+          <div class="inline-flex gap-[1px] h-[12px]">
+            <svg v-for="i in 5" :key="i" class="w-[12px] h-[12px] fill-[#999] flex-shrink-0" viewBox="0 0 15 15"><use href="#svg_star"></use></svg>
+          </div>
+          <div class="inline-flex gap-[1px] overflow-hidden h-[12px] mt-[-12px]" :style="'width:' + reviewGetters.getAverageRating(reviewAverage, 'half') * 20 + '%'">
+            <svg v-for="i in 5" :key="i" class="w-[12px] h-[12px] fill-[#FCC72F] flex-shrink-0" viewBox="0 0 15 15"><use href="#svg_star"></use></svg>
+          </div>
+        </div>
+
+        <div class="text-[12px] underline">{{ reviewGetters.getTotalReviews(reviewAverage) }} {{ reviewGetters.getTotalReviews(reviewAverage) === 1 ? t('Product.review') : t('Product.reviews') }}</div>
+
+        <svg class="hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="svg_star"><path d="M753.991,71.8a.664.664,0,0,1-.353-.118l-3.682-2.338a.742.742,0,0,0-.665,0l-3.683,2.338a.49.49,0,0,1-.689-.048.623.623,0,0,1-.077-.535l.983-4.394a.8.8,0,0,0-.206-.664l-3.259-2.949a.564.564,0,0,1-.218-.6.528.528,0,0,1,.511-.348l4.29-.378a.743.743,0,0,0,.538-.41l1.668-4.16c.145-.362.38-.4.473-.4s.328.039.473.4l1.668,4.16a.743.743,0,0,0,.538.41l4.29.378a.528.528,0,0,1,.511.348.564.564,0,0,1-.218.6l-3.259,2.949a.8.8,0,0,0-.205.664L754.4,71.1a.626.626,0,0,1-.077.535A.414.414,0,0,1,753.991,71.8Z" transform="translate(-742.123 -56.796)"/></g>
+        </svg>
+      </div>
+
+      <h1 class="text-[18px] xl:text-[24px] leading-[1.25] font-light" :class="{'pt-[20px]': reviewGetters.getTotalReviews(reviewAverage) > 0}" data-testid="product-name">{{ productGetters.getName(product) }}</h1>
+
+      <div class="grid grid-cols-[auto_55px] pt-[15px]">
+        <div class="prices-badge">
+          <Price :price="priceWithProperties" :crossed-price="crossedPrice" />
+          <div class="text-[12px]">
+            <span>{{ showNetPrices ? t('itemExclVAT') : t('itemInclVAT') }}&nbsp;</span>
+            <i18n-t keypath="excludedShipping" scope="global">
+              <template #shipping>
+                <SfLink :href="localePath(paths.shipping)" target="_blank" class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded">{{ $t('delivery') }}</SfLink>
+              </template>
+            </i18n-t>
+          </div>
+          <div :class="['text-[12px] font-bold av' + productGetters.getAvailabilityId(product), productGetters.getAvailabilityId(product) == 1 ? 'text-[#2AC678]' : 'text-[black]']">
+            {{ productGetters.getAvailabilityName(product) }}
+          </div>
+        </div>
+
+        <div class="oeko bg-[#00A687] text-white flex items-center justify-center text-center leading-[1]">
+          OEKO<br>TEX
+        </div>
+      </div>
+
+      <ProductAttributes :product="product" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <div class="relative">
         <div class="drift-zoom-image2">
           <section class="p-4 xl:p-6">
             <div class="grid grid-cols-[2fr_1fr] mt-4">
@@ -137,6 +192,7 @@
           </section>
         </div>
       </div>
+      -->
     </form>
   </template>
   
@@ -348,5 +404,11 @@ const scrollToReviews = () => {
     reviewArea.value.scrollIntoView({ behavior: 'smooth' });
   }
 };
+
+// for later
+const colorValue = computed(() => {
+  const property = productGetters.getPropertyById(17, props?.product);
+  return property?.values instanceof Array ? property?.values.length : 0;
+});
 </script>
   
