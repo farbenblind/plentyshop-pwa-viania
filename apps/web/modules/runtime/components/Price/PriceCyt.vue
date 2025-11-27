@@ -1,6 +1,6 @@
 <template>
-  <div class="flex gap-[10px] align-baseline text-[18px]">
-    <span v-if="crossedPrice && differentPrices" class="line-through">
+  <div class="flex gap-[10px] align-baseline text-[18px] xl:text-[24px]">
+    <span v-if="crossedPrice && differentPrices" class="line-through xl:font-light">
       {{ format(crossedPrice) }}
     </span>
     <span :class="crossedPrice && differentPrices ? 'text-[#EA665D]' : ''" data-testid="price">

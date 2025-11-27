@@ -77,6 +77,11 @@ export default defineNuxtModule({
       if (Header) {
         Header.filePath = resolve('./runtime/components/ui/Header/HeaderCyt.vue');
       }
+      // Button
+      const Button = components.find((c) => c.pascalName === 'UiButton');
+      if (Button) {
+        Button.filePath = resolve('./runtime/components/ui/Button/ButtonCyt.vue');
+      }
       // CategoryPageContent
       const CategoryPageContent = components.find((c) => c.pascalName === 'CategoryPageContent');
       if (CategoryPageContent) {
@@ -126,6 +131,11 @@ export default defineNuxtModule({
       const AttributeBox = components.find((c) => c.pascalName === 'AttributeBox');
       if (AttributeBox) {
         AttributeBox.filePath = resolve('./runtime/components/ProductAttributes/AttributeBox/AttributeBoxCyt.vue');
+      }
+      // QuantitySelector
+      const QuantitySelector = components.find((c) => c.pascalName === 'UiQuantitySelector');
+      if (QuantitySelector) {
+        QuantitySelector.filePath = resolve('./runtime/components/ui/QuantitySelector/QuantitySelectorCyt.vue');
       }
       // Footer
       const Footer = components.find((c) => c.pascalName === 'UiFooter');

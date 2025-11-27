@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="attribute-box" class="block leading-[1] text-[12px] font-semibold">
+    <label for="attribute-box" class="block leading-[1] text-[12px] font-semibold xl:text-[14px]">
       {{ productAttributeGetters.getAttributeName(attribute) }}
     </label>
 
@@ -8,16 +8,16 @@
       <div :id="'attribute-box' + attribute.attributeId"
         v-for="item in productAttributeGetters.getAttributeValues(attribute)"
         :key="productAttributeGetters.getAttributeValueId(item)"
-        class="min-h-[32px] min-w-[32px] flex items-center justify-center border-[1px] border-solid border-[#E5E5E5] rounded-[5px] bg-white cursor-pointer transition-all duration-[400ms]"
+        class="min-h-[40px] min-w-[40px] flex items-center justify-center border-[1px] border-solid border-[#E5E5E5] rounded-[5px] bg-white cursor-pointer transition-all duration-[400ms]"
         :class="{
-          'text-zinc-400 border-dashed border-primary-500': productAttributeGetters.isAttributeValueDisabled(item),
+          'bg-[rgba(255,255,255,0.4)] text-[rgba(0,0,0,0.4)]': productAttributeGetters.isAttributeValueDisabled(item),
           '!bg-black text-white': value === productAttributeGetters.getAttributeValueId(item),
           '!ring-negative-700 !border-negative-700 ring-1 bg-white': Boolean(errors['selectedValue']),
         }"
         @click="doUpdateValue(productAttributeGetters.getAttributeValueId(item))"
       >
         <SfTooltip :label="getLabel(item)" strategy="absolute" :show-arrow="true" placement="top" :class="'flex items-center'">
-          <span class="text-[12px] leading-1 flex items-center justify-center">
+          <span class="text-[12px] xl:text-[14px] leading-1 flex items-center justify-center">
             {{ productAttributeGetters.getAttributeValueName(item) }}
           </span>
         </SfTooltip>

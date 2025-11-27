@@ -23,9 +23,7 @@ onMounted(() => {
     drift = new Drift(demoTrigger, {
       paneContainer: paneContainer,
       containInline: true,
-      showWhitespaceAtEdges: true,
-      zoomFactor: 3.5,
-      hoverBoundingBox: true,
+      zoomFactor: 2,
       handleTouch: false,
       injectBaseStyles: true,
     });

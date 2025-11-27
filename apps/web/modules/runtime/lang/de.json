@@ -18,9 +18,12 @@
         "newsletter2": "Freue dich über 5€ Rabatt bei deiner nächsten Bestellung und profitiere von Angeboten.",
         "newsletter3": "Newsletter abonnieren",
         "newsletter4": "Deine E-Mail Adresse",
+        "sizeTable": "Größentabelle",
+        "washInstructions": "Waschanleitung",
         "copyRight": {
             "1": "Alle Preise sind inkl. der gesetzlichen Mehrwertsteuer und zzgl. Versandkosten",
-            "2": "Kostenloser Versand ab 50 Euro Bestellwert nur innerhalb Deutschlands"
+            "2": "Kostenloser Versand ab 50 {currency} Bestellwert nur innerhalb Deutschlands",
+            "3": "Alle Rechte vorbehalten"
         }
     },
     "SizeTable": "zur Größentabelle",
@@ -36,6 +39,10 @@
         "reviews": "Bewertungen",
         "sizetable": "Bitte messen Sie vor dem Kauf noch einmal nach",
         "sizetable2": "Zur Größentabelle",
-        "sizetableLink": "https://cdn02.plentymarkets.com/w73p32remdlq/frontend/pdf/koerpermasstabelle-viania.pdf"
+        "sizetableLink": "https://cdn02.plentymarkets.com/w73p32remdlq/frontend/pdf/koerpermasstabelle-viania.pdf",
+        "xcheckoutInfo": "Oder bezahle mit deinem PayPal Account:",
+        "xcheckoutInfo2": "Versand erfolgt am gleichen Tag mit DHL",
+        "xcheckoutInfo3": "(bei Bestellungen werktags bis 14 Uhr)",
+        "itemNo": "Artikel-Nr."
     }
 }

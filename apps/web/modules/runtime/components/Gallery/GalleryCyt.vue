@@ -52,10 +52,7 @@
       </Swiper>
     </div>
 
-    <div v-if="hasMoreImages"
-      v-show="configuration.thumbnails.showThumbnails"
-      :class="['xl:relative', thumbContainerClass, isSide ? 'xl:self-stretch' : 'xl:w-full']"
-    >
+    <div v-if="hasMoreImages" :class="['xl:relative', thumbContainerClass, isSide ? 'xl:self-stretch' : 'xl:w-full']">
       <div class="hidden xl:block xl:relative xl:h-full xl:overflow-hidden">
         <Swiper
           :modules="thumbsModules"
@@ -73,7 +70,7 @@
           <SwiperSlide
             v-for="(image, index) in images"
             :key="`thumb-${index}`"
-            :class="thumbSlideClass(index) + 'xl:h-0 xl:pb-[50%] relative'"
+            :class="thumbSlideClass(index) + 'xl:h-0 xl:pb-[calc(50%-10px)] relative'"
             @click="slideTo(index)"
           >
             <NuxtImg
