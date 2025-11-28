@@ -1,6 +1,41 @@
 <template>
   <div class="flex justify-center lg:justify-start mb-4 lg:mb-0 cyt" data-testid="average-section">
     <div class="lg:flex my-2">
+      <div class="flex gap-[10px] items-center justify-center pb-[20px] text-[12px] lg:text-[14px]">
+        <div class="flex gap-0.5 text-[#FCC72F]">
+          <svg v-for="star in 5" :key="star" class="w-[15px] h-[15px]" viewBox="0 0 24 24">
+            <defs>
+              <linearGradient :id="`star-${star}`">
+                <stop offset="50%" stop-color="currentColor"/>
+                <stop offset="50%" stop-color="transparent"/>
+              </linearGradient>
+            </defs>
+            <path 
+              d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              :fill="star <= (reviewAverageStars || reviewAverageText) ? 'currentColor' : (star - 0.5 <= (reviewAverageStars || reviewAverageText) ? `url(#star-${star})` : 'none')"
+              :stroke="star <= (reviewAverageStars || reviewAverageText) || star - 0.5 <= (reviewAverageStars || reviewAverageText) ? 'currentColor' : '#E5E7EB'"
+              stroke-width="1"
+            />
+          </svg>
+        </div>
+        <div class="whitespace-nowrap">{{ totalReviews + ' ' + (totalReviews === 1 ? t('Product.review') : t('Product.reviews')) }} ({{ t('Product.xOutOf5', { x: reviewAverageText }) }})</div>
+      </div>
+      <div class="flex flex-col">
+        <div v-for="(proportionalRating, key) in ratingPercentages" :key="key" class="flex items-center">
+          <p class="w-4 text-center tabular-nums">{{ 5 - key }}</p>
+          <SfIconStarFilled class="mx-2 pb-1 text-[#FCC72F]" size="base" />
+          <SfProgressLinear
+            class="self-center bg-[#F8F8F8] text-[#FCC72F] h-[12px]"
+            size="minimal"
+            :value="proportionalRating"
+            aria-label="proportional-rating-in-percent"
+          />
+          <p class="lg:w-20 ml-2 tabular-nums">({{ splitRatings[key] }})</p>
+        </div>
+      </div>
+
+      <hr class="mt-5 mb-5">
+
       <div class="lg:w-1/2 flex flex-col lg:mr-8">
         <p class="text-center text-sm" data-testid="average-info">{{ t('averageRating') }}</p>
         <div class="flex justify-center">
@@ -29,10 +64,10 @@
       <div class="flex flex-col">
         <div v-for="(proportionalRating, key) in ratingPercentages" :key="key" class="flex items-center">
           <p class="w-4 text-center">{{ 5 - key }}</p>
-          <SfIconStarFilled class="mx-2 pb-1 text-warning-500" size="base" />
+          <SfIconStarFilled class="mx-2 pb-1 text-[#FCC72F]" size="base" />
           <SfProgressLinear
-            class="self-center"
-            size="sm"
+            class="self-center bg-[#F8F8F8] text-[#FCC72F] h-[12px]"
+            size="minimal"
             :value="proportionalRating"
             aria-label="proportional-rating-in-percent"
           />

@@ -119,7 +119,7 @@ const props = withDefaults(defineProps<GalleryProps>(), {
     thumbnails: {
       showThumbnails: true,
       thumbnailType: 'horizontal',
-      enableHoverZoom: true,
+      enableHoverZoom: false,
     },
   }),
 });

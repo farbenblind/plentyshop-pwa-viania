@@ -3,15 +3,15 @@
     <SfLoaderCircular v-if="loadingReviews" class="absolute top-[130px] right-0 left-0 m-auto z-[999]" size="2xl" />
 
     <div id="customerReviewsAccordion" data-testid="reviews-accordion">
-      <h2 id="customerReviewsClick" class="font-semibold font-[14px]">
-        {{ t('customerReviews') }}
+      <h2 id="customerReviewsClick" class="pb-[30px] font-semibold text-[14px] xl:text-[18px] text-center lg:text-left">
+        <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">{{ t('customerReviews') }}</span>
       </h2>
 
       <UiReviewStatistics :product="product" />
       <UiReview v-for="(reviewItem, key) in paginatedProductReviews" :key="key" :review-item="reviewItem" />
 
       <UiPagination
-        v-if="paginatedProductReviews.length > 0"
+        v-if="paginatedProductReviews.length > 0 && pagination.lastPage > 1"
         :key="pagination.totalCount"
         :current-page="currentPage"
         :total-items="pagination.totalCount"

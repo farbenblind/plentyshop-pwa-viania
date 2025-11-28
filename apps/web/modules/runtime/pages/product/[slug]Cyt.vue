@@ -4,7 +4,7 @@
         <div class="bg-[#F5EFEF]">
           <div class="max-w-screen-3xl mx-auto p-[20px] xl:py-[80px]">
             <div class="flex flex-col gap-[30px] xl:grid xl:grid-cols-[auto_520px] xl:gap-[80px]">
-              <div class="left xl:min-w-[0] self-start xl:sticky xl:top-[40px]">              
+              <div class="left xl:min-w-[0] xl:self-start xl:sticky xl:top-[40px]">              
                 <Gallery :images="addModernImageExtensionForGallery(productGetters.getGallery(product))" />
               </div>              
               <div class="right">
