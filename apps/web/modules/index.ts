@@ -1,6 +1,7 @@
 import { defineNuxtModule, addComponent, createResolver, extendPages, addImportsDir, addPlugin } from '@nuxt/kit';
 import type { NuxtPage, AppConfig } from '@nuxt/schema';
 import tailwindPlugin from 'tailwindcss/plugin';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default defineNuxtModule({
   async setup(options, nuxt) {
@@ -41,6 +42,18 @@ export default defineNuxtModule({
         console.log('Initial breakpoint:', initialBreakpoint);
       `,
     });
+
+    // Add to your module setup
+    nuxt.options.app.head = nuxt.options.app.head || {};
+    nuxt.options.app.head.link = nuxt.options.app.head.link || [];
+    nuxt.options.app.head.link.push(
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+      { 
+        rel: 'stylesheet', 
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap' 
+      }
+    );
 
     /**
      * register components
@@ -137,6 +150,16 @@ export default defineNuxtModule({
       if (QuantitySelector) {
         QuantitySelector.filePath = resolve('./runtime/components/ui/QuantitySelector/QuantitySelectorCyt.vue');
       }
+      // ReviewsAccordion
+      const ReviewsAccordion = components.find((c) => c.pascalName === 'ReviewsAccordion');
+      if (ReviewsAccordion) {
+        ReviewsAccordion.filePath = resolve('./runtime/components/ReviewsAccordion/ReviewsAccordionCyt.vue');
+      }
+      // ReviewStatistics
+      const ReviewStatistics = components.find((c) => c.pascalName === 'UiReviewStatistics');
+      if (ReviewStatistics) {
+        ReviewStatistics.filePath = resolve('./runtime/components/ui/ReviewStatistics/ReviewStatisticsCyt.vue');
+      }
       // Footer
       const Footer = components.find((c) => c.pascalName === 'UiFooter');
       if (Footer) {
@@ -200,8 +223,13 @@ export default defineNuxtModule({
       }
 
       // FontFamily
-      if (config?.theme?.extend?.fontFamily) {
-        (config.theme.extend.fontFamily as any).body = ['Inter', 'sans'];
+      if (config?.theme?.extend) {
+        // Set Inter as the default font
+        config.theme.extend.fontFamily = {
+          ...config.theme.extend.fontFamily,
+          sans: ['Inter', ...defaultTheme.fontFamily.sans],
+          body: ['Inter', ...defaultTheme.fontFamily.sans],
+        };
       }
 
       // Screens

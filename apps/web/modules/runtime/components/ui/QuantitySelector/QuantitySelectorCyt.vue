@@ -4,7 +4,7 @@
       <SfTooltip
         v-if="count <= minValue"
         :label="t('minimumOrderQuantity', minValue)"
-        placement="left"
+        placement="top"
         :show-arrow="true"
         class="flex"
       >
