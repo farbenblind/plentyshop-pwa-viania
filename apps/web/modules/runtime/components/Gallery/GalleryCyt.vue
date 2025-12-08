@@ -15,6 +15,7 @@
         :keyboard="{ enabled: true }"
         :thumbs="{ swiper: thumbsSwiper || null }"
         class="!absolute top-0 left-0 w-full h-full bg-white rounded-[10px]"
+        :class="{ 'cursor-grab': hasMoreImages }"
         @swiper="onMainInit"
         @slide-change="onMainSlideChange"
       >
@@ -76,7 +77,7 @@
             <NuxtImg
               :alt="productImageGetters.getImageAlternate(image) || productImageGetters.getCleanImageName(image) || ''"
               :title="productImageGetters.getImageName(image) ? productImageGetters.getImageName(image) : null"
-              class="h-full w-full object-contain xl:absolute xl:top-0 xl:left-0 xl:w-full xl:h-full xl:object-contain xl:rounded-[10px] bg-white text-white"
+              class="h-full w-full object-contain xl:absolute xl:top-0 xl:left-0 xl:w-full xl:h-full xl:object-contain xl:rounded-[10px] bg-white text-white cursor-grab"
               :class="activeIndex === index ? 'border-primary-500' : ''"
               :width="productImageGetters.getImageWidth(image) ?? 80"
               :height="productImageGetters.getImageHeight(image) ?? 80"

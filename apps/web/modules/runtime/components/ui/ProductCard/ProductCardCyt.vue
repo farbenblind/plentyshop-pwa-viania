@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col border border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5]" data-testid="product-card">
+    <div class="flex flex-col bg-white border-[1px] border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5]" data-testid="product-card">
       <div class="relative overflow-hidden">
         <UiBadges
           :use-tags="useTagsOnCategoryPage"
@@ -29,22 +29,18 @@
           />
         </SfLink>
       </div>
-      <div class="flex flex-col flex-auto text-[14px] md:text-[16px] lg:text-[18px] p-[10px] sm:p-[20px]">
-        <SfLink :tag="NuxtLink" :to="productPath" class="no-underline font-light" variant="secondary" data-testid="productcard-name">
-          {{ name }}
-        </SfLink>
-        <LowestPrice :product="product" />
-        <div v-if="showBasePrice" class="mb-2">
-          <BasePriceInLine :base-price="basePrice" :unit-content="unitContent" :unit-name="unitName" />
+      <div class="flex flex-col flex-auto text-[14px] md:text-[16px] lg:text-[18px] leading-[1.25] p-[10px] sm:p-[20px]">
+        <!-- variation property "kollektion" -->
+        <div v-if="hasProperty(4, 47)" class="text-[12px] font-semibold pb-[5px]">
+          {{ getPropertyValue(4, 47).split(",")[0] }}
         </div>
-        <div class="flex items-start mt-auto gap-[10px] pb-[10px]">
+
+        <SfLink :tag="NuxtLink" :to="productPath" class="no-underline font-light" data-testid="productcard-name">{{ name }}</SfLink>
+        <div class="flex items-start mt-auto gap-[10px] pt-[5px] pb-[10px]">
           <span class="block font-bold" data-testid="product-card-vertical-price">
-            <span v-if="!productGetters.canBeAddedToCartFromCategoryPage(product)" class="mr-1">
-              {{ t('account.ordersAndReturns.orderDetails.priceFrom') }}
-            </span>
             <span class="font-semibold">{{ format(price) }}</span>
           </span>
-          <span v-if="crossedPrice" class="line-through">
+          <span v-if="crossedPrice && showSalePrice" class="line-through">
             {{ format(crossedPrice) }}
           </span>
         </div>
@@ -201,4 +197,53 @@ const differentPrices = (price: number, crossedPrice: number) => {
 };
 
 const NuxtLink = resolveComponent('NuxtLink');
+
+// show sale price logic
+const tags = (product.value as any).tags;
+
+const showSalePrice = computed(() => {
+  return tags?.some((tag: any) => tag.id === 2) ?? false;
+});
+
+// variation properties helpers
+
+// Check if a specific property exists in a group
+const hasProperty = (groupId: number, propertyId?: number): boolean => {
+  const group = props.product?.variationProperties?.find(
+    (vp: any) => vp.id === groupId
+  );
+  
+  if (!group?.properties?.length) return false;
+  
+  if (propertyId) {
+    // Check for specific property ID
+    const property = group.properties.find((prop: any) => prop.id === propertyId);
+    return !!(property?.values?.value && property.values.value.trim() !== '');
+  }
+  
+  // Check if any property has a value
+  return group.properties.some((prop: any) => 
+    prop.values?.value && prop.values.value.trim() !== ''
+  );
+};
+
+// Get value from specific property
+const getPropertyValue = (groupId: number, propertyId?: number): string => {
+  const group = props.product?.variationProperties?.find(
+    (vp: any) => vp.id === groupId
+  );
+  
+  if (!group?.properties?.length) return '';
+  
+  let property;
+  if (propertyId) {
+    property = group.properties.find((prop: any) => prop.id === propertyId);
+  } else {
+    property = group.properties.find((prop: any) => 
+      prop.values?.value && prop.values.value.trim() !== ''
+    );
+  }
+  
+  return property?.values?.value || '';
+};
 </script>

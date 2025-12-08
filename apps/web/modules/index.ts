@@ -43,7 +43,7 @@ export default defineNuxtModule({
       `,
     });
 
-    // Add to your module setup
+    // Add custom fonts
     nuxt.options.app.head = nuxt.options.app.head || {};
     nuxt.options.app.head.link = nuxt.options.app.head.link || [];
     nuxt.options.app.head.link.push(
@@ -159,6 +159,11 @@ export default defineNuxtModule({
       const ReviewStatistics = components.find((c) => c.pascalName === 'UiReviewStatistics');
       if (ReviewStatistics) {
         ReviewStatistics.filePath = resolve('./runtime/components/ui/ReviewStatistics/ReviewStatisticsCyt.vue');
+      }
+      // Review
+      const Review = components.find((c) => c.pascalName === 'UiReview');
+      if (Review) {
+        Review.filePath = resolve('./runtime/components/ui/Review/ReviewCyt.vue');
       }
       // Footer
       const Footer = components.find((c) => c.pascalName === 'UiFooter');

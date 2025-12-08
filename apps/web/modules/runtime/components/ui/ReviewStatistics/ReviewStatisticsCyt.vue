@@ -1,9 +1,8 @@
 <template>
-  <div class="flex justify-center lg:justify-start mb-4 lg:mb-0 cyt" data-testid="average-section">
-    <div class="lg:flex my-2">
-      <div class="flex gap-[10px] items-center justify-center pb-[20px] text-[12px] lg:text-[14px]">
-        <div class="flex gap-0.5 text-[#FCC72F]">
-          <svg v-for="star in 5" :key="star" class="w-[15px] h-[15px]" viewBox="0 0 24 24">
+  <div class="flex flex-col pb-[30px] lg:max-w-[calc(50%-10px)] xl:max-w-[calc(33%-10px)]" data-testid="average-section">
+      <div class="flex gap-[10px] items-center justify-center lg:justify-start pb-[15px] text-[12px] lg:text-[14px]">
+        <div class="flex gap-[2px] xl:gap-[3px] text-[#FCC72F]">
+          <svg v-for="star in 5" :key="star" class="w-[15px] h-[15px] xl:w-[20px] xl:h-[20px]" viewBox="0 0 24 24">
             <defs>
               <linearGradient :id="`star-${star}`">
                 <stop offset="50%" stop-color="currentColor"/>
@@ -18,63 +17,21 @@
             />
           </svg>
         </div>
-        <div class="whitespace-nowrap">{{ totalReviews + ' ' + (totalReviews === 1 ? t('Product.review') : t('Product.reviews')) }} ({{ t('Product.xOutOf5', { x: reviewAverageText }) }})</div>
+        <div class="whitespace-nowrap ml-auto sm:ml-0">{{ totalReviews + ' ' + (totalReviews === 1 ? t('Product.review') : t('Product.reviews')) }} ({{ t('Product.xOutOf5', { x: reviewAverageText }) }})</div>
       </div>
-      <div class="flex flex-col">
-        <div v-for="(proportionalRating, key) in ratingPercentages" :key="key" class="flex items-center">
-          <p class="w-4 text-center tabular-nums">{{ 5 - key }}</p>
-          <SfIconStarFilled class="mx-2 pb-1 text-[#FCC72F]" size="base" />
+      <div class="flex flex-col items-center w-full gap-[3px]">
+        <div v-for="(proportionalRating, key) in ratingPercentages" :key="key" class="grid grid-cols-[auto_auto_1fr_auto] gap-[5px] items-center w-full">
+          <p class="tabular-nums font-semibold text-[14px]">{{ 5 - key }}</p>
+          <SfIconStarFilled class="text-[#FCC72F] w-[18px] h-[18px]" size="base" />
           <SfProgressLinear
-            class="self-center bg-[#F8F8F8] text-[#FCC72F] h-[12px]"
+            class="self-center !bg-[#F8F8F8] !text-[#FCC72F] h-[12px] w-full"
             size="minimal"
             :value="proportionalRating"
             aria-label="proportional-rating-in-percent"
           />
-          <p class="lg:w-20 ml-2 tabular-nums">({{ splitRatings[key] }})</p>
+          <p class="tabular-nums text-[14px]">({{ splitRatings[key] }})</p>
         </div>
       </div>
-
-      <hr class="mt-5 mb-5">
-
-      <div class="lg:w-1/2 flex flex-col lg:mr-8">
-        <p class="text-center text-sm" data-testid="average-info">{{ t('averageRating') }}</p>
-        <div class="flex justify-center">
-          <SfRating
-            class="pb-2"
-            size="lg"
-            :max="5"
-            :value="reviewAverageStars || reviewAverageText"
-            :half-increment="true"
-          />
-          <h3 class="font-bold text-xl ml-2">
-            {{ reviewAverageText }}
-          </h3>
-        </div>
-        <p class="text-xs text-center" data-testid="review-count">{{ t('basedOnratings', { count: totalReviews }) }}</p>
-        <UiButton
-          data-testid="add-review-button"
-          class="mt-2 mb-4 mx-auto bg-black"
-          size="base"
-          @click="openReviewModal(defaults.DEFAULT_REVIEW_MODAL_TYPES.createReview)"
-        >
-          {{ t('createCustomerReview') }}
-        </UiButton>
-      </div>
-
-      <div class="flex flex-col">
-        <div v-for="(proportionalRating, key) in ratingPercentages" :key="key" class="flex items-center">
-          <p class="w-4 text-center">{{ 5 - key }}</p>
-          <SfIconStarFilled class="mx-2 pb-1 text-[#FCC72F]" size="base" />
-          <SfProgressLinear
-            class="self-center bg-[#F8F8F8] text-[#FCC72F] h-[12px]"
-            size="minimal"
-            :value="proportionalRating"
-            aria-label="proportional-rating-in-percent"
-          />
-          <p class="lg:w-20 ml-2">( {{ splitRatings[key] }} )</p>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 

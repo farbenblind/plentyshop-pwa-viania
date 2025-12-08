@@ -22,23 +22,20 @@
           :label="reviewGetters.getTotalReviews(reviewAverage) > 1 ? t('showAllReviews') : t('Product.oneReview')"
           class="flex items-center gap-[10px] cursor-pointer"
         >
-          <div class="flex items-center gap-[10px]">
-            <div class="flex flex-col w-[calc(12*5px+4px)] xl:w-[calc(15*5px+4px)]">
-              <div class="inline-flex gap-[1px] h-[12px] xl:h-[15px]">
-                <svg v-for="i in 5" :key="i" class="w-[12px] h-[12px] xl:w-[15px] xl:h-[15px] fill-[#999] flex-shrink-0" viewBox="0 0 15 15">
-                  <use href="#svg_star"></use>
-                </svg>
-              </div>
-              <div
-                class="inline-flex gap-[1px] overflow-hidden h-[12px] xl:h-[15px] mt-[-12px] xl:mt-[-15px]"
-                :style="'width:' + reviewGetters.getAverageRating(reviewAverage, 'half') * 20 + '%'"
-              >
-                <svg v-for="i in 5" :key="i" class="w-[12px] h-[12px] xl:w-[15px] xl:h-[15px] fill-[#FCC72F] flex-shrink-0" viewBox="0 0 15 15">
-                  <use href="#svg_star"></use>
-                </svg>
-              </div>
-            </div>
-          </div>
+        <div class="flex gap-[0] text-[#FCC72F]">
+          <svg v-for="star in 5" :key="star" class="w-[18px] h-[18px]" viewBox="0 0 24 24">
+            <defs>
+              <linearGradient :id="`star-${star}`">
+                <stop offset="50%" stop-color="currentColor"/>
+                <stop offset="50%" stop-color="#fff"/>
+              </linearGradient>
+            </defs>
+            <path 
+              d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor"
+              :fill="star <= reviewGetters.getAverageRating(reviewAverage, 'half') ? 'currentColor' : (star - 0.5 <= reviewGetters.getAverageRating(reviewAverage, 'half') ? `url(#star-${star})` : '#999')"
+            />
+          </svg>
+        </div>
           <div class="text-[12px] underline xl:text-[14px]">
             {{ reviewGetters.getTotalReviews(reviewAverage) }}
             {{ reviewGetters.getTotalReviews(reviewAverage) === 1 ? t('Product.review') : t('Product.reviews') }}
@@ -56,7 +53,7 @@
 
       <div class="grid grid-cols-[auto_55px] pt-[15px] xl:grid-cols-[auto_80px]">
         <div class="prices-badge">
-          <Price :price="priceWithProperties" :crossed-price="crossedPrice" />
+          <Price :price="priceWithProperties" :crossed-price="showSalePrice ? crossedPrice : null" />
           <div class="text-[12px]">
             <span>{{ showNetPrices ? t('itemExclVAT') : t('itemInclVAT') }}&nbsp;</span>
             <i18n-t keypath="excludedShipping" scope="global">
@@ -113,7 +110,7 @@
         </SfTooltip>
       </div>
 
-      <div v-if="!showPayPalButtons" class="pt-[20px] xl:pt-[30px] flex flex-col gap-[10px] xl:gap-[20px]">
+      <div v-if="showPayPalButtons" class="pt-[20px] xl:pt-[30px] flex flex-col gap-[10px] xl:gap-[20px]">
         <p class="text-[12px] xl:text-[14px] m-0">{{ t('Product.xcheckoutInfo') }}</p>
         <div>
           <PayPalExpressButton type="SingleItem" class="grid grid-cols-[1fr] sm:grid-cols-[1fr_1fr] gap-[10px]" @validation-callback="paypalHandleAddToCart" />
@@ -162,16 +159,45 @@
           </summary>
           <div v-html="careInstructions" class="mt-4 leading-relaxed text-[14px]"/>
         </details>
+        <details class="group border-t border-b mt-[-1px] border-black py-[12px] xl:py-[15px] border-black">
+          <summary class="flex justify-between items-center cursor-pointer text-[14px] list-none transition group-open:font-semibold">
+            {{ t('Product.productSafety') }}
+            <span class="transition-transform group-open:rotate-45 text-lg xl:text-xl leading-none">+</span>
+          </summary>
+          <div class="mt-4 leading-relaxed text-[14px]">
+            <SfButton
+              tag="a"
+              href="https://cdn02.plentymarkets.com/w73p32remdlq/frontend/GPSR/GPSR_Schreiben.pdf"
+              target="_blank"
+              variant="secondary"
+              size="sm"
+              class="bg-white"
+            >
+              <template #prefix>
+                <SfIconDownload />
+              </template>
+              {{ t('Product.download') }}
+            </SfButton>
+          </div>
+        </details>
+        <details class="border-t border-b mt-[-1px] border-black py-[12px] xl:py-[15px] border-black" @click="openDrawer()">
+          <summary class="flex justify-between items-center cursor-pointer text-[14px] list-none transition group-open:font-semibold">
+            {{ t('productLegalDetailsHeader') }}
+            <span class="transition-transform group-open:rotate-45 text-lg xl:text-xl leading-none">+</span>
+          </summary>
+        </details>
       </div>
     </form>
   </template>
   
 <script setup lang="ts">
 import { productGetters, reviewGetters, productBundleGetters } from '@plentymarkets/shop-api';
-import { SfCounter, SfRating, SfIconShoppingCart, SfLoaderCircular, SfTooltip, SfLink } from '@storefront-ui/vue';
+import { SfCounter, SfRating, SfIconShoppingCart, SfLoaderCircular, SfTooltip, SfLink, SfButton, SfIconDownload } from '@storefront-ui/vue';
 import type { PriceCardPadding, PurchaseCardProps } from '~/components/ui/PurchaseCard/types';
 import type { PayPalAddToCartCallback } from '~/components/PayPal/types';
 import { paths } from '~/utils/paths';
+
+const { open, openDrawer } = useProductLegalDetailsDrawer();
 
 const props = withDefaults(defineProps<PurchaseCardProps>(), {
   configuration: () => ({
@@ -412,6 +438,9 @@ const collection = computed(() => {
   return (name && link) ? { name, link } : null;
 });
 
-
+// show sale price logic
+const showSalePrice = computed(() => {
+  return props?.product?.tags?.some((tag: any) => tag.id === 2) ?? false;
+});
 </script>
   

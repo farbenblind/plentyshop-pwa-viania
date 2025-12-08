@@ -32,9 +32,7 @@
         <div class="pt-[40px] max-w-[900px] mx-auto xl:pt-[0] xl:flex xl:gap-[60px] xl:flex xl:justify-between w-full xl:max-w-[530px]">
           <div class="links flex flex-col">
             <input type="checkbox" id="my-account-footer">
-            <label for="my-account-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">
-              {{ t('account.heading') }}
-            </label>
+            <label for="my-account-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('account.heading') }}</label>
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
               <li><NuxtLink :to="localePath(paths.account)">{{ t('account.heading') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.accountMyOrders)">{{ t('account.ordersAndReturns.section.myOrders') }}</NuxtLink></li>
@@ -43,24 +41,25 @@
           </div>
 
           <div class="links flex flex-col">
-            <input type="checkbox" id="my-viania-footer">
-            <label for="my-viania-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">Viania</label>
-            <ul class="pb-[20px] leading-[2] xl:pb-[0]">
-              <li><NuxtLink to="#">{{ t('categories.about.subcategories.aboutUs') }}</NuxtLink></li>
-              <li><NuxtLink to="#">{{ t('categories.services.subcategories.contact') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('categories.legal.subcategories.legalDisclosure') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('termsAndConditions') }}</NuxtLink></li>
-            </ul>
-          </div>
-
-          <div class="links flex flex-col border-b border-black xl:border-b-0">
             <input type="checkbox" id="my-service-footer">
-            <label for="my-service-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">Service</label>
+            <label for="my-service-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('Footer.Service') }}</label>
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
               <li><NuxtLink to="#">{{ t('Footer.sizeTable') }}</NuxtLink></li>
               <li><NuxtLink to="#">{{ t('Footer.washInstructions') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.cancellationRights)">{{ t('categories.legal.subcategories.cancellationRights') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('categories.legal.subcategories.privacyPolicy') }}</NuxtLink></li>
+            </ul>
+          </div>
+
+          <div class="links flex flex-col">
+            <input type="checkbox" id="my-viania-footer">
+            <label for="my-viania-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('Footer.Unternehmen') }}</label>
+            <ul class="pb-[20px] leading-[2] xl:pb-[0]">
+              <li><NuxtLink to="#">{{ t('categories.about.subcategories.aboutUs') }}</NuxtLink></li>
+              <li><NuxtLink to="#">{{ t('categories.services.subcategories.contact') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('categories.legal.subcategories.legalDisclosure') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('termsAndConditions') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.declarationOfAccessibility)">{{ t('categories.legal.subcategories.declarationOfAccessibility') }}</NuxtLink></li>
             </ul>
           </div>
         </div>
@@ -96,7 +95,19 @@
       </div>
 
       <div class="copy text-center text-[12px] pt-[20px] xl:pt-[40px] 2xl:text-left 2xl:flex 2xl:flex-wrap">
-        <p><sup>*</sup>{{ t('Footer.copyRight.1') }}</p>
+        <p>
+          <sup>*</sup>
+          <i18n-t keypath="Footer.copyRight.1">
+            <template #inclExcl>
+              {{ showNetPrices ? t('itemExclVAT') : t('itemInclVAT') }}
+            </template>
+            <template #Versandkosten>
+              <NuxtLink :to="localePath(paths.shipping)" class="font-normal">
+                {{ $t('delivery') }}
+              </NuxtLink>
+            </template>
+          </i18n-t>
+        </p>
         <p><sup>**</sup>{{ t('Footer.copyRight.2', {currency: currency}) }}</p>
         <p class="pt-[10px] xl:pt-[0] xl:ml-auto">
           {{ companyName }} / {{ t('Footer.copyRight.3') }} / powered by
@@ -214,5 +225,7 @@ const isDev: boolean = useRuntimeConfig().public.isPreview || useRuntimeConfig()
 const { data: cart } = useCart();
 const currency = computed(() => cartGetters.getCurrency(cart.value) || (useAppConfig().fallbackCurrency as string));
 
-console.log(currency.value)
+// for inkl/exkl VAT
+const { showNetPrices } = useCart();
+
 </script>

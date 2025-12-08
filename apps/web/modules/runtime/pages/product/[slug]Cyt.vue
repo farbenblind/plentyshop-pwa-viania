@@ -17,17 +17,36 @@
             </div>
           </div>
         </div>
-        <div class="max-w-screen-3xl mx-auto p-[20px] xl:py-[80px]">
+        <div class="max-w-screen-3xl mx-auto p-[20px] xl:pt-[60px]" v-if="reviewGetters.getTotalReviews(countsProductReviews) > 0">
           <ReviewsAccordion
             v-if="product"
             :product="product"
             :total-reviews="reviewGetters.getTotalReviews(countsProductReviews)"
           />
         </div>
+        
+        <div>
+          <div class="max-w-screen-3xl mx-auto p-[20px] xl:pt-[80px]">
+            <h2 class="pb-[30px] lg:pb-[50px] font-semibold text-[14px] xl:text-[18px] text-center lg:text-left">
+              <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">{{ t('Product.recommendedProducts') }}</span>
+            </h2>
+          </div>
+          <div class="bg-[#F5EFEF]">
+            <section ref="recommendedSection" class="max-w-screen-3xl mx-auto p-[20px] xl:py-[80px] [&>.items-center+.typography-text-xs]:hidden">
+              <component
+                v-if="showRecommended"
+                :is="RecommendedProductsAsync"
+                :category-id="productGetters.getCategoryIds(product)[0] ?? ''"
+              />
+            </section>
+          </div>
+        </div>
+
+        <code v-if="crossSellingItemsSimilar?.products?.length > 1"><p>crossSellingItemsSimilar:</p>{{ crossSellingItemsSimilar }}</code>
       </NarrowContainer>
   
       <UiReviewModal />
-      <ProductLegalDetailsDrawer v-if="open" :product="product" />
+      <ProductLegalDetailsDrawer v-if="open" :product="product" class="[&_aside]:!border-0 [&_*]:!text-[14px] [&_header]:!px-[20px] [&_header]:!py-[5px] [&_header]:!bg-black [&_[role='tabpanel']>.py-2.px-4]:!p-0 [&_button]:!rounded-[0]" />
     </NuxtLayout>
   </template>
   
@@ -169,6 +188,16 @@ const observeRecommendedSection = () => {
     observer.observe(recommendedSection.value);
   }
 };
+
+// for later xseller
+const { fetchProducts: fetchCrossSelling, data: crossSellingItemsSimilar } =
+  useProducts(productId + "Similar");
+
+fetchCrossSelling({
+  itemId: productGetters.getItemId(product.value),
+  type: "cross_selling",
+  crossSellingRelation: "Similar",
+});
 
 onNuxtReady(() => observeRecommendedSection());
 </script>
