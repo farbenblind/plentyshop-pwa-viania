@@ -30,9 +30,9 @@
           <button
             type="button"
             :class="[
-              'px-4 py-3 md:w-12 rounded-md text-neutral-500',
+              'px-4 py-3 md:w-12 rounded-md text-black border border-[#E5E5E5]',
               {
-                'hover:bg-black hover:text-primary-800 active:bg-black active:text-white': !disabled,
+                'hover:bg-black hover:text-white active:bg-black active:text-white': !disabled,
               },
             ]"
             :aria-current="pagination.selectedPage === 1 || disabled"
@@ -55,9 +55,9 @@
           <button
             type="button"
             :class="[
-              'px-4 py-3 md:w-12 rounded-md',
+              'px-4 py-3 md:w-12 rounded-md text-black border border-[#E5E5E5]',
               {
-                'hover:bg-black hover:text-primary-800 active:bg-black active:text-white': !disabled,
+                'hover:bg-black hover:text-white active:bg-black active:text-white': !disabled,
               },
             ]"
             :aria-current="pagination.endPage - 1 === pagination.selectedPage"
@@ -101,7 +101,7 @@
           <button
             type="button"
             :class="[
-              'px-4 py-3 md:w-12 rounded-md',
+              'px-4 py-3 md:w-12 rounded-md text-black border border-[#E5E5E5]',
               {
                 'hover:bg-black hover:text-white active:bg-black active:text-white': !disabled,
               },
@@ -131,7 +131,7 @@
           <button
             type="button"
             :class="[
-              'px-4 py-3 md:w-12 rounded-md text-neutral-500',
+              'px-4 py-3 md:w-12 rounded-md text-black border border-[#E5E5E5]',
               {
                 'hover:bg-black hover:text-white active:bg-black active:text-white': !disabled,
               },
@@ -165,6 +165,7 @@
 
 <script setup lang="ts">
 import { SfIconChevronLeft, SfIconChevronRight, usePagination } from '@storefront-ui/vue';
+import { nextTick } from 'vue';
 import type { PaginationProps } from '~/components/ui/Pagination/types';
 
 const { updatePage } = useCategoryFilter();
@@ -196,6 +197,10 @@ const getAriaLabel = (isCurrent: boolean, page: number) => {
 const setPage = (page: number) => {
   updatePage(page.toString(), currentPageName);
   pagination.value.setPage(page);
+  
+  nextTick(() => {
+    window.scrollTo(0, 0);
+  });
 };
 
 const previousPage = () => {
