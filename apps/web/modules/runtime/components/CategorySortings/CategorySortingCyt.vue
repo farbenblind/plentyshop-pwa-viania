@@ -1,13 +1,13 @@
 <template>
   <div class="w-full md:flex items-center py-[20px] md:py-0 md:ml-auto md:w-auto" data-testid="category-sorting">
-    <div class="text-[14px] pb-2 pl-[20px] pt-[10px] font-bold select-none whitespace-nowrap border-t border-[#E5E5E5] md:border-0 md:p-0">
-      {{ t('sortBy') }}
+    <div class="text-[14px] pb-2 pl-[20px] pt-[10px] font-semibold select-none whitespace-nowrap border-t border-[#E5E5E5] md:border-0 md:p-0">
+      {{ t('common.labels.sortBy') }}:
     </div>
     <div class="pl-[20px]">
-      <select id="sortBy" v-model="selected" :aria-label="t('sortBy')" class="text-[14px]">
-        <option v-if="selectionModeCompact" value="" disabled hidden>{{ t('sortBy') }}</option>
+      <select id="sortBy" v-model="selected" :aria-label="t('common.labels.sortBy')" class="text-[14px]">
+        <option v-if="selectionModeCompact" value="" disabled hidden>{{ t('common.labels.sortBy') }}:</option>
         <option v-for="option in options" :key="option" :value="option">
-          {{ t(`sortType.${option}`) }}
+          {{ t(`category.sorting.${option}`) }}
         </option>
       </select>
     </div>
@@ -37,7 +37,6 @@ import { isPageOfType } from '~/utils/pathHelper';
 
 const props = defineProps<{ selectionModeCompact?: boolean }>();
 const { updateSorting } = useCategoryFilter();
-const { t } = useI18n();
 const { getJsonSetting: availableSortingOptions } = useSiteSettings('availableSortingOptions');
 const { getSetting: defaultSortingSearch } = useSiteSettings('defaultSortingSearch');
 const { getSetting: defaultSortingOption } = useSiteSettings('defaultSortingOption');

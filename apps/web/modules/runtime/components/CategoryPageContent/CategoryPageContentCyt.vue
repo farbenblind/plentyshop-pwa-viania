@@ -13,7 +13,7 @@
   </div>
   <div class="max-w-screen-3xl mx-auto px-[20px]">
     <div class="flex items-center gap-[30px] md:relative md:z-[1]" v-if="products?.length">
-      <span class="font-bold lg:font-normal text-[14px] mr-auto md:mr-0">{{ totalProducts }}&nbsp;{{ t('products')}}</span>
+      <span class="font-bold lg:font-normal text-[14px] mr-auto md:mr-0">{{ totalProducts }}&nbsp;{{ t('common.labels.products')}}</span>
       <span class="flex gap-[10px] switcher" v-if="viewport.isLessThan('md')">
         <svg id="col2" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><g transform="translate(-345 -239)"><g transform="translate(345 239)" fill="none" stroke="#000" stroke-width="1"><rect width="15" height="15" stroke="none"/><rect x="0.5" y="0.5" width="14" height="14" fill="none"/></g><line y2="14" transform="translate(352.5 239.5)" fill="none" stroke="#000" stroke-width="1"/><line x2="14" transform="translate(345.5 246.5)" fill="none" stroke="#000" stroke-width="1"/></g></svg>
         <svg id="col1" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><g fill="none" stroke="#000" stroke-width="1"><rect width="15" height="15" stroke="none"/><rect x="0.5" y="0.5" width="14" height="14" fill="none"/></g></svg>
@@ -24,6 +24,12 @@
         </NuxtLazyHydrate>
       </CategorySidebar>
     </div>
+
+    <template v-if="productsCatalog.facets && facetGetters.hasFilters(productsCatalog.facets)">
+      <SelectedFilters :facets="productsCatalog.facets" />
+    </template>
+
+
     <section
       v-if="products?.length"
       class="grid grid-cols-1 2xs:grid-cols-2 gap-[10px] sm:gap-[20px] sm:gap-y-[40px] md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 pt-[30px] 2xl:pt-[100px]" 
@@ -73,7 +79,7 @@
   </div>
   <NarrowContainer class="mb-20 px-4 md:px-0" data-testid="category-layout">
     <div class="md:flex gap-6" data-testid="category-page-content">
-      <UiButton variant="tertiary" class="md:hidden bg-black !text-white !text-[14px] fixed bottom-[40px] right-[20px] sm:right-[20%] left-[20px] sm:left-[20%] z-[2] hover:!bg-black !rounded-[5px]" @click="open">
+      <UiButton variant="tertiary" class="md:hidden bg-black !text-white !text-[14px] fixed bottom-[20px] right-[20px] sm:right-[20%] left-[20px] sm:left-[20%] z-[2] hover:!bg-black !rounded-[5px]" @click="open">
         <template #prefix>
           <svg xmlns="http://www.w3.org/2000/svg" width="18.001" height="16" viewBox="0 0 18.001 16"><g transform="translate(0.001)"><circle cx="3" cy="3" r="3" transform="translate(3.51 9.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><line x1="3.02" transform="translate(0.5 12.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><line x2="7.853" transform="translate(9.648 12.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><circle cx="3" cy="3" r="3" transform="translate(8.49 0.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><line x2="3.02" transform="translate(14.48 3.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><line x1="7.853" transform="translate(0.499 3.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g></svg>
         </template>
@@ -110,15 +116,13 @@
 </style>
 
 <script setup lang="ts">
-import { productGetters, productImageGetters } from '@plentymarkets/shop-api';
+import { productGetters, productImageGetters, facetGetters } from '@plentymarkets/shop-api';
 import { SfIconTune, useDisclosure, SfLink } from '@storefront-ui/vue';
 import type { CategoryPageContentProps } from '~/components/CategoryPageContent/types';
-import { paths } from '~/utils/paths';
 
+const { data: productsCatalog } = useProducts();
 const { title, totalProducts, itemsPerPage = 24, products = [] } = defineProps<CategoryPageContentProps>();
 
-const { t } = useI18n();
-const localePath = useLocalePath();
 const { getFacetsFromURL } = useCategoryFilter();
 const { addModernImageExtension } = useModernImage();
 

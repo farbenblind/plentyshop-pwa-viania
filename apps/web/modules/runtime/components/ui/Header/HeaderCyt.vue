@@ -1,5 +1,7 @@
 <template>
-  <MegaMenu :categories="categoryTree"></MegaMenu>
+  <div :class="{ 'sticky top-0 bg-white z-[10] animate-slide-down is-slim-header border-b border-[#e5e5e5] [&_nav>ul]:pt-0 [&_nav>ul>li>a>span]:pb-[20px] [&_nav>a]:pb-[20px] [&_nav>span]:pb-[20px]': isSlimHeader }">
+    <MegaMenu :categories="categoryTree" :isSlimHeader="isSlimHeader"></MegaMenu>
+  </div>
 
   <UiModal
     v-if="viewport.isGreaterOrEquals('md') && isAuthenticationOpen"
@@ -24,6 +26,21 @@
 </template>
 
 <style>
+.animate-slide-down {
+  animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 #__nuxt {
   > div {
     width: 100% !important;
@@ -90,4 +107,30 @@ const navigateToLogin = () => {
     openAuthentication();
   }
 };
+
+// sticky header
+const isSlimHeader = ref(false);
+let lastScrollY = 0;
+
+const handleScroll = () => {
+  const currentScrollY = window.scrollY;
+  const isScrollingUp = currentScrollY < lastScrollY;
+  
+  // Show sticky header when scrolled > 250px AND scrolling up
+  if (currentScrollY > 250 && isScrollingUp) {
+    isSlimHeader.value = true;
+  } else {
+    isSlimHeader.value = false;
+  }
+  
+  lastScrollY = currentScrollY;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true });
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>

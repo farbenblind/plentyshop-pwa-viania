@@ -5,7 +5,10 @@
           <div class="max-w-screen-3xl mx-auto p-[20px] xl:py-[80px]">
             <div class="flex flex-col gap-[30px] xl:grid xl:grid-cols-[auto_520px] xl:gap-[80px]">
               <div class="left xl:min-w-[0] xl:self-start xl:sticky xl:top-[40px]">              
-                <Gallery :images="addModernImageExtensionForGallery(productGetters.getGallery(product))" />
+                <Gallery
+                  :images="addModernImageExtensionForGallery(productGetters.getGallery(product))" 
+                  :product="product"
+                />
               </div>              
               <div class="right">
                 <div class="drift-zoom-image relative xl:sticky xl:top-[40px]">
@@ -56,7 +59,6 @@ import type { Product } from '@plentymarkets/shop-api';
 import { productGetters, reviewGetters, categoryTreeGetters } from '@plentymarkets/shop-api';
 
 const route = useRoute();
-const { t } = useI18n();
 const { setCurrentProduct } = useProducts();
 
 const { setProductMetaData, setProductRobotsMetaData, setProductCanonicalMetaData } = useStructuredData();

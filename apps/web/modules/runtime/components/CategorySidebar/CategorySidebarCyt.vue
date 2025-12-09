@@ -17,7 +17,7 @@
     >
       <div class="h-full md:flex md:flex-grow md:items-baseline md:gap-[30px]">
         <div class="px-[20px] py-[10px] flex justify-between items-center" v-if="viewport.isLessThan('md')">
-          <UiButton variant="tertiary" class="!text-black !bg-white !hover:bg-white !p-0 ml-auto" :aria-label="t('closeListSettings')" @click="$emit('close')">
+          <UiButton variant="tertiary" class="!text-black !bg-white !hover:bg-white !p-0 ml-auto" :aria-label="t('common.labels.listSettings')" @click="$emit('close')">
             <template #prefix>
               <SfIconClose />
             </template>
@@ -26,7 +26,7 @@
         <slot class="overflow-y-auto md:overflow-y-visible py-4 md:p-0" />
         <div class="px-[20px] flex flex-wrap justify-between md:border-0 gap-3 border-t border-[#E5E5E5] pt-[20px] md:hidden">
           <UiButton class="!bg-black whitespace-nowrap flex flex-1" variant="primary" @click="$emit('close')">
-            {{ t('showProducts') }}
+            {{ t('common.actions.showProducts') }}
           </UiButton>
         </div>
       </div>
@@ -38,7 +38,6 @@
 import { SfDrawer, SfIconClose } from '@storefront-ui/vue';
 import type { CategorySidebarEmits, CategorySidebarProps } from '~/components/CategorySidebar/types';
 
-const { t } = useI18n();
 const viewport = useViewport();
 
 defineProps<CategorySidebarProps>();

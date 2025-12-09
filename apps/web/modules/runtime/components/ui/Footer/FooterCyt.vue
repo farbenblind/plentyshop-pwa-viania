@@ -46,8 +46,8 @@
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
               <li><NuxtLink to="#">{{ t('Footer.sizeTable') }}</NuxtLink></li>
               <li><NuxtLink to="#">{{ t('Footer.washInstructions') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.cancellationRights)">{{ t('categories.legal.subcategories.cancellationRights') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('categories.legal.subcategories.privacyPolicy') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.cancellationRights)">{{ t('legal.cancellationRights') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('legal.privacyPolicy') }}</NuxtLink></li>
             </ul>
           </div>
 
@@ -55,11 +55,11 @@
             <input type="checkbox" id="my-viania-footer">
             <label for="my-viania-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('Footer.Unternehmen') }}</label>
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
-              <li><NuxtLink to="#">{{ t('categories.about.subcategories.aboutUs') }}</NuxtLink></li>
-              <li><NuxtLink to="#">{{ t('categories.services.subcategories.contact') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('categories.legal.subcategories.legalDisclosure') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('termsAndConditions') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.declarationOfAccessibility)">{{ t('categories.legal.subcategories.declarationOfAccessibility') }}</NuxtLink></li>
+              <li><NuxtLink to="#">{{ t('Footer.about') }}</NuxtLink></li>
+              <li><NuxtLink to="#">{{ t('contact.label') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('legal.legalDisclosure') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('legal.termsAndConditions') }}</NuxtLink></li>
+              <li><NuxtLink :to="localePath(paths.declarationOfAccessibility)">{{ t('legal.declarationOfAccessibility') }}</NuxtLink></li>
             </ul>
           </div>
         </div>
@@ -88,10 +88,10 @@
         />
       </div>
       <div class="mini-links xl:hidden text-center gap-[10px] flex flex-wrap pt-[40px] justify-center">
-        <NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('categories.legal.subcategories.legalDisclosure') }}</NuxtLink>
-        <NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('termsAndConditions') }}</NuxtLink>
-        <NuxtLink :to="localePath(paths.cancellationRights)">{{ t('categories.legal.subcategories.cancellationRights') }}</NuxtLink>
-        <NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('categories.legal.subcategories.privacyPolicy') }}</NuxtLink>
+        <NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('legal.legalDisclosure') }}</NuxtLink>
+        <NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('legal.termsAndConditions') }}</NuxtLink>
+        <NuxtLink :to="localePath(paths.cancellationRights)">{{ t('legal.cancellationRights') }}</NuxtLink>
+        <NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('legal.privacyPolicy') }}</NuxtLink>
       </div>
 
       <div class="copy text-center text-[12px] pt-[20px] xl:pt-[40px] 2xl:text-left 2xl:flex 2xl:flex-wrap">
@@ -99,11 +99,11 @@
           <sup>*</sup>
           <i18n-t keypath="Footer.copyRight.1">
             <template #inclExcl>
-              {{ showNetPrices ? t('itemExclVAT') : t('itemInclVAT') }}
+              {{ showNetPrices ? t('product.priceExclVAT') : t('product.priceInclVAT') }}
             </template>
             <template #Versandkosten>
               <NuxtLink :to="localePath(paths.shipping)" class="font-normal">
-                {{ $t('delivery') }}
+                {{ $t('common.labels.delivery') }}
               </NuxtLink>
             </template>
           </i18n-t>
@@ -213,7 +213,6 @@ import { cartGetters } from '@plentymarkets/shop-api';
 const customViewport = useCustomViewport()
 
 const viewport = useViewport();
-const { t } = useI18n();
 const localePath = useLocalePath();
 
 const storename: string = useRuntimeConfig().public.storename;

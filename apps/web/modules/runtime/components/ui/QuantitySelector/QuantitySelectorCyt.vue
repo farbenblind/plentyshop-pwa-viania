@@ -3,7 +3,7 @@
     <div class="grid grid-cols-[auto_1fr_auto] border border-color-[#E5E5E5] rounded-[5px] h-full w-full bg-white">
       <SfTooltip
         v-if="count <= minValue"
-        :label="t('minimumOrderQuantity', minValue)"
+        :label="t('product.minimumQuantity', { count: minValue })"
         placement="top"
         :show-arrow="true"
         class="flex"
@@ -14,7 +14,7 @@
           square
           class="rounded-r-none"
           :aria-controls="inputId"
-          :aria-label="t('quantitySelectorDecrease')"
+          :aria-label="t('product.decreaseQuantity')"
           data-testid="quantity-selector-decrease-button"
           @click="dec()"
         >
@@ -28,7 +28,7 @@
         square
         class="rounded-r-none"
         :aria-controls="inputId"
-        :aria-label="t('quantitySelectorDecrease')"
+        :aria-label="t('product.decreaseQuantity')"
         data-testid="quantity-selector-decrease-button"
         @click="dec()"
       >
@@ -44,7 +44,7 @@
         :max="maxValue"
         data-testid="quantity-selector-input"
         class="h-12 w-full text-[14px]"
-        :aria-label="t('quantitySelector')"
+        :aria-label="t('common.labels.quantitySelector')"
         :disabled="disabled"
         @input="handleOnChange"
       />
@@ -54,7 +54,7 @@
         square
         class="rounded-l-none"
         :aria-controls="inputId"
-        :aria-label="t('quantitySelectorIncrease')"
+        :aria-label="t('product.increaseQuantity')"
         data-testid="quantity-selector-increase-button"
         @click="inc()"
       >
@@ -71,7 +71,6 @@ import { useCounter } from '@vueuse/core';
 import type { QuantitySelectorProps } from '~/components/ui/QuantitySelector/types';
 
 const emit = defineEmits(['changeQuantity']);
-const { t } = useI18n();
 
 const {
   value = 1,

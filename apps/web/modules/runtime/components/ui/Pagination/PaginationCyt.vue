@@ -1,13 +1,13 @@
 <template>
-  <nav
+  <nav v-if="pagination.totalPages > 1"
     class="flex justify-between items-end pt-[30px]"
     role="navigation"
-    :aria-label="t('pagination')"
+    :aria-label="t('common.labels.pagination')"
     data-testid="pagination"
   >
     <UiButton
       size="lg"
-      :aria-label="t('prevAriaLabel')"
+      :aria-label="t('common.navigation.previousAriaLabel')"
       :disabled="pagination.selectedPage <= 1 || disabled"
       variant="tertiary"
       class="gap-3"
@@ -17,7 +17,7 @@
       <template #prefix>
         <SfIconChevronLeft />
       </template>
-      <span class="hidden sm:inline-flex">{{ t('prev') }}</span>
+      <span class="hidden sm:inline-flex">{{ t('common.actions.previous') }}</span>
     </UiButton>
     <ul class="flex justify-center gap-[10px]">
       <li v-if="!pagination.pages.includes(1)">
@@ -133,7 +133,7 @@
             :class="[
               'px-4 py-3 md:w-12 rounded-md text-neutral-500',
               {
-                'hover:bg-black hover:text-primary-800 active:bg-black active:text-white': !disabled,
+                'hover:bg-black hover:text-white active:bg-black active:text-white': !disabled,
               },
             ]"
             :aria-current="pagination.totalPages === pagination.selectedPage"
@@ -148,14 +148,14 @@
     </ul>
     <UiButton
       size="lg"
-      :aria-label="t('nextAriaLabel')"
+      :aria-label="t('common.navigation.nextAriaLabel')"
       :disabled="pagination.selectedPage >= pagination.totalPages || disabled"
       variant="tertiary"
       class="gap-3"
       data-testid="pagination-next"
       @click="nextPage"
     >
-      <span class="hidden sm:inline-flex">{{ t('next') }}</span>
+      <span class="hidden sm:inline-flex">{{ t('common.actions.next') }}</span>
       <template #suffix>
         <SfIconChevronRight />
       </template>
@@ -168,7 +168,6 @@ import { SfIconChevronLeft, SfIconChevronRight, usePagination } from '@storefron
 import type { PaginationProps } from '~/components/ui/Pagination/types';
 
 const { updatePage } = useCategoryFilter();
-const { t } = useI18n();
 
 const {
   currentPage,
@@ -191,7 +190,7 @@ const pagination = computed(() =>
 );
 
 const getAriaLabel = (isCurrent: boolean, page: number) => {
-  return t(isCurrent ? 'currentPage' : 'goToPage', { page });
+  return t(isCurrent ? 'common.navigation.currentPage' : 'common.navigation.goToPage', { page });
 };
 
 const setPage = (page: number) => {

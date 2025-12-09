@@ -78,6 +78,18 @@ export default defineNuxtModule({
       filePath: resolve('./runtime/components/NavChildren/NavChildren.vue'),
     });
 
+    await addComponent({
+        name: 'SelectedFilters',
+        filePath: resolve('./runtime/components/Filter/SelectedFilters.vue'),
+        global: true,
+    });
+
+    await addComponent({
+        name: 'SelectedFilter',
+        filePath: resolve('./runtime/components/Filter/SelectedFilter.vue'),
+        global: true,
+    });
+
     // customJS (not needed at the moment)
     // addPlugin(resolve('./runtime/plugins/customJS'));
 

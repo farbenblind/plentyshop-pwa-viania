@@ -55,10 +55,10 @@
         <div class="prices-badge">
           <Price :price="priceWithProperties" :crossed-price="showSalePrice ? crossedPrice : null" />
           <div class="text-[12px]">
-            <span>{{ showNetPrices ? t('itemExclVAT') : t('itemInclVAT') }}&nbsp;</span>
-            <i18n-t keypath="excludedShipping" scope="global">
+            <span>{{ showNetPrices ? t('product.priceExclVAT') : t('product.priceInclVAT') }}&nbsp;</span>
+            <i18n-t keypath="shipping.excludedLabel" scope="global">
               <template #shipping>
-                <SfLink :href="localePath(paths.shipping)" target="_blank" class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded">{{ $t('delivery') }}</SfLink>
+                <SfLink :href="localePath(paths.shipping)" target="_blank" class="focus:outline focus:outline-offset-2 focus:outline-2 outline-secondary-600 rounded">{{ $t('common.labels.delivery') }}</SfLink>
               </template>
             </i18n-t>
           </div>
@@ -100,7 +100,7 @@
             <template #prefix>
               <div v-if="!loading" class="flex row items-center gap-[10px]">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-auto xl:w-[22px]" viewBox="0 0 18 16"><g transform="translate(-1749.5 -84.5)"><g transform="translate(1750 85)"><path d="M10.5,7.25A3.5,3.5,0,0,1,7,3.75v-.5H8v.5a2.5,2.5,0,0,0,5,0v-.5h1v.5A3.5,3.5,0,0,1,10.5,7.25Z" transform="translate(-2 -1.313)" fill="#fff"/><path d="M15.182,16H2.818A2.788,2.788,0,0,1,0,13.25V.5A.5.5,0,0,1,.5,0h17a.5.5,0,0,1,.5.5V13.25A2.788,2.788,0,0,1,15.182,16ZM1,1V13.25A1.787,1.787,0,0,0,2.818,15H15.182A1.787,1.787,0,0,0,17,13.25V1Z" transform="translate(-0.5 -0.5)" fill="#fff"/></g></g></svg>
-                {{ t('addToCart') }}
+                {{ t('common.actions.addToCart') }}
               </div>
               <div v-else>
                 <SfLoaderCircular size="sm" />
@@ -127,7 +127,7 @@
       </div>
 
       <ul class="pt-[20px] text-[12px] xl:text-[14px]">
-        <li><span class="font-bold">{{ t('content') }}:</span> {{ product.unit.content }} {{ product.unit.names.name }}</li>
+        <li><span class="font-bold">{{ t('common.labels.content') }}:</span> {{ product.unit.content }} {{ product.unit.names.name }}</li>
         <li><span class="font-bold">{{ t('Product.itemNo') }}:</span> {{ product.variation.model }}</li>
       </ul>
 
@@ -182,7 +182,7 @@
         </details>
         <details class="border-t border-b mt-[-1px] border-black py-[12px] xl:py-[15px] border-black" @click="openDrawer()">
           <summary class="flex justify-between items-center cursor-pointer text-[14px] list-none transition group-open:font-semibold">
-            {{ t('productLegalDetailsHeader') }}
+            {{ t('product.legalDetails') }}
             <span class="transition-transform group-open:rotate-45 text-lg xl:text-xl leading-none">+</span>
           </summary>
         </details>
@@ -272,7 +272,6 @@ const {
 } = useValidatorAggregator('attributes');
 const { clear, send } = useNotification();
 const { addToCart, loading } = useCart();
-const { t } = useI18n();
 const quantitySelectorValue = ref(productGetters.getMinimumOrderQuantity(props?.product));
 const { isWishlistItem } = useWishlist();
 const { openQuickCheckout } = useQuickCheckout();
@@ -320,12 +319,12 @@ const basePriceSingleValue = computed(
 const handleValidationErrors = (): boolean => {
   send({
     message: [
-      t('errorMessages.missingOrWrongProperties'),
+      t('error.missingOrWrongProperties'),
       '',
       ...invalidAttributeFields.value.map((field) => field.name),
       ...invalidFields.value.map((field) => field.name),
       '',
-      t('errorMessages.pleaseFillOutAllFields'),
+      t('error.pleaseFillOutAllFields'),
     ],
     type: 'negative',
   });
@@ -342,7 +341,7 @@ const handleAddToCart = async (quickCheckout = true) => {
   }
 
   if (!getCombination()) {
-    send({ message: t('productAttributes.notValidVariation'), type: 'negative' });
+    send({ message: t('product.attributes.notValidVariation'), type: 'negative' });
     return false;
   }
 
@@ -388,7 +387,7 @@ const openReviewsAccordion = () => {
 };
 
 const isSalableText = computed(() => (productGetters.isSalable(props?.product) ? '' : t('itemNotAvailable')));
-const isNotValidVariation = computed(() => (getCombination() ? '' : t('productAttributes.notValidVariation')));
+const isNotValidVariation = computed(() => (getCombination() ? '' : t('product.attributes.notValidVariation')));
 const showPayPalButtons = computed(() => Boolean(getCombination()) && productGetters.isSalable(props?.product));
 
 const scrollToReviews = () => {

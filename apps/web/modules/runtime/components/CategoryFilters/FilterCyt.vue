@@ -1,5 +1,5 @@
 <template>
-  <SfAccordionItem v-if="facet" v-model="open">
+  <SfAccordionItem v-if="facet" v-model="open" @mouseleave="open = false" @mouseover="open = true">
     <template #summary>
       <div class="flex items-center gap-[10px] pt-2 pb-2 select-none" v-if="facetGetters.getType(facet) !== 'price'">
         <p class="text-[14px] font-medium">{{ facetGetters.getName(facet) }}</p>
@@ -51,7 +51,6 @@ import type { FilterProps } from '~/components/CategoryFilters/types';
 import type { Filters } from '~/composables';
 
 const { getFacetsFromURL, updateFilters, updatePrices } = useCategoryFilter();
-const { t } = useI18n();
 
 const open = ref(false);
 const props = defineProps<FilterProps>();
@@ -87,6 +86,10 @@ const updateFilter = () => {
 const facetChange = () => updateFilters(models.value);
 
 updateFilter();
+
+const close = () => {
+  open.value = false;
+};
 
 watch(
   () => useNuxtApp().$router.currentRoute.value.query,

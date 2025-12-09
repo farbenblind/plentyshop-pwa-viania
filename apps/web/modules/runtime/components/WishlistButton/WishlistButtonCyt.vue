@@ -2,10 +2,10 @@
   <button
     :aria-label="
       isWishlistItem(variationId)
-        ? t('removeProductFromWishlist', { label: productName })
-        : t('addProductToWishlist', { label: productName })
+        ? t('common.actions.removeProductFromWishlist', { label: productName })
+        : t('common.actions.addProductToWishlist', { label: productName })
     "
-    class="inline-flex self-end !relative"
+    class="inline-flex self-end"
     :disabled="wishlistLoading"
     data-testid="wishlist-trigger"
     @click="onWishlistClick"
@@ -26,7 +26,6 @@ import { SfIconFavorite, SfIconFavoriteFilled, SfLoaderCircular, SfIconClose } f
 import { productGetters } from '@plentymarkets/shop-api';
 
 const { product, quantity = 1, discard = false } = defineProps<WishlistButtonProps>();
-const { t } = useI18n();
 const { isWishlistItem, interactWithWishlist, loading: wishlistLoading } = useWishlist();
 const actionLoading = ref(false);
 

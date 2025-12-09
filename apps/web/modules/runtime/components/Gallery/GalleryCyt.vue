@@ -2,7 +2,7 @@
   <div :class="['max-w-[600px] mx-auto h-full flex scroll-smooth relative xl:gap-[20px] xl:max-w-[100%]', galleryDirClass, galleryGapClass]" data-testid="gallery">
     <div
       ref="mainBox"
-      class="after:block after:pt-[100%] flex-1 relative overflow-hidden w-full"
+      class="after:block after:pt-[100%] flex-1 relative overflow-hidden w-full relative"
       data-testid="gallery-images"
     >
       <Swiper
@@ -51,6 +51,13 @@
           </button>
         </template>
       </Swiper>
+
+      <slot name="wishlistButton">
+        <WishlistButton
+          class="absolute bottom-[20px] right-[20px] z-[2] w-[22px] h-[22px] 2xl:bottom-[40px] 2xl:right-[40px] 2xl:w-[44px] 2xl:h-[44px] [&_svg]:w-[100%] [&_svg]:h-[auto]"
+          :product="$attrs.product as typeof Product"
+        />
+      </slot>
     </div>
 
     <div v-if="hasMoreImages" :class="['xl:relative', thumbContainerClass, isSide ? 'xl:self-stretch' : 'xl:w-full']">
