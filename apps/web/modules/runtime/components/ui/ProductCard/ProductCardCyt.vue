@@ -1,77 +1,60 @@
 <template>
-    <div class="flex flex-col bg-white border-[1px] border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5]" data-testid="product-card">
-      <div class="relative overflow-hidden">
-        <UiBadges
-          :use-tags="useTagsOnCategoryPage"
-          :class="['absolute', isFromWishlist ? 'mx-2' : 'm-2']"
-          :product="product"
-          :use-availability="isFromWishlist"
+  <div class="flex flex-col bg-white border-[1px] border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5]" data-testid="product-card">
+    <div class="relative overflow-hidden">
+      <!--
+      <UiBadges
+        :use-tags="useTagsOnCategoryPage"
+        :class="['absolute', isFromWishlist ? 'mx-2' : 'm-2']"
+        :product="product"
+        :use-availability="isFromWishlist"
+      />
+      -->
+      <SfLink
+        :tag="NuxtLink"
+        rel="preload"
+        :to="productPath"
+        :class="{ 'size-48': isFromSlider }"
+        as="image"
+        class="relative h-0 pb-[100%] block w-full"
+      >
+        <NuxtImg
+          class="absolute top-0 left-0 w-full h-full object-contain"
+          :src="imageUrl"
+          :alt="imageAlt"
+          :title="imageTitle"
+          :loading="lazy && !priority ? 'lazy' : 'eager'"
+          :fetchpriority="priority ? 'high' : 'auto'"
+          :preload="priority || false"
+          :width="getWidth()"
+          :height="getHeight()"
+          data-testid="image-slot"
         />
-  
-        <SfLink
-          :tag="NuxtLink"
-          rel="preload"
-          :to="productPath"
-          :class="{ 'size-48': isFromSlider }"
-          as="image"
-          class="img"
-        >
-          <NuxtImg
-            :src="imageUrl"
-            :alt="imageAlt"
-            :title="imageTitle"
-            :loading="lazy && !priority ? 'lazy' : 'eager'"
-            :fetchpriority="priority ? 'high' : 'auto'"
-            :preload="priority || false"
-            :width="getWidth()"
-            :height="getHeight()"
-            data-testid="image-slot"
-          />
-        </SfLink>
-      </div>
-      <div class="flex flex-col flex-auto text-[14px] md:text-[16px] lg:text-[18px] leading-[1.25] p-[10px] sm:p-[20px]">
-        <!-- variation property "kollektion" -->
-        <div v-if="hasProperty(4, 47)" class="text-[12px] font-semibold pb-[5px]">
-          {{ getPropertyValue(4, 47).split(",")[0] }}
-        </div>
-
-        <SfLink :tag="NuxtLink" :to="productPath" class="no-underline font-light" data-testid="productcard-name">{{ name }}</SfLink>
-        <div class="flex items-start mt-auto gap-[10px] pt-[5px] pb-[10px]">
-          <span class="block font-bold" data-testid="product-card-vertical-price">
-            <span class="font-semibold">{{ format(price) }}</span>
-          </span>
-          <span v-if="crossedPrice && showSalePrice" class="line-through">
-            {{ format(crossedPrice) }}
-          </span>
-        </div>
-        <slot name="wishlistButton">
-          <WishlistButton
-            class="text-right"
-            :product="product"
-          />
-        </slot>
-      </div>
+      </SfLink>
     </div>
-  </template>
+    <div class="flex flex-col flex-auto text-[14px] md:text-[16px] lg:text-[18px] leading-[1.25] p-[10px] sm:p-[20px]">
+      <!-- variation property "kollektion" -->
+      <div v-if="hasProperty(4, 47)" class="text-[12px] font-semibold pb-[5px]">
+        {{ getPropertyValue(4, 47).split(",")[0] }}
+      </div>
 
-<style scoped>
-.img {
-  position: relative;
-  height: 0;
-  padding-bottom: 100%;
-  display: block;
-  width: 100%;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-</style>
+      <SfLink :tag="NuxtLink" :to="productPath" class="no-underline font-light" data-testid="productcard-name">{{ name }}</SfLink>
+      <div class="flex items-start mt-auto gap-[10px] pt-[5px] pb-[10px]">
+        <span class="block font-bold" data-testid="product-card-vertical-price">
+          <span class="font-semibold">{{ format(price) }}</span>
+        </span>
+        <span v-if="crossedPrice && showSalePrice" class="line-through">
+          {{ format(crossedPrice) }}
+        </span>
+      </div>
+      <slot name="wishlistButton">
+        <WishlistButton
+          class="text-right"
+          :product="product"
+        />
+      </slot>
+    </div>
+  </div>
+</template>
   
 <script setup lang="ts">
 import { productGetters, productImageGetters } from '@plentymarkets/shop-api';

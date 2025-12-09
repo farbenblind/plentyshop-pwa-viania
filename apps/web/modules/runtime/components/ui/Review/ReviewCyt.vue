@@ -26,11 +26,12 @@
       </span>
     </div>
 
-    <p class="relative m-0 bg-white border border-[#E5E5E5] px-[15px] py-[10px] rounded-[10px] flex-grow
+    <p :class="{'opacity-0 !after:hidden !before:hidden !p-0' : reviewGetters.getReviewMessage(reviewItem).trim() === '' }" 
+      class="relative m-0 bg-white border border-[#E5E5E5] px-[15px] py-[10px] rounded-[10px] flex-grow
     after:content-[''] after:absolute after:left-[21px] after:-bottom-[9px]
     after:border-[10px] after:border-transparent after:border-t-white
     before:content-[''] before:absolute before:left-[20px] before:-bottom-[11px]
-    before:border-[11px] before:border-transparent before:border-t-[#E5E5E5] after:mb-[-10px] before:mb-[-10px]">{{ reviewGetters.getReviewMessage(reviewItem) }}</p>
+    before:border-[11px] before:border-transparent before:border-t-[#E5E5E5] after:mb-[-10px] before:mb-[-10px]">{{ reviewGetters.getReviewMessage(reviewItem).trim() }}</p>
 
     <div class="pt-[10px] flex space-x-1">
        <span class="flex gap-[5px] items-center font-semibold" data-testid="review-item-authorName">

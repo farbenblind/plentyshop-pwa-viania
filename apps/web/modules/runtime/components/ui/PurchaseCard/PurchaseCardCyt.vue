@@ -19,7 +19,7 @@
           @click="scrollToReviews"
           show-arrow
           placement="top"
-          :label="reviewGetters.getTotalReviews(reviewAverage) > 1 ? t('showAllReviews') : t('Product.oneReview')"
+          :label="reviewGetters.getTotalReviews(reviewAverage) > 1 ? t('product.showAllReviews') : t('Product.oneReview')"
           class="flex items-center gap-[10px] cursor-pointer"
         >
         <div class="flex gap-[0] text-[#FCC72F]">

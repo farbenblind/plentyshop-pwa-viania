@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'sticky top-0 bg-white z-[10] animate-slide-down is-slim-header border-b border-[#e5e5e5] [&_header]:pb-0 [&_nav>ul]:pt-0 [&_nav>ul>li>a>span]:pb-[20px] [&_nav>a]:pb-[20px] [&_nav>span]:pb-[20px]': isSlimHeader }">
+  <div :class="{ 'sticky top-0 bg-white z-[10] animate-slide-down is-slim-header border-b border-[#e5e5e5] lg:[&_header]:pb-0 lg:[&_nav>ul]:pt-0 lg:[&_nav>ul>li>a>span]:pb-[20px] lg:[&_nav>a]:pb-[20px] lg:[&_nav>span]:pb-[20px]': isSlimHeader }">
     <MegaMenu :categories="categoryTree" :isSlimHeader="isSlimHeader"></MegaMenu>
   </div>
 
