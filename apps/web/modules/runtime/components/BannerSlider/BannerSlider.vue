@@ -11,29 +11,28 @@
             <NuxtImg v-if="viewport.isLessOrEquals('sm')"
               :class="carouselImgClasses"
               loading="eager"
-              :src="cdnUrl + '/banner/banner1-sm.jpg'"
+              :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
             />
             <NuxtImg v-else
               :class="carouselImgClasses"
               loading="eager"
-              :src="cdnUrl + '/banner/banner1-lg.jpg'"
+              :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
             />
           </NuxtLink>
         </Slide>
 
         <!-- slide 2 -->
-
         <Slide>
             <NuxtLink to="#" :class="carouselLinkClasses">
               <NuxtImg v-if="viewport.isLessOrEquals('sm')"
                 :class="carouselImgClasses"
                 loading="lazy"
-                src="https://placehold.co/800x1200/F5EFEF/fff?text=sm"
+                :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
               />
               <NuxtImg v-else
                 :class="carouselImgClasses"
                 loading="lazy"
-                src="https://placehold.co/2400x1200/F5EFEF/fff?text=lg"
+                :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
               />
             </NuxtLink>
         </Slide>
@@ -44,12 +43,12 @@
               <NuxtImg v-if="viewport.isLessOrEquals('sm')"
                 :class="carouselImgClasses"
                 loading="lazy"
-                src="https://placehold.co/800x1200/F5EFEF/fff?text=sm"
+                :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
               />
               <NuxtImg v-else
                 :class="carouselImgClasses"
                 loading="lazy"
-                src="https://placehold.co/2400x1200/F5EFEF/fff?text=lg"
+                :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
               />
             </NuxtLink>
         </Slide>
@@ -99,7 +98,7 @@ const currentSlide = ref(0);
 const carouselLinkClasses = 'w-full h-0 pb-[150%] md:pb-[50%] relative';
 const carouselImgClasses = 'absolute top-0 left-0 w-full h-full 3xl:rounded-[10px]';
 const carouselArrowClasses = 'absolute z-10 mt-[-30px] top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
-const cdnUrl = 'https://cdn02.plentymarkets.com/w73p32remdlq/frontend/pwa';
+const cdnUrl = 'https://cdn02.plentymarkets.com/w73p32remdlq/frontend';
 
 const carouselConfig = {
   itemsToShow: 1,
@@ -107,7 +106,7 @@ const carouselConfig = {
   wrapAround: true,
   pauseAutoplayOnHover: true,
   transition: 500,
-  slideEffect: 'fade' as const
+  slideEffect: 'slide' as const // 'slide' || 'fade'
 };
 
 const slideTo = (index: number) => {
