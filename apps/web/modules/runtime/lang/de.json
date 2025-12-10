@@ -56,5 +56,9 @@
         "productSafety": "Produktsicherheit",
         "download": "Download",
         "recommendedProducts": "Das könnte Sie auch interessieren"
+    },
+    "BhFinder": {
+        "title": "Finde deinen BH",
+        "callToAction": "Finden"
     }
 }

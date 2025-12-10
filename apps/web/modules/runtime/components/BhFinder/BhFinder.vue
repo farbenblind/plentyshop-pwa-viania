@@ -1,25 +1,27 @@
 <template>
-  <div class="group">
-    <div class="pt-4 pb-8">
-      <h3 class="font-bold mb-4 pt-0">Finde deinen BH</h3>
-      <div class="flex flex-col gap-4 font-body lg:flex-row">
+  <div class="group pt-[60px]">
+    <div class="">
+      <h3 class="font-bold pt-0 text-center lg:text-left text-[14px] sm:text-[18px]">
+        <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">{{ t('BhFinder.title') }}</span>
+      </h3>
+      <div class="flex flex-col gap-[10px] lg:gap-[20px] font-body lg:flex-row pt-[30px] lg:pt-[40px]">
         <template v-for="facet in facets" :key="facet.id">
-          <div v-if="facet && facet.id == 1" class="w-full lg:w-1/4">
-            <SfSelect :key="facet.name" v-model="cup" :placeholder="facet.name">
+          <div v-if="facet && facet.id == 1" :class="selectWrapperClass">
+            <SfSelect :key="facet.name" v-model="cup" :placeholder="facet.name" :class="selectClass">
               <option v-for="{ id, name } in facet.values" :key="id" :value="id + ''">
                 {{ name }}
               </option>
             </SfSelect>
           </div>
-          <div v-if="facet && facet.id == 2 " class="w-full lg:w-1/4">
-            <SfSelect :key="facet.name" v-model="size" :placeholder="facet.name">
+          <div v-if="facet && facet.id == 2 " :class="selectWrapperClass">
+            <SfSelect :key="facet.name" v-model="size" :placeholder="facet.name" :class="selectClass">
               <option v-for="{ id, name } in facet.values" :key="id" :value="id + ''">
                 {{ name }}
               </option>
             </SfSelect>
           </div>
-          <div v-if="facet && facet.id == 4" class="w-full lg:w-1/4">
-            <SfSelect :key="facet.name" v-model="cupColor" :placeholder="facet.name">
+          <div v-if="facet && facet.id == 4" :class="selectWrapperClass">
+            <SfSelect :key="facet.name" v-model="cupColor" :placeholder="facet.name" :class="selectClass">
               <option v-for="{ id, name } in facet.values" :key="id" :value="id + ''">
                 {{ name }}
               </option>
@@ -27,7 +29,7 @@
           </div>
         </template>
         <div class="w-full lg:w-1/4">
-          <UiButton class="w-full" @click="findCup()">Finden</UiButton>
+          <UiButton class="w-full xl:min-h-[50px]" @click="findCup()">{{ t('BhFinder.callToAction') }}</UiButton>
         </div>
       </div>
     </div>
@@ -40,6 +42,9 @@ import { SfSelect } from '@storefront-ui/vue';
 const cup = defineModel('cup', { type: String, default: '' });
 const size = defineModel('size', { type: String, default: '' });
 const cupColor = defineModel('cupColor', { type: String, default: '' });
+
+const selectWrapperClass = 'w-full lg:w-1/4 bg-[#F8F8F8] border border-[#E5E5E5] rounded-[5px]';
+const selectClass = 'border-0 ring-0 xl:min-h-[50px]';
 
 const getFacet = async () => {
   try {

@@ -1,5 +1,5 @@
 <template>
-  <footer data-testid="footer" class="bg-[#F5EFEF]">
+  <footer data-testid="footer" class="bg-[#F5EFEF] mt-[40px] xl:mt-[80px] 4xl:mt-[120px]">
     <div class="max-w-screen-3xl mx-auto py-[40px] px-[20px] text-[14px] xl:py-[60px]">
       <div class="xl:grid xl:grid-cols-[auto_1fr_auto] xl:gap-[100px]">
         <div class="text-center xl:text-left">
