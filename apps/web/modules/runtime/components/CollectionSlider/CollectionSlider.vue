@@ -10,7 +10,7 @@
                 v-model="currentSlide">
                 <!-- slide 1 -->
                 <Slide>
-                    <NuxtLink to="/kollektionen/carola" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2">
+                    <NuxtLink to="/kollektionen/carola" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
                         <div class="relative h-0 pb-[100%]">
                             <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/carola-1.jpg'" loading="lazy" />
                         </div>
@@ -33,7 +33,7 @@
                 </Slide>
                 <!-- slide 2 -->
                 <Slide>
-                    <NuxtLink to="/kollektionen/jessy" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2">
+                    <NuxtLink to="/kollektionen/jessy" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
                         <div class="relative h-0 pb-[100%]">
                             <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/jessy-1.jpg'" loading="lazy" />
                         </div>
@@ -56,7 +56,7 @@
                 </Slide>
                 <!-- slide 3 -->
                 <Slide>
-                    <NuxtLink to="/kollektionen/ava" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2">
+                    <NuxtLink to="/kollektionen/ava" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
                         <div class="relative h-0 pb-[100%]">
                             <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/ava-1.jpg'" loading="lazy" />
                         </div>
@@ -79,7 +79,7 @@
                 </Slide>
                 <!-- slide 4 -->
                 <Slide>
-                    <NuxtLink to="/kollektionen/sally" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2">
+                    <NuxtLink to="/kollektionen/sally" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
                         <div class="relative h-0 pb-[100%]">
                             <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/sally-1.jpg'" loading="lazy" />
                         </div>
