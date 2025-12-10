@@ -1,87 +1,87 @@
 <template>
-  <div class="relative mx-[-20px] 3xl:mx-0">
-      <Carousel v-bind="carouselConfig"
-        class="3xl:overflow-hidden 3xl:rounded-[10px]"
-        ref="carousel"
-        v-model="currentSlide">
+<div class="relative mx-[-20px] 3xl:mx-0">
+    <Carousel v-bind="carouselConfig"
+      class="3xl:overflow-hidden 3xl:rounded-[10px]"
+      ref="carousel"
+      v-model="currentSlide">
 
-        <!-- slide 1 -->
-        <Slide>
-          <NuxtLink to="#" class="w-full h-0 pb-[150%] md:pb-[50%] relative">
+      <!-- slide 1 -->
+      <Slide>
+        <NuxtLink to="#" class="w-full h-0 pb-[150%] md:pb-[50%] relative">
+          <NuxtImg v-if="viewport.isLessOrEquals('sm')"
+            :class="carouselImgClasses"
+            loading="eager"
+            :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
+          />
+          <NuxtImg v-else
+            :class="carouselImgClasses"
+            loading="eager"
+            :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
+          />
+        </NuxtLink>
+      </Slide>
+
+      <!-- slide 2 -->
+      <Slide>
+          <NuxtLink to="#" :class="carouselLinkClasses">
             <NuxtImg v-if="viewport.isLessOrEquals('sm')"
               :class="carouselImgClasses"
-              loading="eager"
+              loading="lazy"
               :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
             />
             <NuxtImg v-else
               :class="carouselImgClasses"
-              loading="eager"
+              loading="lazy"
               :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
             />
           </NuxtLink>
-        </Slide>
+      </Slide>
 
-        <!-- slide 2 -->
-        <Slide>
-            <NuxtLink to="#" :class="carouselLinkClasses">
-              <NuxtImg v-if="viewport.isLessOrEquals('sm')"
-                :class="carouselImgClasses"
-                loading="lazy"
-                :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
-              />
-              <NuxtImg v-else
-                :class="carouselImgClasses"
-                loading="lazy"
-                :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
-              />
-            </NuxtLink>
-        </Slide>
+      <!-- slide 3 -->
+      <Slide>
+          <NuxtLink to="#" :class="carouselLinkClasses">
+            <NuxtImg v-if="viewport.isLessOrEquals('sm')"
+              :class="carouselImgClasses"
+              loading="lazy"
+              :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
+            />
+            <NuxtImg v-else
+              :class="carouselImgClasses"
+              loading="lazy"
+              :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
+            />
+          </NuxtLink>
+      </Slide>
+    </Carousel>
 
-        <!-- slide 3 -->
-        <Slide>
-            <NuxtLink to="#" :class="carouselLinkClasses">
-              <NuxtImg v-if="viewport.isLessOrEquals('sm')"
-                :class="carouselImgClasses"
-                loading="lazy"
-                :src="cdnUrl + '/pwa/banner/banner1-sm.jpg'"
-              />
-              <NuxtImg v-else
-                :class="carouselImgClasses"
-                loading="lazy"
-                :src="cdnUrl + '/pwa/banner/banner1-lg.jpg'"
-              />
-            </NuxtLink>
-        </Slide>
-      </Carousel>
+    <!-- custom pagination -->
+    <div class="flex justify-center gap-2 pt-[20px] md:pt-[40px]">
+      <button
+        v-for="(slide, index) in sliderCount"
+        :key="index"
+        @click="slideTo(index)"
+        :class="[
+          'h-[2px] md:h-[3px] rounded-full transition-all duration-[500ms]',
+          currentSlide === index 
+            ? 'bg-black w-[30px] md:w-[40px]'
+            : 'w-[20px] md:w-[30px] bg-[#E5E5E5] hover:bg-black'
+        ]"
+        :aria-label="`Springe zu Slider ${index + 1}`"
+      />
+    </div>
 
-      <!-- custom pagination -->
-      <div class="flex justify-center gap-2 pt-[20px] md:pt-[40px]">
-        <button
-          v-for="(slide, index) in sliderCount"
-          :key="index"
-          @click="slideTo(index)"
-          :class="[
-            'h-[2px] md:h-[3px] rounded-full transition-all duration-[500ms]',
-            currentSlide === index 
-              ? 'bg-black w-[30px] md:w-[40px]'
-              : 'w-[20px] md:w-[30px] bg-[#E5E5E5] hover:bg-black'
-          ]"
-          :aria-label="`Springe zu Slider ${index + 1}`"
-        />
-      </div>
+    <!-- custom arrows -->
+    <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.prev()" :class="carouselArrowClasses + ' left-0 xl:left-6 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]'">
+      <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
+    </button>
+    <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.next()" :class="carouselArrowClasses + ' right-0 xl:right-6 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180'">
+      <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
+    </button>
 
-      <!-- custom arrows -->
-      <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.prev()" :class="carouselArrowClasses + ' left-0 xl:left-6 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]'">
-        <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
-      </button>
-      <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.next()" :class="carouselArrowClasses + ' right-0 xl:right-6 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180'">
-        <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
-      </button>
-
-      <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-        <g id="svg_arrow" width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><path d="M20.354,41.061,0,20.707,20.354.354l.707.707L1.414,20.707,21.061,40.354Z" transform="translate(0 -0.354)"/></g>
-      </svg>
-  </div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+      <g id="svg_arrow" width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><path d="M20.354,41.061,0,20.707,20.354.354l.707.707L1.414,20.707,21.061,40.354Z" transform="translate(0 -0.354)"/></g>
+    </svg>
+</div>
 </template>
 
 <script lang="ts" setup>

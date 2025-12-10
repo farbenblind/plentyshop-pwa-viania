@@ -11,6 +11,9 @@
 
     <!-- BH-Finder -->
     <BhFinder />
+
+    <!-- Collection Slider -->
+    <CollectionSlider />
   </div>
 </template>
 

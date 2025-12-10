@@ -51,7 +51,7 @@ export default defineNuxtModule({
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
       { 
         rel: 'stylesheet', 
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap' 
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap'
       }
     );
 
@@ -70,6 +70,12 @@ export default defineNuxtModule({
     await addComponent({
       name: 'BannerSlider',
       filePath: resolve('./runtime/components/BannerSlider/BannerSlider.vue'),
+    });
+
+    // CollectionSlider
+    await addComponent({
+      name: 'CollectionSlider',
+      filePath: resolve('./runtime/components/CollectionSlider/CollectionSlider.vue'),
     });
 
     // Newsletter
