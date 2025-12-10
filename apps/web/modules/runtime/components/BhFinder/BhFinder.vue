@@ -1,5 +1,5 @@
 <template>
-  <div class="group max-w-screen-3xl mx-auto lg:px-10 px-4 md:px-6 my-5">
+  <div class="group max-w-screen-3xl mx-auto px-[20px]">
     <div class="pt-4 pb-8">
       <h3 class="font-bold mb-4 pt-0">Finde deinen BH</h3>
       <div class="flex flex-col gap-4 font-body lg:flex-row">

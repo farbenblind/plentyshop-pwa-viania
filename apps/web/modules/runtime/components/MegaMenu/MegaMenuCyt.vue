@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <UiSearch class="pt-[20px] lg:py-[20px] lg:order-1" v-if="isShow" />
+    <UiSearch class="pt-[20px lg:pt-0 lg:pb-[20px] lg:order-1" v-if="isShow" />
 
     <nav ref="floatingRef" :class="{'grid grid-cols-[minmax(110px,auto)_1fr_minmax(110px,auto)] items-center': $attrs.isSlimHeader && viewport.isGreaterOrEquals('lg') }">
       <NuxtLink
