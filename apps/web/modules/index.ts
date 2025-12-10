@@ -66,6 +66,12 @@ export default defineNuxtModule({
       filePath: resolve('./runtime/components/BhFinder/BhFinder.vue'),
     });
 
+    // BannerSlider
+    await addComponent({
+      name: 'BannerSlider',
+      filePath: resolve('./runtime/components/BannerSlider/BannerSlider.vue'),
+    });
+
     // Newsletter
     await addComponent({
       name: 'NewsletterCyt',
