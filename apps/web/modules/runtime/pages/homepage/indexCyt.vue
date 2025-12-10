@@ -1,6 +1,6 @@
 <template>
   <div class="w-full max-w-screen-3xl mx-auto px-[20px] relative">
-    <EditablePage :identifier="'index'" :type="'immutable'" />
+    <!-- <EditablePage :identifier="'index'" :type="'immutable'" /> -->
     <BannerSlider />
     <BhFinder />
   </div>
