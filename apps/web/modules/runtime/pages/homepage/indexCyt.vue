@@ -20,7 +20,7 @@
 
     <!-- Video -->
     <div class="pt-[45px] xl:pt-[60px] 4xl:pt-[120px] mx-[-20px] 3xl:mx-0">
-      <h3 class="font-bold pt-0 text-center lg:pl-[20px] lg:text-left text-[14px] sm:text-[18px]">
+      <h3 class="font-bold pt-0 text-center lg:pl-[20px] 3xl:pl-0 lg:text-left text-[14px] sm:text-[18px]">
           <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">Behind the Scenes</span>
       </h3>
       <div class="pt-[40px] xl:pt-[50px] 3xl:overflow-hidden">
