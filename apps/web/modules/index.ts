@@ -84,6 +84,12 @@ export default defineNuxtModule({
       filePath: resolve('./runtime/components/CategoryGrid/CategoryGrid.vue'),
     });
 
+    // SeoTextHome
+    await addComponent({
+      name: 'SeoTextHome',
+      filePath: resolve('./runtime/components/SeoTextHome/SeoTextHome.vue'),
+    });
+
     // Newsletter
     await addComponent({
       name: 'NewsletterCyt',

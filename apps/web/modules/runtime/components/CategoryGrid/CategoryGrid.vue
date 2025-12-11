@@ -10,14 +10,14 @@
                 <NuxtImg :src="category.image" class="absolute top-0 left-0 w-full h-full" loading="lazy" />
                 <SfButton
                     class="absolute left-1/2 bottom-5 -translate-x-1/2 transition-background duration-[300ms]
-                            flex items-center justify-center min-h-[40px]
-                            px-3 py-1.5 rounded-md
-                            bg-white text-black font-light leading-tight whitespace-nowrap
-                            text-sm lg:text-lg z-10
-                            sm:text-[16px]
-                            md:px-[20px] md:bottom-[40px]
-                            lg:text-[18px] lg:min-h-[50px]
-                            group-hover:bg-black"
+                        flex items-center justify-center min-h-[40px]
+                        px-3 py-1.5 rounded-md
+                        bg-white text-black font-light leading-tight whitespace-nowrap
+                        text-sm lg:text-lg z-10
+                        sm:text-[16px]
+                        md:px-[20px] md:bottom-[40px]
+                        lg:text-[18px] lg:min-h-[50px]
+                        group-hover:bg-black"
                 ><span v-text="category.title" class="text-black block w-full font-light group-hover:text-white"></span></SfButton>
             </NuxtLink>
         </li>
