@@ -8,94 +8,24 @@
             <Carousel v-bind="carouselConfig"
                 ref="carousel"
                 v-model="currentSlide">
-                <!-- slide 1 -->
-                <Slide>
-                    <NuxtLink to="/kollektionen/carola" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
+                <Slide v-for="collection in collections" :key="collection.slug">
+                    <NuxtLink :to="collection.link" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
                         <div class="relative h-0 pb-[100%]">
-                            <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/carola-1.jpg'" loading="lazy" />
+                            <NuxtImg :class="imageClasses" :src="collection.image1" loading="lazy" />
                         </div>
                         <div class="grid gap-[10px]">
                             <div class="grid grid-cols-2 gap-[10px] lg:gap-[20px] lg:content-end">
                                 <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/carola-2.jpg'" loading="lazy" />
+                                    <NuxtImg :class="imageClasses" :src="collection.image2" loading="lazy" />
                                 </div>
                                 <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/carola-3.jpg'" loading="lazy" />
+                                    <NuxtImg :class="imageClasses" :src="collection.image3" loading="lazy" />
                                 </div>
                             </div>
-                            <div class="flex flex-col text-center lg:order-[-1] @container">
-                                <h3 class="didot-text text-[48px] leading-[48px] 3xl:text-[5cqw] 3xl:leading-[5cqw]">Carola</h3>
-                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] text-[14px] lg:text-[18px] lg:max-w-[75%] mx-auto">Die Serie Carola ist ein absoluter Klassiker und bewährter Bestseller mit einer perfekten Passform.</p>
-                                <SfButton class="self-center hover:bg-secondary-600"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
-                            </div>
-                        </div>
-                    </NuxtLink>
-                </Slide>
-                <!-- slide 2 -->
-                <Slide>
-                    <NuxtLink to="/kollektionen/jessy" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
-                        <div class="relative h-0 pb-[100%]">
-                            <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/jessy-1.jpg'" loading="lazy" />
-                        </div>
-                        <div class="grid gap-[10px]">
-                            <div class="grid grid-cols-2 gap-[10px] lg:gap-[20px] lg:content-end">
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/jessy-2.jpg'" loading="lazy" />
-                                </div>
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/jessy-3.jpg'" loading="lazy" />
-                                </div>
-                            </div>
-                            <div class="flex flex-col text-center lg:order-[-1]">
-                                <h3 class="didot-text text-[48px] leading-[48px] 3xl:text-[5cqw] 3xl:leading-[5cqw]">Jessy</h3>
-                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] text-[14px] lg:text-[18px] lg:max-w-[75%] mx-auto">Die klassische und angenehm zu tragende every-day-Serie Jessy. Der BH besitzt wie der Slip einen Ring als Hingucker in der vorderen Mitte. Das gibt der Serie einen leichten, frischen und jungen Touch.</p>
-                                <SfButton class="self-center hover:bg-secondary-600"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
-                            </div>
-                        </div>
-                    </NuxtLink>
-                </Slide>
-                <!-- slide 3 -->
-                <Slide>
-                    <NuxtLink to="/kollektionen/ava" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
-                        <div class="relative h-0 pb-[100%]">
-                            <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/ava-1.jpg'" loading="lazy" />
-                        </div>
-                        <div class="grid gap-[10px]">
-                            <div class="grid grid-cols-2 gap-[10px] lg:gap-[20px] lg:content-end">
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/ava-2.jpg'" loading="lazy" />
-                                </div>
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/ava-3.jpg'" loading="lazy" />
-                                </div>
-                            </div>
-                            <div class="flex flex-col text-center lg:order-[-1]">
-                                <h3 class="didot-text text-[48px] leading-[48px] 3xl:text-[5cqw] 3xl:leading-[5cqw]">Ava</h3>
-                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] text-[14px] lg:text-[18px] lg:max-w-[75%] mx-auto">Schöne und sexy Serie Ava bestehend aus zwei gefütterten Bügel-BHs mit Schalen, bei einem sind die gemoldeten Cups mit Spitze überzogen. Die Spitze findet sich auch passend im Slip wieder. Das I-Tüpfelchen sind rechteckige Glitzersteine als Hingucker in der vorderen Mitte.</p>
-                                <SfButton class="self-center hover:bg-secondary-600"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
-                            </div>
-                        </div>
-                    </NuxtLink>
-                </Slide>
-                <!-- slide 4 -->
-                <Slide>
-                    <NuxtLink to="/kollektionen/sally" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
-                        <div class="relative h-0 pb-[100%]">
-                            <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/sally-1.jpg'" loading="lazy" />
-                        </div>
-                        <div class="grid gap-[10px]">
-                            <div class="grid grid-cols-2 gap-[10px] lg:gap-[20px] lg:content-end">
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/sally-2.jpg'" loading="lazy" />
-                                </div>
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="cdnUrl + '/pwa/collections/sally-3.jpg'" loading="lazy" />
-                                </div>
-                            </div>
-                            <div class="flex flex-col text-center lg:order-[-1]">
-                                <h3 class="didot-text text-[48px] leading-[48px] 3xl:text-[5cqw] 3xl:leading-[5cqw]">Sally</h3>
-                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] text-[14px] lg:text-[18px] lg:max-w-[75%] mx-auto">Der Multiway-BH der Serie Sally bietet neben den austauschbaren und abnehmbaren Trägern zusätzlich einen Push-up Effekt. Dadurch eröffnen sich verschiedene Tragemöglichkeiten und Lösungen für nahezu jedes Outfit.</p>
-                                <SfButton class="self-center hover:bg-secondary-600"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
+                            <div class="flex flex-col text-center lg:order-[-1]" :class="collection.hasContainerQuery ? '@container' : ''">
+                                <h3 class="didot-text text-[48px] leading-[48px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[5cqw] 3xl:leading-[5cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
+                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5]">{{ collection.description }}</p>
+                                <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px]"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
                             </div>
                         </div>
                     </NuxtLink>
@@ -155,6 +85,50 @@ const currentSlide = ref(0);
 const imageClasses = 'rounded-[5px] absolute top-0 left-0 w-full h-full';
 const carouselArrowClasses = 'absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
 const cdnUrl = 'https://cdn02.plentymarkets.com/w73p32remdlq/frontend';
+
+
+const collections = [
+  {
+    slug: 'carola',
+    name: 'Carola',
+    link: '/kollektionen/carola',
+    description: 'Die Serie Carola ist ein absoluter Klassiker und bewährter Bestseller mit einer perfekten Passform.',
+    image1: cdnUrl + '/pwa/collections/carola-1.jpg',
+    image2: cdnUrl + '/pwa/collections/carola-2.jpg',
+    image3: cdnUrl + '/pwa/collections/carola-3.jpg',
+    hasContainerQuery: true
+  },
+  {
+    slug: 'jessy',
+    name: 'Jessy',
+    link: '/kollektionen/jessy',
+    description: 'Die klassische und angenehm zu tragende every-day-Serie Jessy. Der BH besitzt wie der Slip einen Ring als Hingucker in der vorderen Mitte. Das gibt der Serie einen leichten, frischen und jungen Touch.',
+    image1: cdnUrl + '/pwa/collections/jessy-1.jpg',
+    image2: cdnUrl + '/pwa/collections/jessy-2.jpg',
+    image3: cdnUrl + '/pwa/collections/jessy-3.jpg',
+    hasContainerQuery: false
+  },
+  {
+    slug: 'ava',
+    name: 'Ava',
+    link: '/kollektionen/ava',
+    image1: cdnUrl + '/pwa/collections/ava-1.jpg',
+    image2: cdnUrl + '/pwa/collections/ava-2.jpg',
+    image3: cdnUrl + '/pwa/collections/ava-3.jpg',
+    description: 'Schöne und sexy Serie Ava bestehend aus zwei gefütterten Bügel-BHs mit Schalen, bei einem sind die gemoldeten Cups mit Spitze überzogen. Die Spitze findet sich auch passend im Slip wieder. Das I-Tüpfelchen sind rechteckige Glitzersteine als Hingucker in der vorderen Mitte.',
+    hasContainerQuery: false
+  },
+  {
+    slug: 'sally',
+    name: 'Sally',
+    link: '/kollektionen/sally',
+    image1: cdnUrl + '/pwa/collections/sally-1.jpg',
+    image2: cdnUrl + '/pwa/collections/sally-2.jpg',
+    image3: cdnUrl + '/pwa/collections/sally-3.jpg',
+    description: 'Der Multiway-BH der Serie Sally bietet neben den austauschbaren und abnehmbaren Trägern zusätzlich einen Push-up Effekt. Dadurch eröffnen sich verschiedene Tragemöglichkeiten und Lösungen für nahezu jedes Outfit.',
+    hasContainerQuery: false
+  }
+];
 
 const carouselConfig = {
   itemsToShow: 1,

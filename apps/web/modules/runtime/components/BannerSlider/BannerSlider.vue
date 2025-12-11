@@ -7,7 +7,7 @@
 
       <!-- slide 1 -->
       <Slide>
-        <NuxtLink to="#" class="w-full h-0 pb-[150%] md:pb-[50%] relative">
+        <NuxtLink to="#" :class="carouselLinkClasses">
           <NuxtImg v-if="viewport.isLessOrEquals('sm')"
             :class="carouselImgClasses"
             loading="eager"
