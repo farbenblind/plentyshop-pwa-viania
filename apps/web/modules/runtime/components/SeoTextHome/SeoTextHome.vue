@@ -44,7 +44,7 @@
                     xl:w-[200px] xl:h-[200px] [&_svg]:xl:w-[100px] [&_svg]:xl:h-[100px]
                     3xl:w-[350px] 3xl:h-[350px] [&_svg]:3xl:w-[150px] [&_svg]:3xl:h-[150px]"
             ></div>
-            <h2 v-html="usp.title" class="text-[18px] font-semibold pt-[10px] xl:text-[24px] 3xl:pt-[40px] 3xl:text-[36px] leading-[1.25] 3xl:leading-[1]"></h2>
+            <h2 v-html="usp.title" class="text-[18px] font-semibold pt-[10px] xl:text-[24px] 3xl:pt-[40px] 3xl:text-[36px] leading-[1.25] 3xl:leading-[1.2]"></h2>
             <p v-html="usp.text" class="text-[14px] mb-auto xl:text-[16px] 3xl:text-[18px] 3xl:pt-[10px]"></p>
         </li>
     </ul>
