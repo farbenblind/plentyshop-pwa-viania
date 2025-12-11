@@ -78,6 +78,12 @@ export default defineNuxtModule({
       filePath: resolve('./runtime/components/CollectionSlider/CollectionSlider.vue'),
     });
 
+    // CategoryGrid
+    await addComponent({
+      name: 'CategoryGrid',
+      filePath: resolve('./runtime/components/CategoryGrid/CategoryGrid.vue'),
+    });
+
     // Newsletter
     await addComponent({
       name: 'NewsletterCyt',

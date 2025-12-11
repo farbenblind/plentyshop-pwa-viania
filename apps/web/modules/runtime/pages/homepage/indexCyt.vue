@@ -14,6 +14,9 @@
 
     <!-- Collection Slider -->
     <CollectionSlider />
+
+    <!-- Beliebte Kategorien -->
+    <CategoryGrid />
   </div>
 </template>
 
