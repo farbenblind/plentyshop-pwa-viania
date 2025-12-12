@@ -24,7 +24,7 @@
             In unserem Shop finden Sie eine Vielzahl an <NuxtLink to="/bhs">Viania BHs</NuxtLink>. Auch und gerade in großen <NuxtLink to="/bhs?facets=5,6,7">Cup-Größen</NuxtLink>. Je nach Modell bieten wir die Artikel bis Cup G und Unterbrustgröße 110cm an. Atmungsaktive Spacer-Qualitäten finden Sie ebenso wie Schalen- 
             und genähte Spitzen-BH's für unterschiedlichste Zwecke und Anlässe. Das Sortiment von Viania bietet Ihnen geeignete Modelle aus den Bereichen Fashion, Basic und Sport. Im modischen Sektor finden Sie raffinierte und verführerische BHs aus 
             Spitze, in aktuellen modischen Farben sowie Unterwäsche mit Prints oder mit hochwertigen Accessoires, wie z.B. applizierte Strass-Steine. Sie suchen nach einem perfekt sitzenden BH für den Alltag? Wählen Sie ein Modell aus dem Basic-
-            Sortiment, das für Sie BHs in neutralen Farben und Designs für den alltäglichen Gebrauch bereithält. Sport-BHs von Viania legen den Fokus auf optimale Unterstützung und Funktionalität. So sind bspw. die meisten Sport-BHs mit einem 
+            Sortiment, das für Sie BHs in neutralen Farben und Designs für den alltäglichen Gebrauch bereithält. <NuxtLink to="/bhs/sport">Sport-BHs</NuxtLink> von Viania legen den Fokus auf optimale Unterstützung und Funktionalität. So sind bspw. die meisten Sport-BHs mit einem 
             angenehmen Frottee-Besatz im Unterbrustbereich ausgestattet. So haben Sie auch bei sportlicher Höchstleistung immer ein angenehmes und trockenes Tragegefühl.
         </p>
 
