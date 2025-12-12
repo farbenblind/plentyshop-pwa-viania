@@ -6,7 +6,7 @@
 
     <ul class="grid grid-cols-2 lg:grid-cols-4 gap-[10px] xl:gap-[20px] pt-[40px] xl:pt-[50px]">
         <li v-for="category in categories">
-            <NuxtLink :to="category.link" class="relative block h-0 pb-[100%] rounded-[5px] overflow-hidden after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-black/5 group">
+            <NuxtLink :to="category.link" class="relative block h-0 pb-[100%] rounded-[5px] xl:rounded-[10px] overflow-hidden after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-black/5 group">
                 <NuxtImg :src="category.image" class="absolute top-0 left-0 w-full h-full group-hover:scale-[1.05] origin-bottom transition-transform duration-[300ms]" loading="lazy" />
                 <SfButton
                     class="absolute left-1/2 bottom-5 -translate-x-1/2 transition-transform duration-[300ms]

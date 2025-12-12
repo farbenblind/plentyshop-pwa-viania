@@ -100,7 +100,7 @@ const carouselConfig = {
   wrapAround: true,
   pauseAutoplayOnHover: true,
   transition: 500,
-  slideEffect: 'slide' as const
+  slideEffect: 'fade' as const
 };
 
 // Classes
