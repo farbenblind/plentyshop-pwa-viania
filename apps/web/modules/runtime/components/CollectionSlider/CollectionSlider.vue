@@ -1,5 +1,5 @@
 <template>
-<div class="pt-[60px] 4xl:pt-[120px]">
+<div class="pt-[60px] 4xl:pt-[120px] collections-section">
     <h3 class="font-bold pt-0 text-center lg:text-left text-[14px] sm:text-[18px]">
         <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">Entdecke unsere Kollektionen</span>
     </h3>
@@ -10,19 +10,47 @@
                 v-model="currentSlide">
                 <Slide v-for="collection in collections" :key="collection.slug">
                     <NuxtLink :to="collection.link" class="w-full flex flex-col gap-[10px] md:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
-                        <div class="relative h-0 pb-[100%]">
-                            <NuxtImg :class="imageClasses" :src="collection.image1" loading="lazy" />
+                        <div class="relative h-0 pb-[100%] overflow-hidden">
+                            <NuxtImg 
+                                :class="[
+                                    imageClasses,
+                                    enableAnimation && 'transition-all duration-700 ease-out',
+                                    enableAnimation && (isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0')
+                                ]" 
+                                :src="collection.image1" 
+                                loading="lazy" 
+                            />
                         </div>
                         <div class="grid gap-[10px]">
                             <div class="grid grid-cols-2 gap-[10px] md:gap-[20px] lg:content-end">
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="collection.image2" loading="lazy" />
+                                <div class="relative h-0 pb-[100%] overflow-hidden">
+                                    <NuxtImg 
+                                        :class="[
+                                            imageClasses,
+                                            enableAnimation && 'transition-all duration-700 ease-out delay-100',
+                                            enableAnimation && (isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0')
+                                        ]" 
+                                        :src="collection.image2" 
+                                        loading="lazy" 
+                                    />
                                 </div>
-                                <div class="relative h-0 pb-[100%]">
-                                    <NuxtImg :class="imageClasses" :src="collection.image3" loading="lazy" />
+                                <div class="relative h-0 pb-[100%] overflow-hidden">
+                                    <NuxtImg 
+                                        :class="[
+                                            imageClasses,
+                                            enableAnimation && 'transition-all duration-700 ease-out delay-200',
+                                            enableAnimation && (isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0')
+                                        ]" 
+                                        :src="collection.image3" 
+                                        loading="lazy" 
+                                    />
                                 </div>
                             </div>
-                            <div class="flex flex-col text-center lg:order-[-1] pt-[5px] sm:pt-[10px] lg:pt-[0] @container">
+                            <div :class="[
+                                'flex flex-col text-center lg:order-[-1] pt-[5px] sm:pt-[10px] lg:pt-[0] @container',
+                                enableAnimation && 'transition-all duration-700 ease-out delay-300',
+                                enableAnimation && (isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0')
+                            ]">
                                 <h3 class="didot-text text-[48px] leading-[48px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[5cqw] 3xl:leading-[5cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
                                 <p class="pb-[20px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5] md:max-w-[75%]">{{ collection.description }}</p>
                                 <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px]"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
@@ -71,21 +99,56 @@
 </style>
 
 <script lang="ts" setup>
-// my own carousel implementation for homepage
 import 'vue3-carousel/dist/carousel.css';
 import type { CarouselExposed } from 'vue3-carousel';
 import { Carousel, Slide } from 'vue3-carousel';
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { SfButton } from '@storefront-ui/vue';
 const viewport = useViewport();
 
 const carousel = ref<CarouselExposed>();
 const sliderCount = 4;
 const currentSlide = ref(0);
+const isVisible = ref(false);
+const enableAnimation = ref(true); // 👈 Toggle this to enable/disable animation
 const imageClasses = 'rounded-[5px] absolute top-0 left-0 w-full h-full cursor-grab';
 const carouselArrowClasses = 'absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
 const cdnUrl = 'https://cdn02.plentymarkets.com/w73p32remdlq/frontend';
 
+let observer: IntersectionObserver | null = null;
+
+onMounted(() => {
+  if (enableAnimation.value) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Entering viewport - trigger animation
+            isVisible.value = true;
+          } else {
+            // Leaving viewport - reset for next time
+            isVisible.value = false;
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of the section is visible
+    );
+
+    const section = document.querySelector('.collections-section');
+    if (section) {
+      observer.observe(section);
+    }
+  } else {
+    // If animation is disabled, set isVisible to true immediately
+    isVisible.value = true;
+  }
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
 
 const collections = [
   {
@@ -128,11 +191,9 @@ const collections = [
 
 const carouselConfig = {
   itemsToShow: 1,
-  // autoplay: 5000,
   wrapAround: true,
-  // pauseAutoplayOnHover: true,
   transition: 500,
-  slideEffect: 'slide' as const // 'slide' || 'fade'
+  slideEffect: 'slide' as const
 };
 
 const slideTo = (index: number) => {
