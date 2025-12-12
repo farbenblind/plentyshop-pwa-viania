@@ -433,11 +433,12 @@ const { isOpen: isAuthenticationOpen, open: openAuthentication, close: closeAuth
 // Check if we're on a category page
 const isCategoryActive = (menuNode: CategoryTreeItem): boolean => {
   const categoryLink = localePath(generateCategoryLink(menuNode));
-  // Remove trailing slashes for comparison
   const normalizedCurrentPath = route.path.replace(/\/$/, '');
   const normalizedCategoryLink = categoryLink.replace(/\/$/, '');
   
-  return normalizedCurrentPath === normalizedCategoryLink;
+  // Check if we're on this exact category OR on a child category (path starts with category path)
+  return normalizedCurrentPath === normalizedCategoryLink || 
+         normalizedCurrentPath.startsWith(normalizedCategoryLink + '/');
 };
 
 onNuxtReady(() => {
