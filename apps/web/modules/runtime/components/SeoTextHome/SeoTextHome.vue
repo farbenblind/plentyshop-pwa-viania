@@ -42,7 +42,7 @@
             v-for="(usp, index) in usps" 
             :key="index"
             class="flex flex-col items-center justify-center gap-[10px] leading-[1.25] xl:leading-[1.5] transition-all duration-700 ease-out"
-            :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+            :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'"
             :style="{ transitionDelay: isVisible ? `${index * 150}ms` : '0ms' }"
         >
             <div v-html="usp.svg"
@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { SfButton } from "@storefront-ui/vue";
 
 const viewport = useViewport();
@@ -73,19 +73,32 @@ const isExpanded = ref(false);
 const listRef = ref<HTMLElement | null>(null);
 const isVisible = ref(false);
 
+let observer: IntersectionObserver | null = null;
+
 onMounted(() => {
-  const observer = new IntersectionObserver(
+  observer = new IntersectionObserver(
     (entries) => {
-      const entry = entries[0];
-      if (entry?.isIntersecting) {
-        isVisible.value = true;
-      }
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Entering viewport - trigger animation
+          isVisible.value = true;
+        } else {
+          // Leaving viewport - reset for next time
+          isVisible.value = false;
+        }
+      });
     },
-    { threshold: 0.1 }
+    { threshold: 0.2 } // Trigger when 10% of the list is visible
   );
 
   if (listRef.value) {
     observer.observe(listRef.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
   }
 });
 
