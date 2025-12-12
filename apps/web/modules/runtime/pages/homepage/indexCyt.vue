@@ -36,8 +36,7 @@
           preload="metadata"
           muted
           loop
-          playsinline
-          controls="false">
+          playsinline>
         </video>
       </div>
     </div>
