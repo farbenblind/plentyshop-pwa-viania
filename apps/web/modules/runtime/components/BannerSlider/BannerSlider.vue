@@ -77,7 +77,7 @@ const slides = [
     imageLg: '/pwa/banner/schalen-lg.jpg'
   },
   {
-    link: '/search?query=Push-up',
+    link: '/search?term=push-up',
     imageSm: '/pwa/banner/pushup-sm.jpg',
     imageLg: '/pwa/banner/pushup-lg.jpg'
   },
