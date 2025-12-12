@@ -15,6 +15,9 @@
     <!-- Collection Slider -->
     <CollectionSlider />
 
+    <!-- Trusted Shops -->
+    <TrustedShops />
+
     <!-- Beliebte Kategorien -->
     <CategoryGrid />
 

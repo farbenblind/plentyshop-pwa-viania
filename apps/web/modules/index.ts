@@ -84,6 +84,12 @@ export default defineNuxtModule({
       filePath: resolve('./runtime/components/CategoryGrid/CategoryGrid.vue'),
     });
 
+    // TrustedShops
+    await addComponent({
+      name: 'TrustedShops',
+      filePath: resolve('./runtime/components/TrustedShops/TrustedShops.vue'),
+    });
+
     // SeoTextHome
     await addComponent({
       name: 'SeoTextHome',
