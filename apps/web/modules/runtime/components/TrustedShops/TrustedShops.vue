@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <p class="text-[18px] xl:text-[24px] leading-[1.35] px-[20px] sm:px-[40px] 3xl:px-[60px] my-auto">{{ viewport.isLessOrEquals('sm') ? truncateText(review.comment, 20) : truncateText(review.comment, 30) }}</p>
-                        <p class="text-[12px] xl:text-[14px]">{{ review.name }}, {{ formatDate(review.submittedAt) }}</p>
+                        <p class="text-[12px] xl:text-[14px]">{{ review.name.trim() }}, {{ formatDate(review.submittedAt) }}</p>
                     </div>
                 </Slide>
             </Carousel>
@@ -50,8 +50,8 @@
                             <svg v-for="star in 5" :key="star" class="w-[17px] h-[17px] xl:w-[22px] xl:h-[22px]" viewBox="0 0 24 24">
                                 <defs>
                                     <linearGradient :id="`star-${star}`">
-                                    <stop offset="50%" stop-color="currentColor"/>
-                                    <stop offset="50%" stop-color="#fff"/>
+                                      <stop offset="50%" stop-color="currentColor"/>
+                                      <stop offset="50%" stop-color="#ccc"/>
                                     </linearGradient>
                                 </defs>
                                 <path
@@ -66,9 +66,9 @@
                 <div class="font-semibold">{{ data.overallCount }} Bewertungen (gesamt)</div>
                 <div>Stand: {{ formatDate(data.calculatedAt) }}</div>
             </div>
-            <div class="flex m-auto">
+            <NuxtLink to="https://www.trustedshops.de/bewertung/info_XC6D0E273FECA9A8F9DF2ADD8B4DAD48C.html" target="_blank" class="flex m-auto">
                 <NuxtImg src="https://cdn02.plentymarkets.com/w73p32remdlq/frontend/ts-badge.png" loading="lazy" />
-            </div>
+            </NuxtLink>
         </div>
     </div>
 
@@ -109,10 +109,132 @@ interface RatingData {
 const data = ref<RatingData | null>(null)
 const dataLoaded = ref(false)
 
-const fakeData = {"rating365":4.39,"count365":481,"overallCount":24363,"calculatedAt":"2025-12-11T04:07:51.861Z","reviews":[{"name":"Tina","title":"Schneller Versand trotz Black Friday und Vorweihnachtszeit","comment":"Super schneller Versand, Schuhe (Dr. Martens Sinclair) waren wie auf der Website abgebildet und kamen ohne M\u00e4ngel und gut verpackt bei mir an. Zum super schnapper Preis am Black Friday! Vielen Dank!","rating":5,"submittedAt":"2025-12-10T21:01:06.000Z"},{"name":"Hubert","title":"gut","comment":"Produkt , Preis und Leistung - alles OK","rating":5,"submittedAt":"2025-12-10T11:34:44.000Z"},{"name":"Sindy","title":"Alles bestens \u2764\ufe0f","comment":"Alles bestens , tolle Schuhe !!!","rating":5,"submittedAt":"2025-12-09T16:17:42.000Z"},{"name":"Kerrin ","title":"Empfehlenswert ","comment":"Tolle Schuhauswahl, schneller Versand, gute Retourenregelung ","rating":5,"submittedAt":"2025-12-09T05:26:17.000Z"},{"name":"Sabine","title":"Retouren Abwicklung","comment":"Die Auswahl sowie die schnelle Lieferung verdienen 5 Sterne, email werden z\u00fcgig beantwortet und sehr freundlich dazu. Warum ich trotz dieser wirklich postiven Bewertung nur drei Sterne gebe h\u00e4ngt mit der Abwicklung der Retouren zusammen. Nach der Retoure erh\u00e4lt man erst drei Wochen sp\u00e4ter sein Geld zur\u00fcck, dies ist absolut unakzeptabel und unfair.","rating":3,"submittedAt":"2025-12-08T15:39:38.000Z"},{"name":"Patrick ","title":"Toller Onlineshop","comment":"Tolles Warenangebot, fixe Lieferung und eine gute Kommunikation!\nIch empfehle diesen Shop uneingeschr\u00e4nkt und liebend gerne weiter!","rating":5,"submittedAt":"2025-12-08T12:50:58.000Z"},{"name":"Joachim","title":"Perfekte Beschreibung und Passform.","comment":"Schnelle Lieferung, gute Verpackung. Sehr sch\u00f6ne liebevolle Verpackung im Schuhkarton selbst. Schuhe wie beschrieben, sehr angenehm zu tragen, Gr\u00f6\u00dfe perfekt! Jederzeit wieder!","rating":5,"submittedAt":"2025-12-07T21:15:57.000Z"},{"name":"Daniel","title":"Herrenstiefel ","comment":"Ich bin sehr zufrieden mit der Qualit\u00e4t des Produkts und der Kommunikation mit Ihrem Assistenten ","rating":5,"submittedAt":"2025-12-07T15:51:08.000Z"},{"name":"Jutta ","title":"Empfehlenswerter Anbieter ","comment":"Gute Website, schnelle Abwicklung, gute Verpackung und \u2026 tolle Schuhe!","rating":5,"submittedAt":"2025-12-06T18:21:19.000Z"},{"name":"Thorsten","title":"Zum ersten Mal hier bestellt und mehr als zufrieden","comment":"Ich habe im Schuhhaus M\u00fcller einen passenden und bequemen Schuh gefunden. Dieser war gegen\u00fcber anderen Anbietern weit aus g\u00fcnstiger. Von der Bestllung bis hin zur Lieferung hat alles sehr gut geklappt. Nun freue ich mich \u00fcber meine neuen Schuhe. ","rating":5,"submittedAt":"2025-12-06T15:59:08.000Z"},{"name":"Katja","title":"Hervorragend ","comment":"Schnell, einfach, beste Preise","rating":5,"submittedAt":"2025-12-06T09:02:27.000Z"},{"name":"Katharina ","title":"Bearbeitung Retouren viel zu lange ","comment":"Versand war schnell, leider dauert die Bearbeitung von Retouren 14 Tage. Das bedeutet man bezahlt bei Rechnungskauf Schuhe, die man l\u00e4ngst zur\u00fcckgesendet hat. Das ist absolut nicht mehr zeitgem\u00e4\u00df. Eine weitere Retoure ist noch nicht best\u00e4tigt, obwohl sie bereits l\u00e4nger angekommen ist. ","rating":3,"submittedAt":"2025-12-06T07:19:59.000Z"},{"name":"Angelika","title":"Schnelle korrekte Lieferung bezahlen\u2026","comment":"Schnelle korrekte Lieferung bezahlen mit Rechnung super Preis\/ Leistung ","rating":5,"submittedAt":"2025-12-05T18:47:10.000Z"},{"name":"Gabriele","title":"Ich habe mir sehr warme Winterschuhe\u2026","comment":"Ich habe mir sehr warme Winterschuhe der Firma Uggs bestellt, die f\u00fcr Temperaturen bis -30 Grad geeignet sein sollen. Die Empfehlung des Schuhhauses, eine Nummer gr\u00f6\u00dfer zu w\u00e4hlen, war absolut perfekt. Die Schuhe wirken sehr hochwertig, f\u00fchlen sich sofort angenehm an und machen einen robusten Eindruck. ","rating":5,"submittedAt":"2025-12-03T20:37:11.000Z"},{"name":"Marion","title":"Leider waren die Schuhe in der sonst\u2026","comment":"Leider waren die Schuhe in der sonst \u00fcblichen Gr\u00f6\u00dfe viel zu gro\u00df.\nPreis und Lieferzeit waren super!","rating":4,"submittedAt":"2025-12-01T17:38:01.000Z"},{"name":"EDYTA ","title":"Die Schuhe sind sehr leicht und\u2026","comment":"Die Schuhe sind sehr leicht und bequem.sitzen gut am Fu\u00df..Der Service und Lieferung waren schnell.Sehr zu emfehlen.Danke","rating":5,"submittedAt":"2025-12-01T15:13:46.000Z"},{"name":"Maximilian","title":"Wie immer alles bestens","comment":"Wie immer alles bestens. Vielen Dank ","rating":5,"submittedAt":"2025-11-30T18:55:56.000Z"},{"name":"K. ","title":"Erste Bestellung - alles in Ordnung","comment":"Das war meine erste Bestellung bei diesem H\u00e4ndler. Hat einwandfrei geklappt. \u00dcber - aus meiner Sicht unbedeutende - Lieferverz\u00f6gerung aufgrund einer gro\u00dfen Zahl an Bestellungen wurde ich informiert. Also guter Service","rating":5,"submittedAt":"2025-11-29T15:19:38.000Z"},{"name":"Uschi","title":"Sehr sch\u00f6ne Schuhe","comment":"Sehr sch\u00f6ne Schuhe. Die Lieferzeit war etwas l\u00e4nger, aber das Warten hat sich gelohnt.","rating":5,"submittedAt":"2025-11-29T10:35:06.000Z"},{"name":"Uschi","title":"Sehr sch\u00f6ne Schuhe!","comment":"Sehr sch\u00f6ne Schuhe!","rating":5,"submittedAt":"2025-11-26T20:35:53.000Z"}]}
+const fakeData = {
+  "rating365": 4.81,
+  "count365": 145,
+  "overallCount": 335,
+  "calculatedAt": "2025-12-12T10:00:00.000Z",
+  "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Sehr schnelle Lieferung",
+      "comment": "Sehr schnelle Lieferung. Eine Größe passt bei jedem Modell. Sehr bequem. Gerne wieder.",
+      "rating": 5,
+      "submittedAt": "2025-11-30T00:00:00.000Z"
+    },
+    {
+      "name": "Eva B.",
+      "title": "Diesmal 5 Sterne",
+      "comment": "Diesmal 5 Sterne, weil alles super abgewickelt wurde, vor allem die problemlose Retoure. Habe die Artikel sofort in der richtigen Größe nachbestellt. Kundenservice top!",
+      "rating": 5,
+      "submittedAt": "2025-09-27T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Schnelle Lieferung und Erstattung",
+      "comment": "Schnelle Lieferung und im Fall von Rücksendung sehr schnelle Erstattung",
+      "rating": 5,
+      "submittedAt": "2025-12-05T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Sehr schnelle Lieferung",
+      "comment": "Sehr schnelle Lieferung, heute bestellt am nächsten Tag bekommen. Kundenbetreuung, einfach super. Sofortige Antwort bei Anfragen, und Reklamation. Würde bei Viania jederzeit wieder bestellen.",
+      "rating": 5,
+      "submittedAt": "2025-08-17T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Superschneller Versand",
+      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
+      "rating": 5,
+      "submittedAt": "2025-11-06T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Superschneller Versand",
+      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
+      "rating": 5,
+      "submittedAt": "2025-11-03T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Einfach super",
+      "comment": "Wahre Bestellt und innerhalb von 3 Tag ist sie bei mir gewesen. Alles passt, trotzdem wurde vorsorglich schon ein Returenschein ausgestellt falls benötigt.",
+      "rating": 5,
+      "submittedAt": "2025-09-03T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Superschneller Versand",
+      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
+      "rating": 5,
+      "submittedAt": "2025-10-29T00:00:00.000Z"
+    },
+    {
+      "name": "Beate K.",
+      "title": "Gute Auswahlmöglichkeiten",
+      "comment": "Gute Auswahlmöglichkeiten und schnelle Lieferung. Bei der Lieferung auf Rechnung, fände ich es gut, wenn vorher ein Hinweis auf den Rechnungsdienstleister erfolgen würde",
+      "rating": 5,
+      "submittedAt": "2025-09-21T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Die schnelle Lieferung und die Passgenauigkeit",
+      "comment": "Die schnelle Lieferung und die Passgenauigkeit.",
+      "rating": 5,
+      "submittedAt": "2025-11-03T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Schnelle Lieferung",
+      "comment": "Schnelle Lieferung, gute Qualität!",
+      "rating": 5,
+      "submittedAt": "2025-11-12T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Schnelle Lieferung",
+      "comment": "schnelle Lieferung, Top Artikel",
+      "rating": 5,
+      "submittedAt": "2025-11-11T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Sehr schnelle Lieferung",
+      "comment": "Sehr schnelle Lieferung\nSuper Passform",
+      "rating": 5,
+      "submittedAt": "2025-10-26T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Toller Shop - leider Versand mit GLS",
+      "comment": "Die Produkte sind toll und der Shop zuverlässig. Ein BH war leider verschnitten (richtig falsch, abweichend vom Modell in anderen Farben), aber man will prüfen, ob das die gesamte Charge so ist und mir bescheid geben, ob ich einen neuen ohne Fehler bestellen kann.\nEigentlich müsste man 1 Punkt abziehen, weil mit GLS geliefert wird. Das macht die Retoure kompliziert. Aber ich warte erst einmal, ob ich eine Nachricht zum Produktmangel bekomme. Bislang belohne ich erst einmal die Freundlichkeit.",
+      "rating": 5,
+      "submittedAt": "2025-07-22T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Tolle passform",
+      "comment": "Leider habe ich falsche Größe bestellt somit musste ich meine Bestellung wieder zurücksenden, aber ich habe somit erfahren das es in Mössingen ein Outlet von euch gibt , da bin ich hingefahren und habe dort die richtige Größe gefunden und gekauft",
+      "rating": 5,
+      "submittedAt": "2025-09-13T00:00:00.000Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Gute Qualität",
+      "comment": "Gute Qualität. Die Bh's und Slips trage ich sehr gerne. Die Passform bei 36 F ist sehr gut.\nNur die Verpackung beim Versand sollte besser werden. Die Pakete sind schon mal kaputt, in das letzte konnte man reinschauen weil es nicht richtig zu geklebt war.",
+      "rating": 4,
+      "submittedAt": "2025-07-31T00:00:00.000Z"
+    }
+  ]
+};
 
 const carouselConfig = {
   itemsToShow: 1,
+  autoplay: 5000,
+  pauseAutoplayOnHover: true,
+  transition: 500,
   wrapAround: true,
 };
 

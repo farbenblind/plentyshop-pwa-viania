@@ -126,7 +126,11 @@
           <NuxtLink :to="localePath(generateCategoryLink(menuNode))">
             <span
               class="pb-[20px] lg:pb-[30px] block whitespace-nowrap relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-black after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
-              :class="{'pl-[20px] lg:pl-0 after:left-[20px] lg:after:left-[0]': index === 0, 'pr-[20px] lg:pr-0 after:right-[20px] after:right-[20px] lg:after:right-[0]': index === categoryTree.length - 1, 'font-[500] relative after:content-[\'\'] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-black after:scale-x-100 after:transition-transform after:duration-300': currentCategoryId === menuNode.id || parentCategoryId === menuNode.id}"
+              :class="{
+                'pl-[20px] lg:pl-0 after:left-[20px] lg:after:left-[0]': index === 0, 
+                'pr-[20px] lg:pr-0 after:right-[20px] lg:after:right-[0]': index === categoryTree.length - 1, 
+                'font-[500] after:scale-x-100': isCategoryActive(menuNode)
+              }"
               data-testid="category-button"
             >
               {{ categoryTreeGetters.getName(menuNode) }}
@@ -426,6 +430,16 @@ const { user, isAuthorized, logout } = useCustomer();
 const { isOpen: isAccountDropdownOpen, toggle: accountDropdownToggle } = useDisclosure();
 const { isOpen: isAuthenticationOpen, open: openAuthentication, close: closeAuthentication } = useDisclosure();
 
+// Check if we're on a category page
+const isCategoryActive = (menuNode: CategoryTreeItem): boolean => {
+  const categoryLink = localePath(generateCategoryLink(menuNode));
+  // Remove trailing slashes for comparison
+  const normalizedCurrentPath = route.path.replace(/\/$/, '');
+  const normalizedCategoryLink = categoryLink.replace(/\/$/, '');
+  
+  return normalizedCurrentPath === normalizedCategoryLink;
+};
+
 onNuxtReady(() => {
   cartItemsCount.value = cart.value?.items?.reduce((price, { quantity }) => price + quantity, 0) ?? 0;
 });
@@ -525,7 +539,7 @@ const navigateToLogin = () => {
 };
 
 const headerClass = computed(() => ({
-  'z-[10]': isOpen.value,
+  'z-[11]': isOpen.value,
 }));
 
 const isShow = ref(false);

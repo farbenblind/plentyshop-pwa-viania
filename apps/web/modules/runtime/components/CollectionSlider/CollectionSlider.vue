@@ -9,12 +9,12 @@
                 ref="carousel"
                 v-model="currentSlide">
                 <Slide v-for="collection in collections" :key="collection.slug">
-                    <NuxtLink :to="collection.link" class="w-full flex flex-col gap-[10px] lg:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
+                    <NuxtLink :to="collection.link" class="w-full flex flex-col gap-[10px] md:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
                         <div class="relative h-0 pb-[100%]">
                             <NuxtImg :class="imageClasses" :src="collection.image1" loading="lazy" />
                         </div>
                         <div class="grid gap-[10px]">
-                            <div class="grid grid-cols-2 gap-[10px] lg:gap-[20px] lg:content-end">
+                            <div class="grid grid-cols-2 gap-[10px] md:gap-[20px] lg:content-end">
                                 <div class="relative h-0 pb-[100%]">
                                     <NuxtImg :class="imageClasses" :src="collection.image2" loading="lazy" />
                                 </div>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="flex flex-col text-center lg:order-[-1] pt-[5px] sm:pt-[10px] lg:pt-[0] @container">
                                 <h3 class="didot-text text-[48px] leading-[48px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[5cqw] 3xl:leading-[5cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
-                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5]">{{ collection.description }}</p>
+                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5] md:max-w-[75%]">{{ collection.description }}</p>
                                 <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px]"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
                             </div>
                         </div>
@@ -33,10 +33,10 @@
             </Carousel>
     
             <!-- custom arrows -->
-            <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.prev()" :class="carouselArrowClasses + ' left-0 xl:left-6 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]'">
+            <button v-if="viewport.isGreaterOrEquals('lg')" @click="carousel?.prev()" :class="carouselArrowClasses + ' left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-80px]'">
                 <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
             </button>
-            <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.next()" :class="carouselArrowClasses + ' right-0 xl:right-6 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180'">
+            <button v-if="viewport.isGreaterOrEquals('lg')" @click="carousel?.next()" :class="carouselArrowClasses + ' right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-80px] rotate-180'">
                 <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
             </button>
           </div>
@@ -82,7 +82,7 @@ const viewport = useViewport();
 const carousel = ref<CarouselExposed>();
 const sliderCount = 4;
 const currentSlide = ref(0);
-const imageClasses = 'rounded-[5px] absolute top-0 left-0 w-full h-full';
+const imageClasses = 'rounded-[5px] absolute top-0 left-0 w-full h-full cursor-grab';
 const carouselArrowClasses = 'absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
 const cdnUrl = 'https://cdn02.plentymarkets.com/w73p32remdlq/frontend';
 
