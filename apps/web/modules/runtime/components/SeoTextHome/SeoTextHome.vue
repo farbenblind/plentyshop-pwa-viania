@@ -14,7 +14,7 @@
                 Mit Viania fühlst du dich wohl und feminin – den ganzen Tag lang
         </span>
     </h1>
-    <div class="flex flex-col gap-[20px] pt-[30px] text-[14px] xl:text-[16px] [&_a]:underline [&_a]:font-semibold">
+    <div class="flex flex-col gap-[20px] pt-[30px] text-[14px] xl:text-[16px] [&_a]:underline [&_a]:font-semibold 4xl:leading-[1.75]">
         <p>Viania ist eine deutsche Traditionsmarke mit Sitz in Mössingen, die seit 1991 Frauen weltweit mit hochwertiger und femininer Wäsche und Dessous versorgt. Die Marke hat sich ausschließlich auf Damen-Unterwäsche spezialisiert, wodurch Sie 
             beim Kauf eines <NuxtLink to="/bhs">BHs</NuxtLink> von unserem langjährigen Know-how profitieren. Jedes Modell wird von unserem Designteam sorgfältig entwickelt und erst wenn unsere eigene Schnittabteilung mit dem Schnitt rundum zufrieden ist, wird das Modell für die 
             Produktion freigegeben. Hochwertige Materialien und eine sorgfältige Verarbeitung runden jedes Produkt ideal ab. Es entspricht unserem Selbstverständnis, dass unsere Modelle dem Öko-Tex100 Standard genügen und wir unsere 
@@ -51,7 +51,7 @@
                     3xl:w-[350px] 3xl:h-[350px] [&_svg]:3xl:w-[150px] [&_svg]:3xl:h-[150px]"
             ></div>
             <h2 v-html="usp.title" class="text-[18px] font-semibold pt-[10px] xl:text-[24px] 3xl:pt-[40px] 3xl:text-[36px] leading-[1.25] 3xl:leading-[1.2]"></h2>
-            <p v-html="usp.text" class="text-[14px] mb-auto xl:text-[16px] 3xl:text-[18px] 3xl:pt-[10px]"></p>
+            <p v-html="usp.text" class="text-[14px] mb-auto xl:text-[16px] 3xl:text-[18px] 3xl:pt-[10px] 3xl:max-w-[260px]"></p>
         </li>
     </ul>
 
