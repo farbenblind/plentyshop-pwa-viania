@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <code v-if="crossSellingItemsSimilar?.products?.length > 1"><p>crossSellingItemsSimilar:</p>{{ crossSellingItemsSimilar }}</code>
+        <!-- <code v-if="crossSellingItemsSimilar?.products?.length > 1"><p>crossSellingItemsSimilar:</p>{{ crossSellingItemsSimilar }}</code> -->
       </NarrowContainer>
   
       <UiReviewModal />
