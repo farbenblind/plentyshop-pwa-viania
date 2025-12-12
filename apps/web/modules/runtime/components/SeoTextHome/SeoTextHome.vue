@@ -37,8 +37,14 @@
         </button>
     </div>
 
-    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-x-[30px] gap-y-[40px] w-full text-center pt-[40px] xl:pt-[60px] 3xl:pt-[100px]">
-        <li v-for="usp in usps" class="flex flex-col items-center justify-center gap-[10px] leading-[1.25] xl:leading-[1.5]">
+    <ul ref="listRef" class="grid grid-cols-2 lg:grid-cols-4 gap-x-[30px] gap-y-[40px] w-full text-center pt-[40px] xl:pt-[60px] 3xl:pt-[100px]">
+        <li 
+            v-for="(usp, index) in usps" 
+            :key="index"
+            class="flex flex-col items-center justify-center gap-[10px] leading-[1.25] xl:leading-[1.5] transition-all duration-700 ease-out"
+            :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+            :style="{ transitionDelay: isVisible ? `${index * 150}ms` : '0ms' }"
+        >
             <div v-html="usp.svg"
                 class="w-[100px] h-[100px] bg-[#F5EFEF] flex items-center justify-center rounded-full
                     xl:w-[200px] xl:h-[200px] [&_svg]:xl:w-[100px] [&_svg]:xl:h-[100px]
@@ -63,6 +69,25 @@ import { SfButton } from "@storefront-ui/vue";
 
 const viewport = useViewport();
 const isExpanded = ref(false);
+
+const listRef = ref<HTMLElement | null>(null);
+const isVisible = ref(false);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+      if (entry?.isIntersecting) {
+        isVisible.value = true;
+      }
+    },
+    { threshold: 0.1 }
+  );
+
+  if (listRef.value) {
+    observer.observe(listRef.value);
+  }
+});
 
 const usps = [
     {

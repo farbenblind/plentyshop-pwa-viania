@@ -98,7 +98,7 @@ import { Carousel, Slide } from 'vue3-carousel';
 const viewport = useViewport();
 
 const carousel = ref<CarouselExposed>();
-const carouselArrowClasses = 'absolute z-10 mt-1/2 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
+const carouselArrowClasses = 'absolute z-10 top-0 bottom-0 p-4 bg-white hover:scale-110 transition-transform duration-300';
 
 interface Review {
   name: string;

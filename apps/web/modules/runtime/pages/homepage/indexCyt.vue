@@ -9,8 +9,6 @@
       <p class="text-center text-[14px] sm:text-[18px]"><span class="font-semibold">Versand erfolgt am gleichen Tag mit DHL</span> (bei Bestellungen werktags bis 14 Uhr)</p>
     </div>
 
-    <EditablePage :identifier="'index'" :type="'immutable'" />
-
     <!-- BH-Finder -->
     <BhFinder />
 
