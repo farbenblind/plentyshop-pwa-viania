@@ -43,7 +43,7 @@
         <div class="px-[20px] py-[30px] xl:px-[30px] grid grid-cols-[auto_100px] max-w-[400px] mx-auto xl:max-w-[inherit] xl:h-full">
             <div class="text-[12px] xl:text-[14px] my-auto">
                 <div class="flex align-center gap-[10px]">
-                    <span class="font-semibold text-[18px] xl:text-[24px]">{{ data?.rating365 }}</span>
+                    <span class="font-semibold text-[18px] xl:text-[24px]">{{ data?.rating365.toString().replace('.',',') }}</span>
 
                     <div class="inline-flex align-center truncate self-center">
                         <div class="flex gap-[0] text-[#FCC72F]">
