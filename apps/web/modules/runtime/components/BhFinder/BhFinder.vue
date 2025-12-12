@@ -1,5 +1,5 @@
 <template>
-<div class="pt-[60px]">
+<div class="pt-[60px] xl:pt-[80px]">
   <div class="">
     <h3 class="font-bold pt-0 text-center lg:text-left text-[14px] sm:text-[18px]">
       <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">{{ t('BhFinder.title') }}</span>
