@@ -74,7 +74,7 @@
                 </div>
                 <div class="pt-[10px]">{{ data.count365 }} Bewertungen (letzte 12 Monate)</div>
                 <div class="font-semibold">{{ data.overallCount }} Bewertungen (gesamt)</div>
-                <div>Stand: {{ formatDate(data.calculatedAt) }}</div>
+                <div class="text-[10px] pt-[5px] font-normal">Stand: {{ formatDate(data.calculatedAt) }}</div>
             </div>
             <NuxtLink to="https://www.trustedshops.de/bewertung/info_XC6D0E273FECA9A8F9DF2ADD8B4DAD48C.html" target="_blank" class="flex m-auto">
                 <NuxtImg src="https://cdn02.plentymarkets.com/w73p32remdlq/frontend/ts-badge.png" loading="lazy" />
