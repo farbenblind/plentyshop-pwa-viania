@@ -47,19 +47,28 @@
 
                     <div class="inline-flex align-center truncate self-center">
                         <div class="flex gap-[0] text-[#FCC72F]">
-                            <svg v-for="star in 5" :key="star" class="w-[17px] h-[17px] xl:w-[22px] xl:h-[22px]" viewBox="0 0 24 24">
-                                <defs>
-                                    <linearGradient :id="`star-${star}`" x1="0" y1="0" x2="1" y2="0">
-                                        <stop offset="50%" stop-color="#FCC72F"/>
-                                        <stop offset="50%" stop-color="#cccccc"/>
-                                    </linearGradient>
-                                </defs>
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" 
-                                    stroke="none"
-                                    :fill="star <= data?.rating365 ? '#FCC72F' : (star - 0.5 <= data?.rating365 ? `url(#star-${star})` : '#cccccc')"
-                                />
-                            </svg>
+                          <svg v-for="star in 5" :key="star" class="w-[17px] h-[17px] xl:w-[22px] xl:h-[22px]" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                              <clipPath :id="`half-clip-${star}`" clipPathUnits="objectBoundingBox">
+                                <!-- clip left half; rect x,y,width,height in objectBoundingBox (0..1) -->
+                                <rect x="0" y="0" width="0.5" height="1" />
+                              </clipPath>
+                            </defs>
+
+                            <!-- base grey star -->
+                            <path
+                              d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                              :fill="star - 0.5 <= data?.rating365 ? '#cccccc' : '#cccccc'"
+                            />
+
+                            <!-- yellow overlay only when half or full required -->
+                            <path
+                              v-if="star - 0.5 <= data?.rating365"
+                              d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                              fill="#FCC72F"
+                              :clip-path="star <= data?.rating365 ? '' : `url(#half-clip-${star})`"
+                            />
+                          </svg>
                         </div>
                     </div>
                 </div>
