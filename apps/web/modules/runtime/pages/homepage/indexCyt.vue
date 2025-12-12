@@ -37,7 +37,7 @@
           muted
           loop
           playsinline
-          controls>
+          controls="false">
         </video>
       </div>
     </div>
