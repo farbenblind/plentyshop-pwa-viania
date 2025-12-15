@@ -266,14 +266,32 @@ const truncateText = (text: string, maxWords: number = 30): string => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('https://www.vianiashop.com/rest/cytTrustedShops/ratings')
-    data.value = await response.json() as RatingData
-    dataLoaded.value = true
+    const response = await fetch(
+      'https://www.vianiashop.com/rest/cytTrustedShops/ratings'
+    )
+
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`)
+    }
+
+    const json = await response.json()
+
+    const hasValidReviews =
+      json &&
+      Array.isArray(json.reviews) &&
+      json.reviews.length > 0
+
+    data.value = hasValidReviews
+      ? (json as RatingData)
+      : (fakeData as RatingData)
+
   } catch (error) {
     console.error('Failed to load ratings:', error)
-    data.value = fakeData as unknown as RatingData
+    data.value = fakeData as RatingData
+    console.log('Trusted Shop Static Data loaded')
+  } finally {
     dataLoaded.value = true
-    console.log('Fake Data loaded')
   }
 })
+
 </script>

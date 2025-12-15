@@ -3,7 +3,8 @@
     <div :class="{'hidden': $attrs.isSlimHeader && viewport.isGreaterOrEquals('lg')}" class="flex items-center text-[12px] lg:text-[14px] lg:items-start font-light">
       <div class="flex items-center gap-[30px] min-w-[320px]" v-if="viewport.isGreaterOrEquals('lg')">
         <NuxtLink
-          to="/store-finder"
+          :to="t('Header.Store Finder Link')"
+          target="_blank"
           :aria-label="t('Header.Store Finder')"
           class="flex items-center gap-[10px]"
         >
