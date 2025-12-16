@@ -1,7 +1,7 @@
 <template>
     <NuxtLayout name="default" :breadcrumbs="breadcrumbs">
       <NarrowContainer>
-        <div class="bg-[#F5EFEF]">
+        <div class="bg-[#F5EFEF] w-screen relative left-1/2 right-1/2 -mx-[50vw]">
           <div class="max-w-screen-3xl mx-auto p-[20px] xl:py-[80px]">
             <div class="flex flex-col gap-[30px] xl:grid xl:grid-cols-[auto_520px] xl:gap-[80px]">
               <div class="left xl:min-w-[0] xl:self-start xl:sticky xl:top-[40px]">              
@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-        <div class="max-w-screen-3xl mx-auto p-[20px] xl:pt-[60px]" v-if="reviewGetters.getTotalReviews(countsProductReviews) > 0">
+        <div class="max-w-screen-3xl mx-auto pt-[20px] pb-[20px] xl:pt-[60px]" v-if="reviewGetters.getTotalReviews(countsProductReviews) > 0">
           <ReviewsAccordion
             v-if="product"
             :product="product"
@@ -28,7 +28,7 @@
           />
         </div>
         
-        <div>
+        <div class="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
           <div class="max-w-screen-3xl mx-auto p-[20px] xl:pt-[80px]">
             <h2 class="pb-[30px] lg:pb-[50px] font-semibold text-[14px] xl:text-[18px] text-center lg:text-left">
               <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">{{ t('Product.recommendedProducts') }}</span>

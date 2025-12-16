@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-[#F5EFEF] mb-10">
-    <div class="max-w-screen-3xl mx-auto p-[20px] lg:py-[40px] xl:py-[50px]">
+  <div class="bg-[#F5EFEF] mb-10 w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+    <div class="max-w-screen-3xl mx-auto p-[20px] xl:py-[40px]">
       <div class="flex items-center">
         <h1 class="text-[18px] lg:text-[24px] xl:text-[36px] font-bold text-ellipsis whitespace-nowrap overflow-hidden">{{ title }}</h1>
         <NuxtLink to="https://cdn02.plentymarkets.com/w73p32remdlq/frontend/pdf/koerpermasstabelle-viania.pdf" target="_blank" class="text-[12px] flex items-center gap-[10px] ml-auto pl-[10px]">

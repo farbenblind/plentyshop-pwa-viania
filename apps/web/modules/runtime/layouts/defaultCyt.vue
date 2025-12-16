@@ -1,7 +1,7 @@
 <template>
   <div class="font-light">
     <UiHeader />
-    <main>
+    <main class="max-w-screen-3xl mx-auto">
       <slot />
     </main>
     <Cookiebar />

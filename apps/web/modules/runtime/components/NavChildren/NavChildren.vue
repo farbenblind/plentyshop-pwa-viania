@@ -9,7 +9,7 @@
       >
         <NuxtLink
           :to="localePath(generateCategoryLink(childCategory))"
-          class="flex bg-white rounded-[5px] whitespace-nowrap h-[40px] xl:h-[50px] items-center px-[20px] text-[14px] xl:text-[16px]"
+          class="flex bg-white border rounded-[5px] whitespace-nowrap h-[40px] xl:h-[50px] items-center px-[20px] text-[14px] xl:text-[16px]"
           :class="{
             '!bg-black text-white': childCategory.id === currentCategoryId
           }"
