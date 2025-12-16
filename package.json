@@ -39,8 +39,8 @@
     "lhci:desktop": "lhci collect --config=lighthouserc.desktop.json && lhci assert"
   },
   "dependencies": {
-    "@plentymarkets/shop-core": "^1.14.2",
     "@plentymarkets/shop-api": "^0.148.1",
+    "@plentymarkets/shop-core": "^1.14.2",
     "@plentymarkets/shop-module-gtag": "^1.1.2",
     "@plentymarkets/shop-module-mollie": "^1.4.0",
     "@tanstack/vue-virtual": "^3.13.12",
@@ -57,6 +57,7 @@
     "vue-multiselect": "^3.4.0",
     "vue-tel-input": "^9.5.0",
     "vue-tsc": "^3.0.6",
+    "vue3-carousel": "^0.17.0",
     "vuedraggable": "^4.1.0",
     "yup": "^1.7.1"
   },
