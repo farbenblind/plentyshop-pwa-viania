@@ -349,11 +349,17 @@ export default defineNuxtModule({
         overrideSearchPage.file = resolve('./runtime/pages/search/searchCyt.vue');
       }
 
-      // Contentpages -> StoreFinder
-      pages.push({
-        name: 'store-finder',
-        file: resolve('./runtime/pages/contentpages/StoreFinder.vue'),
-        path: '/store-finder',
+      // Contentpages
+      const customPages = [
+        { name: 'careInstructions', file: 'WaschAnleitung.vue', path: '/waschanleitung' },
+        { name: 'aboutUs', file: 'AboutUs.vue', path: '/ueber-uns' },
+      ];
+      customPages.forEach(({ name, file, path }) => {
+        pages.push({
+          name,
+          file: resolve(`./runtime/pages/contentpages/${file}`),
+          path,
+        });
       });
     });
 
