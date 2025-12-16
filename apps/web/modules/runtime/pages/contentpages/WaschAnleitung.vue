@@ -1,8 +1,8 @@
 <template>
 <div class="max-w-screen-3xl mx-auto px-[20px]">
-    <div class="space-y-[20px]">
-        <h1 class="font-bold text-[24px]">Waschanleitung</h1>
-        <h2 class="font-bold text-[18px]">BHs und BH-Hemden</h2>
+    <div class="space-y-[20px] no-preflight">
+        <h1>Waschanleitung</h1>
+        <h2>BHs und BH-Hemden</h2>
         <p>Waschen Sie Ihre Wäschestücke immer nach Farben getrennt. Schon geringste Farbrückstände im Wasser können unter Umständen für eine Verfärbung des ganzen Kleidungsstücks verursachen.</p>
         <p>Wir empfehlen bei BHs Handwäsche mit handwarmen Wasser und einem sparsam dosierten Feinwaschmittel.
         Den BH bitte nicht auswringen sondern nur sanft ausdrücken.
@@ -14,7 +14,7 @@
         BHs trocknen Sie am schonendsten auf der Leine oder liegend auf einem Wäscheständer. Bei BHs mit Cupschalen oder Spacercups bitte die Schalen nach der Wäsche in feuchtem Zustand in die richtige Form ziehen, so stellen Sie sicher dass es keine Verformungen gibt und die Umwelt dankt es Ihnen dazu.
         Bügeln Sie Ihren BH bitte nicht. Die elastischen Materialien vertragen die Hitze nicht und können darunter leiden.
         </p>
-        <h2 class="font-bold text-[18px]">Slips und Unterteile</h2>
+        <h2>Slips und Unterteile</h2>
         <p>Waschen Sie Ihre Wäschestücke immer nach Farben getrennt. Schon geringste Farbrückstände im Wasser können unter Umständen für eine Verfärbung des ganzen Kleidungsstücks verursachen.
         Waschen Sie die Slips aus Mikrofaser in der Waschmaschine bei 30 Grad mit einem milden Feinwaschmittel.
         Slips aus Baumwolle vertragen auch höhere Temperaturen, bitte richten Sie sich dabei individuell nach den Pflegehinweisen auf dem Einnähetikett.

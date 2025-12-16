@@ -56,7 +56,7 @@
             <label for="my-viania-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('Footer.Unternehmen') }}</label>
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
               <li><NuxtLink to="/ueber-uns">{{ t('Footer.about') }}</NuxtLink></li>
-              <li><NuxtLink :to="localePath(paths.contact)">{{ t('contact.label') }}</NuxtLink></li>
+              <!-- <li><NuxtLink :to="localePath(paths.contact)">{{ t('contact.label') }}</NuxtLink></li> -->
               <li><NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('legal.legalDisclosure') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('legal.termsAndConditions') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.declarationOfAccessibility)">{{ t('legal.declarationOfAccessibility') }}</NuxtLink></li>
