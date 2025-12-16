@@ -9,18 +9,21 @@
 </template>
 
 <script setup lang="ts">
-import {
-  SfIconCloseSm
-} from '@storefront-ui/vue';
+import { SfIconCloseSm } from '@storefront-ui/vue';
 import { type Filter, type FilterGroup, facetGetters } from '@plentymarkets/shop-api';
 import type { FilterProps } from '~/components/CategoryFilters/types';
 import type { Filters } from '~/composables';
 
-const { getFacetsFromURL, updateFilters } = useCategoryFilter();
+const { getFacetsFromURL } = useCategoryFilter();
+const { updateFiltersAndResetPage } = useCategoryFilterWithReset();
 
 const props = defineProps<FilterProps>();
 const filters = facetGetters.getFilters(props.facet ?? ({} as FilterGroup)) as Filter[];
 const models = ref({} as Filters);
+
+const facetChange = (id: string) => {
+  updateFiltersAndResetPage({[id]: false});
+};
 
 const updateFilter = () => {
   const currentFacets = getFacetsFromURL().facets?.split(',') ?? [];
@@ -30,8 +33,6 @@ const updateFilter = () => {
     models.value[filterId] = currentFacets.includes(filterId);
   }
 };
-
-const facetChange = (id: string) => updateFilters({[id]: false});
 
 updateFilter();
 

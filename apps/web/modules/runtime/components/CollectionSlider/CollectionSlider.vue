@@ -51,7 +51,7 @@
                                 enableAnimation && 'transition-all duration-700 ease-out delay-300',
                                 enableAnimation && (isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0')
                             ]">
-                                <h3 class="didot-text text-[48px] leading-[48px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[5cqw] 3xl:leading-[5cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
+                                <h3 class="didot-text text-[48px] leading-[48px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[4cqw] 3xl:leading-[4cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
                                 <p class="pb-[20px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5] md:max-w-[75%]">{{ collection.description }}</p>
                                 <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px]"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
                             </div>

@@ -50,29 +50,12 @@ import {
 import type { FilterProps } from '~/components/CategoryFilters/types';
 import type { Filters } from '~/composables';
 
-const { getFacetsFromURL, updateFilters, updatePrices } = useCategoryFilter();
+const { getFacetsFromURL, updateFiltersAndResetPage } = useCategoryFilterWithReset();
 
 const open = ref(false);
 const props = defineProps<FilterProps>();
 const filters = facetGetters.getFilters(props.facet ?? ({} as FilterGroup)) as Filter[];
 const models = ref({} as Filters);
-
-// Price
-const minPrice = ref(getFacetsFromURL().priceMin ?? '');
-const maxPrice = ref(getFacetsFromURL().priceMax ?? '');
-
-function updatePriceFilter() {
-  const min = minPrice.value.length > 0 ? Number(minPrice.value) : Number.NaN;
-  const max = maxPrice.value.length > 0 ? Number(maxPrice.value) : Number.NaN;
-  const minValue = Number.isNaN(min) ? '' : min.toString();
-  const maxValue = Number.isNaN(max) ? '' : max.toString();
-
-  updatePrices(minValue, maxValue);
-}
-
-function resetPriceFilter() {
-  updatePrices('', '');
-}
 
 const updateFilter = () => {
   const currentFacets = getFacetsFromURL().facets?.split(',') ?? [];
@@ -83,7 +66,9 @@ const updateFilter = () => {
   }
 };
 
-const facetChange = () => updateFilters(models.value);
+const facetChange = () => {
+  updateFiltersAndResetPage(models.value);
+};
 
 updateFilter();
 
@@ -95,9 +80,6 @@ watch(
   () => useNuxtApp().$router.currentRoute.value.query,
   async () => {
     updateFilter();
-
-    minPrice.value = getFacetsFromURL().priceMin ?? '';
-    maxPrice.value = getFacetsFromURL().priceMax ?? '';
   },
 );
 const feedbackNumber = (filter: Filter) => {

@@ -33,7 +33,7 @@
           <div class="links flex flex-col">
             <input type="checkbox" id="my-account-footer">
             <label for="my-account-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('account.heading') }}</label>
-            <ul class="pb-[20px] leading-[2] xl:pb-[0]">
+            <ul class="pb-[20px] leading-[2] xl:pb-[0] whitespace-nowrap">
               <li><NuxtLink :to="localePath(paths.account)">{{ t('account.heading') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.accountMyOrders)">{{ t('account.ordersAndReturns.section.myOrders') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.accountReturns)">{{ t('account.ordersAndReturns.section.returns') }}</NuxtLink></li>
@@ -44,8 +44,8 @@
             <input type="checkbox" id="my-service-footer">
             <label for="my-service-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('Footer.Service') }}</label>
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
-              <li><NuxtLink to="#">{{ t('Footer.sizeTable') }}</NuxtLink></li>
-              <li><NuxtLink to="#">{{ t('Footer.washInstructions') }}</NuxtLink></li>
+              <li><NuxtLink :to="t('Product.sizetableLink')" target="_blank">{{ t('Footer.sizeTable') }}</NuxtLink></li>
+              <li><NuxtLink to="/content/waschanleitung">{{ t('Footer.washInstructions') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.cancellationRights)">{{ t('legal.cancellationRights') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('legal.privacyPolicy') }}</NuxtLink></li>
             </ul>

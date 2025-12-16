@@ -132,6 +132,11 @@ export default defineNuxtModule({
       if (Header) {
         Header.filePath = resolve('./runtime/components/ui/Header/HeaderCyt.vue');
       }
+      // SimplifiedHeader
+      const SimplifiedHeader = components.find((c) => c.pascalName === 'UiSimplifiedHeader');
+      if (SimplifiedHeader) {
+        SimplifiedHeader.filePath = resolve('./runtime/components/ui/SimplifiedHeaderCyt.vue');
+      }
       // Button
       const Button = components.find((c) => c.pascalName === 'UiButton');
       if (Button) {
@@ -301,6 +306,16 @@ export default defineNuxtModule({
       app.layouts['default'] = {
         name: 'default',
         file: resolve('./runtime/layouts/defaultCyt.vue'),
+      };
+      // auth
+      app.layouts['auth'] = {
+        name: 'auth',
+        file: resolve('./runtime/layouts/authCyt.vue'),
+      };
+      // simplifiedHeaderAndFooter
+      app.layouts['simplified-header-and-footer'] = {
+        name: 'simplified-header-and-footer',
+        file: resolve('./runtime/layouts/simplifiedHeaderAndFooterCyt.vue'),
       };
     });
 

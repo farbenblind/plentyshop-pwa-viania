@@ -14,7 +14,7 @@ import {
   SfIconCloseSm
 } from '@storefront-ui/vue';
 
-const { getFacetsFromURL, updateFilters } = useCategoryFilter();
+const { getFacetsFromURL, updateQuery } = useCategoryFilter();
 
 const props = defineProps<CategoryFiltersProps>();
 const { facets } = toRefs(props);
@@ -25,11 +25,12 @@ const updateFacetsCount = () => {
 };
 
 const removeFacets = () => {
-  const updates: Record<string, boolean> = {};
-  for (const facetId of currentFacets.value) {
-    updates[facetId] = false;
-  }
-  updateFilters(updates);
+  updateQuery({ 
+    facets: null,
+    page: null,
+    priceMin: null,
+    priceMax: null
+  });
 };
 
 updateFacetsCount();
