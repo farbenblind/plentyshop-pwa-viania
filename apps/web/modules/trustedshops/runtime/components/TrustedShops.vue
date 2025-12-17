@@ -29,7 +29,6 @@
                     </div>
                 </Slide>
             </Carousel>
-            <!-- custom arrows -->
             <button @click="carousel?.prev()" :class="carouselArrowClasses + ' left-[-20px]'">
               <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
             </button>
@@ -50,18 +49,13 @@
                           <svg v-for="star in 5" :key="star" class="w-[17px] h-[17px] xl:w-[22px] xl:h-[22px]" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                             <defs>
                               <clipPath :id="`half-clip-${star}`" clipPathUnits="objectBoundingBox">
-                                <!-- clip left half; rect x,y,width,height in objectBoundingBox (0..1) -->
                                 <rect x="0" y="0" width="0.5" height="1" />
                               </clipPath>
                             </defs>
-
-                            <!-- base grey star -->
                             <path
                               d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
                               :fill="star - 0.5 <= data?.rating365 ? '#cccccc' : '#cccccc'"
                             />
-
-                            <!-- yellow overlay only when half or full required -->
                             <path
                               v-if="star - 0.5 <= data?.rating365"
                               d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
@@ -119,127 +113,6 @@ interface RatingData {
 const data = ref<RatingData | null>(null)
 const dataLoaded = ref(false)
 
-const fakeData = {
-  "rating365": 4.81,
-  "count365": 145,
-  "overallCount": 335,
-  "calculatedAt": "2025-12-12T10:00:00.000Z",
-  "reviews": [
-    {
-      "name": "Community-Mitglied",
-      "title": "Sehr schnelle Lieferung",
-      "comment": "Sehr schnelle Lieferung. Eine Größe passt bei jedem Modell. Sehr bequem. Gerne wieder.",
-      "rating": 5,
-      "submittedAt": "2025-11-30T00:00:00.000Z"
-    },
-    {
-      "name": "Eva B.",
-      "title": "Diesmal 5 Sterne",
-      "comment": "Diesmal 5 Sterne, weil alles super abgewickelt wurde, vor allem die problemlose Retoure. Habe die Artikel sofort in der richtigen Größe nachbestellt. Kundenservice top!",
-      "rating": 5,
-      "submittedAt": "2025-09-27T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung und Erstattung",
-      "comment": "Schnelle Lieferung und im Fall von Rücksendung sehr schnelle Erstattung",
-      "rating": 5,
-      "submittedAt": "2025-12-05T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Sehr schnelle Lieferung",
-      "comment": "Sehr schnelle Lieferung, heute bestellt am nächsten Tag bekommen. Kundenbetreuung, einfach super. Sofortige Antwort bei Anfragen, und Reklamation. Würde bei Viania jederzeit wieder bestellen.",
-      "rating": 5,
-      "submittedAt": "2025-08-17T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Superschneller Versand",
-      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
-      "rating": 5,
-      "submittedAt": "2025-11-06T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Superschneller Versand",
-      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
-      "rating": 5,
-      "submittedAt": "2025-11-03T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Einfach super",
-      "comment": "Wahre Bestellt und innerhalb von 3 Tag ist sie bei mir gewesen. Alles passt, trotzdem wurde vorsorglich schon ein Returenschein ausgestellt falls benötigt.",
-      "rating": 5,
-      "submittedAt": "2025-09-03T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Superschneller Versand",
-      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
-      "rating": 5,
-      "submittedAt": "2025-10-29T00:00:00.000Z"
-    },
-    {
-      "name": "Beate K.",
-      "title": "Gute Auswahlmöglichkeiten",
-      "comment": "Gute Auswahlmöglichkeiten und schnelle Lieferung. Bei der Lieferung auf Rechnung, fände ich es gut, wenn vorher ein Hinweis auf den Rechnungsdienstleister erfolgen würde",
-      "rating": 5,
-      "submittedAt": "2025-09-21T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Die schnelle Lieferung und die Passgenauigkeit",
-      "comment": "Die schnelle Lieferung und die Passgenauigkeit.",
-      "rating": 5,
-      "submittedAt": "2025-11-03T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung",
-      "comment": "Schnelle Lieferung, gute Qualität!",
-      "rating": 5,
-      "submittedAt": "2025-11-12T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung",
-      "comment": "schnelle Lieferung, Top Artikel",
-      "rating": 5,
-      "submittedAt": "2025-11-11T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Sehr schnelle Lieferung",
-      "comment": "Sehr schnelle Lieferung\nSuper Passform",
-      "rating": 5,
-      "submittedAt": "2025-10-26T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Toller Shop - leider Versand mit GLS",
-      "comment": "Die Produkte sind toll und der Shop zuverlässig. Ein BH war leider verschnitten (richtig falsch, abweichend vom Modell in anderen Farben), aber man will prüfen, ob das die gesamte Charge so ist und mir bescheid geben, ob ich einen neuen ohne Fehler bestellen kann.\nEigentlich müsste man 1 Punkt abziehen, weil mit GLS geliefert wird. Das macht die Retoure kompliziert. Aber ich warte erst einmal, ob ich eine Nachricht zum Produktmangel bekomme. Bislang belohne ich erst einmal die Freundlichkeit.",
-      "rating": 5,
-      "submittedAt": "2025-07-22T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Tolle passform",
-      "comment": "Leider habe ich falsche Größe bestellt somit musste ich meine Bestellung wieder zurücksenden, aber ich habe somit erfahren das es in Mössingen ein Outlet von euch gibt , da bin ich hingefahren und habe dort die richtige Größe gefunden und gekauft",
-      "rating": 5,
-      "submittedAt": "2025-09-13T00:00:00.000Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Gute Qualität",
-      "comment": "Gute Qualität. Die Bh's und Slips trage ich sehr gerne. Die Passform bei 36 F ist sehr gut.\nNur die Verpackung beim Versand sollte besser werden. Die Pakete sind schon mal kaputt, in das letzte konnte man reinschauen weil es nicht richtig zu geklebt war.",
-      "rating": 4,
-      "submittedAt": "2025-07-31T00:00:00.000Z"
-    }
-  ]
-};
-
 const carouselConfig = {
   itemsToShow: 1,
   autoplay: 5000,
@@ -266,29 +139,11 @@ const truncateText = (text: string, maxWords: number = 30): string => {
 
 onMounted(async () => {
   try {
-    const response = await fetch(
-      'https://www.vianiashop.com/rest/cytTrustedShops/ratings'
-    )
-
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`)
-    }
-
-    const json = await response.json()
-
-    const hasValidReviews =
-      json &&
-      Array.isArray(json.reviews) &&
-      json.reviews.length > 0
-
-    data.value = hasValidReviews
-      ? (json as RatingData)
-      : (fakeData as RatingData)
-
+    const response = await $fetch('/api/trustedshops-ratings')
+    data.value = response as any
+    
   } catch (error) {
     console.error('Failed to load ratings:', error)
-    data.value = fakeData as RatingData
-    console.log('Trusted Shop Static Data loaded')
   } finally {
     dataLoaded.value = true
   }
