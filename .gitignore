@@ -63,7 +63,3 @@ apps/web/reference/
 .vscode
 *.code-workspace
 *.tsbuildinfo
-
-# TrustedShops API key
-# This file contains the API key for TrustedShops and should not be committed
-/apps/web/modules/trustedshops/runtime/server/api/.env.ts
