@@ -141,9 +141,15 @@ onMounted(async () => {
   try {
     const response = await $fetch('/api/trustedshops-ratings')
     data.value = response as any
-    
-  } catch (error) {
-    console.error('Failed to load ratings:', error)
+  } catch (error: any) {
+    console.error('=== TRUSTED SHOPS ERROR ===')
+    console.error('Full error object:', error)
+    console.error('Status:', error.status)
+    console.error('Status code:', error.statusCode)
+    console.error('Status message:', error.statusMessage)
+    console.error('Message:', error.message)
+    console.error('Data:', error.data)
+    console.error('Response:', error.response)
   } finally {
     dataLoaded.value = true
   }
