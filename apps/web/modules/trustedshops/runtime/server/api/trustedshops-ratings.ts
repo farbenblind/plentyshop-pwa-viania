@@ -19,15 +19,28 @@ export default defineEventHandler(async (event: H3Event): Promise<TransformedRat
   const clientSecret = process.env.TRUSTED_SHOPS_CLIENT_SECRET;
   const channelId = process.env.TRUSTED_SHOPS_CHANNEL_ID;
 
+  // DETAILED LOGGING FOR PRODUCTION DEBUG
+  console.log('=== TRUSTED SHOPS API DEBUG ===')
+  console.log('Environment check:', {
+    hasClientId: !!clientId,
+    hasClientSecret: !!clientSecret,
+    hasChannelId: !!channelId,
+    clientIdLength: clientId?.length,
+    clientSecretLength: clientSecret?.length,
+    channelIdLength: channelId?.length,
+  })
+  console.log('All env vars:', Object.keys(process.env).filter(key => key.includes('TRUSTED')))
+
   if (!clientId || !clientSecret || !channelId) {
+    console.error('MISSING CREDENTIALS!')
     throw createError({
       statusCode: 500,
-      statusMessage: 'Trusted Shops credentials not configured',
+      statusMessage: `Missing credentials: clientId=${!!clientId}, clientSecret=${!!clientSecret}, channelId=${!!channelId}`,
     })
   }
 
   try {
-    // Get OAuth token
+    console.log('Step 1: Requesting OAuth token...')
     const tokenResponse = await $fetch<{ access_token: string }>(
       'https://login.etrusted.com/oauth/token',
       {
@@ -43,11 +56,12 @@ export default defineEventHandler(async (event: H3Event): Promise<TransformedRat
         }).toString(),
       }
     )
+    console.log('Step 1: Token received successfully')
 
     const accessToken = tokenResponse.access_token
     const headers = { 'Authorization': `Bearer ${accessToken}` }
 
-    // Fetch reviews and aggregate ratings in parallel
+    console.log('Step 2: Fetching reviews and ratings...')
     const [reviewsResponse, aggregateResponse] = await Promise.all([
       $fetch<any>('https://api.etrusted.com/reviews?count=20&status=APPROVED', {
         headers,
@@ -57,11 +71,8 @@ export default defineEventHandler(async (event: H3Event): Promise<TransformedRat
         headers,
       }),
     ])
+    console.log('Step 2: Data fetched successfully')
 
-    // console.log('Raw reviews response:', reviewsResponse)
-    // console.log('Raw aggregate response:', aggregateResponse)
-
-    // Transform to match your component's interface
     const transformedData: TransformedRatingData = {
       rating365: aggregateResponse['365days']?.rating || 0,
       count365: aggregateResponse['365days']?.count || 0,
@@ -80,20 +91,19 @@ export default defineEventHandler(async (event: H3Event): Promise<TransformedRat
       })) || []
     }
 
-    // console.log('Transformed data:', transformedData)
-
+    console.log('Step 3: Transformation complete, returning data')
     return transformedData
     
   } catch (error: any) {
-    console.error('eTrusted API error details:', {
-      message: error.message,
-      status: error.status,
-      data: error.data,
-    })
+    console.error('=== ERROR IN TRUSTED SHOPS API ===')
+    console.error('Error message:', error.message)
+    console.error('Error status:', error.status)
+    console.error('Error data:', error.data)
+    console.error('Full error:', JSON.stringify(error, null, 2))
     
     throw createError({
       statusCode: error.status || 500,
-      statusMessage: error.data?.message || error.message || 'Failed to fetch Trusted Shops ratings',
+      statusMessage: `TS API Error: ${error.message}`,
     })
   }
 })
