@@ -1,6 +1,6 @@
 <template>
-<div class="pt-[60px] 4xl:pt-[120px] xl:grid xl:grid-cols-[auto_430px] gap-[40px] 3xl:gap-[80px] xl:max-w-[90%] xl:mx-auto">
-    <div v-if="data && data.reviews" class="xl:min-w-0">
+<div v-if="data && data.reviews" class="pt-[60px] 4xl:pt-[120px] xl:grid xl:grid-cols-[auto_430px] gap-[40px] 3xl:gap-[80px] xl:max-w-[90%] xl:mx-auto">
+    <div class="xl:min-w-0">
         <div class="relative">
             <Carousel v-bind="carouselConfig"
               class="text-center"
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="bg-[#F8F8F8] mx-[-20px] mt-[40px] xl:mx-0 xl:mt-0 xl:rounded-[10px]" v-if="data">
+    <div class="bg-[#F8F8F8] mx-[-20px] mt-[40px] xl:mx-0 xl:mt-0 xl:rounded-[10px]">
         <div class="px-[20px] py-[30px] xl:px-[30px] grid grid-cols-[auto_100px] max-w-[400px] mx-auto xl:max-w-[inherit] xl:h-full">
             <div class="text-[12px] xl:text-[14px] my-auto">
                 <div class="flex align-center gap-[10px]">
