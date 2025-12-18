@@ -1,4 +1,5 @@
 import { defineEventHandler, createError, type H3Event } from 'h3'
+import { TRUSTED_SHOPS_CONFIG } from './.env'
 
 interface TransformedRatingData {
   rating365: number;
@@ -15,9 +16,9 @@ interface TransformedRatingData {
 }
 
 export default defineEventHandler(async (event: H3Event): Promise<TransformedRatingData> => {  
-  const clientId = process.env.NUXT_TRUSTED_SHOPS_CLIENT_ID;
-  const clientSecret = process.env.NUXT_TRUSTED_SHOPS_CLIENT_SECRET;
-  const channelId = process.env.NUXT_TRUSTED_SHOPS_CHANNEL_ID;
+  const clientId = TRUSTED_SHOPS_CONFIG.clientId;
+  const clientSecret = TRUSTED_SHOPS_CONFIG.clientSecret;
+  const channelId = TRUSTED_SHOPS_CONFIG.channelId;
 
   if (!clientId || !clientSecret || !channelId) {
     throw createError({
@@ -58,8 +59,8 @@ export default defineEventHandler(async (event: H3Event): Promise<TransformedRat
       }),
     ])
 
-    console.log('Raw reviews response:', reviewsResponse)
-    console.log('Raw aggregate response:', aggregateResponse)
+    // console.log('Raw reviews response:', reviewsResponse)
+    // console.log('Raw aggregate response:', aggregateResponse)
 
     // Transform to match your component's interface
     const transformedData: TransformedRatingData = {
@@ -80,7 +81,7 @@ export default defineEventHandler(async (event: H3Event): Promise<TransformedRat
       })) || []
     }
 
-    console.log('Transformed data:', transformedData)
+    // console.log('Transformed data:', transformedData)
 
     return transformedData
     
