@@ -10,15 +10,6 @@ inputs:
   configuration:
     description: 'Configuration'
     required: true
-  trusted-shops-client-id:
-    description: 'Trusted Shops Client ID'
-    required: false
-  trusted-shops-client-secret:
-    description: 'Trusted Shops Client Secret'
-    required: false
-  trusted-shops-channel-id:
-    description: 'Trusted Shops Channel ID'
-    required: false
 runs:
   using: 'composite'
   steps:
@@ -28,16 +19,10 @@ runs:
         cat <<EOT >> apps/web/.env
         API_SECURITY_TOKEN=$API_SECURITY_TOKEN
         API_ENDPOINT=$API_ENDPOINT
-        TRUSTED_SHOPS_CLIENT_ID=$TRUSTED_SHOPS_CLIENT_ID
-        TRUSTED_SHOPS_CLIENT_SECRET=$TRUSTED_SHOPS_CLIENT_SECRET
-        TRUSTED_SHOPS_CHANNEL_ID=$TRUSTED_SHOPS_CHANNEL_ID
         $CONFIGURATION
         EOT
       shell: bash
       env:
         API_SECURITY_TOKEN: ${{ inputs.api-security-token }}
         API_ENDPOINT: ${{ inputs.api-endpoint }}
-        TRUSTED_SHOPS_CLIENT_ID: ${{ inputs.trusted-shops-client-id }}
-        TRUSTED_SHOPS_CLIENT_SECRET: ${{ inputs.trusted-shops-client-secret }}
-        TRUSTED_SHOPS_CHANNEL_ID: ${{ inputs.trusted-shops-channel-id }}
         CONFIGURATION: ${{ inputs.configuration }}

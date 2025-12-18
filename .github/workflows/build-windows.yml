@@ -24,9 +24,6 @@ jobs:
           New-Item -ItemType File -Path apps/web/.env -Force
           Add-Content -Path apps/web/.env -Value "API_SECURITY_TOKEN=${{ secrets.API_SECURITY_TOKEN }}"
           Add-Content -Path apps/web/.env -Value "API_ENDPOINT=https://mevofvd5omld.c01-14.plentymarkets.com"
-          Add-Content -Path apps/web/.env -Value "TRUSTED_SHOPS_CLIENT_ID=${{ vars.TRUSTED_SHOPS_CLIENT_ID }}"
-          Add-Content -Path apps/web/.env -Value "TRUSTED_SHOPS_CLIENT_SECRET=${{ vars.TRUSTED_SHOPS_CLIENT_SECRET }}"
-          Add-Content -Path apps/web/.env -Value "TRUSTED_SHOPS_CHANNEL_ID=${{ vars.TRUSTED_SHOPS_CHANNEL_ID }}"
         shell: pwsh
 
       - name: Install dependencies
