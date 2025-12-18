@@ -1,5 +1,4 @@
 import { defineEventHandler, createError, type H3Event } from 'h3'
-import { TRUSTED_SHOPS_CONFIG } from './.env'
 
 interface TransformedRatingData {
   rating365: number;
@@ -16,9 +15,9 @@ interface TransformedRatingData {
 }
 
 export default defineEventHandler(async (event: H3Event): Promise<TransformedRatingData> => {  
-  const clientId = TRUSTED_SHOPS_CONFIG.clientId;
-  const clientSecret = TRUSTED_SHOPS_CONFIG.clientSecret;
-  const channelId = TRUSTED_SHOPS_CONFIG.channelId;
+  const clientId = process.env.TRUSTED_SHOPS_CLIENT_ID;
+  const clientSecret = process.env.TRUSTED_SHOPS_CLIENT_SECRET;
+  const channelId = process.env.TRUSTED_SHOPS_CHANNEL_ID;
 
   if (!clientId || !clientSecret || !channelId) {
     throw createError({
