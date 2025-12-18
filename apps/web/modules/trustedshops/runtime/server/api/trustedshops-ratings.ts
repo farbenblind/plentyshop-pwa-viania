@@ -15,9 +15,12 @@ interface TransformedRatingData {
 }
 
 export default defineEventHandler(async (event: H3Event): Promise<TransformedRatingData> => {  
-  const clientId = process.env.TRUSTED_SHOPS_CLIENT_ID;
-  const clientSecret = process.env.TRUSTED_SHOPS_CLIENT_SECRET;
-  const channelId = process.env.TRUSTED_SHOPS_CHANNEL_ID;
+  // const channelId = process.env.TRUSTED_SHOPS_CHANNEL_ID;
+  // const clientId = process.env.TRUSTED_SHOPS_CLIENT_ID;
+  // const clientSecret = process.env.TRUSTED_SHOPS_CLIENT_SECRET;
+  const channelId = "chl-917ccd85-ec53-4939-a5c1-2125fd6312df";
+  const clientId = "e680cf9e6395__viania-gmbh";
+  const clientSecret = "mI4ukLS6F0pCMf6hiAw9asLEwU83gsJS";
 
   // DETAILED LOGGING FOR PRODUCTION DEBUG
   console.log('=== TRUSTED SHOPS API DEBUG ===')
