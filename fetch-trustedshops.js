@@ -32,8 +32,8 @@ async function fetchTrustedShopsData() {
       calculatedAt: aggregateResponse.overall?.period?.calculatedAt || new Date().toISOString(),
       lastUpdated: new Date().toISOString(),
       reviews: reviewsResponse.items?.map(item => ({
-        name: item.consumer?.firstName
-          ? item.consumer.lastName ? `${item.consumer.firstName} ${item.consumer.lastName[0]}.` : item.consumer.firstName
+        name: item.customer?.firstName
+          ? item.customer.lastName ? `${item.customer.firstName} ${item.customer.lastName[0]}.` : item.customer.firstName
           : 'Community-Mitglied',
         title: item.title || '',
         comment: item.comment || '',
