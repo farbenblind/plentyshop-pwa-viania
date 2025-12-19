@@ -15,11 +15,9 @@ interface TransformedRatingData {
 }
 
 export default defineEventHandler(async (event: H3Event): Promise<TransformedRatingData> => {  
-  const config = useRuntimeConfig()
-  
-  const clientId = String(config.public?.trustedShopsClientId || '');
-  const clientSecret = String(config.public?.trustedShopsClientSecret || '');
-  const channelId = String(config.public?.trustedShopsChannelId || '');
+  const clientId = process.env.TRUSTED_SHOPS_CLIENT_ID;
+  const clientSecret = process.env.TRUSTED_SHOPS_CLIENT_SECRET;
+  const channelId = process.env.TRUSTED_SHOPS_CHANNEL_ID;
 
   // DETAILED LOGGING FOR PRODUCTION DEBUG
   console.log('=== TRUSTED SHOPS API DEBUG ===')

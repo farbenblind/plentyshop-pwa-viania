@@ -96,9 +96,6 @@ export default defineNuxtConfig({
   pages: true,
   runtimeConfig: {
     public: {
-      trustedShopsClientId: process.env.TRUSTED_SHOPS_CLIENT_ID || '',
-      trustedShopsClientSecret: process.env.TRUSTED_SHOPS_CLIENT_SECRET || '',
-      trustedShopsChannelId: process.env.TRUSTED_SHOPS_CHANNEL_ID || '',
       domain: validateApiUrl(process.env.API_URL) ?? process.env.API_ENDPOINT,
       apiEndpoint: process.env.API_ENDPOINT,
       activeLanguages: process.env.LANGUAGELIST || 'en,de',
