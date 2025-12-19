@@ -9,7 +9,7 @@
                 ref="carousel"
                 v-model="currentSlide">
                 <Slide v-for="collection in collections" :key="collection.slug">
-                    <NuxtLink :to="collection.link" class="w-full flex flex-col gap-[10px] md:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px]">
+                    <NuxtLink :to="collection.link" class="w-full flex flex-col gap-[10px] md:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px] h-full self-start">
                         <div class="relative h-0 pb-[100%] overflow-hidden">
                             <NuxtImg 
                                 :class="[
@@ -21,7 +21,7 @@
                                 loading="lazy" 
                             />
                         </div>
-                        <div class="grid gap-[10px]">
+                        <div class="grid gap-[10px] h-full">
                             <div class="grid grid-cols-2 gap-[10px] md:gap-[20px] lg:content-end">
                                 <div class="relative h-0 pb-[100%] overflow-hidden">
                                     <NuxtImg 
@@ -53,7 +53,7 @@
                             ]">
                                 <h3 class="didot-text text-[48px] leading-[48px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[4cqw] 3xl:leading-[4cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
                                 <p class="pb-[20px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5] md:max-w-[75%]">{{ collection.description }}</p>
-                                <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px]"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
+                                <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px] mt-auto"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
                             </div>
                         </div>
                     </NuxtLink>
