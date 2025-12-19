@@ -55,7 +55,7 @@
         </li>
     </ul>
 
-    <NuxtLink to="#" class="flex justify-center w-full pt-[40px] 3xl:pt-[70px]">
+    <NuxtLink to="/ueber-uns" class="flex justify-center w-full pt-[40px] 3xl:pt-[70px]">
         <SfButton class="3xl:min-h-[50px] 3xl:px-[40px] hover:bg-secondary-600">
             <span class="font-light">Mehr über Viania erfahren</span>
         </SfButton>
