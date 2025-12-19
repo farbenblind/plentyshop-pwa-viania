@@ -87,7 +87,7 @@ export default defineNuxtModule({
     // TrustedShops
     await addComponent({
       name: 'TrustedShops',
-      filePath: resolve('./trustedshops/runtime/components/TrustedShops.vue'),
+      filePath: resolve('./runtime/components/TrustedShops/TrustedShops.vue'),
     });
 
     // SeoTextHome
