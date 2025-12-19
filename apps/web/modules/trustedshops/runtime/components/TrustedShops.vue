@@ -126,8 +126,8 @@ const currentSlide = ref(0);
 const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString('de-DE', { 
     day: 'numeric',
-    month: 'long', 
-    year: 'numeric' 
+    month: 'long',
+    year: 'numeric'
   })
 }
 
@@ -139,7 +139,7 @@ const truncateText = (text: string, maxWords: number = 30): string => {
 
 onMounted(async () => {
   try {
-    const response = await $fetch('/trustedshops-data.json')
+    const response = await $fetch('https://farbenblind.github.io/plentyshop-pwa-viania/trustedshops-data.json')
     data.value = response as RatingData
   } catch (error) {
     console.error('Failed to load ratings:', error)
