@@ -135,11 +135,6 @@
 
   <style>
     .i-footer {
-      > span {
-        border-radius: 5px !important;
-        border: 1px solid #E5E5E5 !important;
-      }
-
       #newsletter-email {
         text-align: center !important;
         background-color: #fff !important;

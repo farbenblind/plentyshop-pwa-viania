@@ -8,14 +8,14 @@
       </h2>
     </div>
 
-    <div class="bg-[#F5EFEF] w-screen relative left-1/2 right-1/2 -mx-[50vw] py-[20px]">
-      <div class="max-w-screen-3xl mx-auto p-[20px] px-[10px] sm:px-[20px] xl:py-[80px] relative">
+    <div class="bg-[#F5EFEF] w-screen relative left-1/2 right-1/2 -mx-[50vw] py-[40px] xl:py-[60px]">
+      <div class="max-w-screen-3xl mx-auto px-[10px] sm:px-[20px] relative">
         <Swiper
           :modules="[Navigation, Pagination, Autoplay]"
           :slides-per-view="2"
           :slides-per-group="2"
           :space-between="10"
-          :autoplay="{ delay: 8000, disableOnInteraction: false }"
+          :autoplay="enableAutoplay && { delay: 8000, disableOnInteraction: false }"
           :loop="false"
           :speed="500"
           :navigation="{
@@ -111,6 +111,8 @@ const route = useRoute();
 const { productId } = createProductParams(route.params);
 const { data: product } = useProduct(productId);
 const viewport = useViewport();
+
+const enableAutoplay = false
 
 const { addModernImageExtension } = useModernImage();
 
