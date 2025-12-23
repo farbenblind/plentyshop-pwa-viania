@@ -41,6 +41,7 @@
         when-visible
       >
         <UiProductCard
+          :index="index"
           :product="product"
           :name="productGetters.getName(product) ?? ''"
           :rating-count="productGetters.getTotalReviews(product)"
@@ -117,7 +118,7 @@
 
 <script setup lang="ts">
 import { productGetters, productImageGetters, facetGetters } from '@plentymarkets/shop-api';
-import { SfIconTune, useDisclosure, SfLink } from '@storefront-ui/vue';
+import { useDisclosure } from '@storefront-ui/vue';
 import type { CategoryPageContentProps } from '~/components/CategoryPageContent/types';
 
 const { data: productsCatalog } = useProducts();

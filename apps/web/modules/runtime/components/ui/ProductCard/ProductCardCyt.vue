@@ -22,7 +22,7 @@
           :src="imageUrl"
           :alt="imageAlt"
           :title="imageTitle"
-          :loading="lazy && !priority ? 'lazy' : 'eager'"
+          :loading="priority === false || (index !== undefined && index >= 4) ? 'lazy' : 'eager'"
           :fetchpriority="priority ? 'high' : 'auto'"
           :preload="priority || false"
           :width="getWidth()"
@@ -63,7 +63,17 @@ import type { ProductCardProps } from '~/components/ui/ProductCard/types';
 import { defaults } from '~/composables';
 import type { ItemGridContent } from '~/components/blocks/ItemGrid/types';
 
-const props = withDefaults(defineProps<ProductCardProps>(), {
+interface Props {
+  product: any;
+  configuration?: ItemGridContent;
+  index?: number;
+  lazy?: boolean;
+  priority?: boolean;
+  isFromWishlist?: boolean;
+  isFromSlider?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
   configuration: () => ({
     cardBorders: true,
     contentAlignment: 'left',
@@ -90,6 +100,10 @@ const props = withDefaults(defineProps<ProductCardProps>(), {
       fullWidth: false,
     },
   }),
+  lazy: false,
+  priority: undefined,
+  isFromWishlist: false,
+  isFromSlider: false,
 });
 
 const product = computed(() => props.product);
@@ -145,8 +159,8 @@ const productPath = computed(() => {
   return localePath(shouldAppendVariation ? `${basePath}_${variationId.value}` : basePath);
 });
 
-const priority = ref((props.index || 0) < 5);
-const lazy = ref(props.lazy || false);
+const priority = computed(() => props.priority ?? ((props.index || 0) < 4));
+const lazy = computed(() => props.lazy);
 const isFromWishlist = ref(props.isFromWishlist || false);
 const isFromSlider = ref(props.isFromSlider || false);
 
