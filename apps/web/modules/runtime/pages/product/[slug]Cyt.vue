@@ -28,7 +28,7 @@
           />
         </div>
         
-        <div class="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+        <!-- <div class="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
           <div class="max-w-screen-3xl mx-auto p-[20px] xl:pt-[80px]">
             <h2 class="pb-[30px] lg:pb-[50px] font-semibold text-[14px] xl:text-[18px] text-center lg:text-left">
               <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">{{ t('Product.recommendedProducts') }}</span>
@@ -43,9 +43,9 @@
               />
             </section>
           </div>
-        </div>
+        </div> -->
 
-        <!-- <code v-if="crossSellingItemsSimilar?.products?.length > 1"><p>crossSellingItemsSimilar:</p>{{ crossSellingItemsSimilar }}</code> -->
+        <CrossSellingItemsSimilarCyt />
       </NarrowContainer>
   
       <UiReviewModal />
@@ -54,7 +54,6 @@
   </template>
   
 <script setup lang="ts">
-import { SfIconChevronRight } from '@storefront-ui/vue';
 import type { Product } from '@plentymarkets/shop-api';
 import { productGetters, reviewGetters, categoryTreeGetters } from '@plentymarkets/shop-api';
 
@@ -190,16 +189,6 @@ const observeRecommendedSection = () => {
     observer.observe(recommendedSection.value);
   }
 };
-
-// for later xseller
-const { fetchProducts: fetchCrossSelling, data: crossSellingItemsSimilar } =
-  useProducts(productId + "Similar");
-
-fetchCrossSelling({
-  itemId: productGetters.getItemId(product.value),
-  type: "cross_selling",
-  crossSellingRelation: "Similar",
-});
 
 onNuxtReady(() => observeRecommendedSection());
 </script>

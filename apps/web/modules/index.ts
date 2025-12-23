@@ -60,65 +60,72 @@ export default defineNuxtModule({
      */
     const {resolve} = createResolver(import.meta.url);
 
-    // BhFinder
-    await addComponent({
-      name: 'BhFinder',
-      filePath: resolve('./runtime/components/BhFinder/BhFinder.vue'),
-    });
-
-    // BannerSlider
-    await addComponent({
-      name: 'BannerSlider',
-      filePath: resolve('./runtime/components/BannerSlider/BannerSlider.vue'),
-    });
-
-    // CollectionSlider
-    await addComponent({
-      name: 'CollectionSlider',
-      filePath: resolve('./runtime/components/CollectionSlider/CollectionSlider.vue'),
-    });
-
-    // CategoryGrid
-    await addComponent({
-      name: 'CategoryGrid',
-      filePath: resolve('./runtime/components/CategoryGrid/CategoryGrid.vue'),
-    });
-
-    // TrustedShops
-    await addComponent({
-      name: 'TrustedShops',
-      filePath: resolve('./runtime/components/TrustedShops/TrustedShops.vue'),
-    });
-
-    // SeoTextHome
-    await addComponent({
-      name: 'SeoTextHome',
-      filePath: resolve('./runtime/components/SeoTextHome/SeoTextHome.vue'),
-    });
-
-    // Newsletter
-    await addComponent({
-      name: 'NewsletterCyt',
-      filePath: resolve('./runtime/components/Newsletter/NewsletterCyt.vue'),
-    });
-
-    // NavChildren
-    await addComponent({
-      name: 'NavChildren',
-      filePath: resolve('./runtime/components/NavChildren/NavChildren.vue'),
-    });
-
-    await addComponent({
+    const components = [
+      {
+        name: 'BhFinder',
+        path: 'BhFinder/BhFinder.vue',
+        global: false,
+      },
+      {
+        name: 'BannerSlider',
+        path: 'BannerSlider/BannerSlider.vue',
+        global: false,
+      },
+      {
+        name: 'CollectionSlider',
+        path: 'CollectionSlider/CollectionSlider.vue',
+        global: false,
+      },
+      {
+        name: 'CategoryGrid',
+        path: 'CategoryGrid/CategoryGrid.vue',
+        global: false,
+      },
+      {
+        name: 'TrustedShops',
+        path: 'TrustedShops/TrustedShops.vue',
+        global: false,
+      },
+      {
+        name: 'SeoTextHome',
+        path: 'SeoTextHome/SeoTextHome.vue',
+        global: false,
+      },
+      {
+        name: 'NewsletterCyt',
+        path: 'Newsletter/NewsletterCyt.vue',
+        global: true,
+      },
+      {
+        name: 'NavChildren',
+        path: 'NavChildren/NavChildren.vue',
+        global: true,
+      },
+      {
         name: 'SelectedFilters',
-        filePath: resolve('./runtime/components/Filter/SelectedFilters.vue'),
-        global: true,
-    });
-
-    await addComponent({
+        path: 'Filter/SelectedFilters.vue',
+        global: false,
+      },
+      {
         name: 'SelectedFilter',
-        filePath: resolve('./runtime/components/Filter/SelectedFilter.vue'),
-        global: true,
-    });
+        path: 'Filter/SelectedFilter.vue',
+        global: false,
+      },
+      {
+        name: 'CrossSellingItemsSimilarCyt',
+        path: 'CrossSelling/CrossSellingItemsSimilarCyt.vue',
+        global: false,
+      },
+    ];
+
+    for (const { name, path, global } of components) {
+      await addComponent({
+        name,
+        filePath: resolve(`./runtime/components/${path}`),
+        ...(global === false ? { global: false } : {}),
+      });
+    }
+
 
     // customJS (not needed at the moment)
     // addPlugin(resolve('./runtime/plugins/customJS'));
