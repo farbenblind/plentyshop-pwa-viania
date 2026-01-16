@@ -18,7 +18,7 @@
         class="relative h-0 pb-[100%] block w-full"
       >
         <NuxtImg
-          class="absolute top-0 left-0 w-full h-full object-contain"
+          class="absolute top-0 left-0 w-full h-full object-contain text-white"
           :src="imageUrl"
           :alt="imageAlt"
           :title="imageTitle"
