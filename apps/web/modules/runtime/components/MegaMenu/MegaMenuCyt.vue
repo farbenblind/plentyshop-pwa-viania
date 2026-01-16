@@ -148,7 +148,7 @@
           </button>
         </li>
       </ul>
-      <span v-if="$attrs.isSlimHeader && viewport.isGreaterOrEquals('lg')" class="grid grid-cols-2 text-right">
+      <span v-if="$attrs.isSlimHeader && viewport.isGreaterOrEquals('lg')" class="grid grid-cols-2 text-right gap-[20px]">
         <NuxtLink
           class="wl flex items-center gap-[5px] lg:gap-[10px] justify-self-end"
           :class="{ 'active': wishlistItemIds.length > 0 }"

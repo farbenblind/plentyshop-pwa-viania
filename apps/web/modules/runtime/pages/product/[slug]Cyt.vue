@@ -44,7 +44,7 @@
             </section>
           </div>
         </div> -->
-
+        <CrossSellingItemsAccessoryCyt />
         <CrossSellingItemsSimilarCyt />
       </NarrowContainer>
   

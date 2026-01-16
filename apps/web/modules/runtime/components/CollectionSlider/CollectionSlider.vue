@@ -190,6 +190,7 @@ const collections = [
 ];
 
 const carouselConfig = {
+  autoplay: 4000,
   itemsToShow: 1,
   wrapAround: true,
   transition: 500,

@@ -116,6 +116,16 @@ export default defineNuxtModule({
         path: 'CrossSelling/CrossSellingItemsSimilarCyt.vue',
         global: false,
       },
+      {
+        name: 'CrossSellingItemsAccessoryCyt',
+        path: 'CrossSelling/CrossSellingItemsAccessoryCyt.vue',
+        global: false,
+      },
+      {
+        name: 'UspSliderCyt',
+        path: 'UspSlider/UspSliderCyt.vue',
+        global: true,
+      },
     ];
 
     for (const { name, path, global } of components) {
@@ -335,7 +345,7 @@ export default defineNuxtModule({
      * override pages
      */
     extendPages((pages: NuxtPage[]) => {
-      console.log(pages);
+      // console.log(pages);
 
       // Homepage
       const overrideHomePage = pages.find((p) => p.name === 'index');
@@ -405,6 +415,6 @@ export default defineNuxtModule({
     nuxt.options.alias['~/composables/defaults'] = resolve(
       __dirname,
       './runtime/composables/defaultsCyt.ts'
-    )
+    );
   },
 });

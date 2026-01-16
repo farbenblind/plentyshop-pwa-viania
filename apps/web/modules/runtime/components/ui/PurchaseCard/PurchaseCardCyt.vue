@@ -118,13 +118,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-[auto_1fr] gap-[10px] pt-[35px] xl:pt-[50px]">
-        <svg class="h-auto w-[49px] xl:w-[66px]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 49.371 30.032"><defs><clipPath id="a"><rect width="49" height="30" transform="translate(0 0)" fill="none" stroke="#000" stroke-width="1"/></clipPath></defs><g transform="translate(0 0.016)"><g transform="translate(19.839 0.484)"><path d="M35.016,0a.5.5,0,0,1,.239.061L49.772,7.979a.5.5,0,0,1,0,.878L35.256,16.775a.5.5,0,0,1-.479,0L20.261,8.857a.5.5,0,0,1,0-.878L34.777.061A.5.5,0,0,1,35.016,0ZM48.488,8.418,35.016,1.069,21.544,8.418l13.472,7.349Z" transform="translate(-20.5 -0.5)"/><path d="M35.016,30.3a.5.5,0,0,1-.239-.061L20.261,22.317A.5.5,0,0,1,20,21.878V8.682a.5.5,0,0,1,1,0v12.9l14.016,7.645,14.016-7.645V8.682a.5.5,0,0,1,1,0v13.2a.5.5,0,0,1-.261.439L35.256,30.235A.5.5,0,0,1,35.016,30.3Z" transform="translate(-20.5 -0.764)"/><path d="M0,13.7a.5.5,0,0,1-.5-.5V0A.5.5,0,0,1,0-.5.5.5,0,0,1,.5,0V13.2A.5.5,0,0,1,0,13.7Z" transform="translate(14.516 15.836)"/></g><path d="M14.516,8.418a.5.5,0,0,1-.239-.061L-.239.439a.5.5,0,0,1-.2-.678.5.5,0,0,1,.678-.2L14.756,7.479a.5.5,0,0,1-.24.939Z" transform="translate(27.097 4.443)"/><path d="M10.645.5H0A.5.5,0,0,1-.5,0,.5.5,0,0,1,0-.5H10.645a.5.5,0,0,1,.5.5A.5.5,0,0,1,10.645.5Z" transform="translate(6.29 4.3)"/><path d="M10.645.5H0A.5.5,0,0,1-.5,0,.5.5,0,0,1,0-.5H10.645a.5.5,0,0,1,.5.5A.5.5,0,0,1,10.645.5Z" transform="translate(3.387 21.719)"/><g clip-path="url(#a)"><path d="M10.645.5H0A.5.5,0,0,1-.5,0,.5.5,0,0,1,0-.5H10.645a.5.5,0,0,1,.5.5A.5.5,0,0,1,10.645.5Z" transform="translate(0.484 13.977)"/></g></g></svg>
-        <div class="text-[12px] xl:text-[14px]">
-          <div class="font-bold">{{ t('Product.xcheckoutInfo2') }}</div>
-          <div>{{ t('Product.xcheckoutInfo3') }}</div>
-        </div>
-      </div>
+      <UspSliderCyt :is-item-view="true" />
 
       <ul class="pt-[20px] text-[12px] xl:text-[14px]">
         <li><span class="font-bold">{{ t('common.labels.content') }}:</span> {{ product.unit.content }} {{ product.unit.names.name }}</li>

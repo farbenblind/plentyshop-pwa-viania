@@ -1,11 +1,67 @@
 {
     "Header": {
         "Store Finder": "Store Finder",
+        "Store Finder Link": "https://viania.com/de/shops",
         "Mein Viania": "My Viania",
         "Merkliste": "Wishlist"
     },
     "Footer": {
-        "Fragen": "Du hast Fragen?",
-        "Service": "Service"
+        "Fragen1": "Do you have questions?",
+        "Fragen2": "We're here for you",
+        "Hotline": "+49 7473 94350",
+        "Email": "{'onlineshop@viania.de'}",
+        "Service-Zeiten": {
+            "1": "You can reach us:",
+            "2": "Monday - Friday 11 AM - 4 PM"
+        },
+        "Service": "Service",
+        "Unternehmen": "Company",
+        "about": "About us",
+        "newsletter1": "Newsletter",
+        "newsletter2": "Get 5€ off your next order and benefit from special offers.",
+        "newsletter3": "Subscribe to newsletter",
+        "newsletter4": "Your email address",
+        "sizeTable": "Size chart",
+        "washInstructions": "Care instructions",
+        "copyRight": {
+            "1": "All prices are {inclExcl} and plus {Versandkosten}.",
+            "2": "Free shipping on orders over 50 {currency} within Germany only",
+            "3": "All rights reserved"
+        }
+    },
+    "SizeTable": "View size chart",
+    "Filter": "Filter & Sort",
+    "Filter2": "Filter by:",
+    "Filter3": "Filtered by:",
+    "sortType.PriceDown": "Price descending",
+    "sortType.PriceUp": "Price ascending",
+    "sortType.NameA-Z": "Name ascending",
+    "sortType.NameZ-A": "Name descending",
+    "Merkliste": "My wishlist",
+    "Product": {
+        "moreItemsOfThisCollection": "Show all items from this collection",
+        "review": "Review",
+        "reviews": "Reviews",
+        "xOutOf5": "{x} out of 5",
+        "oneReview": "Show review",
+        "sizetable": "Please measure again before purchasing",
+        "sizetable2": "View size chart",
+        "sizetableLink": "https://cdn02.plentymarkets.com/w73p32remdlq/frontend/pdf/koerpermasstabelle-viania.pdf",
+        "xcheckoutInfo": "Or pay with your PayPal account:",
+        "xcheckoutInfo2": "Shipping on the same day",
+        "xcheckoutInfo3": "(for orders on weekdays until 2 PM)",
+        "xcheckoutInfo4": "Free shipping on orders over 50 €",
+        "xcheckoutInfo5": "(within Germany)",
+        "itemNo": "Item No.",
+        "description": "Description",
+        "material": "Material",
+        "careInstructions": "Care instructions",
+        "productSafety": "Product safety",
+        "download": "Download",
+        "recommendedProducts": "You might also be interested in"
+    },
+    "BhFinder": {
+        "title": "Find your bra",
+        "callToAction": "Find"
     }
 }

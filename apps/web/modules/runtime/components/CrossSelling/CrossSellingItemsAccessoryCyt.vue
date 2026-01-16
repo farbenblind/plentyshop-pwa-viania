@@ -1,9 +1,9 @@
 <template>
-  <div v-if="CrossSellingItemsSimilar?.products?.length > 0">
+  <div v-if="CrossSellingItemsAccessory?.products?.length > 0">
     <div class="max-w-screen-3xl mx-auto pt-[40px] xl:pt-[80px]">
       <h2 class="pb-[30px] lg:pb-[50px] font-semibold text-[14px] xl:text-[18px] text-center lg:text-left">
         <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">
-          Ähnliche Artikel
+          Dazu passend
         </span>
       </h2>
     </div>
@@ -40,7 +40,7 @@
           }"
           class="3xl:overflow-hidden 3xl:rounded-[10px]"
         >
-          <SwiperSlide v-for="(slide, index) in CrossSellingItemsSimilar.products" :key="index">
+          <SwiperSlide v-for="(slide, index) in CrossSellingItemsAccessory.products" :key="index">
             <UiProductCard
                 :index="index"
                 :product="slide"
@@ -117,8 +117,8 @@ const enableAutoplay = false
 const { addModernImageExtension } = useModernImage();
 
 // Initialize cross-selling composable
-const { fetchProducts: fetchCrossSelling, data: CrossSellingItemsSimilar } =
-  useProducts(productId + "Similar");
+const { fetchProducts: fetchCrossSelling, data: CrossSellingItemsAccessory } =
+  useProducts(productId + "Accessory");
 
 // Fetch cross-selling after Nuxt is fully ready
 onNuxtReady(async () => {
@@ -128,7 +128,7 @@ onNuxtReady(async () => {
       await fetchCrossSelling({
         itemId: itemId,
         type: "cross_selling",
-        crossSellingRelation: "Similar",
+        crossSellingRelation: "Accessory",
       });
     }
   }

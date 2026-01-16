@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-[10px] align-baseline text-[18px] xl:text-[24px]">
+  <div class="flex gap-[10px] align-baseline text-[18px] xl:text-[24px] [*[aria-label='quick-checkout-modal']_&]:hidden">
     <span v-if="crossedPrice && differentPrices" class="line-through xl:font-light">
       {{ format(crossedPrice) }}
     </span>
@@ -22,3 +22,29 @@ const differentPrices = computed(() => {
     : false;
 });
 </script>
+
+<style>
+  [aria-label='quick-checkout-modal'] {
+    header {
+      + div {
+        > div {
+          justify-content: center;
+          > img {
+            + .flex {
+              display: none;
+            ~ .mb-3 {
+                display: none;
+
+                + [data-testid="product-description"] {
+                  + div {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

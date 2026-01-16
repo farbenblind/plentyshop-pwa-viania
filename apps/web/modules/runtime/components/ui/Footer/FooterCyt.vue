@@ -21,11 +21,12 @@
                 {{ t('Footer.Email') }}
               </a>
             </li>
+            <!--
             <li class="pt-[10px] text-[12px] xl:pt-[30px] xl:text-[14px]">
               <strong>{{ t('Footer.Service-Zeiten.1') }}</strong>
               <br v-if="viewport.isGreaterOrEquals('lg')">
               {{ t('Footer.Service-Zeiten.2') }}
-            </li>
+            </li>-->
           </ul>
         </div>
 
