@@ -282,7 +282,7 @@ export default defineNuxtModule({
     nuxt.hook('tailwindcss:config', (config) => {
       // Colors
       if (config?.theme?.extend?.colors) {
-        (config.theme.extend.colors as any)['primary']['500'] = '#639';
+        (config.theme.extend.colors as any)['primary']['500'] = '#000';
         (config.theme.extend.colors as any)['secondary']['500'] = '#000';
       }
 
