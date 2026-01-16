@@ -87,6 +87,11 @@
         {{ t('Filter') }}
       </UiButton>
     </div>
+
+    <div v-if="getFacetsFromURL().page === 1"
+      v-html="productsCatalog?.category?.details?.[0]?.description"
+      class="pt-[40px] lg:pt-[80px] xl:pt-[100px] text-center leading-[1.35] max-w-[750px] mx-auto"
+    ></div>
   </NarrowContainer>
 </template>
 

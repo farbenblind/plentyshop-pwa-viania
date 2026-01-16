@@ -1,6 +1,6 @@
 <template>
   <nav v-if="pagination.totalPages > 1"
-    class="flex justify-between items-end pt-[30px]"
+    class="flex justify-between items-end pt-[40px] lg:pt-[80px] xl:pt-[100px]"
     role="navigation"
     :aria-label="t('common.labels.pagination')"
     data-testid="pagination"
