@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col pb-[30px] lg:max-w-[calc(50%-10px)] xl:max-w-[calc(33%-10px)]" data-testid="average-section">
-      <div class="flex gap-[10px] items-center justify-center lg:justify-start pb-[15px] text-[12px] lg:text-[14px]">
+  <div class="flex flex-col pb-[30px] lg:max-w-[calc(50%-10px)] xl:max-w-[calc(33%-10px)]" :class="{ '!max-w-full': !totalReviews }" data-testid="average-section">
+      <div v-if="totalReviews > 0" class="flex gap-[10px] items-center justify-center lg:justify-start pb-[15px] text-[12px] lg:text-[14px]">
         <div class="flex gap-[2px] xl:gap-[3px] text-[#FCC72F]">
           <svg v-for="star in 5" :key="star" class="w-[15px] h-[15px] xl:w-[20px] xl:h-[20px]" viewBox="0 0 24 24">
             <defs>
@@ -19,8 +19,8 @@
         </div>
         <div class="whitespace-nowrap ml-auto sm:ml-0">{{ totalReviews + ' ' + (totalReviews === 1 ? t('Product.review') : t('Product.reviews')) }} ({{ t('Product.xOutOf5', { x: reviewAverageText }) }})</div>
       </div>
-      <div class="flex flex-col items-center w-full gap-[3px]">
-        <div v-for="(proportionalRating, key) in ratingPercentages" :key="key" class="grid grid-cols-[auto_auto_1fr_auto] gap-[5px] items-center w-full">
+      <div class="flex flex-col items-center w-full gap-[3px]" :class="{ 'lg:items-start': !totalReviews }">
+        <div v-if="totalReviews > 0" v-for="(proportionalRating, key) in ratingPercentages" :key="key" class="grid grid-cols-[auto_auto_1fr_auto] gap-[5px] items-center w-full">
           <p class="tabular-nums font-semibold text-[14px]">{{ 5 - key }}</p>
           <SfIconStarFilled class="text-[#FCC72F] w-[18px] h-[18px]" size="base" />
           <SfProgressLinear
@@ -31,9 +31,10 @@
           />
           <p class="tabular-nums text-[14px]">({{ splitRatings[key] }})</p>
         </div>
+        <div v-else class="text-center lg:text-left text-sm">{{ t('product.noReviews') }}</div>
         <p
           @click="openReviewModal(defaults.DEFAULT_REVIEW_MODAL_TYPES.createReview)"
-          class="text-center lg:text-left text-sm underline block w-full pt-[10px] cursor-pointer"
+          class="inline-block text-center lg:text-left text-sm underline block w-full pt-[10px] cursor-pointer font-medium"
           aria-label="Bewertung abgeben"
         >
           {{ t('product.createReview') }}
@@ -43,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { SfRating, SfProgressLinear, SfIconStarFilled } from '@storefront-ui/vue';
+import { SfProgressLinear, SfIconStarFilled } from '@storefront-ui/vue';
 import type { ReviewStatisticsProps } from './types';
 import { productGetters, reviewGetters } from '@plentymarkets/shop-api';
 import { defaults } from '~/composables';

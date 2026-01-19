@@ -49,7 +49,7 @@
         </svg>
       </div>
 
-      <h1 class="text-[18px] xl:text-[24px] leading-[1.25] font-light" :class="{'pt-[20px]': reviewGetters.getTotalReviews(reviewAverage) > 0}" data-testid="product-name">{{ productGetters.getName(product) }}</h1>
+      <h1 class="text-[18px] xl:text-[24px] leading-[1.25] font-light" :class="{ 'pt-[20px]': reviewGetters.getTotalReviews(reviewAverage) > 0 || collection }" data-testid="product-name">{{ productGetters.getName(product) }}</h1>
 
       <div class="grid grid-cols-[auto_55px] pt-[15px] xl:grid-cols-[auto_80px]">
         <div class="prices-badge">

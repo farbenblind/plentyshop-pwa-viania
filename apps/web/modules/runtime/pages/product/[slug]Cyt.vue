@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-        <div class="max-w-screen-3xl mx-auto pt-[20px] pb-[20px] xl:pt-[60px]" v-if="reviewGetters.getTotalReviews(countsProductReviews) > 0">
+        <div class="max-w-screen-3xl mx-auto pt-[20px] pb-[20px] xl:pt-[60px]" v-if="true || reviewGetters.getTotalReviews(countsProductReviews) > 0">
           <ReviewsAccordion
             v-if="product"
             :product="product"

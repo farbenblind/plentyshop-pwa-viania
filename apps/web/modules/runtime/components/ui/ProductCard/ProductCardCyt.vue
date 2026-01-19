@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col bg-white border-[1px] border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5]" data-testid="product-card">
+  <div class="flex flex-col bg-white border-[1px] border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5] cursor-pointer" data-testid="product-card">
     <div class="relative overflow-hidden">
       <!--
       <UiBadges
@@ -31,14 +31,14 @@
         />
       </SfLink>
     </div>
-    <div class="flex flex-col flex-auto text-[14px] md:text-[16px] lg:text-[18px] leading-[1.25] p-[10px] sm:p-[20px]">
+    <div class="flex flex-col flex-auto text-[14px] md:text-[16px] lg:text-[18px] leading-[1.25] p-[10px] sm:p-[20px]" @click="navigateTo(productPath)">
       <!-- variation property "kollektion" -->
-      <div v-if="hasProperty(4, 47)" class="text-[12px] font-semibold pb-[5px]">
+      <div v-if="hasProperty(4, 47)" class="text-[12px] font-semibold pb-[5px] xl:pb-[10px]">
         {{ getPropertyValue(4, 47).split(",")[0] }}
       </div>
 
-      <SfLink :tag="NuxtLink" :to="productPath" class="no-underline font-light" data-testid="productcard-name">{{ name }}</SfLink>
-      <div class="flex items-start mt-auto gap-[10px] pt-[5px] pb-[10px]">
+      <div class="no-underline font-light" data-testid="productcard-name">{{ name }}</div>
+      <div class="flex items-start mt-auto gap-[10px] pt-[5px]">
         <span class="block font-bold" data-testid="product-card-vertical-price">
           <span class="font-semibold">{{ format(price) }}</span>
         </span>
@@ -46,12 +46,19 @@
           {{ format(crossedPrice) }}
         </span>
       </div>
-      <slot name="wishlistButton">
-        <WishlistButton
-          class="text-right"
-          :product="product"
-        />
-      </slot>
+      <div class="flex items-center pt-[10px] sm:pt-[20px]">
+        <div v-if="hasProperty(4, 50)" class="flex text-xs font-medium border border-black rounded-[3px] px-2 py-1">
+          {{ getPropertyValue(4, 50) }} Farben
+        </div>
+        <div @click.stop class="grow text-right flex items-center justify-end">
+          <slot name="wishlistButton">
+            <WishlistButton
+              class="text-right"
+              :product="product"
+            />
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </template>

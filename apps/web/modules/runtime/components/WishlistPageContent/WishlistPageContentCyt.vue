@@ -24,7 +24,7 @@
           <UiProductCard :product="product" is-from-wishlist :index="index">
             <template #wishlistButton>
               <WishlistButton discard 
-                class="flex w-full items-center justify-center gap-[3px] lg:min-h-[40px] lg:mt-[20px] rounded-[5px] text-[12px] sm:text-[14px] border border-[#E5E5E5] p-[5px] after:content-[attr(data-title)] [&_svg]:hidden before:content-['+'] before:text-[16px] sm:before:text-[20px] before:rotate-45 hover:text-white hover:bg-black hover:border-black"
+                class="!mt-0 flex w-full items-center justify-center gap-[3px] lg:min-h-[40px] lg:mt-[20px] rounded-[5px] text-[12px] sm:text-[14px] border border-[#E5E5E5] p-[5px] after:content-[attr(data-title)] [&_svg]:hidden before:content-['+'] before:text-[16px] sm:before:text-[20px] before:rotate-45 hover:text-white hover:bg-black hover:border-black"
                 :data-title="viewport.isGreaterOrEquals('lg') ? t('common.actions.removeFromWishlist') : t('coupon.remove')"
                 :product="product"
               />
