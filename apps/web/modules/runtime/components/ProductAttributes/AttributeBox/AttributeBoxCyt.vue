@@ -10,7 +10,7 @@
         :key="productAttributeGetters.getAttributeValueId(item)"
         class="min-h-[40px] min-w-[40px] flex items-center justify-center border-[1px] border-solid border-[#E5E5E5] rounded-[5px] bg-white cursor-pointer transition-all duration-[400ms] relative"
         :class="{
-          'bg-[rgba(255,255,255,0.4)] text-[rgba(0,0,0,0.4)] before:content-[\'\'] before:absolute before:inset-0 before:bg-[linear-gradient(to_top_right,transparent_calc(50%-0.5px),rgb(156,163,175)_calc(50%-0.5px),rgb(156,163,175)_calc(50%+0.5px),transparent_calc(50%+0.5px))]': productAttributeGetters.isAttributeValueDisabled(item),
+          '!bg-[rgba(255,255,255,0.4)] text-[rgba(0,0,0,0.4)] before:content-[\'\'] before:absolute before:inset-0 before:bg-[linear-gradient(to_bottom_right,transparent_calc(50%-0.5px),rgb(200,200,200)_calc(50%-0.5px),rgb(200,200,200)_calc(50%+0.5px),transparent_calc(50%+0.5px))]': productAttributeGetters.isAttributeValueDisabled(item),
           '!bg-black text-white': value === productAttributeGetters.getAttributeValueId(item),
           '!ring-negative-700 !border-negative-700 ring-1 bg-white': Boolean(errors['selectedValue']),
         }"

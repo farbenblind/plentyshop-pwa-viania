@@ -6,7 +6,6 @@
     <div class="py-[20px] lg:py-[40px]">
       Content
     </div>
-    
   </div>
 </template>
 

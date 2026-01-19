@@ -31,6 +31,13 @@
           />
           <p class="tabular-nums text-[14px]">({{ splitRatings[key] }})</p>
         </div>
+        <p
+          @click="openReviewModal(defaults.DEFAULT_REVIEW_MODAL_TYPES.createReview)"
+          class="text-center lg:text-left text-sm underline block w-full pt-[10px] cursor-pointer"
+          aria-label="Bewertung abgeben"
+        >
+          {{ t('product.createReview') }}
+        </p>
       </div>
   </div>
 </template>

@@ -375,6 +375,7 @@ export default defineNuxtModule({
       const customPages = [
         { name: 'careInstructions', file: 'WaschAnleitung.vue', path: '/waschanleitung' },
         { name: 'aboutUs', file: 'AboutUs.vue', path: '/ueber-uns' },
+        { name: 'shipping', file: 'Shipping.vue', path: '/versandkosten' },
       ];
       customPages.forEach(({ name, file, path }) => {
         pages.push({
@@ -392,10 +393,10 @@ export default defineNuxtModule({
       register({
         langDir: resolve('./runtime/lang'),
         locales: [
-          {
-            code: 'en',
-            file: 'en.json',
-          },
+          // {
+          //   code: 'en',
+          //   file: 'en.json',
+          // },
           {
             code: 'de',
             file: 'de.json',
