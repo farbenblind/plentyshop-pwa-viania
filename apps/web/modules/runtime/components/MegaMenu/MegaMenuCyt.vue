@@ -7,7 +7,7 @@
           :aria-label="t('Header.Store Finder')"
           class="flex items-center gap-[10px]"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="21" viewBox="0 0 17 21"><defs><clipPath id="a"><rect width="17" height="21" fill="none"/></clipPath></defs><g clip-path="url(#a)"><path d="M12.054,8.681A3.6,3.6,0,0,1,8.5,12.321a3.637,3.637,0,0,1-.008-7.272A3.6,3.6,0,0,1,12.054,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,8.681A8.1,8.1,0,0,1,8.5.5a8.1,8.1,0,0,1,8,8.181c0,5.228-4.445,8.4-8,11.819C4.949,17.081.5,13.909.5,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="21" viewBox="0 0 17 21"><defs><clipPath id="a2"><rect width="17" height="21" fill="none"/></clipPath></defs><g clip-path="url(#a2)"><path d="M12.054,8.681A3.6,3.6,0,0,1,8.5,12.321a3.637,3.637,0,0,1-.008-7.272A3.6,3.6,0,0,1,12.054,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,8.681A8.1,8.1,0,0,1,8.5.5a8.1,8.1,0,0,1,8,8.181c0,5.228-4.445,8.4-8,11.819C4.949,17.081.5,13.909.5,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g></svg>
           {{ t('Header.Store Finder') }}
         </NuxtLink>
 
