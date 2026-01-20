@@ -91,7 +91,7 @@
       </svg>
     </div>
     
-    <div class="swiper-pagination-accessory justify-center !gap-[10px] pt-[20px] md:pt-[40px]"></div>
+    <div class="swiper-pagination-accessory flex justify-center !gap-[10px] pt-[20px] md:pt-[40px]"></div>
   </div>
 </template>
 
