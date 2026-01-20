@@ -19,11 +19,11 @@
           :loop="false"
           :speed="500"
           :navigation="{
-            prevEl: '.swiper-button-prev-custom',
-            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-similar',
+            nextEl: '.swiper-button-next-similar',
           }"
           :pagination="{
-            el: '.swiper-pagination-custom',
+            el: '.swiper-pagination-similar',
             clickable: true,
           }"
           :breakpoints="{
@@ -69,18 +69,15 @@
                 :priority="false"
             />
           </SwiperSlide>
-          <!-- <SwiperSlide v-for="(slide, index) in 10" :key="index">
-            <div class="text-center bg-white rounded-[5px] p-[20px]">Slide {{ index + 1 }}</div>
-          </SwiperSlide> -->
         </Swiper>
 
         <!-- Custom arrows -->
-        <button class="hidden md:block disabled:hidden swiper-button-prev-custom absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]">
+        <button class="hidden md:block disabled:hidden swiper-button-prev-similar absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]">
           <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
             <use href="#svg_arrow" />
           </svg>
         </button>
-        <button class="hidden md:block disabled:hidden swiper-button-next-custom absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180">
+        <button class="hidden md:block disabled:hidden swiper-button-next-similar absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180">
           <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
             <use href="#svg_arrow" />
           </svg>
@@ -94,8 +91,7 @@
       </svg>
     </div>
     
-    <!-- Custom pagination - Swiper handles this automatically! -->
-    <div class="swiper-pagination swiper-pagination-custom !relative flex justify-center !gap-[10px] pt-[20px] md:pt-[40px]"></div>
+    <div class="swiper-pagination-similar flex justify-center !gap-[10px] pt-[20px] md:pt-[40px]"></div>
   </div>
 </template>
 
@@ -141,7 +137,7 @@ onNuxtReady(async () => {
   display: flex;
 }
 
-.swiper-pagination-custom .swiper-pagination-bullet {
+.swiper-pagination-similar .swiper-pagination-bullet {
   width: 20px;
   height: 2px;
   border-radius: 9999px;
@@ -151,23 +147,23 @@ onNuxtReady(async () => {
   margin: 0 !important;
 }
 
-.swiper-pagination-custom .swiper-pagination-bullet:hover {
+.swiper-pagination-similar .swiper-pagination-bullet:hover {
   background: #000;
   cursor: pointer;
 }
 
-.swiper-pagination-custom .swiper-pagination-bullet-active {
+.swiper-pagination-similar .swiper-pagination-bullet-active {
   width: 30px;
   background: #000;
 }
 
 @media (min-width: 768px) {
-  .swiper-pagination-custom .swiper-pagination-bullet {
+  .swiper-pagination-similar .swiper-pagination-bullet {
     width: 30px;
     height: 3px;
   }
   
-  .swiper-pagination-custom .swiper-pagination-bullet-active {
+  .swiper-pagination-similar .swiper-pagination-bullet-active {
     width: 40px;
   }
 }
