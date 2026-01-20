@@ -98,9 +98,9 @@ const carouselConfig = {
   itemsToShow: 1,
   autoplay: 8000,
   wrapAround: true,
-  pauseAutoplayOnHover: true,
+  pauseAutoplayOnHover: false,
   transition: 500,
-  slideEffect: viewport.isGreaterOrEquals('md') ? 'fade' as const : 'slide' as const
+  slideEffect: 'fade' as const
 };
 
 // Classes
