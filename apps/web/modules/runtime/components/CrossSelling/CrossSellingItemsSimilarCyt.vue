@@ -95,7 +95,7 @@
     </div>
     
     <!-- Custom pagination - Swiper handles this automatically! -->
-    <div class="swiper-pagination-custom flex justify-center !gap-[10px] pt-[20px] md:pt-[40px]"></div>
+    <div class="swiper-pagination swiper-pagination-custom !relative flex justify-center !gap-[10px] pt-[20px] md:pt-[40px]"></div>
   </div>
 </template>
 
@@ -153,6 +153,7 @@ onNuxtReady(async () => {
 
 .swiper-pagination-custom .swiper-pagination-bullet:hover {
   background: #000;
+  cursor: pointer;
 }
 
 .swiper-pagination-custom .swiper-pagination-bullet-active {
