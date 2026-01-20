@@ -15,7 +15,7 @@
           :slides-per-view="2"
           :slides-per-group="2"
           :space-between="10"
-          :autoplay="enableAutoplay && { delay: 8000, disableOnInteraction: false }"
+          :autoplay="enableAutoplay && { delay: 4000, disableOnInteraction: false }"
           :loop="false"
           :speed="500"
           :navigation="{
@@ -112,7 +112,7 @@ const { productId } = createProductParams(route.params);
 const { data: product } = useProduct(productId);
 const viewport = useViewport();
 
-const enableAutoplay = false
+const enableAutoplay = true
 
 const { addModernImageExtension } = useModernImage();
 
