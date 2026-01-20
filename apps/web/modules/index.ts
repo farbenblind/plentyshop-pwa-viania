@@ -376,6 +376,8 @@ export default defineNuxtModule({
         { name: 'careInstructions', file: 'WaschAnleitung.vue', path: '/waschanleitung' },
         { name: 'aboutUs', file: 'AboutUs.vue', path: '/ueber-uns' },
         { name: 'shipping', file: 'Shipping.vue', path: '/versandkosten' },
+        { name: 'sizeChart', file: 'SizeChart.vue', path: '/groessentabelle' },
+        { name: 'storeFinder', file: 'StoreFinder.vue', path: '/unsere-filialen' },
       ];
       customPages.forEach(({ name, file, path }) => {
         pages.push({
