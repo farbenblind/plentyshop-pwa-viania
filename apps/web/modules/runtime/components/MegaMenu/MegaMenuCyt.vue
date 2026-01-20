@@ -4,7 +4,6 @@
       <div class="flex items-center gap-[30px] min-w-[320px]" v-if="viewport.isGreaterOrEquals('lg')">
         <NuxtLink
           :to="'/unsere-filialen'"
-          target="_blank"
           :aria-label="t('Header.Store Finder')"
           class="flex items-center gap-[10px]"
         >
