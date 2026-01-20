@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col pb-[30px] lg:max-w-[calc(50%-10px)] xl:max-w-[calc(33%-10px)]" :class="{ '!max-w-full': !totalReviews }" data-testid="average-section">
+  <div class="flex flex-col lg:max-w-[calc(50%-10px)] xl:max-w-[calc(33%-10px)]" :class="{ '!max-w-full': !totalReviews }" data-testid="average-section">
       <div v-if="totalReviews > 0" class="flex gap-[10px] items-center justify-center lg:justify-start pb-[15px] text-[12px] lg:text-[14px]">
         <div class="flex gap-[2px] xl:gap-[3px] text-[#FCC72F]">
           <svg v-for="star in 5" :key="star" class="w-[15px] h-[15px] xl:w-[20px] xl:h-[20px]" viewBox="0 0 24 24">

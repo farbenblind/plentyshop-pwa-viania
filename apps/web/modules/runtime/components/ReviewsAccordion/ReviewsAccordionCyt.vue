@@ -8,6 +8,7 @@
       </h2>
 
       <UiReviewStatistics v-if="product" :product="product" />
+
       <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-[20px]">
         <UiReview v-for="(reviewItem, key) in paginatedProductReviews" :key="key" :review-item="reviewItem" />
       </div>

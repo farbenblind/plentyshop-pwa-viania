@@ -20,30 +20,13 @@
             </div>
           </div>
         </div>
-        <div class="max-w-screen-3xl mx-auto pt-[20px] pb-[20px] xl:pt-[60px]" v-if="true || reviewGetters.getTotalReviews(countsProductReviews) > 0">
+        <div class="max-w-screen-3xl mx-auto pt-[20px] xl:pt-[60px]" v-if="true || reviewGetters.getTotalReviews(countsProductReviews) > 0">
           <ReviewsAccordion
             v-if="product"
             :product="product"
             :total-reviews="reviewGetters.getTotalReviews(countsProductReviews)"
           />
         </div>
-        
-        <!-- <div class="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
-          <div class="max-w-screen-3xl mx-auto p-[20px] xl:pt-[80px]">
-            <h2 class="pb-[30px] lg:pb-[50px] font-semibold text-[14px] xl:text-[18px] text-center lg:text-left">
-              <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">{{ t('Product.recommendedProducts') }}</span>
-            </h2>
-          </div>
-          <div class="bg-[#F5EFEF]">
-            <section ref="recommendedSection" class="max-w-screen-3xl mx-auto p-[20px] xl:py-[80px] [&>.items-center+.typography-text-xs]:hidden">
-              <component
-                v-if="showRecommended"
-                :is="RecommendedProductsAsync"
-                :category-id="productGetters.getCategoryIds(product)[0] ?? ''"
-              />
-            </section>
-          </div>
-        </div> -->
         <CrossSellingItemsAccessoryCyt />
         <CrossSellingItemsSimilarCyt />
       </NarrowContainer>

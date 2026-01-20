@@ -119,6 +119,10 @@
         </div>
       </div> -->
 
+      <div class="pt-[15px] xl:pt-[20px] max-w-[520px] mx-auto sm:mx-0 sm:pl-[calc(100px+1rem)] xl:pl-0">
+        <img src="https://cdn02.plentymarkets.com/w73p32remdlq/frontend/pwa/payments-viania.webp" alt="Unser Zahlungsmethoden" class="w-full h-auto" loading="lazy" />
+      </div>
+
       <UspSliderCyt :is-item-view="true" />
 
       <div class="pt-[35px]">
