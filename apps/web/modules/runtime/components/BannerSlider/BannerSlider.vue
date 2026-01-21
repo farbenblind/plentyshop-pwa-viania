@@ -24,6 +24,9 @@
 
     <!-- custom pagination -->
     <div :class="paginationContainerClasses">
+      <button v-if="viewport.isGreaterOrEquals('md')" @click="swiperInstance?.slidePrev()" :class="carouselArrowClassesPagination + ' ' + arrowLeftClassesPagination">
+        <svg :class="svgClassesPagination" width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
+      </button>
       <button
         v-for="(slide, index) in slides"
         :key="index"
@@ -36,6 +39,9 @@
         ]"
         :aria-label="`Springe zu Slider ${index + 1}`"
       />
+      <button v-if="viewport.isGreaterOrEquals('md')" @click="swiperInstance?.slideNext()" :class="carouselArrowClassesPagination + ' ' + arrowRightClassesPagination">
+        <svg :class="svgClassesPagination" width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
+      </button>
     </div>
 
     <!-- custom arrows -->
@@ -119,11 +125,17 @@ const swiperOptions = {
 // Classes
 const carouselLinkClasses = 'w-full h-0 pb-[150%] md:pb-[50%] relative';
 const carouselImgClasses = 'absolute top-0 left-0 w-full h-full 3xl:rounded-[10px]';
-const carouselArrowClasses = 'absolute z-10 mt-[-30px] top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
+const carouselArrowClasses = 'hidden 4xl:flex absolute z-10 mt-[-30px] top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
 const arrowLeftClasses = 'left-0 xl:left-6 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]';
 const arrowRightClasses = 'right-0 xl:right-6 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180';
 
-const paginationContainerClasses = 'flex justify-center gap-2 pt-[20px] md:pt-[40px]';
+const carouselArrowClassesPagination = '4xl:hidden px-4 hover:opacity-50 transition-opacity duration-300';
+const arrowLeftClassesPagination = 'mr-[20px]';
+const arrowRightClassesPagination = 'ml-[20px] rotate-180';
+
+const svgClassesPagination = 'w-[21px] h-auto';
+
+const paginationContainerClasses = 'flex items-center justify-center gap-2 pt-[20px] 4xl:pt-[40px]';
 const paginationButtonBaseClasses = 'h-[2px] md:h-[3px] rounded-full transition-all duration-[500ms]';
 const paginationButtonActiveClasses = 'bg-black w-[30px] md:w-[40px]';
 const paginationButtonInactiveClasses = 'w-[20px] md:w-[30px] bg-[#E5E5E5] hover:bg-black';

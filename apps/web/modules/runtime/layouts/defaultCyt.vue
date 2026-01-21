@@ -27,6 +27,10 @@ setLogoMeta();
 </script>
 
 <style lang="scss">
+  body.hydrated {
+    overflow-x: hidden;
+  }
+
   [data-testid="checkout-layout"],
   [data-testid="account-layout"] {
     max-width: 1640px;
