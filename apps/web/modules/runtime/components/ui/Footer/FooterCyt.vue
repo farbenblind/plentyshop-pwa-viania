@@ -47,6 +47,7 @@
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
               <li><NuxtLink :to="t('Product.sizetableLink')" target="_blank">{{ t('Footer.sizeTable') }}</NuxtLink></li>
               <li><NuxtLink to="/waschanleitung">{{ t('Footer.washInstructions') }}</NuxtLink></li>
+              <li><NuxtLink to="/versandkosten">{{ $t('common.labels.delivery') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.cancellationRights)">{{ t('legal.cancellationRights') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.privacyPolicy)">{{ t('legal.privacyPolicy') }}</NuxtLink></li>
             </ul>
@@ -61,6 +62,7 @@
               <li><NuxtLink :to="localePath(paths.legalDisclosure)">{{ t('legal.legalDisclosure') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.termsAndConditions)">{{ t('legal.termsAndConditions') }}</NuxtLink></li>
               <li><NuxtLink :to="localePath(paths.declarationOfAccessibility)">{{ t('legal.declarationOfAccessibility') }}</NuxtLink></li>
+              <li><NuxtLink to="/unsere-filialen">{{ t('Header.Store Finder') }}</NuxtLink></li>
             </ul>
           </div>
         </div>

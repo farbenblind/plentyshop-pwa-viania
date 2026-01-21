@@ -5,10 +5,12 @@
     </h3>
     <div class="relative 3xl:mx-0 mt-[40px] xl:mt-[50px] bg-[#F5EFEF] left-[calc(-1*(100vw-100%)/2)] w-screen py-[30px] lg:py-[60px]">
         <div class="relative max-w-screen-3xl mx-auto px-[20px]">
-            <Carousel v-bind="carouselConfig"
-                ref="carousel"
-                v-model="currentSlide">
-                <Slide v-for="collection in collections" :key="collection.slug">
+            <Swiper
+                v-bind="swiperOptions"
+                @swiper="onSwiper"
+                @slideChange="onSlideChange"
+            >
+                <SwiperSlide v-for="collection in collections" :key="collection.slug">
                     <NuxtLink :to="collection.link" class="w-full flex flex-col gap-[10px] md:gap-[20px] lg:grid lg:grid-cols-2 lg:gap-[40px] h-full self-start">
                         <div class="relative h-0 pb-[100%] overflow-hidden">
                             <NuxtImg 
@@ -21,7 +23,7 @@
                                 loading="lazy" 
                             />
                         </div>
-                        <div class="grid gap-[10px] h-full">
+                        <div class="grid gap-[10px] h-full lg:grid-rows-2">
                             <div class="grid grid-cols-2 gap-[10px] md:gap-[20px] lg:content-end">
                                 <div class="relative h-0 pb-[100%] overflow-hidden">
                                     <NuxtImg 
@@ -51,20 +53,20 @@
                                 enableAnimation && 'transition-all duration-700 ease-out delay-300',
                                 enableAnimation && (isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0')
                             ]">
-                                <h3 class="didot-text text-[48px] leading-[48px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[4cqw] 3xl:leading-[4cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
-                                <p class="pb-[20px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5] md:max-w-[75%]">{{ collection.description }}</p>
-                                <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px] mt-auto"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
+                                <h3 class="didot-text text-[48px] leading-[48px] lg:pt-[20px] 2xl:text-[4cqw] 2xl:leading-[4cqw] 3xl:text-[4cqw] 3xl:leading-[4cqw] 3xl:tracking-[-1px]">{{ collection.name }}</h3>
+                                <p class="pb-[20px] lg:pb-[30px] xl:pb-[40px] pt-[10px] 2xl:pt-[20px] text-[14px] lg:text-[16px] xl:text-[18px] lg:max-w-[75%] mx-auto leading-[1.25] 2xl:leading-[1.5] md:max-w-[75%]">{{ collection.description }}</p>
+                                <SfButton class="self-center hover:bg-secondary-600 xl:min-h-[50px] xl:pl-[35px] xl:pr-[35px]"><span class="font-light text-[14px] lg:text-[18px]">Kollektion ansehen</span></SfButton>
                             </div>
                         </div>
                     </NuxtLink>
-                </Slide>
-            </Carousel>
+                </SwiperSlide>
+            </Swiper>
     
             <!-- custom arrows -->
-            <button v-if="viewport.isGreaterOrEquals('lg')" @click="carousel?.prev()" :class="carouselArrowClasses + ' left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-80px]'">
+            <button v-if="viewport.isGreaterOrEquals('lg')" @click="swiperInstance?.slidePrev()" :class="carouselArrowClasses + ' left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-80px]'">
                 <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
             </button>
-            <button v-if="viewport.isGreaterOrEquals('lg')" @click="carousel?.next()" :class="carouselArrowClasses + ' right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-80px] rotate-180'">
+            <button v-if="viewport.isGreaterOrEquals('lg')" @click="swiperInstance?.slideNext()" :class="carouselArrowClasses + ' right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-80px] rotate-180'">
                 <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
             </button>
           </div>
@@ -99,14 +101,17 @@
 </style>
 
 <script lang="ts" setup>
-import 'vue3-carousel/dist/carousel.css';
-import type { CarouselExposed } from 'vue3-carousel';
-import { Carousel, Slide } from 'vue3-carousel';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import type { Swiper as SwiperType } from 'swiper';
 import { ref, onMounted, onUnmounted } from 'vue';
 import { SfButton } from '@storefront-ui/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
 const viewport = useViewport();
 
-const carousel = ref<CarouselExposed>();
+const swiperInstance = ref<SwiperType>();
 const sliderCount = 4;
 const currentSlide = ref(0);
 const isVisible = ref(false);
@@ -189,15 +194,23 @@ const collections = [
   }
 ];
 
-const carouselConfig = {
-  autoplay: 4000,
-  itemsToShow: 1,
-  wrapAround: true,
-  transition: 500,
-  slideEffect: 'slide' as const
+const swiperOptions = {
+  slidesPerView: 1,
+  loop: true,
+  speed: 500,
+  allowTouchMove: true
+};
+
+// Methods
+const onSwiper = (swiper: SwiperType) => {
+  swiperInstance.value = swiper;
+};
+
+const onSlideChange = (swiper: SwiperType) => {
+  currentSlide.value = swiper.realIndex;
 };
 
 const slideTo = (index: number) => {
-  currentSlide.value = index;
+  swiperInstance.value?.slideToLoop(index);
 };
 </script>

@@ -2,12 +2,14 @@
 <div v-if="data && data.reviews" class="pt-[60px] 4xl:pt-[120px] xl:grid xl:grid-cols-[auto_430px] gap-[40px] 3xl:gap-[80px] xl:max-w-[90%] xl:mx-auto">
     <div class="xl:min-w-0">
         <div class="relative">
-            <Carousel v-bind="carouselConfig"
+            <Swiper
+              v-bind="swiperOptions"
               class="text-center"
-              ref="carousel"
-              v-model="currentSlide">
-                <Slide v-for="(review, index) in data.reviews" :key="index">
-                    <div class="p-4 xl:p-0 flex flex-col gap-[10px] h-full">
+              @swiper="onSwiper"
+              @slideChange="onSlideChange"
+            >
+                <SwiperSlide v-for="(review, index) in data.reviews" :key="index">
+                    <div class="p-4 xl:p-0 flex flex-col gap-[10px] h-full w-full">
                         <div class="inline-flex items-center justify-between truncate mx-auto">
                             <div class="flex gap-[0] text-[#FCC72F]">
                                 <svg v-for="star in 5" :key="star" class="w-[20px] h-[20px] xl:w-[24px] xl:h-[24px]" viewBox="0 0 24 24">
@@ -27,12 +29,12 @@
                         <p class="text-[18px] xl:text-[24px] leading-[1.35] px-[20px] sm:px-[40px] 3xl:px-[60px] my-auto">{{ viewport.isLessOrEquals('sm') ? truncateText(review.comment, 20) : truncateText(review.comment, 30) }}</p>
                         <p class="text-[12px] xl:text-[14px]">{{ review.name.trim() }}, {{ formatDate(review.submittedAt) }}</p>
                     </div>
-                </Slide>
-            </Carousel>
-            <button @click="carousel?.prev()" :class="carouselArrowClasses + ' left-[-20px]'">
+                </SwiperSlide>
+            </Swiper>
+            <button @click="swiperInstance?.slidePrev()" :class="carouselArrowClasses + ' left-[-20px]'">
               <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
             </button>
-            <button @click="carousel?.next()" :class="carouselArrowClasses + ' right-[-20px] rotate-180'">
+            <button @click="swiperInstance?.slideNext()" :class="carouselArrowClasses + ' right-[-20px] rotate-180'">
               <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
             </button>
         </div>
@@ -84,14 +86,16 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 
-import 'vue3-carousel/dist/carousel.css';
-import type { CarouselExposed } from 'vue3-carousel';
-import { Carousel, Slide } from 'vue3-carousel';
+// Import Swiper styles
+import 'swiper/css';
 
 const viewport = useViewport();
 
-const carousel = ref<CarouselExposed>();
+const swiperInstance = ref<SwiperType>();
 const carouselArrowClasses = 'absolute z-10 top-0 bottom-0 p-4 bg-white hover:scale-110 transition-transform duration-300';
 
 interface Review {
@@ -113,15 +117,28 @@ interface RatingData {
 const data = ref<RatingData | null>(null)
 const dataLoaded = ref(false)
 
-const carouselConfig = {
-  itemsToShow: 1,
-  autoplay: 5000,
-  pauseAutoplayOnHover: true,
-  transition: 500,
-  wrapAround: true,
+const swiperOptions = {
+  modules: [Autoplay],
+  slidesPerView: 1,
+  loop: true,
+  speed: 500,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true
+  }
 };
 
 const currentSlide = ref(0);
+
+// Methods
+const onSwiper = (swiper: SwiperType) => {
+  swiperInstance.value = swiper;
+};
+
+const onSlideChange = (swiper: SwiperType) => {
+  currentSlide.value = swiper.realIndex;
+};
 
 const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString('de-DE', { 

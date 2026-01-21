@@ -1,11 +1,12 @@
 <template>
 <div class="relative mx-[-20px] 3xl:mx-0">
-    <Carousel v-bind="carouselConfig"
+    <Swiper
+      v-bind="swiperOptions"
       class="3xl:overflow-hidden 3xl:rounded-[10px]"
-      ref="carousel"
-      v-model="currentSlide">
-
-      <Slide v-for="(slide, index) in slides" :key="index">
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
+    >
+      <SwiperSlide v-for="(slide, index) in slides" :key="index">
         <NuxtLink :to="slide.link" :class="carouselLinkClasses">
           <NuxtImg v-if="viewport.isLessOrEquals('sm')"
             :class="carouselImgClasses"
@@ -18,8 +19,8 @@
             :src="cdnUrl + slide.imageLg"
           />
         </NuxtLink>
-      </Slide>
-    </Carousel>
+      </SwiperSlide>
+    </Swiper>
 
     <!-- custom pagination -->
     <div :class="paginationContainerClasses">
@@ -38,10 +39,10 @@
     </div>
 
     <!-- custom arrows -->
-    <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.prev()" :class="carouselArrowClasses + ' ' + arrowLeftClasses">
+    <button v-if="viewport.isGreaterOrEquals('md')" @click="swiperInstance?.slidePrev()" :class="carouselArrowClasses + ' ' + arrowLeftClasses">
       <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
     </button>
-    <button v-if="viewport.isGreaterOrEquals('md')" @click="carousel?.next()" :class="carouselArrowClasses + ' ' + arrowRightClasses">
+    <button v-if="viewport.isGreaterOrEquals('md')" @click="swiperInstance?.slideNext()" :class="carouselArrowClasses + ' ' + arrowRightClasses">
       <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
     </button>
 
@@ -52,13 +53,17 @@
 </template>
 
 <script lang="ts" setup>
-import 'vue3-carousel/dist/carousel.css';
-import type { CarouselExposed } from 'vue3-carousel';
-import { Carousel, Slide } from 'vue3-carousel';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 import { ref } from 'vue';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+
 const viewport = useViewport();
-const carousel = ref<CarouselExposed>();
+const swiperInstance = ref<SwiperType>();
 const currentSlide = ref(0);
 
 // CDN configuration
@@ -93,16 +98,22 @@ const slides = [
   }
 ];
 
-// Carousel configuration
-const carouselConfig = {
-  itemsToShow: 1,
-  autoplay: 8000,
-  wrapAround: true,
-  pauseAutoplayOnHover: false,
-  transition: 500,
-  slideEffect: 'fade' as const,
-  mouseWheel: false,
-  mouseDrag: false
+// Swiper configuration
+const swiperOptions = {
+  modules: [Autoplay, EffectFade],
+  slidesPerView: 1,
+  loop: true,
+  effect: 'fade' as const,
+  fadeEffect: {
+    crossFade: true
+  },
+  autoplay: {
+    delay: 8000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true
+  },
+  speed: 500,
+  allowTouchMove: true
 };
 
 // Classes
@@ -118,7 +129,15 @@ const paginationButtonActiveClasses = 'bg-black w-[30px] md:w-[40px]';
 const paginationButtonInactiveClasses = 'w-[20px] md:w-[30px] bg-[#E5E5E5] hover:bg-black';
 
 // Methods
+const onSwiper = (swiper: SwiperType) => {
+  swiperInstance.value = swiper;
+};
+
+const onSlideChange = (swiper: SwiperType) => {
+  currentSlide.value = swiper.realIndex;
+};
+
 const slideTo = (index: number) => {
-  currentSlide.value = index;
+  swiperInstance.value?.slideToLoop(index);
 };
 </script>
