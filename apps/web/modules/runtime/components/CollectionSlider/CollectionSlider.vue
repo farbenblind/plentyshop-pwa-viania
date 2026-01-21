@@ -102,6 +102,7 @@
 
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { ref, onMounted, onUnmounted } from 'vue';
 import { SfButton } from '@storefront-ui/vue';
@@ -195,6 +196,12 @@ const collections = [
 ];
 
 const swiperOptions = {
+  modules: [Autoplay],
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true
+  },
   slidesPerView: 1,
   loop: true,
   speed: 500,
