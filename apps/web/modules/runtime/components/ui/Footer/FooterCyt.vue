@@ -53,7 +53,7 @@
             </ul>
           </div>
 
-          <div class="links flex flex-col">
+          <div class="links flex flex-col border-b border-black xl:border-b-0">
             <input type="checkbox" id="my-viania-footer">
             <label for="my-viania-footer" class="border-t border-black flex min-h-[40px] flex items-center xl:border-t-0 xl:min-h-[0] xl:text-[18px] xl:font-semibold whitespace-nowrap">{{ t('Footer.Unternehmen') }}</label>
             <ul class="pb-[20px] leading-[2] xl:pb-[0]">
