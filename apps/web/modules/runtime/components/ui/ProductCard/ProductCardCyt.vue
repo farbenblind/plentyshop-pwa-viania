@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col bg-white border-[1px] border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5] cursor-pointer" data-testid="product-card">
+  <div class="flex flex-col bg-white border-[1px] border-[transparent] rounded-[10px] overflow-hidden hover:border-[1px] hover:border-[#E5E5E5] cursor-pointer h-full" data-testid="product-card">
     <div class="relative overflow-hidden">
       <!--
       <UiBadges
