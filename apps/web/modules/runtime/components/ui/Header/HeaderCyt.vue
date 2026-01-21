@@ -2,7 +2,6 @@
   <div :class="{ 'sticky top-0 bg-white z-[11] animate-slide-down is-slim-header border-b border-[#e5e5e5] lg:[&_header]:pb-0 lg:[&_nav>ul]:pt-0 lg:[&_nav>ul>li>a>span]:pb-[20px] lg:[&_nav>a]:pb-[20px] lg:[&_nav>span]:pb-[20px]': isSlimHeader }">
     <MegaMenu :categories="categoryTree" :isSlimHeader="isSlimHeader"></MegaMenu>
   </div>
-
   <UiModal
     v-if="viewport.isGreaterOrEquals('md') && isAuthenticationOpen"
     v-model="isAuthenticationOpen"
@@ -29,7 +28,6 @@
 .animate-slide-down {
   animation: slideDown 0.3s ease-in-out;
 }
-
 @keyframes slideDown {
   from {
     transform: translateY(-50%);
@@ -40,20 +38,18 @@
     opacity: 1;
   }
 }
-
 #__nuxt {
   > div {
     width: 100% !important;
   }
 }
 </style>
-  
+
 <script setup lang="ts">
 import {
   SfIconClose,
   useDisclosure,
 } from '@storefront-ui/vue';
-
 import { paths } from '~/utils/paths';
 
 const isLogin = ref(true);
@@ -111,19 +107,40 @@ const navigateToLogin = () => {
 // sticky header
 const isSlimHeader = ref(false);
 let lastScrollY = 0;
+let ticking = false;
+const SCROLL_THRESHOLD = 250;
+const SCROLL_DELTA_THRESHOLD = 5;
 
 const handleScroll = () => {
-  const currentScrollY = window.scrollY;
-  const isScrollingUp = currentScrollY < lastScrollY;
-  
-  // Show sticky header when scrolled > 250px AND scrolling up
-  if (currentScrollY > 250 && isScrollingUp) {
-    isSlimHeader.value = true;
-  } else {
-    isSlimHeader.value = false;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+      
+      // Only process if scroll change is significant enough
+      if (scrollDelta < SCROLL_DELTA_THRESHOLD) {
+        ticking = false;
+        return;
+      }
+      
+      const isScrollingUp = currentScrollY < lastScrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const isNearBottom = currentScrollY >= maxScroll - 50;
+      
+      // Show sticky header when scrolled > 250px AND scrolling up
+      // But hide it when near the bottom to prevent flickering
+      if (currentScrollY > SCROLL_THRESHOLD && isScrollingUp && !isNearBottom) {
+        isSlimHeader.value = true;
+      } else {
+        isSlimHeader.value = false;
+      }
+      
+      lastScrollY = currentScrollY;
+      ticking = false;
+    });
+    
+    ticking = true;
   }
-  
-  lastScrollY = currentScrollY;
 };
 
 onMounted(() => {
