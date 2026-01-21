@@ -27,22 +27,18 @@ const differentPrices = computed(() => {
   [aria-label='quick-checkout-modal'] {
     header {
       + div {
-        > div {
+        > div:first-child {
           justify-content: center;
-          > img {
-            + .flex {
-              display: none;
-            ~ .mb-3 {
-                display: none;
 
-                + [data-testid="product-description"] {
-                  text-align: center;
-                  + div {
-                    display: none;
-                  }
-                }
-              }
-            }
+          * {
+            display: none;
+          }
+
+          img,
+          h1,
+          > .flex.mb-1 {
+            display: block;
+            text-align: center;
           }
         }
       }
