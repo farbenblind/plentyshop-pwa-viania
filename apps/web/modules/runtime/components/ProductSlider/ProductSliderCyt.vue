@@ -92,13 +92,13 @@
     </div>
 
     <div class="flex items-center justify-center content-center gap-[20px] pt-[20px] 4xl:pt-[40px]">
-      <button class="disabled:opacity-25 disabled:pointer-none 4xl:hidden swiper-button-prev-recommended px-4 hover:opacity-50 transition-opacity duration-300 left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]">
+      <button class="disabled:opacity-25 disabled:pointer-none hidden md:flex 4xl:hidden swiper-button-prev-recommended px-4 hover:opacity-50 transition-opacity duration-300 left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]">
         <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
           <use href="#svg_arrow" />
         </svg>
       </button>
       <div class="swiper-pagination-recommended flex justify-center !gap-[10px] !w-auto"></div>
-      <button class="disabled:opacity-25 disabled:pointer-none 4xl:hidden swiper-button-next-recommended px-4 hover:opacity-50 transition-opacity duration-300 right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180">
+      <button class="disabled:opacity-25 disabled:pointer-none hidden md:flex 4xl:hidden swiper-button-next-recommended px-4 hover:opacity-50 transition-opacity duration-300 right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180">
         <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
           <use href="#svg_arrow" />
         </svg>
