@@ -77,19 +77,25 @@
     </div>
 
     <!-- custom pagination -->
-    <div class="flex justify-center gap-2 pt-[20px] md:pt-[40px]">
-    <button
-        v-for="(slide, index) in sliderCount"
-        :key="index"
-        @click="slideTo(index)"
-        :class="[
-        'h-[2px] md:h-[3px] rounded-full transition-all duration-[500ms]',
-        currentSlide === index
-            ? 'bg-black w-[30px] md:w-[40px]'
-            : 'w-[20px] md:w-[30px] bg-[#E5E5E5] hover:bg-black'
-        ]"
-        :aria-label="`Springe zu Kollektion ${index + 1}`"
-    />
+    <div class="flex items-center justify-center gap-2 pt-[20px] 4xl:pt-[40px]">
+      <button v-if="viewport.isGreaterOrEquals('lg')" @click="swiperInstance?.slidePrev()" :class="carouselArrowClassesPagination + ' mr-[20px]'">
+          <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
+      </button>
+      <button
+          v-for="(slide, index) in sliderCount"
+          :key="index"
+          @click="slideTo(index)"
+          :class="[
+          'h-[2px] md:h-[3px] rounded-full transition-all duration-[500ms]',
+          currentSlide === index
+              ? 'bg-black w-[30px] md:w-[40px]'
+              : 'w-[20px] md:w-[30px] bg-[#E5E5E5] hover:bg-black'
+          ]"
+          :aria-label="`Springe zu Kollektion ${index + 1}`"
+      />
+      <button v-if="viewport.isGreaterOrEquals('lg')" @click="swiperInstance?.slideNext()" :class="carouselArrowClassesPagination + ' ml-[20px] rotate-180'">
+          <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707"><use href="#svg_arrow" /></svg>
+      </button>
     </div>
 </div>
 </template>
@@ -118,7 +124,10 @@ const currentSlide = ref(0);
 const isVisible = ref(false);
 const enableAnimation = ref(true); // 👈 Toggle this to enable/disable animation
 const imageClasses = 'rounded-[5px] absolute top-0 left-0 w-full h-full cursor-grab';
-const carouselArrowClasses = 'absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
+const carouselArrowClasses = 'hidden 4xl:flex absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300';
+
+const carouselArrowClassesPagination = '4xl:hidden px-4 hover:opacity-50 transition-opacity duration-300';
+
 const cdnUrl = 'https://cdn02.plentymarkets.com/w73p32remdlq/frontend';
 
 let observer: IntersectionObserver | null = null;

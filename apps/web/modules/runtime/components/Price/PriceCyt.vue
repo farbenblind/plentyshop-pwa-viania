@@ -36,6 +36,7 @@ const differentPrices = computed(() => {
                 display: none;
 
                 + [data-testid="product-description"] {
+                  text-align: center;
                   + div {
                     display: none;
                   }

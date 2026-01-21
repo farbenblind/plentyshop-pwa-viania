@@ -7,7 +7,7 @@
     <UspSliderCyt />
 
     <!-- Recommended Products -->
-    <RecommendedProducts categoryId="52" cacheKey="homepage" title="Unsere Topseller BHs" class="pt-[45px] xl:pt-[60px] 4xl:pt-[80px]" />
+    <RecommendedProducts categoryId="52" cacheKey="homepage" headline="Unsere Topseller BHs" class="pt-[45px] xl:pt-[60px] 4xl:pt-[80px]" />
 
     <!-- BH-Finder -->
     <BhFinder />

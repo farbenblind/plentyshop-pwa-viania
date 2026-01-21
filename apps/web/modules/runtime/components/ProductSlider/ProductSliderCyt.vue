@@ -3,7 +3,7 @@
     <div class="max-w-screen-3xl mx-auto">
       <h2 class="pb-[30px] lg:pb-[50px] font-semibold text-[14px] xl:text-[18px] text-center lg:text-left">
         <span class="relative pb-[13px] after:content-[''] after:absolute after:left-1/2 lg:after:left-[0] after:ml-[-25%] lg:after:ml-0 after:bottom-[0] after:w-1/2 after:h-[3px] after:bg-black">
-          {{ $attrs.title || 'Unsere Topseller' }}
+          {{ headline || 'Unsere Topseller' }}
         </span>
       </h2>
     </div>
@@ -15,7 +15,7 @@
           :slides-per-view="2"
           :slides-per-group="2"
           :space-between="10"
-          :autoplay="enableAutoplay && { delay: 4000, disableOnInteraction: false }"
+          :autoplay="enableAutoplay && { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true }"
           :loop="false"
           :speed="500"
           :navigation="{
@@ -38,7 +38,7 @@
               spaceBetween: 20
             },
           }"
-          class="3xl:overflow-hidden 3xl:rounded-[10px]"
+          class="opacity-0 transition-opacity duration-300 3xl:overflow-hidden 3xl:rounded-[10px]"
         >
           <SwiperSlide v-for="(product, index) in items" :key="index">
             <UiProductCard
@@ -72,12 +72,12 @@
         </Swiper>
 
         <!-- Custom arrows -->
-        <button class="hidden md:block disabled:hidden swiper-button-prev-recommended absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]">
+        <button class="disabled:opacity-25 disabled:pointer-none hidden 4xl:block swiper-button-prev-recommended absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]">
           <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
             <use href="#svg_arrow" />
           </svg>
         </button>
-        <button class="hidden md:block disabled:hidden swiper-button-next-recommended absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180">
+        <button class="disabled:opacity-25 disabled:pointer-none hidden 4xl:block swiper-button-next-recommended absolute z-10 top-1/2 -translate-y-1/2 p-4 hover:opacity-50 transition-opacity duration-300 right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180">
           <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
             <use href="#svg_arrow" />
           </svg>
@@ -90,8 +90,20 @@
         </g>
       </svg>
     </div>
-    
-    <div class="swiper-pagination-recommended flex justify-center !gap-[10px] pt-[20px] md:pt-[40px]"></div>
+
+    <div class="flex items-center justify-center content-center gap-[20px] pt-[20px] 4xl:pt-[40px]">
+      <button class="disabled:opacity-25 disabled:pointer-none 4xl:hidden swiper-button-prev-recommended px-4 hover:opacity-50 transition-opacity duration-300 left-0 4xl:left-[-80px] [@media(min-width:2000px)]:left-[-100px]">
+        <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
+          <use href="#svg_arrow" />
+        </svg>
+      </button>
+      <div class="swiper-pagination-recommended flex justify-center !gap-[10px] !w-auto"></div>
+      <button class="disabled:opacity-25 disabled:pointer-none 4xl:hidden swiper-button-next-recommended px-4 hover:opacity-50 transition-opacity duration-300 right-0 4xl:right-[-80px] [@media(min-width:2000px)]:right-[-100px] rotate-180">
+        <svg width="21.061" height="40.707" viewBox="0 0 21.061 40.707">
+          <use href="#svg_arrow" />
+        </svg>
+      </button>
+    </div>
   </div>
 </template>
   
@@ -103,16 +115,21 @@
   import { Navigation, Pagination, Autoplay } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
-  
+  import 'swiper/css/pagination';  
 
-  const enableAutoplay = true
+  const enableAutoplay = false;
 
   const { addModernImageExtension } = useModernImage();
-  defineProps<ProductSliderProps>();
+  defineProps<ProductSliderProps & {
+    headline?: string;
+  }>();
 </script>
 
 <style>
+.swiper.swiper-initialized {
+  opacity: 1;
+}
+
 .swiper-slide {
   height: auto !important;
   display: flex;

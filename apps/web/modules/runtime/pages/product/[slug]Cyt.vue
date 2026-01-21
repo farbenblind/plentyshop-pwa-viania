@@ -29,6 +29,7 @@
         </div>
         <CrossSellingItemsAccessoryCyt />
         <CrossSellingItemsSimilarCyt />
+        <RecommendedProducts :categoryId="String(product?.defaultCategories?.[0]?.id)" :headline="'Unsere Topseller in ' + breadcrumbs[breadcrumbs.length - 2]?.name" class="pt-[45px] xl:pt-[60px] 4xl:pt-[80px]" />
       </NarrowContainer>
   
       <UiReviewModal />
