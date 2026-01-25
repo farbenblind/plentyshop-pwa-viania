@@ -1,10 +1,17 @@
 {
   "rating365": 4.82,
-  "count365": 143,
-  "overallCount": 340,
-  "calculatedAt": "2026-01-23T04:10:49.831Z",
-  "lastUpdated": "2026-01-24T03:19:10.662Z",
+  "count365": 145,
+  "overallCount": 342,
+  "calculatedAt": "2026-01-24T19:53:19.639Z",
+  "lastUpdated": "2026-01-25T03:44:23.866Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Sehr gute Qualität",
+      "comment": "Sehr gute Qualität. Seit 6 Jahren kaufe ich nur Viania BH.",
+      "rating": 5,
+      "submittedAt": "2026-01-24T19:52:49.188Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Gute Qu",
@@ -137,13 +144,6 @@
       "comment": "Gute Auswahlmöglichkeiten und schnelle Lieferung.\n\nBei der Lieferung auf Rechnung, fände ich es gut, wenn vorher ein Hinweis auf den Rechnungsdienstleister erfolgen würde \n",
       "rating": 4,
       "submittedAt": "2025-09-21T17:03:25.443Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Gute Artikel wie beschrieben.",
-      "comment": "Gute Artikel wie beschrieben.",
-      "rating": 5,
-      "submittedAt": "2025-09-17T18:34:56.462Z"
     }
   ]
 }
