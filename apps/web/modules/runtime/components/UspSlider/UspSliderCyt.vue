@@ -37,8 +37,8 @@
     const enableAutoplay = true
     const swiperClasses = props.isItemView ? 
         "flex w-full items-center gap-[10px] pt-[35px] xl:pt-[50px] bg-[#F5EFEF]" : 
-        "flex w-full flex-col md:flex-row justify-center items-center gap-[20px] pt-[45px] xl:pt-[60px] bg-white"
+        "flex w-full flex-col md:flex-row justify-center items-center gap-[20px] pt-[45px] xl:pt-[60px] 2xl:pt-[80px] bg-white"
     const textClasses = props.isItemView ? 
         "text-left text-[12px] flex flex-col" :
-        "text-center text-[14px] sm:text-[18px]"
+        "text-center text-[14px] sm:text-[18px] xl:text-[24px]"
 </script>
