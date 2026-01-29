@@ -6,7 +6,7 @@
         <span class="font-medium">{{ facetGetters.getName(facet) }}</span>
         <svg :class="[open ? 'rotate-180' : '-rotate-0']" xmlns="http://www.w3.org/2000/svg" width="10.707" height="6.061" viewBox="0 0 10.707 6.061"><g transform="translate(0.354 0.354)"><path d="M10.354.354l-5,5-5-5" transform="translate(-0.354 -0.354)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/></g></svg>
       </label>
-      <div class="hidden peer-checked:grid grid-cols-4 gap-[5px] pb-[20px]">
+      <div class="hidden peer-checked:grid grid-cols-3 sm:grid-cols-4 gap-[5px] pb-[20px]">
         <SfListItem
           v-for="(filter, index) in facetGetters.getFilters(facet)"
           :key="index"
