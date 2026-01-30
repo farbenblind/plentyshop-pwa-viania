@@ -293,7 +293,7 @@
     h1: 'text-3xl font-bold text-center mb-8',
     section: 'mb-12',
     h2: 'text-2xl font-semibold mb-4',
-    tableWrapper: 'overflow-x-auto mr-[-20px] ml-[-20px] md:mx-0',
+    tableWrapper: 'overflow-x-auto mr-[-20px] ml-[-20px] px-[20px] md:mx-0 md:px-0',
     table: 'w-full border-collapse bg-white shadow-sm rounded-lg overflow-hidden',
     thHeader: 'border border-gray-300 px-4 py-3 text-left font-semibold',
     thHeaderCenter: 'border border-gray-300 px-4 py-3 text-center font-semibold',
