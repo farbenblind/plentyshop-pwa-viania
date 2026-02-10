@@ -114,7 +114,7 @@
         <p><sup>**</sup>{{ t('Footer.copyRight.2', {currency: currency}) }}</p>
         <p class="pt-[10px] xl:pt-[0] xl:ml-auto">
           {{ companyName }} / {{ t('Footer.copyRight.3') }} / powered by
-          <a href="https://www.createyourtemplate.com" target="_blank" title="Lösungen ... Berlin, Germany">
+          <a href="https://www.createyourtemplate.com" target="_blank" title="Lösungen für den eCommerce - Online Shops, eBay Shops und Templates, Widgets, Design, Programmierung, Fullservice, Branding - createyourtemplate GmbH & Co. KG - Berlin, Germany">
             <strong>createyourtemplate</strong>
           </a>
         </p>
