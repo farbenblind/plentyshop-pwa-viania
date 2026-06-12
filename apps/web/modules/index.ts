@@ -55,6 +55,39 @@ export default defineNuxtModule({
       }
     );
 
+    nuxt.options.app.head.script = nuxt.options.app.head.script || [];
+
+    nuxt.options.app.head.script.push({
+        type: 'text/javascript',
+        innerHTML: `
+            // Tag Version
+            console.log('Tag Version: 2.32.0');
+        `,
+    })
+
+    /**
+     * TrustedShops widget
+     */
+    nuxt.options.app.head.script.push({
+      src: 'https://widgets.trustedshops.com/js/XC6D0E273FECA9A8F9DF2ADD8B4DAD48C.js',
+      async: true,
+      'data-desktop-y-offset': '0',
+      'data-mobile-y-offset': '0',
+      'data-desktop-disable-reviews': 'false',
+      'data-desktop-enable-custom': 'false',
+      'data-desktop-position': 'left',
+      'data-desktop-custom-width': '156',
+      'data-desktop-enable-fadeout': 'false',
+      'data-disable-mobile': 'false',
+      'data-disable-trustbadge': 'false',
+      'data-mobile-custom-width': '156',
+      'data-mobile-disable-reviews': 'false',
+      'data-mobile-enable-custom': 'false',
+      'data-mobile-position': 'left',
+      'data-mobile-enable-topbar': 'false',
+      'data-mobile-enable-fadeout': 'true',
+    })
+
     /**
      * register components
      */
