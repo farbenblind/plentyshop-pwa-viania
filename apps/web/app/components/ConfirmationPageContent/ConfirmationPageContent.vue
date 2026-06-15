@@ -122,4 +122,19 @@ const bankDetails = computed(() => orderGetters.getOrderPaymentBankDetails(order
 useProcessingOrder().processingOrder.value = false;
 
 await getActiveShippingCountries();
+
+// for TrustedShops widget by cyt - re-initialize after 3 seconds
+onMounted(() => {
+  setTimeout(() => {
+    if (window.trustbadge) {
+      window.trustbadge.reInitialize()
+    }
+  }, 3000)
+})
+
+declare global {
+  interface Window {
+    trustbadge?: { reInitialize: () => void }
+  }
+}
 </script>

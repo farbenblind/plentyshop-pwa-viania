@@ -5,7 +5,7 @@
         <NuxtLink
           :to="'/unsere-filialen'"
           :aria-label="t('Header.Store Finder')"
-          class="flex items-center gap-[10px]"
+          class="flex items-center gap-[10px] no-underline"
         >
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="21" viewBox="0 0 17 21"><defs><clipPath id="a2"><rect width="17" height="21" fill="none"/></clipPath></defs><g clip-path="url(#a2)"><path d="M12.054,8.681A3.6,3.6,0,0,1,8.5,12.321a3.637,3.637,0,0,1-.008-7.272A3.6,3.6,0,0,1,12.054,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,8.681A8.1,8.1,0,0,1,8.5.5a8.1,8.1,0,0,1,8,8.181c0,5.228-4.445,8.4-8,11.819C4.949,17.081.5,13.909.5,8.681Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></g></svg>
           {{ t('Header.Store Finder') }}
@@ -47,7 +47,7 @@
         </SfDropdown>      
         <NuxtLink
           v-else
-          class="flex items-center gap-[10px] cursor-pointer"
+          class="flex items-center gap-[10px] cursor-pointer no-underline"
           :aria-label="t('authentication.login.openLoginForm')"
           @click="navigateToLogin"
         >
@@ -65,14 +65,14 @@
 
       <div class="links flex align-center text-[12px] flex gap-[20px] lg:gap-[30px] lg:text-[14px] lg:min-w-[320px] justify-end">
         <NuxtLink v-if="viewport.isLessThan('lg')"
-          class="flex items-center gap-[10px] cursor-pointer"
+          class="flex items-center gap-[10px] cursor-pointer no-underline"
           :aria-label="t('authentication.login.openLoginForm')"
           :to="isAuthorized ? localePath(paths.account) : localePath(paths.authLogin)"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-[18px] w-auto" width="21" height="21" viewBox="0 0 21 21"><path d="M15.167,5.162A4.667,4.667,0,1,1,10.5.5h.009A4.666,4.666,0,0,1,15.167,5.162Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/><path d="M.5,20.5c0-5.025,2.655-7.758,8.182-7.758h3.636c5.527,0,8.182,2.733,8.182,7.758Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/></svg>
         </NuxtLink>
         <NuxtLink
-          class="wl flex items-center gap-[5px] lg:gap-[10px]"
+          class="wl flex items-center gap-[5px] lg:gap-[10px] no-underline"
           :class="{ 'active': wishlistItemIds.length > 0 }"
           :to="localePath(paths.wishlist)"
           :aria-label="t('cart.numberInWishlist', { count: wishlistItemIds.length })"
@@ -83,7 +83,7 @@
           <span class="badge" data-testid="wishlist-badge" v-else>{{t('Header.Merkliste')}}<template v-if="wishlistItemIds.length"> ({{ wishlistItemIds.length }})</template></span>
         </NuxtLink>
         <NuxtLink
-          class="wl b flex items-center gap-[5px] lg:gap-[10px]"
+          class="wl b flex items-center gap-[5px] lg:gap-[10px] no-underline"
           :class="{ 'active': cartItemsCount > 0 }"
           :to="localePath(paths.cart)"
           :aria-label="t('cart.numberInCart', { count: cartItemsCount })"
@@ -149,7 +149,7 @@
       </ul>
       <span v-if="$attrs.isSlimHeader && viewport.isGreaterOrEquals('lg')" class="grid grid-cols-2 text-right gap-[20px] min-w-[120px]">
         <NuxtLink
-          class="wl flex items-center gap-[5px] lg:gap-[10px] justify-self-end"
+          class="wl flex items-center gap-[5px] lg:gap-[10px] justify-self-end no-underline"
           :class="{ 'active': wishlistItemIds.length > 0 }"
           :to="localePath(paths.wishlist)"
           :aria-label="t('cart.numberInWishlist', { count: wishlistItemIds.length })"
@@ -159,7 +159,7 @@
           <span v-if="wishlistItemIds.length" class="badge font-semibold" data-testid="wishlist-badge">{{ wishlistItemIds.length }}</span>
         </NuxtLink>
         <NuxtLink
-          class="wl b flex items-center gap-[5px] lg:gap-[10px] justify-self-end"
+          class="wl b flex items-center gap-[5px] lg:gap-[10px] justify-self-end no-underline"
           :class="{ 'active': cartItemsCount > 0 }"
           :to="localePath(paths.cart)"
           :aria-label="t('cart.numberInCart', { count: cartItemsCount })"
