@@ -1,10 +1,17 @@
 {
-  "rating365": 4.82,
-  "count365": 99,
-  "overallCount": 343,
-  "calculatedAt": "2026-06-27T04:15:25.215Z",
-  "lastUpdated": "2026-06-27T05:43:58.303Z",
+  "rating365": 4.81,
+  "count365": 100,
+  "overallCount": 345,
+  "calculatedAt": "2026-06-28T04:05:15.776Z",
+  "lastUpdated": "2026-06-28T06:05:46.719Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Bei Bestell und Retoure emails gab es wo…",
+      "comment": "Bei Bestell und Retoure emails gab es wohl technische Probleme.Auf Nachfrage  wurde alles promt und problemlos geregelt. ",
+      "rating": 4,
+      "submittedAt": "2026-06-27T10:33:29.526Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Sehr gute Qualität",
@@ -137,13 +144,6 @@
       "comment": "Diesmal 5 Sterne, weil alles super abgewickelt wurde, vor allem die problemlose Retoure. Habe die Artikel sofort in der richtigen Größe nachbestellt. Kundenservice top!",
       "rating": 5,
       "submittedAt": "2025-09-27T11:19:06.200Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Gute Auswahlmöglichkeiten und schnelle…",
-      "comment": "Gute Auswahlmöglichkeiten und schnelle Lieferung.\n\nBei der Lieferung auf Rechnung, fände ich es gut, wenn vorher ein Hinweis auf den Rechnungsdienstleister erfolgen würde \n",
-      "rating": 4,
-      "submittedAt": "2025-09-21T17:03:25.443Z"
     }
   ]
 }
