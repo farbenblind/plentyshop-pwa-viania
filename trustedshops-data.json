@@ -1,10 +1,17 @@
 {
   "rating365": 4.81,
   "count365": 101,
-  "overallCount": 346,
-  "calculatedAt": "2026-06-29T04:03:11.355Z",
-  "lastUpdated": "2026-06-29T06:26:00.467Z",
+  "overallCount": 348,
+  "calculatedAt": "2026-06-30T04:16:27.878Z",
+  "lastUpdated": "2026-06-30T06:00:12.988Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Gute Qualität",
+      "comment": "Gute Qualität, trage ich seit Jahren. Schneller zuverlässiger Versand. Danke",
+      "rating": 5,
+      "submittedAt": "2026-06-29T12:28:15.705Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Bei Bestell und Retoure emails gab es wo…",
@@ -137,13 +144,6 @@
       "comment": "Schnelle Lieferung, Topqualität",
       "rating": 5,
       "submittedAt": "2025-09-28T13:58:50.756Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Diesmal 5 Sterne",
-      "comment": "Diesmal 5 Sterne, weil alles super abgewickelt wurde, vor allem die problemlose Retoure. Habe die Artikel sofort in der richtigen Größe nachbestellt. Kundenservice top!",
-      "rating": 5,
-      "submittedAt": "2025-09-27T11:19:06.200Z"
     }
   ]
 }
