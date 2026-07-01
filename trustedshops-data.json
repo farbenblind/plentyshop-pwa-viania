@@ -1,10 +1,24 @@
 {
   "rating365": 4.81,
-  "count365": 101,
-  "overallCount": 348,
-  "calculatedAt": "2026-06-30T04:16:27.878Z",
-  "lastUpdated": "2026-06-30T06:00:12.988Z",
+  "count365": 100,
+  "overallCount": 350,
+  "calculatedAt": "2026-07-01T04:06:28.140Z",
+  "lastUpdated": "2026-07-01T06:14:45.126Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Tolle Ware",
+      "comment": "Tolle Ware, schnelle Lieferung, spitzen Kundenservice! ",
+      "rating": 5,
+      "submittedAt": "2026-06-30T18:13:45.821Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Unkomplizierte und schnelle Bestellung",
+      "comment": "Unkomplizierte und schnelle Bestellung. Die Qalität ist sehr gut zum fairen Preis",
+      "rating": 5,
+      "submittedAt": "2026-06-30T11:08:04.978Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Gute Qualität",
@@ -130,20 +144,6 @@
       "comment": "Super Qualität, schnelle Lieferung!",
       "rating": 5,
       "submittedAt": "2025-10-19T18:33:59.356Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung",
-      "comment": "Schnelle Lieferung. Schnelle Neulieferung bei festgestellten Mängeln.",
-      "rating": 4,
-      "submittedAt": "2025-09-29T06:51:38.223Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung",
-      "comment": "Schnelle Lieferung, Topqualität",
-      "rating": 5,
-      "submittedAt": "2025-09-28T13:58:50.756Z"
     }
   ]
 }
