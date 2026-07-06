@@ -1,10 +1,17 @@
 {
-  "rating365": 4.81,
-  "count365": 100,
-  "overallCount": 351,
-  "calculatedAt": "2026-07-05T04:06:00.893Z",
-  "lastUpdated": "2026-07-05T05:53:01.699Z",
+  "rating365": 4.8,
+  "count365": 101,
+  "overallCount": 353,
+  "calculatedAt": "2026-07-06T04:16:33.876Z",
+  "lastUpdated": "2026-07-06T06:16:15.917Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Veel keus en snelle verzending",
+      "comment": "Veel keus en snelle verzending\nTip: rabatt oder lieferung ohne kosten wenn man mehr stucks kauft ",
+      "rating": 5,
+      "submittedAt": "2026-07-05T11:22:44.616Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Ein BH hat super gepasst",
@@ -137,13 +144,6 @@
       "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
       "rating": 5,
       "submittedAt": "2025-10-29T08:22:14.800Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Sehr schnelle Lieferung ",
-      "comment": "Sehr schnelle Lieferung \nSuper Passform ",
-      "rating": 5,
-      "submittedAt": "2025-10-26T12:35:11.478Z"
     }
   ]
 }
