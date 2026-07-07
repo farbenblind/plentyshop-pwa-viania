@@ -1,10 +1,17 @@
 {
-  "rating365": 4.8,
+  "rating365": 4.77,
   "count365": 101,
-  "overallCount": 353,
-  "calculatedAt": "2026-07-06T04:16:33.876Z",
-  "lastUpdated": "2026-07-06T06:16:15.917Z",
+  "overallCount": 355,
+  "calculatedAt": "2026-07-07T04:16:58.040Z",
+  "lastUpdated": "2026-07-07T05:56:52.340Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Rücksendeetikett beilegen",
+      "comment": "Rücksendeetikett beilegen, auf Mails antworten",
+      "rating": 1,
+      "submittedAt": "2026-07-06T13:35:37.108Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Veel keus en snelle verzending",
@@ -137,13 +144,6 @@
       "comment": "Die schnelle Lieferung und die Passgenauigkeit.",
       "rating": 5,
       "submittedAt": "2025-11-03T12:24:39.399Z"
-    },
-    {
-      "name": "Andreas G.",
-      "title": "Superschneller Versand",
-      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
-      "rating": 5,
-      "submittedAt": "2025-10-29T08:22:14.800Z"
     }
   ]
 }
