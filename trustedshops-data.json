@@ -1,10 +1,24 @@
 {
-  "rating365": 4.77,
-  "count365": 101,
-  "overallCount": 356,
-  "calculatedAt": "2026-07-09T04:13:34.021Z",
-  "lastUpdated": "2026-07-09T05:52:43.616Z",
+  "rating365": 4.78,
+  "count365": 103,
+  "overallCount": 358,
+  "calculatedAt": "2026-07-10T04:11:24.883Z",
+  "lastUpdated": "2026-07-10T05:50:56.568Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Sehr schnelle Lieferung ins Ausland (Ita…",
+      "comment": "Sehr schnelle Lieferung ins Ausland (Italien).\nDie Ware war nach schon 2 Tagen da.",
+      "rating": 5,
+      "submittedAt": "2026-07-09T12:14:16.522Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Gibt nichts zu beanstanden",
+      "comment": "Gibt nichts zu beanstanden",
+      "rating": 5,
+      "submittedAt": "2026-07-09T12:04:02.958Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Rücksendeetikett beilegen",
@@ -130,20 +144,6 @@
       "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
       "rating": 5,
       "submittedAt": "2025-11-06T13:59:46.456Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Superschneller Versand",
-      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
-      "rating": 5,
-      "submittedAt": "2025-11-03T16:18:12.895Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Die schnelle Lieferung und die…",
-      "comment": "Die schnelle Lieferung und die Passgenauigkeit.",
-      "rating": 5,
-      "submittedAt": "2025-11-03T12:24:39.399Z"
     }
   ]
 }
