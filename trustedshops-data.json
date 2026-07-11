@@ -1,10 +1,24 @@
 {
   "rating365": 4.78,
-  "count365": 103,
-  "overallCount": 358,
-  "calculatedAt": "2026-07-10T04:11:24.883Z",
-  "lastUpdated": "2026-07-10T05:50:56.568Z",
+  "count365": 104,
+  "overallCount": 360,
+  "calculatedAt": "2026-07-11T04:03:30.650Z",
+  "lastUpdated": "2026-07-11T04:51:28.996Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Superschneller Versand",
+      "comment": "Superschneller Versand, tolle Ware.",
+      "rating": 5,
+      "submittedAt": "2026-07-10T12:39:24.174Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Komfort-BH",
+      "comment": "Sehr guter Tragekomfort, angegebene Größe passt perfekt",
+      "rating": 5,
+      "submittedAt": "2026-07-10T09:19:15.816Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Sehr schnelle Lieferung ins Ausland (Ita…",
@@ -130,20 +144,6 @@
       "comment": "Schnelle Lieferung, gute Qualität!",
       "rating": 5,
       "submittedAt": "2025-11-12T14:18:48.853Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "schnelle Lieferung",
-      "comment": "schnelle Lieferung, Top Artikel",
-      "rating": 5,
-      "submittedAt": "2025-11-11T07:34:19.047Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Superschneller Versand",
-      "comment": "Superschneller Versand - top Qualität - alles bestens - gerne wieder - vielen Dank !!!",
-      "rating": 5,
-      "submittedAt": "2025-11-06T13:59:46.456Z"
     }
   ]
 }
