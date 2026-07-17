@@ -1,10 +1,17 @@
 {
-  "rating365": 4.75,
-  "count365": 99,
-  "overallCount": 363,
-  "calculatedAt": "2026-07-16T04:14:51.573Z",
-  "lastUpdated": "2026-07-16T04:48:06.983Z",
+  "rating365": 4.74,
+  "count365": 97,
+  "overallCount": 364,
+  "calculatedAt": "2026-07-17T04:06:31.566Z",
+  "lastUpdated": "2026-07-17T04:51:07.408Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Die Bestellung wurde superschnell bearbe…",
+      "comment": "Die Bestellung wurde superschnell bearbeitet und sofort versandt. Sehr empfehlenswert. ",
+      "rating": 5,
+      "submittedAt": "2026-07-16T13:07:30.353Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Superschneller Versand",
@@ -137,13 +144,6 @@
       "comment": "GLS  hat, obwohl ich zu Hause gewartet habe, nicht an mich geliefert,  sondern an einen Paketshop\nBis heute konnte ich es noch nicht abholen\nHabe mich sehr geärgert darüber \n",
       "rating": 2,
       "submittedAt": "2025-11-14T22:33:42.160Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung",
-      "comment": "Schnelle Lieferung, gute Qualität!",
-      "rating": 5,
-      "submittedAt": "2025-11-12T14:18:48.853Z"
     }
   ]
 }
