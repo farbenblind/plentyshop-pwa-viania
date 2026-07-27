@@ -1,10 +1,17 @@
 {
   "rating365": 4.73,
   "count365": 93,
-  "overallCount": 367,
-  "calculatedAt": "2026-07-26T04:09:43.029Z",
-  "lastUpdated": "2026-07-26T05:18:54.948Z",
+  "overallCount": 368,
+  "calculatedAt": "2026-07-27T04:06:26.852Z",
+  "lastUpdated": "2026-07-27T05:36:41.083Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Schnelle Lieferung und tolle Ware",
+      "comment": "Schnelle Lieferung und tolle Ware \n",
+      "rating": 5,
+      "submittedAt": "2026-07-26T14:01:34.288Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Ihr seid einfach super",
@@ -137,13 +144,6 @@
       "comment": "Sehr schöne breite Träger. \nMir sind die Körbchen etwas zu spitz.",
       "rating": 4,
       "submittedAt": "2025-12-15T12:58:10.838Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung und im Fall von…",
-      "comment": "Schnelle Lieferung und im Fall von Rücksendung sehr schnelle Erstattung ",
-      "rating": 5,
-      "submittedAt": "2025-12-05T21:42:36.051Z"
     }
   ]
 }
