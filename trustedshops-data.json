@@ -1,10 +1,17 @@
 {
-  "rating365": 4.73,
-  "count365": 94,
-  "overallCount": 369,
-  "calculatedAt": "2026-07-30T04:12:32.440Z",
-  "lastUpdated": "2026-07-30T04:44:37.806Z",
+  "rating365": 4.74,
+  "count365": 95,
+  "overallCount": 370,
+  "calculatedAt": "2026-07-31T04:16:53.304Z",
+  "lastUpdated": "2026-07-31T05:22:07.876Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Gute Qualität zu einem guten Preis",
+      "comment": "Gute Qualität zu einem guten Preis, guter Kundenservice bei Problemen",
+      "rating": 5,
+      "submittedAt": "2026-07-30T11:50:04.224Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Schnelle Lieferung und tolle Ware",
@@ -137,13 +144,6 @@
       "comment": "Schneller Versand. Super Qualität :) ",
       "rating": 5,
       "submittedAt": "2025-12-28T15:36:41.443Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Alles gut.",
-      "comment": "Sehr schöne breite Träger. \nMir sind die Körbchen etwas zu spitz.",
-      "rating": 4,
-      "submittedAt": "2025-12-15T12:58:10.838Z"
     }
   ]
 }
