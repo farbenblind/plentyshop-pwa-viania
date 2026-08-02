@@ -1,10 +1,17 @@
 {
-  "rating365": 4.73,
-  "count365": 94,
-  "overallCount": 371,
-  "calculatedAt": "2026-08-01T04:05:33.707Z",
-  "lastUpdated": "2026-08-01T05:14:57.040Z",
+  "rating365": 4.74,
+  "count365": 95,
+  "overallCount": 372,
+  "calculatedAt": "2026-08-02T04:10:24.104Z",
+  "lastUpdated": "2026-08-02T05:14:23.708Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Sehr schnelle Lieferung",
+      "comment": "Sehr schnelle Lieferung! Die BH‘ sind in sehr guter Qualität und fühlen sich angenehm auf der Haut an. Auch der Sitz ist sehr schön! Sehr gutes Preis-Leistungsverhältnis!  ",
+      "rating": 5,
+      "submittedAt": "2026-08-01T12:08:06.250Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Perfekt",
@@ -137,13 +144,6 @@
       "comment": "Gute Qualität ",
       "rating": 4,
       "submittedAt": "2026-01-18T11:30:50.312Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "So muss Onlinehandel sein. Perfekte Abwicklung",
-      "comment": "Perfekte Kaufabwicklung!\nSehr positiv: \n- Bestellung auf Rechnung möglich, Vorteil wenn man die passende Größe nicht weiß\n- Rücksendung ganz einfach, Retourenlabel per E-Mail anfordern. Antwort innerhalb 24 Stunden\n- Rechnungssumme innerhalb von 3 Tagen angepasst\nNeutral:\nZahlung der Rechnung über Dienstleister Ratepay funktioniert einwandfrei, es gibt auch eine Hotline, bei der man echte Menschen erreicht.",
-      "rating": 5,
-      "submittedAt": "2026-01-01T11:24:23.768Z"
     }
   ]
 }
