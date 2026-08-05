@@ -1,10 +1,17 @@
 {
-  "rating365": 4.74,
-  "count365": 95,
-  "overallCount": 373,
-  "calculatedAt": "2026-08-04T04:10:38.338Z",
-  "lastUpdated": "2026-08-04T04:52:14.199Z",
+  "rating365": 4.73,
+  "count365": 98,
+  "overallCount": 376,
+  "calculatedAt": "2026-08-05T04:15:38.093Z",
+  "lastUpdated": "2026-08-05T04:52:18.218Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Viana steht für Deutsche Qualität",
+      "comment": "Die BH‘s haben eine gute Qualität und Passform….gerne wieder👍🏼\n",
+      "rating": 5,
+      "submittedAt": "2026-08-04T07:57:52.770Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Schnelle Bearbeitung",
@@ -137,13 +144,6 @@
       "comment": "Bei Bestell und Retoure emails gab es wohl technische Probleme.Auf Nachfrage  wurde alles promt und problemlos geregelt. ",
       "rating": 4,
       "submittedAt": "2026-06-27T10:33:29.526Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Sehr gute Qualität",
-      "comment": "Sehr gute Qualität. Seit 6 Jahren kaufe ich nur Viania BH.",
-      "rating": 5,
-      "submittedAt": "2026-01-24T19:52:49.188Z"
     }
   ]
 }
