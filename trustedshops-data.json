@@ -1,10 +1,17 @@
 {
   "rating365": 4.74,
-  "count365": 99,
-  "overallCount": 378,
-  "calculatedAt": "2026-08-10T11:26:46.626Z",
-  "lastUpdated": "2026-08-11T03:24:24.643Z",
+  "count365": 100,
+  "overallCount": 379,
+  "calculatedAt": "2026-08-11T15:27:13.739Z",
+  "lastUpdated": "2026-08-12T03:52:49.181Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Superschnelle Abwicklung von Bestellung…",
+      "comment": "Superschnelle Abwicklung von Bestellung über Lieferung und Rückerstattung nach Rücksendung.\nAuf jeden Fall empfehlenswert 👍",
+      "rating": 5,
+      "submittedAt": "2026-08-11T15:26:43.415Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Super schöne Passform",
@@ -137,13 +144,6 @@
       "comment": "Unkomplizierte und schnelle Bestellung. Die Qalität ist sehr gut zum fairen Preis",
       "rating": 5,
       "submittedAt": "2026-06-30T11:08:04.978Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Gute Qualität",
-      "comment": "Gute Qualität, trage ich seit Jahren. Schneller zuverlässiger Versand. Danke",
-      "rating": 5,
-      "submittedAt": "2026-06-29T12:28:15.705Z"
     }
   ]
 }
