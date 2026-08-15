@@ -1,10 +1,17 @@
 {
   "rating365": 4.73,
-  "count365": 97,
-  "overallCount": 380,
-  "calculatedAt": "2026-08-13T04:08:32.197Z",
-  "lastUpdated": "2026-08-14T03:53:11.829Z",
+  "count365": 98,
+  "overallCount": 381,
+  "calculatedAt": "2026-08-14T15:12:13.056Z",
+  "lastUpdated": "2026-08-15T02:46:17.709Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Ich habe Viania Shop darüber informiert",
+      "comment": "Ich habe Viania Shop darüber informiert, dass eine Rücksendung erfolgt.",
+      "rating": 5,
+      "submittedAt": "2026-08-14T15:11:42.734Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Superschnelle Abwicklung von Bestellung…",
@@ -137,13 +144,6 @@
       "comment": "Tolle Ware, schnelle Lieferung, spitzen Kundenservice! ",
       "rating": 5,
       "submittedAt": "2026-06-30T18:13:45.821Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Unkomplizierte und schnelle Bestellung",
-      "comment": "Unkomplizierte und schnelle Bestellung. Die Qalität ist sehr gut zum fairen Preis",
-      "rating": 5,
-      "submittedAt": "2026-06-30T11:08:04.978Z"
     }
   ]
 }
