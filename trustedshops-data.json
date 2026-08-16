@@ -1,10 +1,17 @@
 {
-  "rating365": 4.73,
-  "count365": 98,
-  "overallCount": 381,
-  "calculatedAt": "2026-08-14T15:12:13.056Z",
-  "lastUpdated": "2026-08-15T02:46:17.709Z",
+  "rating365": 4.74,
+  "count365": 99,
+  "overallCount": 382,
+  "calculatedAt": "2026-08-15T11:39:58.430Z",
+  "lastUpdated": "2026-08-16T02:50:08.954Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "alles super",
+      "comment": "alles super , passt",
+      "rating": 5,
+      "submittedAt": "2026-08-15T11:39:28.147Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Ich habe Viania Shop darüber informiert",
@@ -137,13 +144,6 @@
       "comment": "Ein BH hat super gepasst, das andere Model ging leider zurück, hatte keinen guten Sitz.\nVermisse den bügellosen BH mit Frotteeunterfütterung. Dieser ist super für die heißen Tage.",
       "rating": 5,
       "submittedAt": "2026-07-02T18:24:19.417Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Tolle Ware",
-      "comment": "Tolle Ware, schnelle Lieferung, spitzen Kundenservice! ",
-      "rating": 5,
-      "submittedAt": "2026-06-30T18:13:45.821Z"
     }
   ]
 }
