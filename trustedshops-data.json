@@ -1,10 +1,17 @@
 {
-  "rating365": 4.73,
+  "rating365": 4.75,
   "count365": 97,
-  "overallCount": 383,
-  "calculatedAt": "2026-08-19T04:05:21.180Z",
-  "lastUpdated": "2026-08-20T02:46:24.932Z",
+  "overallCount": 384,
+  "calculatedAt": "2026-08-20T16:09:49.677Z",
+  "lastUpdated": "2026-08-21T02:52:35.661Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Die BHS passen",
+      "comment": "Die BHS passen!",
+      "rating": 4,
+      "submittedAt": "2026-08-20T16:09:19.347Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "alles super",
@@ -137,13 +144,6 @@
       "comment": "Veel keus en snelle verzending\nTip: rabatt oder lieferung ohne kosten wenn man mehr stucks kauft ",
       "rating": 5,
       "submittedAt": "2026-07-05T11:22:44.616Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Ein BH hat super gepasst",
-      "comment": "Ein BH hat super gepasst, das andere Model ging leider zurück, hatte keinen guten Sitz.\nVermisse den bügellosen BH mit Frotteeunterfütterung. Dieser ist super für die heißen Tage.",
-      "rating": 5,
-      "submittedAt": "2026-07-02T18:24:19.417Z"
     }
   ]
 }
