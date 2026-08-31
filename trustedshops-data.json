@@ -1,10 +1,17 @@
 {
   "rating365": 4.74,
-  "count365": 99,
-  "overallCount": 391,
-  "calculatedAt": "2026-08-30T04:09:43.234Z",
-  "lastUpdated": "2026-08-30T07:36:25.106Z",
+  "count365": 100,
+  "overallCount": 392,
+  "calculatedAt": "2026-08-31T04:16:04.445Z",
+  "lastUpdated": "2026-08-31T07:48:32.309Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Gutes Preis/Leistungsverhältnis und unko…",
+      "comment": "Gutes Preis/Leistungsverhältnis und unkomplizierte Abwicklung",
+      "rating": 5,
+      "submittedAt": "2026-08-30T12:56:42.100Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Die BHS passen",
@@ -137,13 +144,6 @@
       "comment": "Rücksendeetikett beilegen, auf Mails antworten",
       "rating": 1,
       "submittedAt": "2026-07-06T13:35:37.108Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Veel keus en snelle verzending",
-      "comment": "Veel keus en snelle verzending\nTip: rabatt oder lieferung ohne kosten wenn man mehr stucks kauft ",
-      "rating": 5,
-      "submittedAt": "2026-07-05T11:22:44.616Z"
     }
   ]
 }
