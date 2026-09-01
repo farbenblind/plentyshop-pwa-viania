@@ -1,10 +1,31 @@
 {
   "rating365": 4.74,
-  "count365": 100,
-  "overallCount": 392,
-  "calculatedAt": "2026-08-31T04:16:04.445Z",
-  "lastUpdated": "2026-08-31T07:48:32.309Z",
+  "count365": 101,
+  "overallCount": 395,
+  "calculatedAt": "2026-09-01T04:15:56.232Z",
+  "lastUpdated": "2026-09-01T06:54:48.291Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Super Qualität",
+      "comment": "Super Qualität,  sitzt perfekt ",
+      "rating": 5,
+      "submittedAt": "2026-08-31T18:07:42.313Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Super Qualität",
+      "comment": "Super Qualität,  passt perfekt ",
+      "rating": 5,
+      "submittedAt": "2026-08-31T18:04:59.126Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Super Qualität",
+      "comment": "Super Qualität, passt perfekt . ",
+      "rating": 5,
+      "submittedAt": "2026-08-31T18:03:27.934Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Gutes Preis/Leistungsverhältnis und unko…",
@@ -123,27 +144,6 @@
       "comment": "Sehr guter Tragekomfort, angegebene Größe passt perfekt",
       "rating": 5,
       "submittedAt": "2026-07-10T09:19:15.816Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Sehr schnelle Lieferung ins Ausland (Ita…",
-      "comment": "Sehr schnelle Lieferung ins Ausland (Italien).\nDie Ware war nach schon 2 Tagen da.",
-      "rating": 5,
-      "submittedAt": "2026-07-09T12:14:16.522Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Gibt nichts zu beanstanden",
-      "comment": "Gibt nichts zu beanstanden",
-      "rating": 5,
-      "submittedAt": "2026-07-09T12:04:02.958Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Rücksendeetikett beilegen",
-      "comment": "Rücksendeetikett beilegen, auf Mails antworten",
-      "rating": 1,
-      "submittedAt": "2026-07-06T13:35:37.108Z"
     }
   ]
 }
