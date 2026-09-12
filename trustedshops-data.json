@@ -1,10 +1,17 @@
 {
   "rating365": 4.77,
-  "count365": 99,
-  "overallCount": 401,
-  "calculatedAt": "2026-09-11T04:09:57.998Z",
-  "lastUpdated": "2026-09-11T06:45:16.346Z",
+  "count365": 100,
+  "overallCount": 402,
+  "calculatedAt": "2026-09-12T04:05:55.767Z",
+  "lastUpdated": "2026-09-12T06:38:14.470Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Hat alles super geklappt gute Ware",
+      "comment": "Hat alles super geklappt gute Ware. ",
+      "rating": 5,
+      "submittedAt": "2026-09-11T12:03:08.523Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Gerne wieder",
@@ -137,13 +144,6 @@
       "comment": "Gute Qualität zu einem guten Preis, guter Kundenservice bei Problemen",
       "rating": 5,
       "submittedAt": "2026-07-30T11:50:04.224Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Lieferung und tolle Ware",
-      "comment": "Schnelle Lieferung und tolle Ware \n",
-      "rating": 5,
-      "submittedAt": "2026-07-26T14:01:34.288Z"
     }
   ]
 }
