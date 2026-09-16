@@ -1,10 +1,17 @@
 {
   "rating365": 4.76,
-  "count365": 99,
-  "overallCount": 404,
-  "calculatedAt": "2026-09-15T04:13:11.863Z",
-  "lastUpdated": "2026-09-15T06:53:27.337Z",
+  "count365": 100,
+  "overallCount": 405,
+  "calculatedAt": "2026-09-16T04:04:53.568Z",
+  "lastUpdated": "2026-09-16T06:56:22.060Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "👍🏻",
+      "comment": "👍🏻Beide Modelle sitzen gut und ich bin sehr zufrieden. Danke für die schnelle Lieferung. ",
+      "rating": 5,
+      "submittedAt": "2026-09-15T11:42:52.658Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Hat alles super geklappt gute Ware",
@@ -137,13 +144,6 @@
       "comment": "Perfekt",
       "rating": 5,
       "submittedAt": "2026-07-31T19:28:55.128Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Gute Qualität zu einem guten Preis",
-      "comment": "Gute Qualität zu einem guten Preis, guter Kundenservice bei Problemen",
-      "rating": 5,
-      "submittedAt": "2026-07-30T11:50:04.224Z"
     }
   ]
 }
