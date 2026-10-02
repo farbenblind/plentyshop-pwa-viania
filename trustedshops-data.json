@@ -1,10 +1,17 @@
 {
   "rating365": 4.77,
-  "count365": 96,
-  "overallCount": 409,
-  "calculatedAt": "2026-10-01T04:10:12.828Z",
-  "lastUpdated": "2026-10-01T07:55:16.074Z",
+  "count365": 98,
+  "overallCount": 411,
+  "calculatedAt": "2026-10-02T04:13:37.970Z",
+  "lastUpdated": "2026-10-02T07:40:07.652Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Sehr schnelle Lieferung",
+      "comment": "Sehr schnelle Lieferung, Paket war leider nicht richtig zugeklebt ",
+      "rating": 5,
+      "submittedAt": "2026-10-01T13:42:11.160Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Sehr schöne Wäsche aus 100% Baumwolle",
@@ -137,13 +144,6 @@
       "comment": "Schnelle Bearbeitung,  schnelle Lieferung, gute Ware ",
       "rating": 5,
       "submittedAt": "2026-08-02T13:45:41.704Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Sehr schnelle Lieferung",
-      "comment": "Sehr schnelle Lieferung! Die BH‘ sind in sehr guter Qualität und fühlen sich angenehm auf der Haut an. Auch der Sitz ist sehr schön! Sehr gutes Preis-Leistungsverhältnis!  ",
-      "rating": 5,
-      "submittedAt": "2026-08-01T12:08:06.250Z"
     }
   ]
 }
