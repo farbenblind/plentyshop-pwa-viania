@@ -1,10 +1,17 @@
 {
   "rating365": 4.78,
-  "count365": 97,
-  "overallCount": 411,
-  "calculatedAt": "2026-10-03T04:13:29.151Z",
-  "lastUpdated": "2026-10-03T07:12:14.833Z",
+  "count365": 98,
+  "overallCount": 412,
+  "calculatedAt": "2026-10-04T04:15:07.437Z",
+  "lastUpdated": "2026-10-04T07:31:35.903Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Der Shop ist gut",
+      "comment": "Der Shop ist gut, Bestellung ohne Probleme und Lieferung kam sehr schnell.\nDie bestellten BH's (VIANIA Soft-BH 184460 Helga ohne Bügel Komfortträger vorgeformte Cups Farbe Cream) hatten eine sehr schlechte Passform, das Material war lapperich und sie boten keinerlei Halt. Die BH's gingen sofort wieder zurück. Ich war von dem BH alles in allem sehr enttäuscht, bin von Viana viel besseres gewöhnt. Leider hat die Qualität des Materials und auch die Qualität der Passform sehr nachgelassen - schade. Diesen BH würde ich definitiv nicht zum Kauf empfehlen.",
+      "rating": 4,
+      "submittedAt": "2026-10-03T09:58:52.266Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Sehr schnelle Lieferung",
@@ -137,13 +144,6 @@
       "comment": "Die BH‘s haben eine gute Qualität und Passform….gerne wieder👍🏼\n",
       "rating": 5,
       "submittedAt": "2026-08-04T07:57:52.770Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Schnelle Bearbeitung",
-      "comment": "Schnelle Bearbeitung,  schnelle Lieferung, gute Ware ",
-      "rating": 5,
-      "submittedAt": "2026-08-02T13:45:41.704Z"
     }
   ]
 }
