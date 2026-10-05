@@ -1,10 +1,17 @@
 {
   "rating365": 4.78,
-  "count365": 98,
-  "overallCount": 412,
-  "calculatedAt": "2026-10-04T04:15:07.437Z",
-  "lastUpdated": "2026-10-04T07:31:35.903Z",
+  "count365": 100,
+  "overallCount": 414,
+  "calculatedAt": "2026-10-05T04:14:17.719Z",
+  "lastUpdated": "2026-10-05T07:49:40.196Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Alles bestens gerne wieder 👍🏻",
+      "comment": "Alles bestens gerne wieder 👍🏻",
+      "rating": 5,
+      "submittedAt": "2026-10-04T19:12:38.104Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Der Shop ist gut",
@@ -137,13 +144,6 @@
       "comment": "Super schöne Passform ",
       "rating": 5,
       "submittedAt": "2026-08-10T11:26:16.289Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Viana steht für Deutsche Qualität",
-      "comment": "Die BH‘s haben eine gute Qualität und Passform….gerne wieder👍🏼\n",
-      "rating": 5,
-      "submittedAt": "2026-08-04T07:57:52.770Z"
     }
   ]
 }
