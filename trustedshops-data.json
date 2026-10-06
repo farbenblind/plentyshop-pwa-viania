@@ -1,10 +1,17 @@
 {
   "rating365": 4.78,
-  "count365": 100,
-  "overallCount": 414,
-  "calculatedAt": "2026-10-05T04:14:17.719Z",
-  "lastUpdated": "2026-10-05T07:49:40.196Z",
+  "count365": 101,
+  "overallCount": 415,
+  "calculatedAt": "2026-10-06T04:08:59.486Z",
+  "lastUpdated": "2026-10-06T08:15:07.099Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Alles perfekt",
+      "comment": "Alles perfekt ",
+      "rating": 5,
+      "submittedAt": "2026-10-05T11:23:16.438Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Alles bestens gerne wieder 👍🏻",
@@ -137,13 +144,6 @@
       "comment": "Superschnelle Abwicklung von Bestellung über Lieferung und Rückerstattung nach Rücksendung.\nAuf jeden Fall empfehlenswert 👍",
       "rating": 5,
       "submittedAt": "2026-08-11T15:26:43.415Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Super schöne Passform",
-      "comment": "Super schöne Passform ",
-      "rating": 5,
-      "submittedAt": "2026-08-10T11:26:16.289Z"
     }
   ]
 }
