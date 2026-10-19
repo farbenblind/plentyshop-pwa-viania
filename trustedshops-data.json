@@ -1,10 +1,24 @@
 {
-  "rating365": 4.78,
-  "count365": 102,
-  "overallCount": 416,
-  "calculatedAt": "2026-10-18T04:06:51.113Z",
-  "lastUpdated": "2026-10-18T06:44:21.283Z",
+  "rating365": 4.79,
+  "count365": 104,
+  "overallCount": 418,
+  "calculatedAt": "2026-10-19T04:16:03.487Z",
+  "lastUpdated": "2026-10-19T07:03:02.652Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Schnelle Lieferung",
+      "comment": "Schnelle Lieferung.  Top ",
+      "rating": 5,
+      "submittedAt": "2026-10-18T11:58:04.032Z"
+    },
+    {
+      "name": "Community-Mitglied",
+      "title": "Der BH sitzt ist bequem und fühlt sich w…",
+      "comment": "Der BH sitzt ist bequem und fühlt sich weich an.",
+      "rating": 5,
+      "submittedAt": "2026-10-18T07:44:57.732Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Alles perfekt",
@@ -130,20 +144,6 @@
       "comment": "alles super , passt",
       "rating": 5,
       "submittedAt": "2026-08-15T11:39:28.147Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Ich habe Viania Shop darüber informiert",
-      "comment": "Ich habe Viania Shop darüber informiert, dass eine Rücksendung erfolgt.",
-      "rating": 5,
-      "submittedAt": "2026-08-14T15:11:42.734Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Superschnelle Abwicklung von Bestellung…",
-      "comment": "Superschnelle Abwicklung von Bestellung über Lieferung und Rückerstattung nach Rücksendung.\nAuf jeden Fall empfehlenswert 👍",
-      "rating": 5,
-      "submittedAt": "2026-08-11T15:26:43.415Z"
     }
   ]
 }
