@@ -1,10 +1,17 @@
 {
-  "rating365": 4.78,
-  "count365": 102,
-  "overallCount": 418,
-  "calculatedAt": "2026-10-21T04:11:28.655Z",
-  "lastUpdated": "2026-10-21T06:42:11.334Z",
+  "rating365": 4.79,
+  "count365": 104,
+  "overallCount": 420,
+  "calculatedAt": "2026-10-22T04:11:36.104Z",
+  "lastUpdated": "2026-10-22T06:45:59.471Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Superschnelle Lieferung (am nächsten Tag…",
+      "comment": "Superschnelle Lieferung (am nächsten Tag).\nKarton etwas zerdrückt, aber nix beschädigt. (Vielleicht zu groß? )\nBHs passen perfekt.",
+      "rating": 5,
+      "submittedAt": "2026-10-21T12:33:16.157Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Schnelle Lieferung",
@@ -137,13 +144,6 @@
       "comment": "Die BHS passen!",
       "rating": 4,
       "submittedAt": "2026-08-20T16:09:19.347Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "alles super",
-      "comment": "alles super , passt",
-      "rating": 5,
-      "submittedAt": "2026-08-15T11:39:28.147Z"
     }
   ]
 }
