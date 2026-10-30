@@ -1,10 +1,17 @@
 {
-  "rating365": 4.79,
+  "rating365": 4.78,
   "count365": 103,
-  "overallCount": 421,
-  "calculatedAt": "2026-10-29T04:03:52.516Z",
-  "lastUpdated": "2026-10-29T07:44:24.616Z",
+  "overallCount": 422,
+  "calculatedAt": "2026-10-30T04:16:48.619Z",
+  "lastUpdated": "2026-10-30T07:50:30.032Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "Bitte nur die Modelle anzeigen",
+      "comment": "Bitte nur die Modelle anzeigen, die auch im Filter \"Größe + Cup\" wirklich verfügbar sind.  Wenn es das Modelle irgendwann Malin meiner Größe gab, es aber zur Zeit un meiner Größe nicht lieferbar ist, ist es ärgerlich. ",
+      "rating": 4,
+      "submittedAt": "2026-10-29T12:35:02.003Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Alles Bestens",
@@ -137,13 +144,6 @@
       "comment": "Super Qualität, passt perfekt . ",
       "rating": 5,
       "submittedAt": "2026-08-31T18:03:27.934Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Gutes Preis/Leistungsverhältnis und unko…",
-      "comment": "Gutes Preis/Leistungsverhältnis und unkomplizierte Abwicklung",
-      "rating": 5,
-      "submittedAt": "2026-08-30T12:56:42.100Z"
     }
   ]
 }
