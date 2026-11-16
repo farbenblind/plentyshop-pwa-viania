@@ -131,6 +131,31 @@ npx plentyshop generate component --web-app-path=src/app
 
 Configuration priority: CLI flags > Config file > Defaults
 
+## Viania: Matomo (Cookie-Consent)
+
+Der Matomo Tag Manager (Matomo Cloud, Container `container_6WxfOZMG`) wird erst geladen, wenn im Cookie-Banner der Gruppe **Statistik** bzw. dem Eintrag **Matomo** zugestimmt wurde. Umgesetzt mit dem Standardweg der PWA (siehe [docs/guide/themes/cookie.md](docs/guide/themes/cookie.md)):
+
+| Datei | Inhalt |
+| --- | --- |
+| `apps/web/app/configuration/cookie.config.ts` | Neue Cookie-Gruppe „Statistik“ (zwischen „Funktional“ und „Marketing“) mit dem Eintrag Matomo: Anbieter, Zweck, Datenschutz-Link, Laufzeiten, `cookieNames` (`_pk_id.*`, `_pk_ses.*`, `_pk_ref.*`) und `script: ['matomoTagManager']` |
+| `apps/web/cookie-scripts.config.ts` | Funktion `matomoTagManager`: das Matomo-Tag-Manager-Snippet, lädt den Container nur einmal |
+| `apps/web/app/lang/de.json`, `en.json` | Texte unter `CookieBar.statistics` |
+
+**Ablauf**
+
+- Ohne Zustimmung wird kein Matomo-Script geladen und es werden keine `_pk_*`-Cookies gesetzt.
+- Nach der Zustimmung ruft die Cookie-Bar `matomoTagManager` auf, ohne die Seite neu zu laden.
+- Bei Widerruf lädt die PWA die Seite neu und löscht die in `cookieNames` hinterlegten `_pk_*`-Cookies.
+
+**Seitenaufrufe (Single-Page-App)**
+
+Die PWA wechselt Seiten ohne Neuladen. Damit Matomo jeden Seitenwechsel zählt, muss im Matomo Tag Manager ein Trigger vom Typ **History Change** angelegt und zusätzlich am Pageview-Tag hinterlegt sein (danach Container veröffentlichen). Das ist Matomo-Konfiguration, kein Shop-Code.
+
+**Anpassen**
+
+- Anderer Container: `MATOMO_CONTAINER_URL` in `apps/web/cookie-scripts.config.ts` ändern.
+- Texte im Banner (Anbieter, Zweck, Laufzeit): `CookieBar.statistics` in den Sprachdateien.
+
 ## Resources
 
 ### Documentation
