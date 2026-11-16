@@ -62,23 +62,6 @@ export default {
     },
     {
       id: 3,
-      name: 'CookieBar.statistics.label',
-      showMore: false,
-      description: 'CookieBar.statistics.description',
-      cookies: [
-        {
-          name: 'CookieBar.statistics.cookies.matomo.name',
-          Provider: 'CookieBar.statistics.cookies.matomo.provider',
-          Status: 'CookieBar.statistics.cookies.matomo.status',
-          PrivacyPolicy: 'https://matomo.org/matomo-cloud-privacy-policy/',
-          Lifespan: 'CookieBar.statistics.cookies.matomo.lifespan',
-          cookieNames: ['^_pk_id\\.', '^_pk_ses\\.', '^_pk_ref\\.'],
-          script: ['matomoTagManager'],
-        },
-      ],
-    },
-    {
-      id: 4,
       name: 'CookieBar.marketing.label',
       showMore: false,
       description: 'CookieBar.marketing.description',

@@ -556,18 +556,6 @@
       "description": "Marketing-Cookies werden von Drittanbietern und Publishern verwendet, um personalisierte Werbung anzuzeigen. Sie tun dies, indem Sie Besucher über Websites hinweg verfolgen.",
       "label": "Marketing"
     },
-    "statistics": {
-      "cookies": {
-        "matomo": {
-          "lifespan": "_pk_id.*: 13 Monate, _pk_ses.*: 30 Minuten, _pk_ref.*: 6 Monate",
-          "name": "Matomo",
-          "provider": "InnoCraft Ltd. (Matomo Cloud), Wellington, Neuseeland",
-          "status": "Reichweitenmessung und Analyse des Nutzerverhaltens zur Optimierung von Inhalten und Nutzerführung."
-        }
-      },
-      "description": "Statistik-Cookies helfen uns zu verstehen, wie Besucher:innen unsere Website nutzen, damit wir Inhalte und Nutzerführung verbessern können.",
-      "label": "Statistik"
-    },
     "More information": "Mehr Informationen",
     "Privacy Settings": "Datenschutzeinstellungen",
     "legalDisclosure": "Impressum",

@@ -2,6 +2,8 @@ import { defineNuxtModule, addComponent, createResolver, extendPages, addImports
 import type { NuxtPage, AppConfig } from '@nuxt/schema';
 import tailwindPlugin from 'tailwindcss/plugin';
 import defaultTheme from 'tailwindcss/defaultTheme';
+import type { CookieGroup } from '@plentymarkets/shop-core';
+import { MARKETING_COOKIE_GROUP_NAME, statisticsCookieGroup } from './runtime/utils/matomo';
 
 export default defineNuxtModule({
   async setup(options, nuxt) {
@@ -177,6 +179,18 @@ export default defineNuxtModule({
 
     // customJS (not needed at the moment)
     // addPlugin(resolve('./runtime/plugins/customJS'));
+
+    /**
+     * Matomo: cookie group "Statistik" (before "Marketing") + script loaded only after consent
+     */
+    const cookieGroups = nuxt.options.runtimeConfig.public.cookieGroups as { groups: CookieGroup[] };
+    const marketingIndex = cookieGroups.groups.findIndex((group) => group.name === MARKETING_COOKIE_GROUP_NAME);
+    cookieGroups.groups.splice(
+      marketingIndex === -1 ? cookieGroups.groups.length : marketingIndex,
+      0,
+      { ...statisticsCookieGroup, id: cookieGroups.groups.length },
+    );
+    addPlugin(resolve('./runtime/plugins/matomo.client'));
 
     /**
      * override components
