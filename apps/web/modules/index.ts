@@ -183,7 +183,8 @@ export default defineNuxtModule({
     /**
      * Matomo: cookie group "Statistik" (before "Marketing") + script loaded only after consent
      */
-    const cookieGroups = nuxt.options.runtimeConfig.public.cookieGroups as { groups: CookieGroup[] };
+    // runtimeConfig types the groups from the JSON value as {}[], so cast via unknown
+    const cookieGroups = nuxt.options.runtimeConfig.public.cookieGroups as unknown as { groups: CookieGroup[] };
     const marketingIndex = cookieGroups.groups.findIndex((group) => group.name === MARKETING_COOKIE_GROUP_NAME);
     cookieGroups.groups.splice(
       marketingIndex === -1 ? cookieGroups.groups.length : marketingIndex,
