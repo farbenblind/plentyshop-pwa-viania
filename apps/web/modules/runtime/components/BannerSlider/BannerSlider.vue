@@ -78,6 +78,16 @@ const cdnUrl = 'https://cdn02.plentymarkets.com/w73p32remdlq/frontend';
 // Slides data
 const slides = [
   {
+    link: '/kollektionen/lou',
+    imageSm: '/balck-week-2026/VIANIA_BW_A_Lou_Mobile_1000x1500.webp',
+    imageLg: '/balck-week-2026/VIANIA_BW_A_Lou_Desktop_1600x800.webp'
+  },
+  {
+    link: '/kollektionen',
+    imageSm: '/balck-week-2026/VIANIA_BW_B_Serien_Mobile_1000x1500.webp',
+    imageLg: '/balck-week-2026/VIANIA_BW_B_Serien_Desktop_1600x800.webp'
+  },
+  {
     link: '/bhs/spacercup-bhs-mit-buegel',
     imageSm: '/pwa/banner/spacer-sm.jpg',
     imageLg: '/pwa/banner/spacer-lg.jpg'
