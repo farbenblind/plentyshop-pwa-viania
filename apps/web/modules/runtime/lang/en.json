@@ -62,5 +62,19 @@
     "BhFinder": {
         "title": "Find your bra",
         "callToAction": "Find"
+    },
+    "CookieBar": {
+        "statistics": {
+            "cookies": {
+                "matomo": {
+                    "lifespan": "_pk_id.*: 13 months, _pk_ses.*: 30 minutes, _pk_ref.*: 6 months",
+                    "name": "Matomo",
+                    "provider": "InnoCraft Ltd. (Matomo Cloud), Wellington, New Zealand",
+                    "status": "Audience measurement and analysis of user behaviour to optimise content and navigation."
+                }
+            },
+            "description": "Statistics cookies help us understand how visitors use our website so we can improve content and navigation.",
+            "label": "Statistics"
+        }
     }
 }

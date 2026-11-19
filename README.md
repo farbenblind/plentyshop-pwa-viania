@@ -131,6 +131,32 @@ npx plentyshop generate component --web-app-path=src/app
 
 Configuration priority: CLI flags > Config file > Defaults
 
+## Viania: Matomo (Cookie-Consent)
+
+Der Matomo Tag Manager (Matomo Cloud, Container `container_6WxfOZMG`) wird erst geladen, wenn im Cookie-Banner der Gruppe **Statistik** bzw. dem Eintrag **Matomo** zugestimmt wurde. Wie alle Viania-Anpassungen liegt der Code nur in `apps/web/modules/`, die Plenty-Dateien (`cookie.config.ts`, `cookie-scripts.config.ts`, `app/lang/`) bleiben unverändert, damit PWA-Updates nichts überschreiben.
+
+| Datei | Inhalt |
+| --- | --- |
+| `apps/web/modules/runtime/utils/matomo.ts` | Container-URL, Cookie-Name und die Cookie-Gruppe „Statistik“ mit dem Eintrag Matomo: Anbieter, Zweck, Datenschutz-Link, Laufzeiten, `cookieNames` (`_pk_id.*`, `_pk_ses.*`, `_pk_ref.*`) |
+| `apps/web/modules/index.ts` | Fügt die Gruppe beim Build in die Cookie-Bar ein (vor „Marketing“) und registriert das Plugin |
+| `apps/web/modules/runtime/plugins/matomo.client.ts` | Beobachtet die Zustimmung (`useCookieConsent`) und lädt dann das Matomo-Tag-Manager-Snippet, nur einmal |
+| `apps/web/modules/runtime/lang/de.json`, `en.json` | Texte unter `CookieBar.statistics` |
+
+**Ablauf**
+
+- Ohne Zustimmung wird kein Matomo-Script geladen und es werden keine `_pk_*`-Cookies gesetzt.
+- Nach der Zustimmung lädt das Plugin den Container, ohne die Seite neu zu laden.
+- Bei Widerruf lädt die PWA die Seite neu und löscht die in `cookieNames` hinterlegten `_pk_*`-Cookies.
+
+**Seitenaufrufe (Single-Page-App)**
+
+Die PWA wechselt Seiten ohne Neuladen. Damit Matomo jeden Seitenwechsel zählt, muss im Matomo Tag Manager ein Trigger vom Typ **History Change** angelegt und zusätzlich am Pageview-Tag hinterlegt sein (danach Container veröffentlichen). Das ist Matomo-Konfiguration, kein Shop-Code.
+
+**Anpassen**
+
+- Anderer Container: `MATOMO_CONTAINER_URL` in `apps/web/modules/runtime/utils/matomo.ts` ändern.
+- Texte im Banner (Anbieter, Zweck, Laufzeit): `CookieBar.statistics` in `apps/web/modules/runtime/lang/`. Das Modul registriert aktuell nur `de.json`, `en.json` ist in `modules/index.ts` auskommentiert.
+
 ## Resources
 
 ### Documentation
