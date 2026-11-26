@@ -1,10 +1,17 @@
 {
-  "rating365": 4.78,
-  "count365": 97,
-  "overallCount": 425,
-  "calculatedAt": "2026-11-25T04:15:45.061Z",
-  "lastUpdated": "2026-11-25T10:38:03.897Z",
+  "rating365": 4.79,
+  "count365": 98,
+  "overallCount": 426,
+  "calculatedAt": "2026-11-26T04:06:12.151Z",
+  "lastUpdated": "2026-11-26T10:08:14.311Z",
   "reviews": [
+    {
+      "name": "Community-Mitglied",
+      "title": "alles bestens geklappt",
+      "comment": "alles bestens geklappt ",
+      "rating": 5,
+      "submittedAt": "2026-11-25T18:26:21.620Z"
+    },
     {
       "name": "Community-Mitglied",
       "title": "Bestätigung Bestellung ",
@@ -137,13 +144,6 @@
       "comment": "Die Bh‘ sitzen einfach super, sehen gut aus und fühlen sich gut an! ",
       "rating": 5,
       "submittedAt": "2026-09-03T11:16:48.022Z"
-    },
-    {
-      "name": "Community-Mitglied",
-      "title": "Super Qualität",
-      "comment": "Super Qualität,  sitzt perfekt ",
-      "rating": 5,
-      "submittedAt": "2026-08-31T18:07:42.313Z"
     }
   ]
 }
